@@ -56,7 +56,7 @@ NSString * const BeaconManagerFirmwareUpdateDidFinishNotification = @"BeaconMana
         [stantardUserDefaults synchronize];
         
         // FIXME: get real value
-        _isReadyForSetup = NO; //((AppDelegate *)[UIApplication sharedApplication].delegate).isRemoteNotificationSetupReady;
+        _isReadyForSetup = YES; //((AppDelegate *)[UIApplication sharedApplication].delegate).isRemoteNotificationSetupReady;
     }
     
     return self;
@@ -105,24 +105,7 @@ NSString * const BeaconManagerFirmwareUpdateDidFinishNotification = @"BeaconMana
     [[NSNotificationCenter defaultCenter] postNotificationName:BeaconManagerDidLogoutNotification object:self];
 }
 
-- (BCLAction *)testActionForBeacon:(BCLBeacon *)beacon {
-    __block BCLAction *testAction;
-    
-    [beacon.triggers enumerateObjectsUsingBlock:^(BCLTrigger *trigger, NSUInteger triggerIdx, BOOL *triggerStop) {
-        [trigger.actions enumerateObjectsUsingBlock:^(BCLAction *action, NSUInteger actionIdx, BOOL *actionStop) {
-            if (action.isTestAction) {
-                testAction = action;
-                *triggerStop = YES;
-                *actionStop = YES;
-            }
-        }];
-    }];
-    
-    return testAction;
-}
-
-+ (NSString *)pushEnvironmentNameWithPushEnvironment:(BCLBeaconCtrlPushEnvironment)pushEnvironment
-{
++ (NSString *)pushEnvironmentNameWithPushEnvironment:(BCLBeaconCtrlPushEnvironment)pushEnvironment {
     switch(pushEnvironment) {
         case BCLBeaconCtrlPushEnvironmentProduction:
             return @"production";
@@ -134,13 +117,13 @@ NSString * const BeaconManagerFirmwareUpdateDidFinishNotification = @"BeaconMana
 }
 
 - (void)startWithDelegate:(id<BCLBeaconCtrlDelegate>)delegate withCompletion:(void (^)(BOOL, NSError *))completion {
-    NSAssert(self.clientId, @"You need to pass a clientId from start method");
-    NSAssert(self.clientSecret, @"You need to pass a clientSecret from start method");
-    
     __typeof__(self) __weak weakSelf = self;
+
+    NSString *clientId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BeaconCtrlAPIClientId"];
+    NSString *clientSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BeaconCtrlAPIClientSecret"];
     
-    [BCLBeaconCtrl setupBeaconCtrlWithClientId:self.clientId
-                                  clientSecret:self.clientSecret
+    [BCLBeaconCtrl setupBeaconCtrlWithClientId:clientId
+                                  clientSecret:clientSecret
                                         userId:nil
                                pushEnvironment:self.pushEnvironment
                                      pushToken:self.pushNotificationDeviceToken

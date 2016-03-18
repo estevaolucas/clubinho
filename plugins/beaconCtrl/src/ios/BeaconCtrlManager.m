@@ -105,24 +105,7 @@ NSString * const BeaconManagerFirmwareUpdateDidFinishNotification = @"BeaconMana
     [[NSNotificationCenter defaultCenter] postNotificationName:BeaconManagerDidLogoutNotification object:self];
 }
 
-- (BCLAction *)testActionForBeacon:(BCLBeacon *)beacon {
-    __block BCLAction *testAction;
-    
-    [beacon.triggers enumerateObjectsUsingBlock:^(BCLTrigger *trigger, NSUInteger triggerIdx, BOOL *triggerStop) {
-        [trigger.actions enumerateObjectsUsingBlock:^(BCLAction *action, NSUInteger actionIdx, BOOL *actionStop) {
-            if (action.isTestAction) {
-                testAction = action;
-                *triggerStop = YES;
-                *actionStop = YES;
-            }
-        }];
-    }];
-    
-    return testAction;
-}
-
-+ (NSString *)pushEnvironmentNameWithPushEnvironment:(BCLBeaconCtrlPushEnvironment)pushEnvironment
-{
++ (NSString *)pushEnvironmentNameWithPushEnvironment:(BCLBeaconCtrlPushEnvironment)pushEnvironment {
     switch(pushEnvironment) {
         case BCLBeaconCtrlPushEnvironmentProduction:
             return @"production";

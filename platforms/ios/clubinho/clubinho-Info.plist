@@ -71,8 +71,6 @@
       <key>NSAllowsArbitraryLoads</key>
       <true/>
     </dict>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Your location is used to instantly inform you when you are near a location that is interesting to you.</string>
     <key>NSMainNibFile~ipad</key>
     <string/>
     <key>NobotBCLBackendURL</key>
@@ -185,5 +183,7 @@
         <string>{768, 1024}</string>
       </dict>
     </array>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Your location is used to instantly inform you when you are near a location that is interesting to you.</string>
   </dict>
 </plist>

@@ -36,7 +36,6 @@ extern NSString * const BeaconManagerPropertiesUpdateDidFinishNotification;
 - (void)startWithDelegate:(id<BCLBeaconCtrlDelegate>)delegate withCompletion:(void (^)(BOOL, NSError *))completion;
 - (void)logout;
 
-- (BCLAction *)testActionForBeacon:(BCLBeacon *)beacon;
 - (BOOL)actionCanBePerformed:(BCLAction *)action saveTimestamp:(BOOL)save;
 
 @end

@@ -3,7 +3,6 @@
 //
 //  Created by Estevão Lucas on 3/16/16.
 //  Copyright © 2016 nobot. All rights reserved.
-//  Source: https://github.com/katzer/cordova-plugin-local-notifications/blob/master/src/ios/APPLocalNotification.m
 //
 
 #import "BeaconCtrlCordovaPlugin.h"
@@ -16,23 +15,41 @@
 
 @end
 
-
 @implementation BeaconCtrlCordovaPlugin
 
 static NSDictionary *launchOptions;
 
 - (void)startMonitoring:(CDVInvokedUrlCommand *)command {
-    [[BeaconCtrlManager sharedManager] startWithDelegate:self withCompletion:^(BOOL success, NSError *error) {
-        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    NSDictionary *config = [command.arguments objectAtIndex:0];
+    
+    [self.commandDelegate runInBackground:^{
         
-        if (!success) {
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                             messageAsString:error.localizedDescription];
+        if (config) {
+            if ([config objectForKey:@"clientId"]) {
+                [BeaconCtrlManager sharedManager].clientId = config[@"clientId"];
+            }
+            
+            if ([config objectForKey:@"clientSecret"]) {
+                [BeaconCtrlManager sharedManager].clientSecret = config[@"clientSecret"];
+            }
         }
         
-        self.callbackId = command.callbackId;
+        // Register for notifications
+        UIUserNotificationType types = (UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types
+                                                                                 categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         
-        [self.commandDelegate runInBackground:^{
+        
+        [[BeaconCtrlManager sharedManager] startWithDelegate:self withCompletion:^(BOOL success, NSError *error) {
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+            
+            if (!success) {
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
+                                                 messageAsDictionary:error.userInfo];
+            }
+            
+            self.callbackId = command.callbackId;
             [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         }];
     }];
@@ -45,11 +62,11 @@ static NSDictionary *launchOptions;
 #pragma mark - BCLBeaconCtrlDelegate
 
 - (void)closestObservedBeaconDidChange:(BCLBeacon *)closestBeacon {
-//    NSLog(@"The closest beacon is: %@", closestBeacon.name);
+   NSLog(@"The closest beacon is: %@", closestBeacon.name);
 }
 
 - (void)currentZoneDidChange:(BCLZone *)currentZone {
-//    NSLog(@"You're now in this zone: %@", currentZone.name);
+   NSLog(@"You're now in this zone: %@", currentZone.name);
 }
 
 - (void)didChangeObservedBeacons:(NSSet *)newObservedBeacons {
@@ -60,11 +77,7 @@ static NSDictionary *launchOptions;
     return NO;
 }
 
-- (void)willNotifyAction:(BCLAction *)action {
-//    if (![[BeaconCtrlManager sharedManager] actionCanBePerformed:action saveTimestamp:NO]) {
-//        return;
-//    }
-    
+- (void)notifyAction:(BCLAction *)action {    
     [self fireEvent:@"willNotifyAction" values:[self normalizeAction:action]];
 }
 
@@ -77,9 +90,6 @@ static NSDictionary *launchOptions;
 }
 
 - (void)didPerformAction:(BCLAction *)action {
-//    if (![[BeaconCtrlManager sharedManager] actionCanBePerformed:action saveTimestamp:YES]) {
-//        return;
-//    }
     [self fireEvent:@"didPerformAction" values:[self normalizeAction:action]];
 }
 
@@ -122,9 +132,9 @@ static NSDictionary *launchOptions;
                               @"data": values };
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                   messageAsDictionary:result];
-    //[[NSOperationQueue mainQueue] addOperationWithBlock:^ {
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
-    //}];
+    }];
 }
 
 @end
