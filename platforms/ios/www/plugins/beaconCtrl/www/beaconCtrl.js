@@ -3,12 +3,12 @@ cordova.define("beaconCtrl.beaconCtrl", function(require, exports, module) { var
 
 function BeaconCtrl() {};
 
-BeaconCtrl.prototype.startMonitoring = function(config, successCallback, errorCallback) {
+BeaconCtrl.prototype.startMonitoring = function(successCallback, errorCallback) {
   exec(successCallback,
       errorCallback, 
       'BeaconCtrlCordovaPlugin', 
       'startMonitoring', 
-      [config]
+      []
       );
 };
 
@@ -21,10 +21,8 @@ BeaconCtrl.prototype.stopMonitoring = function(successCallback, errorCallback) {
       );
 };
 
-BeaconCtrl.prototype.start = function(config) {
-  var config = config || {};
-
-  this.startMonitoring(config, function(result) {
+BeaconCtrl.prototype.start = function() {
+  this.startMonitoring(function(result) {
     if (result.type) {
       cordova.fireDocumentEvent(result.type, result.data || {});
     }
@@ -37,8 +35,8 @@ BeaconCtrl.prototype.start = function(config) {
 
 var plugin = new BeaconCtrl();
 
-exports.start = function(config) {
-  plugin.start(config);
+exports.start = function() {
+  plugin.start();
 }
 
 exports.stop = function() {

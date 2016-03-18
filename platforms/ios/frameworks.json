@@ -1,4 +1,7 @@
 {
     "CoreLocation.framework": 2,
-    "AudioToolbox.framework": 1
+    "AudioToolbox.framework": 1,
+    "AddressBook.framework": null,
+    "libsqlite3.tbd": null,
+    "libz.tbd": null
 }

@@ -13,10 +13,7 @@ angular.module('starter', ['ionic'])
     }
 
     if (window.cordova && window.cordova.plugins.beaconCtrl) {
-      cordova.plugins.beaconCtrl.start({
-        clientId: '9c04ef1ef670e73d1e12bf03751b19076664772945d7c15490bca24facd9bbd9',
-        clientSecret: 'ae8baaf4377f0cd8ef5c56a3ed6cd78db06cda4ed8279f7c5d4690b36d8539b2'
-      });
+      cordova.plugins.beaconCtrl.start();
 
       document.addEventListener('willNotifyAction', function(data) {
         alert('entrou no willNotifyAction');
@@ -27,7 +24,7 @@ angular.module('starter', ['ionic'])
       });
 
       document.addEventListener('error', function(data) {
-        alert('ERROR ' + JSON.stringify(data));
+        alert('entrou no error');
       });
     }
   });

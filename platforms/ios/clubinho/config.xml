@@ -39,6 +39,15 @@
     <feature name="BeaconCtrlCordovaPlugin">
         <param name="ios-package" value="BeaconCtrlCordovaPlugin" />
     </feature>
+    <config-file parent="BeaconCtrlAPIClientId" target="*-Info.plist">
+        <string>9c04ef1ef670e73d1e12bf03751b19076664772945d7c15490bca24facd9bbd9</string>
+    </config-file>
+    <config-file parent="BeaconCtrlAPIClientSecret" target="*-Info.plist">
+        <string>ae8baaf4377f0cd8ef5c56a3ed6cd78db06cda4ed8279f7c5d4690b36d8539b2</string>
+    </config-file>
+    <description>
+        An Ionic Framework and Cordova project.
+    </description>
     <icon height="57" src="resources/ios/icon/icon.png" width="57" />
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
     <icon height="40" src="resources/ios/icon/icon-40.png" width="40" />
@@ -68,19 +77,9 @@
     <config-file parent="BCLBaseURLAPI" target="*-Info.plist">
         <string>https://beacon-nobot.herokuapp.com/api/v1</string>
     </config-file>
-    <config-file parent="BeaconCtrlAPIClientId" target="*-Info.plist">
-        <string>9c04ef1ef670e73d1e12bf03751b19076664772945d7c15490bca24facd9bbd9</string>
-    </config-file>
-    <config-file parent="BeaconCtrlAPIClientSecret" target="*-Info.plist">
-        <string>ae8baaf4377f0cd8ef5c56a3ed6cd78db06cda4ed8279f7c5d4690b36d8539b2</string>
-    </config-file>
     <name>clubinho</name>
-    <description>
-        An Ionic Framework and Cordova project.
-    </description>
-    <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
-    </author>
+    <description>Projeto Clubinho Mágico</description>
+    <author email="estevao.lucas@gmail.com" href="http://example.com.com/">Estevão Lucas</author>
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
