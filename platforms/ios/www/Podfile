@@ -1,0 +1,9 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, ‘7.0’
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'clubinho' do
+  pod "UNNetworking", :git => "https://github.com/upnext/UNNetworking.git", :branch => :master
+  pod 'BeaconCtrl', :path => "/Users/estevao/Sites/nobot/BeaconControl_iOS_SDK"
+end

@@ -1,0 +1,35 @@
+PODS:
+  - BeaconCtrl (0.0.1):
+    - KontaktSDK-OLD
+    - SAMCache
+    - UNNetworking
+  - KontaktSDK-OLD (6.2)
+  - SAMCache (0.3.3)
+  - SSKeychain (1.4.0)
+  - UNNetworking (0.7.0)
+
+DEPENDENCIES:
+  - BeaconCtrl (from `/Users/estevao/Sites/nobot/BeaconControl_iOS_SDK`)
+  - SSKeychain
+  - UNNetworking (from `https://github.com/upnext/UNNetworking.git`, branch `master`)
+
+EXTERNAL SOURCES:
+  BeaconCtrl:
+    :path: "/Users/estevao/Sites/nobot/BeaconControl_iOS_SDK"
+  UNNetworking:
+    :branch: :master
+    :git: https://github.com/upnext/UNNetworking.git
+
+CHECKOUT OPTIONS:
+  UNNetworking:
+    :commit: 7d378f61554eb1485fc0a6ead6501a0d4ba8c7d3
+    :git: https://github.com/upnext/UNNetworking.git
+
+SPEC CHECKSUMS:
+  BeaconCtrl: 49e1f976312e878bdc8be8d2df0101a34a538daf
+  KontaktSDK-OLD: 5a7d59b3e66f57aebcdb045311ded2f64ff1f14b
+  SAMCache: 790b2623a3e087c903daff872c90c248726c4c82
+  SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
+  UNNetworking: 1b6f6aa99348a802d92e6b20163576bbbbc5ec18
+
+COCOAPODS: 0.39.0
