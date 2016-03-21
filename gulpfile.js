@@ -1,22 +1,30 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var bower = require('bower');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var sh = require('shelljs');
+var gulp = require('gulp'),
+  gutil = require('gulp-util'),
+  bower = require('bower'),
+  concat = require('gulp-concat'),
+  compass = require('gulp-compass'),
+  minifyCss = require('gulp-minify-css'),
+  rename = require('gulp-rename'),
+  sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  compass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['compass']);
 
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
-    .pipe(sass())
-    .on('error', sass.logError)
+gulp.task('compass', function(done) {
+  gulp.src(paths.compass)
+    .pipe(compass({
+      config_file: 'config.rb',
+      css: 'css',
+      sass: 'scss',
+      image: 'www/img'
+    }))
+    .on('error', function(error) {
+      console.log(error);
+      this.emit('end');
+    })
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0
@@ -27,7 +35,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.compass, ['compass']);
 });
 
 gulp.task('install', ['git-check'], function() {
