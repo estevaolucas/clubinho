@@ -1,0 +1,83 @@
+.prizes{
+  // background: #ff9c00;
+  background: #ffe9bb;
+  color: white;
+  font-size: 50px;
+
+  main {
+    background: image-url('bg-premios.png') no-repeat center top;
+    background-size: 100%;
+    padding-top: 15px;
+  }
+
+  h1{
+    text-transform: capitalize;
+    font-size: 26px;
+    text-indent: 8px;
+    background-size: 100%;
+    margin-top: -17px;
+    padding-top: 20px;
+    padding-bottom: 14px;
+    color: white;
+  }
+  h2{
+    padding-top: 45px;
+    padding-bottom: 30px;
+    text-transform: capitalize;
+    font-size: 60px;
+    text-indent: 20px;
+  }
+  img{
+    width: 60%;
+    height: auto;
+  }
+  .bronze-partner,.silver-partner,.gold-partner{
+    text-align: center;
+    padding: 20px 0px;
+    position: relative;
+    border-top: 3px dotted white;
+    h3{
+      margin-bottom: 8px;
+      font-size: 26px;
+    }
+  }
+  .bronze-partner{
+    color: white;
+    background: #b8502b;
+    .points{
+      color:#613c32;
+      background: #ffe9bb;
+    }
+  }
+  .silver-partner{
+    background: #ececec;
+    color:#3a3a3a;
+    .points{
+      background:#c8c4c4;
+      color:#3a3a3a;
+    }
+  }
+  .gold-partner{
+    color:#977a09;
+    background: #ffda46;
+    .points{
+      background:#977a09;
+      color:#ffda46;
+    }
+  }
+  .points{
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    padding: 13px;
+    line-height: 11px;
+    @include border-radius(90px);
+    h3{
+      font-size: 25px;
+      margin-bottom: 0px;
+    }
+    span{
+      font-size: 17px;
+    }
+  }
+}

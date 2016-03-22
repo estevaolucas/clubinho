@@ -2774,6 +2774,146 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
+.about {
+  background: #ffe9bb;
+  color: white;
+  font-size: 50px;
+}
+.about main {
+  background: url('../img/bg-premios.png') no-repeat center top;
+  background-size: 100%;
+  padding-top: 15px;
+}
+.about main > div {
+  padding: 20px;
+  background: #ff9c00;
+}
+.about h1 {
+  text-transform: capitalize;
+  font-size: 26px;
+  text-indent: 8px;
+  background-size: 100%;
+  margin-top: -25px;
+  padding-top: 15px;
+  padding-bottom: 12px;
+  border-bottom: 3px dotted white;
+  color: white;
+}
+.about h1 span .fa {
+  font-size: 32px;
+}
+.about h2 {
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  font-size: 24px;
+  line-height: 30px;
+  color: white;
+}
+.about h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 23px;
+  color: white;
+}
+.about h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #552f2b;
+}
+.about p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #552f2b;
+  line-height: 20px;
+}
+.about img {
+  width: 60%;
+  height: auto;
+}
+
+.prizes {
+  background: #ffe9bb;
+  color: white;
+  font-size: 50px;
+}
+.prizes main {
+  background: url('../img/bg-premios.png') no-repeat center top;
+  background-size: 100%;
+  padding-top: 15px;
+}
+.prizes h1 {
+  text-transform: capitalize;
+  font-size: 26px;
+  text-indent: 8px;
+  background-size: 100%;
+  margin-top: -17px;
+  padding-top: 20px;
+  padding-bottom: 14px;
+  color: white;
+}
+.prizes h2 {
+  padding-top: 45px;
+  padding-bottom: 30px;
+  text-transform: capitalize;
+  font-size: 60px;
+  text-indent: 20px;
+}
+.prizes img {
+  width: 60%;
+  height: auto;
+}
+.prizes .bronze-partner, .prizes .silver-partner, .prizes .gold-partner {
+  text-align: center;
+  padding: 20px 0px;
+  position: relative;
+  border-top: 3px dotted white;
+}
+.prizes .bronze-partner h3, .prizes .silver-partner h3, .prizes .gold-partner h3 {
+  margin-bottom: 8px;
+  font-size: 26px;
+}
+.prizes .bronze-partner {
+  color: white;
+  background: #b8502b;
+}
+.prizes .bronze-partner .points {
+  color: #613c32;
+  background: #ffe9bb;
+}
+.prizes .silver-partner {
+  background: #ececec;
+  color: #3a3a3a;
+}
+.prizes .silver-partner .points {
+  background: #c8c4c4;
+  color: #3a3a3a;
+}
+.prizes .gold-partner {
+  color: #977a09;
+  background: #ffda46;
+}
+.prizes .gold-partner .points {
+  background: #977a09;
+  color: #ffda46;
+}
+.prizes .points {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  padding: 13px;
+  line-height: 11px;
+  -moz-border-radius: 90px;
+  -webkit-border-radius: 90px;
+  border-radius: 90px;
+}
+.prizes .points h3 {
+  font-size: 25px;
+  margin-bottom: 0px;
+}
+.prizes .points span {
+  font-size: 17px;
+}
+
 .profile .modal {
   width: 100%;
   left: 0;
@@ -3922,441 +4062,5 @@ body footer ul .li-mid {
   body .interna-agenda .main .sidebar-interna img {
     width: 50%;
     height: auto;
-  }
-  body .premios {
-    background: #ff9c00;
-    color: white;
-    font-size: 50px;
-    margin-top: 20px;
-    position: absolute;
-    width: 100%;
-    top: 26%;
-    z-index: 999999999;
-    height: 100%;
-    display: none;
-  }
-  body .premios .close {
-    float: right;
-    position: absolute;
-    top: -23px;
-    right: 6px;
-    width: 60px;
-    text-align: center;
-  }
-  body .premios .close a {
-    text-decoration: none;
-    color: #563029;
-    font-size: 42px;
-  }
-  body .premios h1 {
-    text-transform: capitalize;
-    font-size: 26px;
-    text-indent: 8px;
-    background: url("../images/bg-premios.png") no-repeat;
-    background-size: 100%;
-    margin-top: -17px;
-    padding-top: 20px;
-    padding-bottom: 14px;
-  }
-  body .premios h2 {
-    padding-top: 45px;
-    padding-bottom: 30px;
-    text-transform: capitalize;
-    font-size: 60px;
-    text-indent: 20px;
-  }
-  body .premios img {
-    width: 60%;
-    height: auto;
-  }
-  body .premios .socio-bronze, body .premios .socio-prata, body .premios .socio-ouro {
-    text-align: center;
-    padding: 20px 0px;
-    position: relative;
-    border-top: 3px dotted white;
-  }
-  body .premios .socio-bronze h3, body .premios .socio-prata h3, body .premios .socio-ouro h3 {
-    margin-bottom: 8px;
-    font-size: 26px;
-  }
-  body .premios .socio-bronze {
-    color: white;
-    background: #b8502b;
-  }
-  body .premios .socio-bronze .pontuacao {
-    color: #613c32;
-    background: #ffe9bb;
-  }
-  body .premios .socio-prata {
-    background: #ececec;
-    color: #3a3a3a;
-  }
-  body .premios .socio-prata .pontuacao {
-    background: #c8c4c4;
-    color: #3a3a3a;
-  }
-  body .premios .socio-ouro {
-    color: #977a09;
-    background: #ffda46;
-  }
-  body .premios .socio-ouro .pontuacao {
-    background: #977a09;
-    color: #ffda46;
-  }
-  body .premios .pontuacao {
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    padding: 13px;
-    line-height: 11px;
-    -moz-border-radius: 90px;
-    -webkit-border-radius: 90px;
-    border-radius: 90px;
-  }
-  body .premios .pontuacao h3 {
-    font-size: 25px;
-    margin-bottom: 0px;
-  }
-  body .premios .pontuacao span {
-    font-size: 17px;
-  }
-  body .programa {
-    background: #ff9c00;
-    color: white;
-    font-size: 50px;
-    margin-top: 20px;
-    position: absolute;
-    width: 100%;
-    top: 26%;
-    z-index: 999999999;
-    height: 100%;
-    display: none;
-  }
-  body .programa .close-programa {
-    float: right;
-    position: absolute;
-    top: -23px;
-    right: 6px;
-    width: 60px;
-    text-align: center;
-  }
-  body .programa .close-programa a {
-    text-decoration: none;
-    color: #563029;
-    font-size: 42px;
-  }
-  body .programa .conteudo-programa {
-    padding: 20px;
-    background: #ff9c00;
-  }
-  body .programa h1 {
-    text-transform: capitalize;
-    font-size: 26px;
-    text-indent: 8px;
-    background: url("../images/bg-premios.png") no-repeat;
-    background-size: 100%;
-    margin-top: -25px;
-    padding-top: 15px;
-    padding-bottom: 12px;
-    border-bottom: 3px dotted white;
-  }
-  body .programa h1 span .fa {
-    font-size: 32px;
-  }
-  body .programa h2 {
-    margin-bottom: 20px;
-    text-transform: capitalize;
-    font-size: 24px;
-    line-height: 30px;
-  }
-  body .programa h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    line-height: 23px;
-  }
-  body .programa h4 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #552f2b;
-  }
-  body .programa p {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #552f2b;
-    line-height: 20px;
-  }
-  body .programa img {
-    width: 60%;
-    height: auto;
-  }
-}
-/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media only screen and (min-width: 360px) {
-  body .main .eventos .cont-carousel .carousel {
-    margin: 0 auto;
-    max-width: 85%;
-  }
-  body .agenda .title-agenda {
-    margin-top: -19px;
-  }
-  body .agenda .mes ul li .cont-datas {
-    max-width: 360px;
-  }
-  body .agenda .mes ul li .cont-datas .conteudo-agenda {
-    padding: 23px 15px;
-  }
-  body .agenda .mes ul li .cont-datas .data-agenda {
-    font-size: 15px;
-    padding: 8% 16px;
-  }
-  body .agenda .mes ul li .cont-datas .mais-agenda {
-    padding: 7% 16px;
-  }
-  body .premios h1 {
-    margin-top: -19px;
-  }
-}
-/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media only screen and (min-width: 375px) {
-  body header {
-    padding: 30px 0px 20px 0px;
-  }
-  body header .logo {
-    max-width: 285px;
-  }
-  body header .img-usuario {
-    max-width: 60px;
-    max-height: 60px;
-    position: absolute;
-    top: 12px;
-    right: 11px;
-    border: 4px solid #563029;
-    -moz-border-radius: 60px;
-    -webkit-border-radius: 60px;
-    border-radius: 60px;
-  }
-  body header .img-usuario img {
-    width: 100%;
-  }
-  body .main .eventos h1 {
-    padding: 16px 0px;
-    font-size: 1.3em;
-  }
-  body .main .eventos h1:before {
-    margin-right: 25px;
-  }
-  body .main .eventos h1:after {
-    margin-left: 25px;
-  }
-  body .main .eventos .cont-carousel {
-    position: relative;
-    padding: 15px 0px;
-  }
-  body .main .eventos .cont-carousel .carousel {
-    margin: 0 auto;
-    max-width: 85%;
-  }
-  body .main .eventos .cont-carousel .carousel .bx-wrapper {
-    max-width: 100%;
-    margin: 0px auto;
-  }
-  body .main .eventos .cont-carousel .carousel .bx-wrapper .bx-viewport {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    height: 142px;
-  }
-  body .main .eventos .cont-carousel .carousel .bx-wrapper .bx-viewport .bxslider li {
-    width: 100%;
-  }
-  body .main .eventos .cont-carousel .carousel .bx-wrapper .bx-viewport .bxslider li img {
-    width: 100%;
-  }
-  body .main .eventos .cont-carousel .carousel .bx-wrapper .bx-prev {
-    font-size: 100px;
-    top: 6px;
-    left: -34px;
-  }
-  body .main .eventos .cont-carousel .carousel .bx-wrapper .bx-next {
-    font-size: 100px;
-    top: 6px;
-    right: 0px;
-    right: -25px;
-  }
-  body .agenda .title-agenda {
-    margin-top: -19px;
-  }
-  body .premios h1 {
-    margin-top: -19px;
-  }
-  body footer ul li a {
-    padding: 15px 0px;
-  }
-  body footer ul li h3 {
-    font-size: 1.1em;
-  }
-  body footer ul li span {
-    font-size: 1.7em;
-  }
-}
-/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media only screen and (min-width: 414px) {
-  body footer ul li a {
-    padding: 20px 0px;
-  }
-  body footer ul li h3 {
-    font-size: 1.4em;
-  }
-  body footer ul li span {
-    font-size: 2.0em;
-  }
-  body .premios h1 {
-    margin-top: -24px;
-    padding-top: 23px;
-    padding-bottom: 17px;
-  }
-  body .agenda .title-agenda {
-    margin-top: -24px;
-  }
-  body .agenda .mes ul li:nth-child(2n+1) {
-    background: #552f2b;
-  }
-  body .agenda .mes ul li .cont-datas {
-    max-width: 414px;
-  }
-  body .agenda .mes ul li .cont-datas .conteudo-agenda {
-    padding: 27px 27px;
-  }
-  body .agenda .mes ul li .cont-datas .data-agenda {
-    font-size: 15px;
-    padding: 8% 23px;
-  }
-  body .agenda .mes ul li .cont-datas .mais-agenda {
-    padding: 7% 24px;
-  }
-  body .interna-agenda .img-interna img {
-    margin-top: -25px;
-  }
-}
-/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media only screen and (min-width: 480px) {
-  body footer ul li a {
-    padding: 20px 0px;
-  }
-  body footer ul li h3 {
-    font-size: 1.3em;
-  }
-  body footer ul li span {
-    font-size: 2.0em;
-  }
-  body .interna-agenda .main .container-conteudo .conteudo-interna .texto-interna h1 {
-    font-size: 19px;
-  }
-  body .interna-agenda .main .container-conteudo .conteudo-interna .texto-interna h2 {
-    font-size: 18px;
-  }
-  body .interna-agenda .main .container-conteudo .conteudo-interna .texto-interna p {
-    font-size: 17px;
-  }
-  body .interna-agenda .main .container-conteudo .sidebar-interna img {
-    width: 20%;
-  }
-  body .interna-agenda .main .container-conteudo .sidebar-interna h1 {
-    font-size: 20px;
-  }
-  body .premios h1 {
-    margin-top: -24px;
-  }
-}
-/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media only screen and (min-width: 568px) {
-  body footer ul li a {
-    padding: 30px 0px;
-  }
-  body footer ul li h3 {
-    font-size: 1.3em;
-  }
-  body footer ul li span {
-    font-size: 2.0em;
-  }
-  body .agenda .title-agenda {
-    margin-top: -25px;
-  }
-  body .agenda .mes ul li:nth-child(2n+1) {
-    background: #552f2b;
-  }
-  body .agenda .mes ul li .cont-datas {
-    max-width: 568px;
-  }
-  body .agenda .mes ul li .cont-datas .conteudo-agenda {
-    padding: 38px 27px;
-  }
-  body .agenda .mes ul li .cont-datas .conteudo-agenda h2 {
-    font-size: 18px;
-  }
-  body .agenda .mes ul li .cont-datas .conteudo-agenda h3 {
-    font-size: 17px;
-  }
-  body .agenda .mes ul li .cont-datas .conteudo-agenda p {
-    font-size: 15px;
-  }
-  body .agenda .mes ul li .cont-datas .data-agenda {
-    font-size: 17px;
-    padding: 8% 53px;
-  }
-  body .agenda .mes ul li .cont-datas .mais-agenda {
-    font-size: 17px;
-    padding: 7% 50px;
-  }
-  body .eventos .cont-carousel .carousel .bx-wrapper .bx-controls .bx-next {
-    font-size: 100px;
-    top: 28px;
-  }
-  body .eventos .cont-carousel .carousel .bx-wrapper .bx-controls .bx-prev {
-    font-size: 100px;
-    top: 28px;
-  }
-  body .premios h1 {
-    margin-top: -28px;
-  }
-  body .programa h1 {
-    margin-top: -30px;
-    padding-top: 25px;
-  }
-  body .interna-agenda .img-interna img {
-    margin-top: -30px;
-  }
-}
-/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media only screen and (min-width: 667px) {
-  body .agenda .title-agenda {
-    margin-top: -34px;
-    padding-top: 32px;
-    font-size: 30px;
-  }
-  body .agenda .mes ul li .cont-datas {
-    max-width: 667px;
-  }
-  body .agenda .mes ul li .cont-datas .conteudo-agenda {
-    padding: 44px 47px;
-  }
-  body .agenda .mes ul li .cont-datas .data-agenda {
-    font-size: 17px;
-    padding: 8% 67px;
-  }
-  body .agenda .mes ul li .cont-datas .mais-agenda {
-    padding: 7% 67px;
-  }
-  body .premios h1 {
-    margin-top: -34px;
-    padding-top: 32px;
-    font-size: 30px;
-  }
-  body .programa h1 {
-    margin-top: -36px;
-    padding-top: 30px;
-  }
-  body .interna-agenda .img-interna img {
-    margin-top: -37px;
   }
 }

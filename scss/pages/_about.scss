@@ -1,0 +1,61 @@
+.about{
+  background: #ffe9bb;
+  color: white;
+  font-size: 50px;
+
+  main {
+    background: image-url('bg-premios.png') no-repeat center top;
+    background-size: 100%;
+    padding-top: 15px;
+
+    > div {
+      padding: 20px;
+      background: #ff9c00;
+    }
+  }
+
+  h1{
+    text-transform: capitalize;
+    font-size: 26px;
+    text-indent: 8px;
+    background-size: 100%;
+    margin-top: -25px;
+    padding-top: 15px;
+    padding-bottom: 12px;
+    border-bottom: 3px dotted white;
+    color: white;
+    span{
+      .fa{
+        font-size: 32px;
+      }
+    }
+  }
+  h2{
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    font-size: 24px;
+    line-height: 30px;
+    color: white;
+  }
+  h3{
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 23px;
+    color: white;
+  }
+  h4{
+    font-size: 20px;
+    margin-bottom: 10px;
+    color:#552f2b;
+  }
+  p{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color:#552f2b;
+    line-height: 20px;
+  }
+  img{
+    width: 60%;
+    height: auto;
+  }
+}

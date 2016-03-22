@@ -1,16 +1,41 @@
-<ion-view view-title="Chats">
+<ion-view hide-nav-bar="true" class="prizes">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+    <header>
+      <div class="logo">
+        <img src="img/titulo.png">
+      </div>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+      <div class="clear"></div>
+    </header>
+    
+    <main>          
+      <h1><span><i class="ion-trophy"></i></span> prêmios</h1>
+      
+      <div class="bronze-partner">
+        <h3>Sôcio Bronze</h3>
+        <div class="points">
+          <h3>150</h3><span>pts</span>
+        </div>
+        <img src="img/balde-pipoca.png" height="199" width="486">
+      </div>
+      
+      <div class="silver-partner">
+        <h3>Sôcio Prata</h3>
+        <div class="points">
+          <h3>150</h3><span>pts</span>
+        </div>
+        <img src="img/copos.png" height="228" width="429">
+      </div>  
+
+      <div class="gold-partner">
+        <h3>Sôcio Ouro</h3>
+        <div class="points">
+          <h3>150</h3><span>pts</span>
+        </div>
+        <img src="img/balde-pipoca.png" height="199" width="486">
+      </div>          
+    </main>
   </ion-content>
 </ion-view>
+
+
