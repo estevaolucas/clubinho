@@ -8,7 +8,6 @@ angular.module('clubinho.directives', [])
     },
     templateUrl: 'templates/directives/clubinho-loader.html',
     link: function(scope, element, attr) {
-      console.log('entrou')
     }
   }
 })

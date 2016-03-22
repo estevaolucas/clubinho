@@ -24,13 +24,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Overhide
 
 .pane, .view {
-  background:#ffe9bb;
+  background: #ffe9bb;
 }
 
 .tabs {
-  background-color:#ff9c00;
+  background-color: #ff9c00;
+  border-top-width: 0;
 }
 
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
   color:#fff;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item {
+  border-right: 1px solid #784900;
+  &:last-child{
+    border: none;
+  }
 }

@@ -6,7 +6,7 @@
   main {
     background: image-url('bg-premios.png') no-repeat center top;
     background-size: 100%;
-    padding-top: 15px;
+    padding-top: 10px;
 
     > div {
       padding: 20px;
@@ -19,16 +19,11 @@
     font-size: 26px;
     text-indent: 8px;
     background-size: 100%;
-    margin-top: -25px;
-    padding-top: 15px;
-    padding-bottom: 12px;
+    margin-top: -17px;
+    padding-top: 20px;
+    padding-bottom: 14px;
     border-bottom: 3px dotted white;
     color: white;
-    span{
-      .fa{
-        font-size: 32px;
-      }
-    }
   }
   h2{
     margin-bottom: 20px;

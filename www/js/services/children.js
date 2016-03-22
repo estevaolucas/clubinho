@@ -9,7 +9,7 @@ angular.module('clubinho.services')
         deferred = deferred || $q.defer();
 
       promise.then(function(children) {
-        deferred.resolve(children);
+        deferred.resolve(children.data);
       }, function(reason) {
         deferred.reject(reason);
       });

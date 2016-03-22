@@ -6,7 +6,6 @@ angular.module('clubinho', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  // setup an abstract state for the tabs directive
   $stateProvider
     .state('tab', {
     url: '/tab',
@@ -44,7 +43,6 @@ angular.module('clubinho', [
     }
   });
 
-  // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/schedule');
 })
 
@@ -77,7 +75,7 @@ angular.module('clubinho', [
       });
 
       document.addEventListener('error', function(data) {
-        alert('entrou no error');
+        //alert('entrou no error');
       });
     }
   });

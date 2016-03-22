@@ -11589,8 +11589,16 @@ a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button
 
 .tabs {
   background-color: #ff9c00;
+  border-top-width: 0;
 }
 
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
   color: #fff;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item {
+  border-right: 1px solid #784900;
+}
+ion-tabs.tabs-color-active-positive .tab-item:last-child {
+  border: none;
 }

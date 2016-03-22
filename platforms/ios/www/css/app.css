@@ -2782,7 +2782,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .about main {
   background: url('../img/bg-premios.png') no-repeat center top;
   background-size: 100%;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 .about main > div {
   padding: 20px;
@@ -2793,14 +2793,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 26px;
   text-indent: 8px;
   background-size: 100%;
-  margin-top: -25px;
-  padding-top: 15px;
-  padding-bottom: 12px;
+  margin-top: -17px;
+  padding-top: 20px;
+  padding-bottom: 14px;
   border-bottom: 3px dotted white;
   color: white;
-}
-.about h1 span .fa {
-  font-size: 32px;
 }
 .about h2 {
   margin-bottom: 20px;
@@ -2839,7 +2836,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .prizes main {
   background: url('../img/bg-premios.png') no-repeat center top;
   background-size: 100%;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 .prizes h1 {
   text-transform: capitalize;

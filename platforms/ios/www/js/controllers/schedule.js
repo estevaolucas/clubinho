@@ -1,7 +1,6 @@
 angular.module('clubinho.controllers')
 
 .controller('ScheduleController', function($scope, $ionicModal, Children) {
-
   $ionicModal.fromTemplateUrl('templates/profile.html', {
     scope: $scope,
     animation: 'slide-in-up',
@@ -19,7 +18,7 @@ angular.module('clubinho.controllers')
   }
 
   Children.getList().then(function(children) {
-    $scope.children = children.data;
+    $scope.children = children;
   });
 
   var $elements = $('.schedule .rank li'),
@@ -61,7 +60,7 @@ angular.module('clubinho.controllers')
   $('.schedule .bxslider').bxSlider({
     auto: true,
     responsive: true,
-    adaptiveHeight:true,
+    adaptiveHeight: true,
     pager: false,
     nextText: ' > ',
     prevText: ' < '  
