@@ -1,0 +1,697 @@
+.profile .modal {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: 0;
+}
+
+.profile .modal{
+  background: transparent;
+  color:#563029;
+  font-size: 50px;
+
+  header {
+    background: image-url("bg-premios.png") no-repeat center bottom;
+    background-size: 100%;
+    padding-top: 210px;
+    position: relative;
+
+    .profile-foto{
+      position: absolute;
+      top: 110px;
+      left: 20px;
+      width: 112px;
+
+      img{
+        border: 5px solid #563029;
+        border-radius: 50px;
+        width: 88%;
+      }
+    }
+
+    .edit-profile{
+      position: absolute;
+      top: 128px;
+      left: 107px;
+      border: 0;
+      background: image-url("edit.png");
+      width: 12vw;
+      height: 12vw;
+      background-size: cover;
+    }
+
+    .close{
+      background: image-url("x.png");
+      position: absolute;
+      top: 160px;
+      right: 9px;
+      width: 5vh;
+      height: 5vh;
+      border: none;
+      background-size: cover;
+    }
+  }
+
+  main {
+    background-color:#ff9c00;
+
+    .responsible{
+      padding-bottom: 20px;
+
+      h1{
+        text-transform: capitalize;
+        font-size: 23px;
+        text-indent: 20px;
+      }
+      h3{
+        text-indent: 20px;
+        font-size: 20px;
+        margin: 0;
+      }
+    }
+  }
+
+  .detail{
+    background: #ff9c00;
+    color:#ff9c00;
+    article{
+    }
+    .cont-prof-left{
+      float:left;
+      width: 20%;
+      font-size: 13px;
+      //padding: 14px 10px;
+      div{
+        margin: 0px auto;
+        width: 60%;
+      }
+      .endereco{
+        margin-top: 6px;
+      }
+    }
+    .cont-prof-right{
+      float:right;
+      width: 80%;
+      font-size: 15px;
+      //padding: 19px 10px;
+      div{
+        margin: 0px auto;
+        width: 72%;
+      }
+      .tel-number{
+        padding-top: 12px;
+      }
+    }
+  }
+  h1{
+    span{
+      .fa{
+        font-size: 32px;
+      }
+    }
+  }
+  article{
+    background: #563029;
+    border-top: 3px dotted white;
+    // padding: 20px 13px;
+    padding: 13px 0px;
+    p{
+      font-size: 25px;
+      span{
+        font-size: 35px;
+      }
+    }
+  }
+  .cont-rank {
+    .rank{
+      .pontuacao {
+        padding: 9px 8px;
+        line-height: 11px;
+      }
+      ul{
+        .adicionar{
+          background: #ffffff;
+          .dados-rank{
+            max-width: 100%;
+            float: left;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 17px;
+            margin-top: 8px;
+            .pontuacao{
+              color:#ff9c00;
+              font-size: 60px;
+              right: 5px;
+              top: 0px;
+              padding: 0px 4px;
+            }
+          }
+          .escondido{
+            max-height: 100%;
+            margin-top: 15px;
+            .nome,.data-nascimento{
+              border: 1px solid #934e22;
+              border-radius: 4px;
+              width: 88%;
+              padding: 10px;
+              font-size: 13px;
+            }
+            .cont-inputs{
+              line-height: 35px;
+            }
+            h3{
+              margin-top: 14px;
+              margin-bottom: 10px;
+            }
+            a{
+              text-decoration: none;
+            }
+            .cont-btn{
+              width: 90%;
+              margin: 0 auto;
+              .btn-cancelar{
+                background: #932222;
+                float: left;
+              }
+              .btn-adicionar{
+                background: #4a9322;
+                float: right;
+              }
+            }
+            .escolha-avatar{
+              margin-bottom: 14px;
+              ul{
+                li{
+                  float: left;
+                  width: 64px;
+                  height: 70px;
+                }
+              }
+              .item-avatar {
+                label {
+                  background: #fff no-repeat center center;
+                  bottom: 1px;
+                  cursor: pointer;
+                  display: block;
+                  font-size: 0;
+                  left: 1px;
+                  position: absolute;
+                  right: 1px;
+                  text-indent: 100%;
+                  top: 1px;
+                  white-space: nowrap;
+                }
+              }
+              .item-coelha{
+                label {
+                  background: image-url("coelha-nao-selecionada.png")no-repeat;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+              }
+              .item-coelha input:checked + label {
+                background: image-url("coelha-selecionada.png")no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              .item-passarinha{
+                label {
+                  background: image-url("passarinha-nao-selecionada.png")no-repeat;
+                  background-size: contain;
+                }
+              }
+              .item-passarinha input:checked + label {
+                background: image-url("passarinha-selecionada.png")no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              .item-tigre {
+                label {
+                  background: image-url("tigre-nao-selecionado.png")no-repeat;
+                  background-size: contain;
+                }
+              }
+              .item-tigre input:checked + label {
+                background: image-url("tigre-selecionado.png")no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+              .item-lobo {
+                label {
+                  background: image-url("lobo-nao-selecionado.png")no-repeat;
+                  background-size: contain;
+                }
+              }
+              .item-lobo input:checked + label {
+                background: image-url("lobo-selecionado.png")no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+            }
+          }
+          ::-webkit-input-placeholder {
+            color: #784900;
+          }
+          :-moz-placeholder {
+            color: #784900;
+          }
+          ::-moz-placeholder {
+            color: #784900;
+          }
+          :-ms-input-placeholder {
+            color: #784900;
+          }
+        }
+      }
+    }
+  }
+  .rank-profile{
+    display:none;
+    .edit-profile-crianca{
+      position: absolute;
+      top: 54px;
+      right: 4px;
+      width: 40px;
+      img {
+        width: 75%;
+        height: auto;
+      }
+    }
+  }
+  .cont-cadastradas{
+    // position: absolute;
+    // bottom: 0px;
+    width: 100%;
+    .cadastradas{
+      position: relative;
+      max-height: 60px;
+      overflow: hidden;
+      background: white;
+      width: 95%;
+      margin: 0 auto;
+      //border-top-left-radius: 25px;
+      //border-top-right-radius: 25px;
+      h2{
+        font-size: 20px;
+        text-align: center;
+        margin-top: 22px;
+        margin-bottom: 19px;
+        color: #784900;
+      }
+    }
+  }
+  // mensagens
+  .cont-mensagem{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    display:none;
+    .mensagem{
+      position: relative;
+      max-height: 60px;
+      overflow: hidden;
+      background: white;
+      width: 95%;
+      margin: 0 auto;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      h2{
+        font-size: 20px;
+        text-align: center;
+        margin-top: 22px;
+        margin-bottom: 19px;
+        color: #784900;
+      }
+    }
+  }
+  .msg-confirmar-delete-crianca{
+    width: 100%;
+    position: absolute;
+    //bottom: 0px;
+    display:none;
+    top: 49%;
+    .mensagem-deletar-crianca{
+      position: relative;
+      overflow: hidden;
+      background: white;
+      width: 95%;
+      margin: 0 auto;
+      // border-top-left-radius: 25px;
+      // border-top-right-radius: 25px;
+      border-radius: 25px;
+      padding-bottom: 30px;
+      h2{
+        font-size: 20px;
+        text-align: center;
+        margin-top: 22px;
+        margin-bottom: 19px;
+        color: #784900;
+      }
+    }
+    .cont-btn{
+      width: 72%;
+      margin: 0 auto;
+      .btn-cancelar{
+        background: #932222;
+        float: left;
+      }
+      .btn-adicionar,.btn-salvar,.btn-deletar-crianca{
+        background: #4a9322;
+        float: right;
+      }
+      p{
+        text-align: center;
+        clear: both;
+        .btn-deletar{
+          color: #932222;
+          font-size: 19px;
+        }
+      }
+    }
+  }
+
+  .cont-editar-crianca{
+    display:none;
+    position: absolute;
+    margin: 0 auto;
+    top: 0px;
+    width: 95%;
+    .adicionar-crianca {
+      max-height: 100%;
+      border-radius: 25px;
+    }
+  }
+  .cont-adicionar-crianca{
+    .adicionar-crianca{
+      max-height: 60px;
+    }
+  }
+  .cont-btn{
+    p{
+      clear: both;
+    }
+  }
+  .cont-adicionar-crianca,.cont-editar-crianca{
+    // width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    display: none;
+    .adicionar-crianca{
+      position: relative;
+      //max-height: 60px;
+      overflow: hidden;
+      background: white;
+      width: 95%;
+      margin: 0 auto;
+      .conteudo-adicionar-crianca{
+        max-width: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 17px;
+        margin-top: 18px;
+        padding-bottom: 50px;
+        h2{
+          color: #784900;
+          font-size: 20px;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+        .pontuacao{
+          position: absolute;
+          color: #ff9c00;
+          font-size: 60px;
+          right: 5px;
+          top: 0px;
+          padding: 0px 4px;
+        }
+        .escondido{
+          max-height: 100%;
+          margin-top: 15px;
+          .nome,.data-nascimento{
+            border: 1px solid #934e22;
+            border-radius: 4px;
+            width: 88%;
+            padding: 10px;
+            font-size: 13px;
+          }
+          .cont-inputs{
+            line-height: 35px;
+          }
+          h3{
+            margin-top: 14px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #784900;
+          }
+          a{
+            text-decoration: none;
+            //color:white;
+          }
+          .cont-btn{
+            width: 85%;
+            margin: 0 auto;
+            .btn-cancelar{
+              background: #932222;
+              float: left;
+            }
+            .btn-adicionar,.btn-salvar{
+              background: #4a9322;
+              float: right;
+            }
+            p{
+              text-align: center;
+              clear: both;
+              .btn-deletar{
+                color: #932222;
+                font-size: 19px;
+              }
+            }
+          }
+          .escolha-avatar{
+            margin-bottom: 14px;
+            ul{
+              li{
+                float: left;
+                width: 65px;
+                height: 70px;
+                position: relative;
+                max-height: 60px;
+                overflow: hidden;
+              }
+            }
+            .item-avatar {
+              label {
+                background: #fff no-repeat center center;
+                bottom: 1px;
+                cursor: pointer;
+                display: block;
+                font-size: 0;
+                left: 1px;
+                position: absolute;
+                right: 1px;
+                text-indent: 100%;
+                top: 1px;
+                white-space: nowrap;
+              }
+            }
+            .item-coelha{
+              label {
+                background: image-url("coelha-nao-selecionada.png")no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+            }
+            .item-coelha input:checked + label {
+              background: image-url("coelha-selecionada.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .item-passarinha{
+              label {
+                background: image-url("passarinha-nao-selecionada.png")no-repeat;
+                background-size: contain;
+              }
+            }
+            .item-passarinha input:checked + label {
+              background: image-url("passarinha-selecionada.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .item-tigre {
+              label {
+                background: image-url("tigre-nao-selecionado.png")no-repeat;
+                background-size: contain;
+              }
+            }
+            .item-tigre input:checked + label {
+              background: image-url("tigre-selecionado.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .item-lobo {
+              label {
+                background: image-url("lobo-nao-selecionado.png")no-repeat;
+                background-size: contain;
+              }
+            }
+            .item-lobo input:checked + label {
+              background: image-url("lobo-selecionado.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            // crianca editar
+            .item-coelha-editar{
+              label {
+                background: image-url("coelha-nao-selecionada.png")no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+              }
+            }
+            .item-coelha-editar input:checked + label {
+              background: image-url("coelha-selecionada.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .item-passarinha-editar{
+              label {
+                background: image-url("passarinha-nao-selecionada.png")no-repeat;
+                background-size: contain;
+              }
+            }
+            .item-passarinha-editar input:checked + label {
+              background: image-url("passarinha-selecionada.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .item-tigre-editar {
+              label {
+                background: image-url("tigre-nao-selecionado.png")no-repeat;
+                background-size: contain;
+              }
+            }
+            .item-tigre-editar input:checked + label {
+              background: image-url("tigre-selecionado.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+            .item-lobo-editar {
+              label {
+                background: image-url("lobo-nao-selecionado.png")no-repeat;
+                background-size: contain;
+              }
+            }
+            .item-lobo-editar input:checked + label {
+              background: image-url("lobo-selecionado.png")no-repeat;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+        ::-webkit-input-placeholder {
+          color: #784900;
+        }
+        :-moz-placeholder {
+          color: #784900;
+        }
+        ::-moz-placeholder {
+          color: #784900;
+        }
+        :-ms-input-placeholder {
+          color: #784900;
+        }
+      }
+    }
+  }
+  
+  .primeiro-cadastro{
+    display:none;
+  }
+  .edit-profile, .primeiro-cadastro{
+    overflow: hidden;
+    position: absolute;
+    top: 100px;
+    display: block;
+    width: 100%;
+    
+    .conteudo-editar-perfil{
+      width: 90%;
+      margin: 0 auto;
+      display:block;
+      .cont-conteudo-editar-perfil{
+        background: white;
+        display: block;
+        padding: 18px 20px;
+        border-radius: 25px;
+      }
+      h2{
+        color: #563029;
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+      .editar-foto{
+        margin-bottom: 30px;
+        h3{
+          color: #563029;
+          float: left;
+          font-size: 19px;
+        }
+        .profile-foto-edit{
+          a{
+            img{
+              float: left;
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+      .cont-inputs{
+        padding-right: 20px;
+        margin-bottom: 15px;
+        line-height: 20px;
+        input{
+          border: 1px solid #934e22;
+          margin-bottom: 10px;
+          border-radius: 6px;
+          width: 100%;
+          padding: 7px;
+          font-size: 15px;
+        }
+        .telefone1-resp,.telefone2-resp{
+          //width: 43.34%;
+        }
+        ::-webkit-input-placeholder {
+          color: #563029;
+          font-family: 'Love Ya Like A Sister', cursive;
+        }
+        :-moz-placeholder {
+          color: #563029;
+          font-family: 'Love Ya Like A Sister', cursive;
+        }
+        ::-moz-placeholder {
+          color: #563029;
+          font-family: 'Love Ya Like A Sister', cursive;
+        }
+        :-ms-input-placeholder {
+          color: #563029;
+          font-family: 'Love Ya Like A Sister', cursive;
+        }
+      }
+      .cont-btn-editar{
+        width: 80%;
+        margin: 0 auto;
+        background: white;
+        padding-bottom: 25px;
+        .btn-cancelar{
+          background: #932222;
+          float: left;
+        }
+        .btn-adicionar{
+          background: #4a9322;
+          float: right;
+        }
+      }
+    }
+  }
+}

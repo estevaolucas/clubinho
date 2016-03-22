@@ -2774,12 +2774,664 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
+.profile .modal {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: 0;
+}
+
+.profile .modal {
+  background: transparent;
+  color: #563029;
+  font-size: 50px;
+}
+.profile .modal header {
+  background: url('../img/bg-premios.png') no-repeat center bottom;
+  background-size: 100%;
+  padding-top: 210px;
+  position: relative;
+}
+.profile .modal header .profile-foto {
+  position: absolute;
+  top: 110px;
+  left: 20px;
+  width: 112px;
+}
+.profile .modal header .profile-foto img {
+  border: 5px solid #563029;
+  border-radius: 50px;
+  width: 88%;
+}
+.profile .modal header .edit-profile {
+  position: absolute;
+  top: 128px;
+  left: 107px;
+  border: 0;
+  background: url('../img/edit.png');
+  width: 12vw;
+  height: 12vw;
+  background-size: cover;
+}
+.profile .modal header .close {
+  background: url('../img/x.png');
+  position: absolute;
+  top: 160px;
+  right: 9px;
+  width: 5vh;
+  height: 5vh;
+  border: none;
+  background-size: cover;
+}
+.profile .modal main {
+  background-color: #ff9c00;
+}
+.profile .modal main .responsible {
+  padding-bottom: 20px;
+}
+.profile .modal main .responsible h1 {
+  text-transform: capitalize;
+  font-size: 23px;
+  text-indent: 20px;
+}
+.profile .modal main .responsible h3 {
+  text-indent: 20px;
+  font-size: 20px;
+  margin: 0;
+}
+.profile .modal .detail {
+  background: #ff9c00;
+  color: #ff9c00;
+}
+.profile .modal .detail .cont-prof-left {
+  float: left;
+  width: 20%;
+  font-size: 13px;
+}
+.profile .modal .detail .cont-prof-left div {
+  margin: 0px auto;
+  width: 60%;
+}
+.profile .modal .detail .cont-prof-left .endereco {
+  margin-top: 6px;
+}
+.profile .modal .detail .cont-prof-right {
+  float: right;
+  width: 80%;
+  font-size: 15px;
+}
+.profile .modal .detail .cont-prof-right div {
+  margin: 0px auto;
+  width: 72%;
+}
+.profile .modal .detail .cont-prof-right .tel-number {
+  padding-top: 12px;
+}
+.profile .modal h1 span .fa {
+  font-size: 32px;
+}
+.profile .modal article {
+  background: #563029;
+  border-top: 3px dotted white;
+  padding: 13px 0px;
+}
+.profile .modal article p {
+  font-size: 25px;
+}
+.profile .modal article p span {
+  font-size: 35px;
+}
+.profile .modal .cont-rank .rank .pontuacao {
+  padding: 9px 8px;
+  line-height: 11px;
+}
+.profile .modal .cont-rank .rank ul .adicionar {
+  background: #ffffff;
+}
+.profile .modal .cont-rank .rank ul .adicionar .dados-rank {
+  max-width: 100%;
+  float: left;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 17px;
+  margin-top: 8px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .dados-rank .pontuacao {
+  color: #ff9c00;
+  font-size: 60px;
+  right: 5px;
+  top: 0px;
+  padding: 0px 4px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido {
+  max-height: 100%;
+  margin-top: 15px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .nome, .profile .modal .cont-rank .rank ul .adicionar .escondido .data-nascimento {
+  border: 1px solid #934e22;
+  border-radius: 4px;
+  width: 88%;
+  padding: 10px;
+  font-size: 13px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-inputs {
+  line-height: 35px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido h3 {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido a {
+  text-decoration: none;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-btn {
+  width: 90%;
+  margin: 0 auto;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-btn .btn-cancelar {
+  background: #932222;
+  float: left;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-btn .btn-adicionar {
+  background: #4a9322;
+  float: right;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar {
+  margin-bottom: 14px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar ul li {
+  float: left;
+  width: 64px;
+  height: 70px;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-avatar label {
+  background: #fff no-repeat center center;
+  bottom: 1px;
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  left: 1px;
+  position: absolute;
+  right: 1px;
+  text-indent: 100%;
+  top: 1px;
+  white-space: nowrap;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-coelha label {
+  background: url('../img/coelha-nao-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-coelha input:checked + label {
+  background: url('../img/coelha-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-passarinha label {
+  background: url('../img/passarinha-nao-selecionada.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-passarinha input:checked + label {
+  background: url('../img/passarinha-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-tigre label {
+  background: url('../img/tigre-nao-selecionado.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-tigre input:checked + label {
+  background: url('../img/tigre-selecionado.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-lobo label {
+  background: url('../img/lobo-nao-selecionado.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-lobo input:checked + label {
+  background: url('../img/lobo-selecionado.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-rank .rank ul .adicionar ::-webkit-input-placeholder {
+  color: #784900;
+}
+.profile .modal .cont-rank .rank ul .adicionar :-moz-placeholder {
+  color: #784900;
+}
+.profile .modal .cont-rank .rank ul .adicionar ::-moz-placeholder {
+  color: #784900;
+}
+.profile .modal .cont-rank .rank ul .adicionar :-ms-input-placeholder {
+  color: #784900;
+}
+.profile .modal .rank-profile {
+  display: none;
+}
+.profile .modal .rank-profile .edit-profile-crianca {
+  position: absolute;
+  top: 54px;
+  right: 4px;
+  width: 40px;
+}
+.profile .modal .rank-profile .edit-profile-crianca img {
+  width: 75%;
+  height: auto;
+}
+.profile .modal .cont-cadastradas {
+  width: 100%;
+}
+.profile .modal .cont-cadastradas .cadastradas {
+  position: relative;
+  max-height: 60px;
+  overflow: hidden;
+  background: white;
+  width: 95%;
+  margin: 0 auto;
+}
+.profile .modal .cont-cadastradas .cadastradas h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 19px;
+  color: #784900;
+}
+.profile .modal .cont-mensagem {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  display: none;
+}
+.profile .modal .cont-mensagem .mensagem {
+  position: relative;
+  max-height: 60px;
+  overflow: hidden;
+  background: white;
+  width: 95%;
+  margin: 0 auto;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.profile .modal .cont-mensagem .mensagem h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 19px;
+  color: #784900;
+}
+.profile .modal .msg-confirmar-delete-crianca {
+  width: 100%;
+  position: absolute;
+  display: none;
+  top: 49%;
+}
+.profile .modal .msg-confirmar-delete-crianca .mensagem-deletar-crianca {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 25px;
+  padding-bottom: 30px;
+}
+.profile .modal .msg-confirmar-delete-crianca .mensagem-deletar-crianca h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 19px;
+  color: #784900;
+}
+.profile .modal .msg-confirmar-delete-crianca .cont-btn {
+  width: 72%;
+  margin: 0 auto;
+}
+.profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-cancelar {
+  background: #932222;
+  float: left;
+}
+.profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-adicionar, .profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-salvar, .profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-deletar-crianca {
+  background: #4a9322;
+  float: right;
+}
+.profile .modal .msg-confirmar-delete-crianca .cont-btn p {
+  text-align: center;
+  clear: both;
+}
+.profile .modal .msg-confirmar-delete-crianca .cont-btn p .btn-deletar {
+  color: #932222;
+  font-size: 19px;
+}
+.profile .modal .cont-editar-crianca {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  top: 0px;
+  width: 95%;
+}
+.profile .modal .cont-editar-crianca .adicionar-crianca {
+  max-height: 100%;
+  border-radius: 25px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca {
+  max-height: 60px;
+}
+.profile .modal .cont-btn p {
+  clear: both;
+}
+.profile .modal .cont-adicionar-crianca, .profile .modal .cont-editar-crianca {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  display: none;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca, .profile .modal .cont-editar-crianca .adicionar-crianca {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  width: 95%;
+  margin: 0 auto;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca {
+  max-width: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 17px;
+  margin-top: 18px;
+  padding-bottom: 50px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca h2, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca h2 {
+  color: #784900;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .pontuacao, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .pontuacao {
+  position: absolute;
+  color: #ff9c00;
+  font-size: 60px;
+  right: 5px;
+  top: 0px;
+  padding: 0px 4px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido {
+  max-height: 100%;
+  margin-top: 15px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .nome, .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .data-nascimento, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .nome, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .data-nascimento {
+  border: 1px solid #934e22;
+  border-radius: 4px;
+  width: 88%;
+  padding: 10px;
+  font-size: 13px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-inputs, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-inputs {
+  line-height: 35px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido h3, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido h3 {
+  margin-top: 14px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #784900;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a {
+  text-decoration: none;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn {
+  width: 85%;
+  margin: 0 auto;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-cancelar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-cancelar {
+  background: #932222;
+  float: left;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-adicionar, .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-salvar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-adicionar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-salvar {
+  background: #4a9322;
+  float: right;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p {
+  text-align: center;
+  clear: both;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p .btn-deletar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p .btn-deletar {
+  color: #932222;
+  font-size: 19px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar {
+  margin-bottom: 14px;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar ul li, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar ul li {
+  float: left;
+  width: 65px;
+  height: 70px;
+  position: relative;
+  max-height: 60px;
+  overflow: hidden;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-avatar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-avatar label {
+  background: #fff no-repeat center center;
+  bottom: 1px;
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  left: 1px;
+  position: absolute;
+  right: 1px;
+  text-indent: 100%;
+  top: 1px;
+  white-space: nowrap;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label {
+  background: url('../img/coelha-nao-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label {
+  background: url('../img/coelha-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label {
+  background: url('../img/passarinha-nao-selecionada.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label {
+  background: url('../img/passarinha-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label {
+  background: url('../img/tigre-nao-selecionado.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label {
+  background: url('../img/tigre-selecionado.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label {
+  background: url('../img/lobo-nao-selecionado.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label {
+  background: url('../img/lobo-selecionado.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label {
+  background: url('../img/coelha-nao-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label {
+  background: url('../img/coelha-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label {
+  background: url('../img/passarinha-nao-selecionada.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label {
+  background: url('../img/passarinha-selecionada.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label {
+  background: url('../img/tigre-nao-selecionado.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label {
+  background: url('../img/tigre-selecionado.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label {
+  background: url('../img/lobo-nao-selecionado.png') no-repeat;
+  background-size: contain;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label {
+  background: url('../img/lobo-selecionado.png') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-webkit-input-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-webkit-input-placeholder {
+  color: #784900;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-moz-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-moz-placeholder {
+  color: #784900;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-moz-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-moz-placeholder {
+  color: #784900;
+}
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-ms-input-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-ms-input-placeholder {
+  color: #784900;
+}
+.profile .modal .primeiro-cadastro {
+  display: none;
+}
+.profile .modal .edit-profile, .profile .modal .primeiro-cadastro {
+  overflow: hidden;
+  position: absolute;
+  top: 100px;
+  display: block;
+  width: 100%;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil, .profile .modal .primeiro-cadastro .conteudo-editar-perfil {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-conteudo-editar-perfil, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-conteudo-editar-perfil {
+  background: white;
+  display: block;
+  padding: 18px 20px;
+  border-radius: 25px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil h2, .profile .modal .primeiro-cadastro .conteudo-editar-perfil h2 {
+  color: #563029;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .editar-foto, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .editar-foto {
+  margin-bottom: 30px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .editar-foto h3, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .editar-foto h3 {
+  color: #563029;
+  float: left;
+  font-size: 19px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .editar-foto .profile-foto-edit a img, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .editar-foto .profile-foto-edit a img {
+  float: left;
+  margin-left: 20px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs {
+  padding-right: 20px;
+  margin-bottom: 15px;
+  line-height: 20px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs input, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs input {
+  border: 1px solid #934e22;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  width: 100%;
+  padding: 7px;
+  font-size: 15px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs ::-webkit-input-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs ::-webkit-input-placeholder {
+  color: #563029;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs :-moz-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs :-moz-placeholder {
+  color: #563029;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs ::-moz-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs ::-moz-placeholder {
+  color: #563029;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs :-ms-input-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs :-ms-input-placeholder {
+  color: #563029;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-btn-editar, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar {
+  width: 80%;
+  margin: 0 auto;
+  background: white;
+  padding-bottom: 25px;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-btn-editar .btn-cancelar, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar .btn-cancelar {
+  background: #932222;
+  float: left;
+}
+.profile .modal .edit-profile .conteudo-editar-perfil .cont-btn-editar .btn-adicionar, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar .btn-adicionar {
+  background: #4a9322;
+  float: right;
+}
+
+/* LOADER */
+div.loader {
+  position: relative;
+  z-index: 9999999;
+}
+div.loader ion-spinner {
+  background-color: black;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  height: 20vh;
+  width: 20vh;
+  opacity: 0.9;
+  transform: translate(-50%, -50%);
+  padding: 3vw 3vh;
+  border-radius: 4vw;
+}
+div.loader ion-spinner svg {
+  width: 12vw;
+  height: 12vh;
+}
+div.loader .overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
 @font-face {
   font-family: 'Love Ya Like A Sister';
-  src: url("../fonts/LoveYaLikeASister.ttf");
-  src: local("☺"), url("../fonts/LoveYaLikeASister.woff2") format("woff2");
+  src: url("../font/LoveYaLikeASister.ttf");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+.btn {
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 10px;
+  color: white;
+  border: none;
+}
+
 body {
   font-family: 'Love Ya Like A Sister', cursive;
 }
@@ -2865,6 +3517,7 @@ body footer ul .li-mid {
     width: 100%;
   }
   body header .img-usuario {
+    padding: 0;
     max-width: 40px;
     max-height: 40px;
     position: absolute;
@@ -3063,6 +3716,14 @@ body footer ul .li-mid {
   body .cont-rank .rank .escondido h4 {
     color: #784900;
     font-size: 15px;
+  }
+  body .cont-rank .rank .cordiv {
+    margin-top: -100px;
+    max-height: 300px !important;
+    -webkit-transition: margin-top 0.5s linear, max-height 0.5s linear;
+    -moz-transition: margin-top 0.5s linear, max-height 0.5s linear;
+    -o-transition: margin-top 0.5s linear, max-height 0.5s linear;
+    transition: margin-top 0.5s linear, max-height 0.5s linear;
   }
   body footer ul li a {
     padding: 10px 0px;
@@ -3427,659 +4088,6 @@ body footer ul .li-mid {
   body .programa img {
     width: 60%;
     height: auto;
-  }
-  body .profile {
-    background: #ff9c00;
-    color: #563029;
-    font-size: 50px;
-    margin-top: 20px;
-    position: absolute;
-    width: 100%;
-    top: 26%;
-    z-index: 999999999;
-    height: 100%;
-    display: none;
-  }
-  body .profile .close-profile {
-    float: right;
-    position: absolute;
-    top: -31px;
-    right: 6px;
-    width: 60px;
-    text-align: center;
-  }
-  body .profile .close-profile a {
-    text-decoration: none;
-    color: #563029;
-    font-size: 42px;
-  }
-  body .profile .close-profile img {
-    width: 60%;
-    height: auto;
-  }
-  body .profile .profile-foto {
-    height: auto;
-    position: absolute;
-    top: -60px;
-    left: 20px;
-  }
-  body .profile .profile-foto img {
-    border: 5px solid #563029;
-    border-radius: 50px;
-    width: 88%;
-  }
-  body .profile .dados-responsavel {
-    padding-bottom: 20px;
-  }
-  body .profile .dados-responsavel h1 {
-    text-transform: capitalize;
-    font-size: 23px;
-    background: url("../images/bg-premios.png") no-repeat;
-    background-size: 100%;
-    margin-top: -25px;
-    padding-top: 72px;
-    padding-bottom: 5px;
-    text-indent: 20px;
-  }
-  body .profile .dados-responsavel h3 {
-    text-indent: 20px;
-    font-size: 20px;
-  }
-  body .profile .conteudo-profile {
-    background: #ff9c00;
-    color: #ff9c00;
-  }
-  body .profile .conteudo-profile .cont-prof-left {
-    float: left;
-    width: 20%;
-    font-size: 13px;
-  }
-  body .profile .conteudo-profile .cont-prof-left div {
-    margin: 0px auto;
-    width: 60%;
-  }
-  body .profile .conteudo-profile .cont-prof-left .endereco {
-    margin-top: 6px;
-  }
-  body .profile .conteudo-profile .cont-prof-right {
-    float: right;
-    width: 80%;
-    font-size: 15px;
-  }
-  body .profile .conteudo-profile .cont-prof-right div {
-    margin: 0px auto;
-    width: 72%;
-  }
-  body .profile .conteudo-profile .cont-prof-right .tel-number {
-    padding-top: 12px;
-  }
-  body .profile .edit-profile {
-    position: absolute;
-    top: -43px;
-    left: 107px;
-  }
-  body .profile .edit-profile img {
-    width: 48%;
-    height: auto;
-  }
-  body .profile h1 span .fa {
-    font-size: 32px;
-  }
-  body .profile article {
-    background: #563029;
-    border-top: 3px dotted white;
-    padding: 13px 0px;
-  }
-  body .profile article p {
-    font-size: 25px;
-  }
-  body .profile article p span {
-    font-size: 35px;
-  }
-  body .profile .cont-rank .rank .pontuacao {
-    padding: 9px 8px;
-    line-height: 11px;
-  }
-  body .profile .cont-rank .rank ul .adicionar {
-    background: #ffffff;
-  }
-  body .profile .cont-rank .rank ul .adicionar .dados-rank {
-    max-width: 100%;
-    float: left;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 17px;
-    margin-top: 8px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .dados-rank .pontuacao {
-    color: #ff9c00;
-    font-size: 60px;
-    right: 5px;
-    top: 0px;
-    padding: 0px 4px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido {
-    max-height: 100%;
-    margin-top: 15px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .nome, body .profile .cont-rank .rank ul .adicionar .escondido .data-nascimento {
-    border: 1px solid #934e22;
-    border-radius: 4px;
-    width: 88%;
-    padding: 10px;
-    font-size: 13px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .cont-inputs {
-    line-height: 35px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido h3 {
-    margin-top: 14px;
-    margin-bottom: 10px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido a {
-    text-decoration: none;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .cont-btn {
-    width: 90%;
-    margin: 0 auto;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .cont-btn .btn-cancelar {
-    background: #932222;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: left;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .cont-btn .btn-adicionar {
-    background: #4a9322;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: right;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar {
-    margin-bottom: 14px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar ul li {
-    float: left;
-    width: 64px;
-    height: 70px;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-avatar label {
-    background: #fff no-repeat center center;
-    bottom: 1px;
-    cursor: pointer;
-    display: block;
-    font-size: 0;
-    left: 1px;
-    position: absolute;
-    right: 1px;
-    text-indent: 100%;
-    top: 1px;
-    white-space: nowrap;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-coelha label {
-    background: url("../images/coelha-nao-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-coelha input:checked + label {
-    background: url("../images/coelha-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-passarinha label {
-    background: url("../images/passarinha-nao-selecionada.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-passarinha input:checked + label {
-    background: url("../images/passarinha-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-tigre label {
-    background: url("../images/tigre-nao-selecionado.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-tigre input:checked + label {
-    background: url("../images/tigre-selecionado.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-lobo label {
-    background: url("../images/lobo-nao-selecionado.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-lobo input:checked + label {
-    background: url("../images/lobo-selecionado.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-rank .rank ul .adicionar ::-webkit-input-placeholder {
-    color: #784900;
-  }
-  body .profile .cont-rank .rank ul .adicionar :-moz-placeholder {
-    color: #784900;
-  }
-  body .profile .cont-rank .rank ul .adicionar ::-moz-placeholder {
-    color: #784900;
-  }
-  body .profile .cont-rank .rank ul .adicionar :-ms-input-placeholder {
-    color: #784900;
-  }
-  body .profile .rank-profile {
-    display: none;
-  }
-  body .profile .rank-profile .edit-profile-crianca {
-    position: absolute;
-    top: 54px;
-    right: 4px;
-    width: 40px;
-  }
-  body .profile .rank-profile .edit-profile-crianca img {
-    width: 75%;
-    height: auto;
-  }
-  body .profile .cont-cadastradas {
-    width: 100%;
-  }
-  body .profile .cont-cadastradas .cadastradas {
-    position: relative;
-    max-height: 60px;
-    overflow: hidden;
-    background: white;
-    width: 95%;
-    margin: 0 auto;
-  }
-  body .profile .cont-cadastradas .cadastradas h2 {
-    font-size: 20px;
-    text-align: center;
-    margin-top: 22px;
-    margin-bottom: 19px;
-    color: #784900;
-  }
-  body .profile .cont-mensagem {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    display: none;
-  }
-  body .profile .cont-mensagem .mensagem {
-    position: relative;
-    max-height: 60px;
-    overflow: hidden;
-    background: white;
-    width: 95%;
-    margin: 0 auto;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-  }
-  body .profile .cont-mensagem .mensagem h2 {
-    font-size: 20px;
-    text-align: center;
-    margin-top: 22px;
-    margin-bottom: 19px;
-    color: #784900;
-  }
-  body .profile .msg-confirmar-delete-crianca {
-    width: 100%;
-    position: absolute;
-    display: none;
-    top: 49%;
-  }
-  body .profile .msg-confirmar-delete-crianca .mensagem-deletar-crianca {
-    position: relative;
-    overflow: hidden;
-    background: white;
-    width: 95%;
-    margin: 0 auto;
-    border-radius: 25px;
-    padding-bottom: 30px;
-  }
-  body .profile .msg-confirmar-delete-crianca .mensagem-deletar-crianca h2 {
-    font-size: 20px;
-    text-align: center;
-    margin-top: 22px;
-    margin-bottom: 19px;
-    color: #784900;
-  }
-  body .profile .msg-confirmar-delete-crianca .cont-btn {
-    width: 72%;
-    margin: 0 auto;
-  }
-  body .profile .msg-confirmar-delete-crianca .cont-btn .btn-cancelar {
-    background: #932222;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: left;
-    text-decoration: none;
-  }
-  body .profile .msg-confirmar-delete-crianca .cont-btn .btn-adicionar, body .profile .msg-confirmar-delete-crianca .cont-btn .btn-salvar, body .profile .msg-confirmar-delete-crianca .cont-btn .btn-deletar-crianca {
-    background: #4a9322;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: right;
-    text-decoration: none;
-  }
-  body .profile .msg-confirmar-delete-crianca .cont-btn p {
-    text-align: center;
-    clear: both;
-  }
-  body .profile .msg-confirmar-delete-crianca .cont-btn p .btn-deletar {
-    color: #932222;
-    font-size: 19px;
-  }
-  body .profile .cont-editar-crianca {
-    display: none;
-    position: absolute;
-    margin: 0 auto;
-    top: 0px;
-    width: 95%;
-  }
-  body .profile .cont-editar-crianca .adicionar-crianca {
-    max-height: 100%;
-    border-radius: 25px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca {
-    max-height: 60px;
-  }
-  body .profile .cont-btn p {
-    clear: both;
-  }
-  body .profile .cont-adicionar-crianca, body .profile .cont-editar-crianca {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 20px;
-    display: none;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca, body .profile .cont-editar-crianca .adicionar-crianca {
-    position: relative;
-    overflow: hidden;
-    background: white;
-    width: 95%;
-    margin: 0 auto;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca {
-    max-width: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 17px;
-    margin-top: 18px;
-    padding-bottom: 50px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca h2, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca h2 {
-    color: #784900;
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .pontuacao, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .pontuacao {
-    position: absolute;
-    color: #ff9c00;
-    font-size: 60px;
-    right: 5px;
-    top: 0px;
-    padding: 0px 4px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido {
-    max-height: 100%;
-    margin-top: 15px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .nome, body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .data-nascimento, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .nome, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .data-nascimento {
-    border: 1px solid #934e22;
-    border-radius: 4px;
-    width: 88%;
-    padding: 10px;
-    font-size: 13px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-inputs, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-inputs {
-    line-height: 35px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido h3, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido h3 {
-    margin-top: 14px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #784900;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a {
-    text-decoration: none;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn {
-    width: 85%;
-    margin: 0 auto;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-cancelar, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-cancelar {
-    background: #932222;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: left;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-adicionar, body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-salvar, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-adicionar, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-salvar {
-    background: #4a9322;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: right;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p {
-    text-align: center;
-    clear: both;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p .btn-deletar, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p .btn-deletar {
-    color: #932222;
-    font-size: 19px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar {
-    margin-bottom: 14px;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar ul li, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar ul li {
-    float: left;
-    width: 65px;
-    height: 70px;
-    position: relative;
-    max-height: 60px;
-    overflow: hidden;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-avatar label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-avatar label {
-    background: #fff no-repeat center center;
-    bottom: 1px;
-    cursor: pointer;
-    display: block;
-    font-size: 0;
-    left: 1px;
-    position: absolute;
-    right: 1px;
-    text-indent: 100%;
-    top: 1px;
-    white-space: nowrap;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label {
-    background: url("../images/coelha-nao-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label {
-    background: url("../images/coelha-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label {
-    background: url("../images/passarinha-nao-selecionada.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label {
-    background: url("../images/passarinha-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label {
-    background: url("../images/tigre-nao-selecionado.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label {
-    background: url("../images/tigre-selecionado.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label {
-    background: url("../images/lobo-nao-selecionado.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label {
-    background: url("../images/lobo-selecionado.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label {
-    background: url("../images/coelha-nao-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label {
-    background: url("../images/coelha-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label {
-    background: url("../images/passarinha-nao-selecionada.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label {
-    background: url("../images/passarinha-selecionada.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label {
-    background: url("../images/tigre-nao-selecionado.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label {
-    background: url("../images/tigre-selecionado.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label {
-    background: url("../images/lobo-nao-selecionado.png") no-repeat;
-    background-size: contain;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label {
-    background: url("../images/lobo-selecionado.png") no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-webkit-input-placeholder, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-webkit-input-placeholder {
-    color: #784900;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-moz-placeholder, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-moz-placeholder {
-    color: #784900;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-moz-placeholder, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-moz-placeholder {
-    color: #784900;
-  }
-  body .profile .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-ms-input-placeholder, body .profile .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-ms-input-placeholder {
-    color: #784900;
-  }
-  body .primeiro-cadastro {
-    display: none;
-  }
-  body .editar-perfil, body .primeiro-cadastro {
-    position: absolute;
-    overflow: hidden;
-    position: absolute;
-    top: -70px;
-    display: block;
-    z-index: 999999999;
-    display: none;
-  }
-  body .editar-perfil .conteudo-editar-perfil, body .primeiro-cadastro .conteudo-editar-perfil {
-    width: 90%;
-    margin: 0 auto;
-    display: block;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-conteudo-editar-perfil, body .primeiro-cadastro .conteudo-editar-perfil .cont-conteudo-editar-perfil {
-    background: white;
-    display: block;
-    padding: 18px 20px;
-    border-radius: 25px;
-  }
-  body .editar-perfil .conteudo-editar-perfil h2, body .primeiro-cadastro .conteudo-editar-perfil h2 {
-    color: #563029;
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  body .editar-perfil .conteudo-editar-perfil .editar-foto, body .primeiro-cadastro .conteudo-editar-perfil .editar-foto {
-    margin-bottom: 30px;
-  }
-  body .editar-perfil .conteudo-editar-perfil .editar-foto h3, body .primeiro-cadastro .conteudo-editar-perfil .editar-foto h3 {
-    color: #563029;
-    float: left;
-    font-size: 19px;
-  }
-  body .editar-perfil .conteudo-editar-perfil .editar-foto .profile-foto-edit a img, body .primeiro-cadastro .conteudo-editar-perfil .editar-foto .profile-foto-edit a img {
-    float: left;
-    margin-left: 20px;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-inputs, body .primeiro-cadastro .conteudo-editar-perfil .cont-inputs {
-    padding-right: 20px;
-    margin-bottom: 15px;
-    line-height: 20px;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-inputs input, body .primeiro-cadastro .conteudo-editar-perfil .cont-inputs input {
-    border: 1px solid #934e22;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    width: 100%;
-    padding: 7px;
-    font-size: 15px;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-inputs ::-webkit-input-placeholder, body .primeiro-cadastro .conteudo-editar-perfil .cont-inputs ::-webkit-input-placeholder {
-    color: #563029;
-    font-family: 'Love Ya Like A Sister', cursive;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-inputs :-moz-placeholder, body .primeiro-cadastro .conteudo-editar-perfil .cont-inputs :-moz-placeholder {
-    color: #563029;
-    font-family: 'Love Ya Like A Sister', cursive;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-inputs ::-moz-placeholder, body .primeiro-cadastro .conteudo-editar-perfil .cont-inputs ::-moz-placeholder {
-    color: #563029;
-    font-family: 'Love Ya Like A Sister', cursive;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-inputs :-ms-input-placeholder, body .primeiro-cadastro .conteudo-editar-perfil .cont-inputs :-ms-input-placeholder {
-    color: #563029;
-    font-family: 'Love Ya Like A Sister', cursive;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-btn-editar, body .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar {
-    width: 80%;
-    margin: 0 auto;
-    background: white;
-    padding-bottom: 25px;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-btn-editar .btn-cancelar, body .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar .btn-cancelar {
-    background: #932222;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: left;
-    text-decoration: none;
-  }
-  body .editar-perfil .conteudo-editar-perfil .cont-btn-editar .btn-adicionar, body .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar .btn-adicionar {
-    background: #4a9322;
-    border-radius: 10px;
-    font-size: 22px;
-    padding: 10px;
-    color: white;
-    float: right;
-    text-decoration: none;
   }
 }
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */

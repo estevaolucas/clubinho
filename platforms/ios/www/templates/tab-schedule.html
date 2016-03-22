@@ -4,9 +4,11 @@
       <div class="logo">
         <img src="img/titulo.png">
       </div>
-      <div class="img-usuario">
+
+      <button type="button" class="img-usuario" ng-click="openProfile()">
         <img src="img/usuario.png">
-        </div>
+      </button>
+      
       <div class="clear"></div>
     </header>
 
@@ -23,114 +25,15 @@
           </div>
         </div>
       </div>
-      <div class="cont-rank">
+      <div class="cont-rank" ng-if="children">
         <div class="rank">
           <ul>
-            <li class="ana" id="demo3">
-              <div class="avatar"><img src="img/avatar-ana.png"alt=""></div>
-              <div class="dados-rank">
-                <h2>Ana Paula</h2>
-                <h3>11 anos</h3>
-                <div class="escondido">
-                  <h3>ultimos eventos</h3>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>  
-                  <h3>ultimos eventos</h3>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>                                                  
-                </div>
-              </div>
-              <div class="pontuacao">
-                <h3>250</h3>
-                <span>pts</span>
-              </div>
-              <div class="clear"></div>
-            <li class="maria" id="demo3">
-              <div class="avatar"><img src="img/avatar-maria.png"alt=""></div>
-              <div class="dados-rank">
-                <h2>Maria Luiza</h2>
-                <h3>11 anos</h3>
-                <div class="escondido">
-                  <h3>ultimos eventos</h3>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>                          
-                </div>
-              </div>
-              <div class="pontuacao">
-                <h3>250</h3>
-                <span>pts</span>
-              </div>
-              <div class="clear"></div>
-            </li>
-            <li class="luiz" id="demo3">
-              <div class="avatar"><img src="img/avatar-luiz.png"alt=""></div>
-              <div class="dados-rank">
-                <h2>Luiz Gustavo</h2>
-                <h3>11 anos</h3>
-                <div class="escondido">
-                  <p>O Luiz estava presente
-                    na Contação de Histórias
-                    dia 17 de Janeiro às 16h?
-                  </p>
-                  <div class="sim">
-                    <h3><a href="">Sim</h3>
-                    </a>
-                  </div>
-                  <div class="nao">
-                    <h3><a href="">não</h3>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="pontuacao">
-                <h3>250</h3>
-                <span>pts</span>
-              </div>
-              <div class="clear"></div>
-            </li>
+            <ng-include src="'templates/_children.html'"></ng-include>
           </ul>
           <div class="clear"></div>
         </div>
       </div>
       <div class="clear"></div>
     </div>
-    <!-- <footer>
-      <ul>
-        <li class="btn-agenda">
-          <a href="#">
-            <span><i class="fa fa-calendar"></i></span>
-            <h3>agenda</h3>
-          </a>
-        </li>
-        <li class="li-mid btn-premios">
-          <a href="#">
-            <span><i class="fa fa-trophy"></i></span>
-            <h3>prêmios</h3>
-        </li>
-        </a>
-        <li class="btn-programas">
-          <a href="#">
-            <span><i class="fa fa-lightbulb-o"></i></span>
-            <h3>O programa</h3>
-          </a>
-        </li>
-      </ul>
-      <div class="clear"></div>
-    </footer> -->
   </ion-content>
 </ion-view>

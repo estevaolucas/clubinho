@@ -1,24 +1,29 @@
 angular.module('clubinho.controllers')
 
-.controller('ScheduleController', function($scope, Children) {
+.controller('ScheduleController', function($scope, $ionicModal, Children) {
+
+  $ionicModal.fromTemplateUrl('templates/profile.html', {
+    scope: $scope,
+    animation: 'slide-in-up',
+    controller: 'ProfileController'
+  }).then(function(modal) {
+    $scope.profile = modal;
+  });
+
+  $scope.$on('$destroy', function() {
+    $scope.profile.remove();
+  });
   
+  $scope.openProfile = function() {
+    $scope.profile.show()
+  }
+
   Children.getList().then(function(children) {
     $scope.children = children.data;
   });
 
-  // Activate slider
-  $('.schedule .bxslider').bxSlider({
-    auto: true,
-    responsive: true,
-    adaptiveHeight:true,
-    pager: false,
-    nextText: ' > ',
-    prevText: ' < '  
-  });
-
   var $elements = $('.schedule .rank li'),
     open = false;
-
 
   $scope.toggleChild = function(child, $event) {
     var $element = $($event.target);
@@ -51,4 +56,14 @@ angular.module('clubinho.controllers')
 
     $event.preventDefault();
   };
+
+  // Activate slider
+  $('.schedule .bxslider').bxSlider({
+    auto: true,
+    responsive: true,
+    adaptiveHeight:true,
+    pager: false,
+    nextText: ' > ',
+    prevText: ' < '  
+  });
 });

@@ -1,7 +1,8 @@
 angular.module('clubinho', [
   'ionic', 
   'clubinho.controllers', 
-  'clubinho.services'
+  'clubinho.services',
+  'clubinho.directives'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {

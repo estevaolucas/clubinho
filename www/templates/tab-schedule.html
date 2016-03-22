@@ -4,9 +4,11 @@
       <div class="logo">
         <img src="img/titulo.png">
       </div>
-      <div class="img-usuario">
+
+      <button type="button" class="img-usuario" ng-click="openProfile()">
         <img src="img/usuario.png">
-        </div>
+      </button>
+      
       <div class="clear"></div>
     </header>
 
@@ -26,77 +28,7 @@
       <div class="cont-rank" ng-if="children">
         <div class="rank">
           <ul>
-            <li ng-repeat="child in children" class="{{child.avatar}}" ng-click="toggleChild(child, $event)">
-              <div class="avatar">
-                <img src="img/avatar-{{child.avatar}}.png">
-              </div>
-              <div class="dados-rank">
-                <h2>{{child.name}}</h2>
-                <h3>{{child.age}} anos</h3>
-                <div class="escondido" ng-if="child.events.length">
-                  <h3>ultimos eventos</h3>
-                  
-                  <span ng-repeat="event in child.events">
-                    <span class="borda2"></span>
-                    <h4>{{event.title}} <span>+{{event.points}} pts</span></h4>
-                    <h4>{{event.date}}</h4>
-                  </span>                                          
-                </div>
-              </div>
-              <div class="pontuacao">
-                <h3>{{child.points}}</h3>
-                <span>pts</span>
-              </div>
-              <div class="clear"></div>
-            </li>
-            <!-- <li class="maria">
-              <div class="avatar"><img src="img/avatar-maria.png"alt=""></div>
-              <div class="dados-rank">
-                <h2>Maria Luiza</h2>
-                <h3>11 anos</h3>
-                <div class="escondido">
-                  <h3>ultimos eventos</h3>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>
-                  <h4>cotação de histórias <span>+10 pts</span></h4>
-                  <h4>29/12 - 24h</h4>
-                  <span class="borda2"></span>                          
-                </div>
-              </div>
-              <div class="pontuacao">
-                <h3>250</h3>
-                <span>pts</span>
-              </div>
-              <div class="clear"></div>
-            </li>
-            <li class="luiz">
-              <div class="avatar"><img src="img/avatar-luiz.png"alt=""></div>
-              <div class="dados-rank">
-                <h2>Luiz Gustavo</h2>
-                <h3>11 anos</h3>
-                <div class="escondido">
-                  <p>O Luiz estava presente
-                    na Contação de Histórias
-                    dia 17 de Janeiro às 16h?
-                  </p>
-                  <div class="sim">
-                    <h3><a href="">Sim</h3>
-                    </a>
-                  </div>
-                  <div class="nao">
-                    <h3><a href="">não</h3>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="pontuacao">
-                <h3>250</h3>
-                <span>pts</span>
-              </div>
-              <div class="clear"></div>
-            </li> -->
+            <ng-include src="'templates/_children.html'"></ng-include>
           </ul>
           <div class="clear"></div>
         </div>

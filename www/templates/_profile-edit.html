@@ -1,0 +1,25 @@
+<div class="conteudo-editar-perfil" ng-controller="EditProfileController">
+  <div class="cont-conteudo-editar-perfil">
+    <h2>Editar dados do responsavel</h2>
+    
+    <div class="cont-inputs">
+      <input type="text" placeholder="Nome do Responsavel" ng-model="editData.name" />
+      <input type="tel" placeholder="CPF" ng-model="editData.cpf" />
+      <input type="text" placeholder="Telefone" ng-model="editData.phone" />
+      <input type="email" placeholder="E-mail" ng-model="editData.email" />
+      <input type="text" placeholder="Endereço" ng-model="editData.address" />
+    </div>
+
+    <div class="editar-foto">
+      <h3>Clique na foto<br/> para alterar<br/> o seu avatar:</h3>
+      <div class="profile-foto-edit"></div>
+      <div class="clear"></div>
+    </div>
+    
+    <div class="cont-btn-editar">
+      <button class="btn btn-cancelar" ng-click="cancel()">Cancelar</button>
+      <button class="btn btn-adicionar btn-salvar-perfil" ng-click="update()">Salvar</button>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>

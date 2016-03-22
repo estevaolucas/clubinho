@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		169B348B0F474BDB9E210846 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D145C286730B4733A1649E13 /* CoreLocation.framework */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -28,6 +29,7 @@
 		30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C1856519D5FC0A00212699 /* icon-60@3x.png */; };
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
 		44D3008B3D1D4BD1A2082FAF /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAB895C1F7A4634AFBAC05B /* CDVViewController+SplashScreen.m */; };
+		4D8367E7BD294A19A695825F /* BeaconCtrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD1C01C5FF49309EBF6A84 /* BeaconCtrlManager.m */; };
 		5319FCBB6771454083827189 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B212B99744E61B4A8CE49 /* UIWebViewExtension.m */; };
 		6B8776442A3245FEB113A00A /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3466B75F4BB4908A5F16E42 /* CDVStatusBar.m */; };
 		6CB25B09AD084393BEA1E9A1 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 68598C81D29C468386B74826 /* CDVSplashScreen.m */; };
@@ -41,6 +43,7 @@
 		7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DB1810823500FA85AD /* icon-76@2x.png */; };
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
+		88AE2842C7634966B82859CE /* BeaconCtrlCordovaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE5C02DB77740659D1979F4 /* BeaconCtrlCordovaPlugin.m */; };
 		91D68D7CC0C743D09F6873D1 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A86B38FAB184298B9905B37 /* CDVNotification.bundle */; };
 		94E5110F5D294B0485E7AD94 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5A01A020A14E1D913A3B2E /* CDVNotification.m */; };
 		A313F8C65552C3B124A45A0A /* libPods-clubinho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC6E4374E8641A2081F8E53 /* libPods-clubinho.a */; };
@@ -51,8 +54,6 @@
 		DA9DD5C11C9A573D007B5F77 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		DA9DD5C21C9A574C007B5F77 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		DA9DD5C31C9A575A007B5F77 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1224857EEA9F4E43B2BE525B /* AudioToolbox.framework */; };
-		88AE2842C7634966B82859CE /* BeaconCtrlCordovaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DE5C02DB77740659D1979F4 /* BeaconCtrlCordovaPlugin.m */; };
-		4D8367E7BD294A19A695825F /* BeaconCtrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD1C01C5FF49309EBF6A84 /* BeaconCtrlManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,8 +107,10 @@
 		30FC414816E50CA1004E6F35 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* clubinho-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "clubinho-Prefix.pch"; sourceTree = "<group>"; };
 		38D59BD431D748FD954E5BC1 /* CDVDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVDevice.h; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; };
+		4CBD1C01C5FF49309EBF6A84 /* BeaconCtrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeaconCtrlManager.m; path = beaconCtrl/BeaconCtrlManager.m; sourceTree = "<group>"; };
 		4F5A01A020A14E1D913A3B2E /* CDVNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVNotification.m; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		5DE5C02DB77740659D1979F4 /* BeaconCtrlCordovaPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeaconCtrlCordovaPlugin.m; path = beaconCtrl/BeaconCtrlCordovaPlugin.m; sourceTree = "<group>"; };
 		68598C81D29C468386B74826 /* CDVSplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVSplashScreen.m; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; };
 		7A86B38FAB184298B9905B37 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CDVNotification.bundle; sourceTree = "<group>"; };
 		7E7966D41810823500FA85AD /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		8AC6E4374E8641A2081F8E53 /* libPods-clubinho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-clubinho.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* clubinho-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "clubinho-Info.plist"; path = "../clubinho-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9AD58E1F9B864E33B158F3CE /* IonicKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IonicKeyboard.m; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; };
+		AC90015CA0664D6AA8C23FA1 /* BeaconCtrlCordovaPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeaconCtrlCordovaPlugin.h; path = beaconCtrl/BeaconCtrlCordovaPlugin.h; sourceTree = "<group>"; };
 		BAB1AA4B39C64D36B7775783 /* CDVDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; };
 		CA998292FD39F8D5AD792F06 /* Pods-clubinho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clubinho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clubinho/Pods-clubinho.debug.xcconfig"; sourceTree = "<group>"; };
 		D145C286730B4733A1649E13 /* CoreLocation.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -136,12 +140,9 @@
 		EC100807D2754775947F4986 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; };
 		EFAB895C1F7A4634AFBAC05B /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; };
 		F3466B75F4BB4908A5F16E42 /* CDVStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVStatusBar.m; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; };
+		F382034F306C4F569CE2DA9C /* BeaconCtrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeaconCtrlManager.h; path = beaconCtrl/BeaconCtrlManager.h; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = clubinho/config.xml; sourceTree = "<group>"; };
 		FAF7C92A159B4E329D8BF703 /* CDVSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
-		5DE5C02DB77740659D1979F4 /* BeaconCtrlCordovaPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "BeaconCtrlCordovaPlugin.m"; path = "beaconCtrl/BeaconCtrlCordovaPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		4CBD1C01C5FF49309EBF6A84 /* BeaconCtrlManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "BeaconCtrlManager.m"; path = "beaconCtrl/BeaconCtrlManager.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		AC90015CA0664D6AA8C23FA1 /* BeaconCtrlCordovaPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BeaconCtrlCordovaPlugin.h"; path = "beaconCtrl/BeaconCtrlCordovaPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		F382034F306C4F569CE2DA9C /* BeaconCtrlManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BeaconCtrlManager.h"; path = "beaconCtrl/BeaconCtrlManager.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

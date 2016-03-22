@@ -1,0 +1,116 @@
+<div class="profile" ng-controller="ProfileController as profileCtrl">
+  <ion-modal-view>
+    <ion-content>
+      <div clubinho-loader show="profileCtrl.loading"></div>
+
+      <header>
+        <button class="close close-profile" ng-click="close()"></button>
+        <div class="profile-foto"><img src="img/usuario.png"></div>
+        <buttom class="edit-profile" ng-click="edit()"></buttom>
+      </header>
+      <main>
+        <ng-include src="'templates/_profile-detail.html'"></ng-include>
+
+        <div class="cont-rank rank-profile">
+          <div class="rank">
+            <ul>
+              <ng-include src="'templates/_children.html'"></ng-include>
+
+              <!-- Add child -->
+              <li class="adicionar">
+                <div class="dados-rank">
+                  <h2>Adicionar criança</h2>
+                  <div class="pontuacao"><i class="fa fa-plus-circle"></i></div>
+                  <div class="escondido">
+                    <div class="cont-inputs">
+                      <input name="name" class="nome" type="text" placeholder="Nome da Criança">
+                      <input name="name" class="data-nascimento" type="text" placeholder="Data de Nascimento">
+                    </div>
+                    <h3>Escolha o avatar:</h3>
+                    
+                    <div class="escolha-avatar">
+                      <ul class="item-avatares">
+                        <li class="item-avatar  item-coelha">
+                          <input name="item-avatares" type="radio" id="item-coelha">
+                          <label for="item-coelha"></label>
+                        </li>
+                        <li class="item-avatar item-passarinha">
+                          <input name="item-avatares" type="radio" id="item-passarinha">
+                          <label for="item-passarinha"></label>
+                        </li>
+                        <li class="item-avatar item-tigre">
+                          <input name="item-avatares" type="radio" id="item-tigre">
+                          <label for="item-tigre"></label>
+                        </li>
+                        <li class="item-avatar item-lobo">
+                          <input name="item-avatares" type="radio" id="item-lobo">
+                          <label for="item-lobo"></label>
+                        </li>
+                      </ul>
+                      <div class="clear"></div>
+                    </div>
+
+                    <div class="cont-btn">
+                      <button type="button" class="btn-cancelar">Cancelar</button>
+                      <button type="button" class="btn-adicionar">Adicionar</button>
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+              </li>
+            </ul>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        
+        <!-- Edit children -->
+        <ng-include src="'templates/_children-edit.html'"></ng-include>
+
+        <div class="cont-cadastradas">
+          <div class="cadastradas">
+            <h2>crianças cadastradas</h2>
+          </div>
+        </div>
+        <div class="cont-mensagem msg-crianca-adicionada" >
+          <div class="mensagem"style="">
+            <h2 style="">criança adicionada com sucesso</h2>
+          </div>
+        </div>
+        <div class="cont-mensagem crianca-deletada" >
+          <div class="mensagem"style="">
+            <h2 style="">criança deletada com sucesso</h2>
+          </div>
+        </div>
+        <div class="cont-mensagem msg-adicionado">
+          <div class="mensagem">
+            <h2>Perfil adicionado com sucesso</h2>
+          </div>
+        </div>
+        <div class="cont-mensagem msg-deletado">
+          <div class="mensagem">
+            <h2>Perfil deletado com sucesso</h2>
+          </div>
+        </div>
+        <div class="cont-mensagem msg-atualizado">
+          <div class="mensagem">
+            <h2>Dados atualizados com sucesso</h2>
+          </div>
+        </div>
+        <div class="msg-confirmar-delete-crianca" style="">
+          <div class="mensagem-deletar-crianca"style="">
+            <h2 style="">Tem certeza que quer deletar<br/> o perfil dessa criança?</h2>
+            <div class="cont-btn">
+              <button class="btn-cancelar">Cancelar</button>
+              <button class="btn-deletar-crianca">Deletar</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Edit profile -->
+        <div class="edit-profile" ng-show="profileCtrl.isEditing">
+          <ng-include src="'templates/_profile-edit.html'"></ng-include>
+        </div>
+      </main>
+    </ion-content>
+  </ion-modal-view>
+</div>
