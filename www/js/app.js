@@ -1,5 +1,6 @@
 angular.module('clubinho', [
   'ionic', 
+  'ionic-cache-src',
   'clubinho.controllers', 
   'clubinho.services',
   'clubinho.directives'

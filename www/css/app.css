@@ -3642,8 +3642,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 50px;
 }
 .schedule-detail .modal header {
-  background: url('../img/bg-premios.png') no-repeat center bottom;
-  background-size: 100%;
   padding-top: 210px;
   position: relative;
 }
@@ -3667,7 +3665,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .schedule-detail .modal main .cover img {
   width: 100%;
-  margin-top: -20px;
+  margin-top: -59px;
+  max-height: 240px;
 }
 .schedule-detail .modal main .sidebar {
   width: 20%;
