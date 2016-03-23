@@ -4,9 +4,6 @@
   top: 0;
   bottom: 0;
   margin-top: 0;
-}
-
-.profile .modal{
   background: transparent;
   color:#563029;
   font-size: 50px;
@@ -280,9 +277,9 @@
     }
   }
   .cont-cadastradas{
-    // position: absolute;
-    // bottom: 0px;
     width: 100%;
+    background: #ff9c00;
+
     .cadastradas{
       position: relative;
       max-height: 60px;
@@ -290,8 +287,7 @@
       background: white;
       width: 95%;
       margin: 0 auto;
-      //border-top-left-radius: 25px;
-      //border-top-right-radius: 25px;
+      
       h2{
         font-size: 20px;
         text-align: center;

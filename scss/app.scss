@@ -5,6 +5,8 @@
 @import "pages/about";
 @import "pages/prizes";
 @import "pages/profile";
+@import "pages/schedule";
+@import "pages/schedule-detail";
 @import "_directives";
 
 @font-face {
@@ -55,18 +57,13 @@ body{
           color: #eeb37e;
           font-size: 70px;
           position: absolute;
-          // top: 15px;
           z-index: 99;
-          // left:-25px;
         }
         .bx-next{
           text-decoration: none;
           color: #eeb37e;
           font-size: 70px;
           position: absolute;
-          // top: 15px;
-          // right: 0px;
-          // right: -25px;
           z-index: 99;
         }
       }
@@ -76,34 +73,7 @@ body{
       }
     }
   }
-  footer{
-    background: #ff9c00;
-    a{
-      text-decoration: none;
-      color:white;
-    }
-    ul{
-      li{
-        float:left;
-        width: 33%;
-        text-align: center;
-        text-transform: capitalize;
-        background: #ff9c00;
-        a{
-          display: block;
-        }
-        h3{
-        }
-        span{
-          display: block;
-        }
-      }
-      .li-mid{
-        border-right: 1px solid #784900;
-        border-left: 1px solid #784900;
-      }
-    }
-  }
+  
 }
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
 // mobile 320px
@@ -179,12 +149,8 @@ body{
     .cont-rank{
       margin: 0px 5px;
       .rank{
-        //max-width: 333px;
-        //max-width: 500px;
         width: 95%;
         margin: 0 auto;
-        //background: gray;
-        // overflow: hidden;
         @include border-top-radius(25px);
         .aberto{
           padding-bottom: 15px;
@@ -221,7 +187,6 @@ body{
         .avatar{
           float: left;
           max-width: 90px;
-          // max-height: 60px;
           overflow: hidden;
           img{
             width: 100%
@@ -334,251 +299,6 @@ body{
           -moz-transition: margin-top 0.5s linear, max-height 0.5s linear;
           -o-transition: margin-top 0.5s linear, max-height 0.5s linear;
           transition: margin-top 0.5s linear, max-height 0.5s linear;
-        }
-      }
-    }
-    footer{
-      ul{
-        li{
-          a{
-            padding: 10px 0px;
-          }
-          h3{
-            font-size: 1.1em;
-          }
-          span{
-            font-size: 1.7em;
-          }
-        }
-        .li-mid{
-        }
-      }
-    }
-    // inicio Agenda //
-    .agenda{
-      //background: url("../images/bg-premios.png")no-repeat;
-      //background-size: contain;
-      background: #ff9c00;
-      color:white;
-      font-size: 50px;
-      margin-top: 20px;
-      position: absolute;
-      width: 100%;
-      top: 26%;
-      z-index: 999999999;
-      height: 100%;
-      display:none;
-      .close{
-        float: right;
-        position: absolute;
-        top: -23px;
-        right: 6px;
-        width: 60px;
-        text-align: center;
-        img{
-          width: 60%;
-          height: auto;
-        }
-        a{
-          padding: 9px;
-          text-decoration: none;
-          color: #563029;
-        }
-      }
-      .title-agenda{
-        border-bottom: 3px dotted white;
-        padding-top: 20px;
-        padding-bottom: 14px;
-        text-transform: capitalize;
-        margin-top: -16px;
-        background: url("../images/bg-premios.png") no-repeat;
-        background-size: 100%;
-        font-size: 26px;
-        text-indent: 8px;
-      }
-      .mes{
-        h1{
-          text-align: center;
-          background: #ff9c00;
-          padding: 11px 0px;
-          font-size: 26px;
-        }
-        h3{}
-        p{}
-        ul{
-          li:nth-child(2n+2) {
-            background: #ff9c00;
-            .data-agenda,.mais-agenda,.conteudo-agenda p{
-              color:#552f2b;
-            }
-            .conteudo-agenda{
-              border-right: 1px solid #552f2b;
-              border-left: 1px solid #552f2b;
-              h2{
-                a{
-                }
-              }
-              h3{
-                a{
-                }
-              }
-              p{
-                a{
-                  color: #552f2b;
-                }
-              }
-            }
-          }
-          li:nth-child(2n+1) {
-            background: #552f2b;
-            .data-agenda,.mais-agenda,.conteudo-agenda p{
-              color:#ff9c00;
-            }
-            .conteudo-agenda{
-              border-right: 1px solid #ff9c00;
-              border-left: 1px solid #ff9c00;
-              h2{
-                a{
-                }
-              }
-              h3{
-                a{
-                }
-              }
-              p{
-                a{
-                  color: #ff9c00;
-                }
-              }
-            }
-            .mais-agenda{
-              span{
-                a{
-                  color:#ff9c00;
-                }
-              }
-            }
-          }
-          li{
-            background: red;
-            text-align: center;
-            .cont-datas{
-              margin: 0 auto;
-              max-width: 320px;
-            }
-            .conteudo-agenda{
-              h2 a,h3 a{
-                color:white;
-                text-decoration: none;
-              }
-              p a{
-                text-decoration: none;
-              }
-            }
-            .data-agenda{
-              float: left;
-              max-width: 20%;
-              font-size: 15px;
-              padding: 8% 7px;
-            }
-            .conteudo-agenda{
-              float: left;
-              max-width: 73%;
-              padding: 20px 13px;
-              text-align: left;
-              h2{
-                font-size: 16px;
-              }
-              h3{
-                margin-bottom: 10px;
-                font-size: 15px;
-              }
-              p{
-                font-size: 13px;
-              }
-            }
-            .mais-agenda{
-              float:left;
-              max-width: 20%;
-              font-size: 15px;
-              padding: 7% 7px;
-              span{
-                a{
-                  color:#552f2b;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    //fim Agenda//
-    // inicio da interna agenda //
-    .interna-agenda{
-      color:white;
-      margin-top: 20px;
-      position: absolute;
-      width: 100%;
-      top: 26%;
-      z-index: 999999999;
-      height: 100%;
-      display:none;
-      .close{
-        float: right;
-        position: absolute;
-        top: -23px;
-        right: 6px;
-        width: 60px;
-        text-align: center;
-        img{
-          width: 60%;
-        }
-      }
-      .img-interna {
-        line-height: 0px;
-        img{
-          width: 100%;
-          margin-top: -20px;
-        }
-      }
-      .main{
-        background: #552f2b;
-        .sidebar-interna{
-          width: 20%;
-          float:right;
-          text-align:center;
-          color:#ff9c00;
-        }
-        .container-conteudo{
-          border-top: 3px white dotted;
-        }
-        .conteudo-interna{
-          width: 80%;
-          float:left;
-          .texto-interna{
-            padding: 15px 20px;
-            background: #ff9c00;
-            h1{
-              margin-bottom: 2px;
-              font-size: 16px;
-            }
-            h2{
-              margin-bottom: 15px;
-              font-size: 16px;
-            }
-            p{
-              color:#552f2b;
-              font-size: 16px;
-            }
-          }
-        }
-        .sidebar-interna{
-          padding-top: 40px;
-          font-size: 15px;
-          img{
-            width: 50%;
-            height: auto;
-          }
         }
       }
     }

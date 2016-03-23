@@ -13,6 +13,16 @@ angular.module('clubinho', [
     templateUrl: 'templates/tabs.html'
   })
 
+  .state('tab.home', {
+    url: '/home',
+    views: {
+      'tab-home': {
+        templateUrl: 'templates/tab-home.html',
+        controller: 'HomeController'
+      }
+    }
+  })
+
   .state('tab.schedule', {
     url: '/schedule',
     views: {
@@ -43,7 +53,7 @@ angular.module('clubinho', [
     }
   });
 
-  $urlRouterProvider.otherwise('/tab/schedule');
+  $urlRouterProvider.otherwise('/tab/home');
 })
 
 .run(function($ionicPlatform) {

@@ -1,39 +1,37 @@
 <ion-view hide-nav-bar="true" class="schedule">
+  <div clubinho-loader show="loading"></div>
   <ion-content>
     <header>
       <div class="logo">
         <img src="img/titulo.png">
       </div>
 
-      <button type="button" class="img-usuario" ng-click="openProfile()">
-        <img src="img/usuario.png">
-      </button>
-      
       <div class="clear"></div>
     </header>
-
-    <div class="main">
-      <div class="eventos">
-        <h1>próximos eventos</h1>
-        <div class="cont-carousel">
-          <div class="carousel">
-            <ul class="bxslider">
-              <li><img src="img/img-carousel.jpg" width="100%" alt=""></li>
-              <li><img src="img/img-carousel2.jpg" width="100%" alt=""></li>
-              <li><img src="img/img-carousel3.jpg" width="100%" alt=""></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="cont-rank" ng-if="children">
-        <div class="rank">
-          <ul>
-            <ng-include src="'templates/_children.html'"></ng-include>
-          </ul>
-          <div class="clear"></div>
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
+    <main>
+      <h1><span><i class="ion-ios-calendar-outline"></i></span> Agenda</h1>
+      <section>
+        <h2>Próximos eventos</h2>
+        <ul>
+          <li ng-repeat="event in schedule">
+            <article class="date">
+              {{event.date | date:'EEE'}}<br/>
+              {{event.date | date:'dd'}}<br/>
+              {{event.date | date:'mm'}}
+            </article>
+            <article class="content">
+              <h2>{{event.title}}</h2>
+              <h3>com {{event.author}}</h3>
+              <p>{{event.description}}</p>
+            </article>
+            <article class="actions">
+              <button ng-click="toggleFavorite(event)"><i ng-class="{'ion-star': event.favorite, 'ion-ios-star-outline': !event.favorite}"></i> Fav</button>
+              <button ng-click="detail(event)"><i class="ion-plus"></i> Mais</button>
+            </article>
+            <div class="clear"></div>
+          </li>
+        </ul>
+      </section>
+    </main>
   </ion-content>
 </ion-view>

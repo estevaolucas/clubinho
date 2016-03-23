@@ -2917,9 +2917,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 0;
   bottom: 0;
   margin-top: 0;
-}
-
-.profile .modal {
   background: transparent;
   color: #563029;
   font-size: 50px;
@@ -3159,6 +3156,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .profile .modal .cont-cadastradas {
   width: 100%;
+  background: #ff9c00;
 }
 .profile .modal .cont-cadastradas .cadastradas {
   position: relative;
@@ -3527,9 +3525,205 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   float: right;
 }
 
+.schedule {
+  background: #ffe9bb;
+  color: white;
+  font-size: 50px;
+}
+.schedule main {
+  background: url('../img/bg-premios.png') no-repeat center top;
+  background-size: 100%;
+  padding-top: 10px;
+}
+.schedule h1 {
+  text-transform: capitalize;
+  font-size: 26px;
+  text-indent: 8px;
+  background-size: 100%;
+  margin-top: -17px;
+  padding-top: 20px;
+  padding-bottom: 14px;
+  color: white;
+  border-bottom: 3px dotted white;
+}
+.schedule section h2 {
+  text-align: center;
+  background: #ff9c00;
+  padding: 11px 0px;
+  font-size: 26px;
+}
+.schedule section ul li:nth-child(2n+2) {
+  background: #ff9c00;
+}
+.schedule section ul li:nth-child(2n+2) article, .schedule section ul li:nth-child(2n+2) article p {
+  color: #552f2b;
+}
+.schedule section ul li:nth-child(2n+2) .content {
+  border-right: 1px solid #552f2b;
+  border-left: 1px solid #552f2b;
+}
+.schedule section ul li:nth-child(2n+2) .content p {
+  color: #552f2b;
+}
+.schedule section ul li:nth-child(2n+1) {
+  background: #552f2b;
+}
+.schedule section ul li:nth-child(2n+1) article, .schedule section ul li:nth-child(2n+1) article p {
+  color: #ff9c00;
+}
+.schedule section ul li:nth-child(2n+1) article.content, .schedule section ul li:nth-child(2n+1) article p.content {
+  border-right: 1px solid #ff9c00;
+  border-left: 1px solid #ff9c00;
+}
+.schedule section ul li:nth-child(2n+1) article.content p, .schedule section ul li:nth-child(2n+1) article p.content p {
+  color: #ff9c00;
+}
+.schedule section ul li:nth-child(2n+1) article.actions button, .schedule section ul li:nth-child(2n+1) article p.actions button {
+  color: #ff9c00;
+}
+.schedule section ul li {
+  background: red;
+  text-align: center;
+}
+.schedule section ul li .content h2, .schedule section ul li .content h3 {
+  color: white;
+}
+.schedule section ul li .date {
+  float: left;
+  width: 20vw;
+  font-size: 15px;
+  padding: 8% 7px;
+}
+.schedule section ul li .content {
+  float: left;
+  width: 60vw;
+  padding: 20px 13px;
+  text-align: left;
+}
+.schedule section ul li .content h2 {
+  font-size: 16px;
+}
+.schedule section ul li .content h3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.schedule section ul li .content p {
+  font-size: 13px;
+}
+.schedule section ul li .actions {
+  float: left;
+  width: 20vw;
+  font-size: 15px;
+  padding: 7% 7px;
+}
+.schedule section ul li .actions button {
+  border: none;
+  background: none;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  color: #552f2b;
+  display: block;
+  margin: 0 auto;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.schedule section ul li .actions button i {
+  display: block;
+}
+
+.schedule-detail .modal {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: 0;
+  background: transparent;
+  color: white;
+  font-size: 50px;
+}
+.schedule-detail .modal header {
+  background: url('../img/bg-premios.png') no-repeat center bottom;
+  background-size: 100%;
+  padding-top: 210px;
+  position: relative;
+}
+.schedule-detail .modal header .close {
+  background: url('../img/x.png');
+  position: absolute;
+  top: 160px;
+  right: 9px;
+  width: 5vh;
+  height: 5vh;
+  border: none;
+  background-size: cover;
+}
+.schedule-detail .modal main {
+  background: #552f2b;
+  float: left;
+}
+.schedule-detail .modal main .cover {
+  line-height: 0px;
+  border-bottom: 3px white dotted;
+}
+.schedule-detail .modal main .cover img {
+  width: 100%;
+  margin-top: -20px;
+}
+.schedule-detail .modal main .sidebar {
+  width: 20%;
+  float: right;
+  text-align: center;
+  color: #ff9c00;
+  background: #552f2b;
+  padding-top: 40px;
+  font-size: 15px;
+}
+.schedule-detail .modal main .sidebar time {
+  background: url('../img/tracinho.png') no-repeat center bottom;
+  background-size: contain;
+  color: #ff9c00;
+  display: block;
+  padding: 0 0 10px;
+  width: 60%;
+  margin: 0 auto 10px;
+}
+.schedule-detail .modal main .sidebar button {
+  color: #ff9c00;
+  border: none;
+  background: none;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.schedule-detail .modal main .sidebar button i {
+  display: block;
+}
+.schedule-detail .modal main .container {
+  width: 80%;
+  float: left;
+}
+.schedule-detail .modal main .container > div {
+  padding: 15px 20px;
+  background: #ff9c00;
+}
+.schedule-detail .modal main .container > div h1 {
+  margin-bottom: 2px;
+  font-size: 16px;
+}
+.schedule-detail .modal main .container > div h2 {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.schedule-detail .modal main .container > div p {
+  color: #552f2b;
+  font-size: 16px;
+}
+
 /* LOADER */
 div.loader {
-  position: relative;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
   z-index: 9999999;
 }
 div.loader ion-spinner {
@@ -3614,30 +3808,6 @@ body .main .eventos .bx-wrapper .bx-next {
 body .main .eventos .cont-carousel {
   background: #fff6ed;
   margin-bottom: 15px;
-}
-body footer {
-  background: #ff9c00;
-}
-body footer a {
-  text-decoration: none;
-  color: white;
-}
-body footer ul li {
-  float: left;
-  width: 33%;
-  text-align: center;
-  text-transform: capitalize;
-  background: #ff9c00;
-}
-body footer ul li a {
-  display: block;
-}
-body footer ul li span {
-  display: block;
-}
-body footer ul .li-mid {
-  border-right: 1px solid #784900;
-  border-left: 1px solid #784900;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -3861,203 +4031,5 @@ body footer ul .li-mid {
     -moz-transition: margin-top 0.5s linear, max-height 0.5s linear;
     -o-transition: margin-top 0.5s linear, max-height 0.5s linear;
     transition: margin-top 0.5s linear, max-height 0.5s linear;
-  }
-  body footer ul li a {
-    padding: 10px 0px;
-  }
-  body footer ul li h3 {
-    font-size: 1.1em;
-  }
-  body footer ul li span {
-    font-size: 1.7em;
-  }
-  body .agenda {
-    background: #ff9c00;
-    color: white;
-    font-size: 50px;
-    margin-top: 20px;
-    position: absolute;
-    width: 100%;
-    top: 26%;
-    z-index: 999999999;
-    height: 100%;
-    display: none;
-  }
-  body .agenda .close {
-    float: right;
-    position: absolute;
-    top: -23px;
-    right: 6px;
-    width: 60px;
-    text-align: center;
-  }
-  body .agenda .close img {
-    width: 60%;
-    height: auto;
-  }
-  body .agenda .close a {
-    padding: 9px;
-    text-decoration: none;
-    color: #563029;
-  }
-  body .agenda .title-agenda {
-    border-bottom: 3px dotted white;
-    padding-top: 20px;
-    padding-bottom: 14px;
-    text-transform: capitalize;
-    margin-top: -16px;
-    background: url("../images/bg-premios.png") no-repeat;
-    background-size: 100%;
-    font-size: 26px;
-    text-indent: 8px;
-  }
-  body .agenda .mes h1 {
-    text-align: center;
-    background: #ff9c00;
-    padding: 11px 0px;
-    font-size: 26px;
-  }
-  body .agenda .mes ul li:nth-child(2n+2) {
-    background: #ff9c00;
-  }
-  body .agenda .mes ul li:nth-child(2n+2) .data-agenda, body .agenda .mes ul li:nth-child(2n+2) .mais-agenda, body .agenda .mes ul li:nth-child(2n+2) .conteudo-agenda p {
-    color: #552f2b;
-  }
-  body .agenda .mes ul li:nth-child(2n+2) .conteudo-agenda {
-    border-right: 1px solid #552f2b;
-    border-left: 1px solid #552f2b;
-  }
-  body .agenda .mes ul li:nth-child(2n+2) .conteudo-agenda p a {
-    color: #552f2b;
-  }
-  body .agenda .mes ul li:nth-child(2n+1) {
-    background: #552f2b;
-  }
-  body .agenda .mes ul li:nth-child(2n+1) .data-agenda, body .agenda .mes ul li:nth-child(2n+1) .mais-agenda, body .agenda .mes ul li:nth-child(2n+1) .conteudo-agenda p {
-    color: #ff9c00;
-  }
-  body .agenda .mes ul li:nth-child(2n+1) .conteudo-agenda {
-    border-right: 1px solid #ff9c00;
-    border-left: 1px solid #ff9c00;
-  }
-  body .agenda .mes ul li:nth-child(2n+1) .conteudo-agenda p a {
-    color: #ff9c00;
-  }
-  body .agenda .mes ul li:nth-child(2n+1) .mais-agenda span a {
-    color: #ff9c00;
-  }
-  body .agenda .mes ul li {
-    background: red;
-    text-align: center;
-  }
-  body .agenda .mes ul li .cont-datas {
-    margin: 0 auto;
-    max-width: 320px;
-  }
-  body .agenda .mes ul li .conteudo-agenda h2 a, body .agenda .mes ul li .conteudo-agenda h3 a {
-    color: white;
-    text-decoration: none;
-  }
-  body .agenda .mes ul li .conteudo-agenda p a {
-    text-decoration: none;
-  }
-  body .agenda .mes ul li .data-agenda {
-    float: left;
-    max-width: 20%;
-    font-size: 15px;
-    padding: 8% 7px;
-  }
-  body .agenda .mes ul li .conteudo-agenda {
-    float: left;
-    max-width: 73%;
-    padding: 20px 13px;
-    text-align: left;
-  }
-  body .agenda .mes ul li .conteudo-agenda h2 {
-    font-size: 16px;
-  }
-  body .agenda .mes ul li .conteudo-agenda h3 {
-    margin-bottom: 10px;
-    font-size: 15px;
-  }
-  body .agenda .mes ul li .conteudo-agenda p {
-    font-size: 13px;
-  }
-  body .agenda .mes ul li .mais-agenda {
-    float: left;
-    max-width: 20%;
-    font-size: 15px;
-    padding: 7% 7px;
-  }
-  body .agenda .mes ul li .mais-agenda span a {
-    color: #552f2b;
-  }
-  body .interna-agenda {
-    color: white;
-    margin-top: 20px;
-    position: absolute;
-    width: 100%;
-    top: 26%;
-    z-index: 999999999;
-    height: 100%;
-    display: none;
-  }
-  body .interna-agenda .close {
-    float: right;
-    position: absolute;
-    top: -23px;
-    right: 6px;
-    width: 60px;
-    text-align: center;
-  }
-  body .interna-agenda .close img {
-    width: 60%;
-  }
-  body .interna-agenda .img-interna {
-    line-height: 0px;
-  }
-  body .interna-agenda .img-interna img {
-    width: 100%;
-    margin-top: -20px;
-  }
-  body .interna-agenda .main {
-    background: #552f2b;
-  }
-  body .interna-agenda .main .sidebar-interna {
-    width: 20%;
-    float: right;
-    text-align: center;
-    color: #ff9c00;
-  }
-  body .interna-agenda .main .container-conteudo {
-    border-top: 3px white dotted;
-  }
-  body .interna-agenda .main .conteudo-interna {
-    width: 80%;
-    float: left;
-  }
-  body .interna-agenda .main .conteudo-interna .texto-interna {
-    padding: 15px 20px;
-    background: #ff9c00;
-  }
-  body .interna-agenda .main .conteudo-interna .texto-interna h1 {
-    margin-bottom: 2px;
-    font-size: 16px;
-  }
-  body .interna-agenda .main .conteudo-interna .texto-interna h2 {
-    margin-bottom: 15px;
-    font-size: 16px;
-  }
-  body .interna-agenda .main .conteudo-interna .texto-interna p {
-    color: #552f2b;
-    font-size: 16px;
-  }
-  body .interna-agenda .main .sidebar-interna {
-    padding-top: 40px;
-    font-size: 15px;
-  }
-  body .interna-agenda .main .sidebar-interna img {
-    width: 50%;
-    height: auto;
   }
 }

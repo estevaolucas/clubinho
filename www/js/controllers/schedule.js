@@ -1,68 +1,49 @@
 angular.module('clubinho.controllers')
 
-.controller('ScheduleController', function($scope, $ionicModal, Children) {
-  $ionicModal.fromTemplateUrl('templates/profile.html', {
-    scope: $scope,
-    animation: 'slide-in-up',
-    controller: 'ProfileController'
-  }).then(function(modal) {
-    $scope.profile = modal;
-  });
-
-  $scope.$on('$destroy', function() {
-    $scope.profile.remove();
-  });
-  
-  $scope.openProfile = function() {
-    $scope.profile.show()
+.controller('ScheduleController', function($scope, $ionicModal, $timeout, $ionicScrollDelegate, Schedule) {
+  $scope.scheduleCtrl = {
+    loading: true
   }
 
-  Children.getList().then(function(children) {
-    $scope.children = children;
-  });
+  $scope.toggleFavorite = function(event) {
+    $scope.loading = true;
 
-  var $elements = $('.schedule .rank li'),
-    open = false;
+    $timeout(function() {
+      $scope.loading = false;
+      event.favorite = !event.favorite;
+    }, 500);
+  }
 
-  $scope.toggleChild = function(child, $event) {
-    var $element = $($event.target);
+  $scope.detail = function(event) {
+    $ionicModal.fromTemplateUrl('templates/schedule-detail.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+      controller: 'ScheduleDetailController'
+    }).then(function(modal) {
+      $ionicScrollDelegate.scrollTop();
 
-    if ($element.is('.isopen')) {
-      $elements.removeClass('isopen cordiv'); 
+      $scope.scheduleCtrl.modal = modal;
+      $scope.scheduleCtrl.modal.show();
+      $scope.event = event;
+    });
+  }
 
-      $element
-        .css('border-top-right-radius', '25px')
-        .css('border-top-left-radius', '25px');
+  // FIXME: remove this simulation
+  $timeout(function() {
+    Schedule.getList().then(function(schedule) {
+      $scope.schedule = schedule;
+      $scope.loading = false;
+    });
+  }, 1000);
+})
 
-      open = false;
-    } if(!open && !$(this).is('.isopen')) {
-      $element.addClass('isopen cordiv');
+.controller('ScheduleDetailController', function($scope) {
+  $scope.toggleFavorite = function(event) {
+    event.favorite = !event.favorite;
+  }
 
-      $element
-        .css('border-top-right-radius', '25px')
-        .css('border-top-left-radius', '25px');
-
-      open = true;      
-    } else {
-      $elements.removeClass('isopen cordiv'); 
-
-      $element
-        .css('border-top-right-radius', '0')
-        .css('border-top-left-radius', '0');
-
-      open = false;
-    }
-
-    $event.preventDefault();
-  };
-
-  // Activate slider
-  $('.schedule .bxslider').bxSlider({
-    auto: true,
-    responsive: true,
-    adaptiveHeight: true,
-    pager: false,
-    nextText: ' > ',
-    prevText: ' < '  
-  });
+  $scope.close = function() {
+    $scope.$parent.scheduleCtrl.modal.hide();
+    $scope.$parent.scheduleCtrl.modal.remove();
+  }
 });

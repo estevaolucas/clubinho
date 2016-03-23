@@ -1,0 +1,94 @@
+.schedule-detail .modal {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: 0;
+  background: transparent;
+  color: white;
+  font-size: 50px;
+
+  header {
+    background: image-url('bg-premios.png') no-repeat center bottom;
+    background-size: 100%;
+    padding-top: 210px;
+    position: relative;
+
+    .close{
+      background: image-url('x.png');
+      position: absolute;
+      top: 160px;
+      right: 9px;
+      width: 5vh;
+      height: 5vh;
+      border: none;
+      background-size: cover;
+    }
+  }
+  
+  main{
+    background: #552f2b;
+    float: left;
+
+    .cover {
+      line-height: 0px;
+      border-bottom: 3px white dotted;
+
+      img{
+        width: 100%;
+        margin-top: -20px;
+      }
+    }
+
+    .sidebar{
+      width: 20%;
+      float:right;
+      text-align:center;
+      color:#ff9c00;
+      background: #552f2b;
+      padding-top: 40px;
+      font-size: 15px;
+      
+      time {
+        background:image-url('tracinho.png') no-repeat center bottom;
+        background-size: contain;
+        color: #ff9c00;
+        display: block;
+        padding: 0 0 10px;
+        width: 60%;
+        margin: 0 auto 10px;
+      }
+
+      button {
+        color:#ff9c00;
+        border: none;
+        background: none;
+        font-family: 'Love Ya Like A Sister', cursive;
+
+        i {
+          display: block
+        }
+      }
+    }
+    .container{
+      width: 80%;
+      float:left;
+      > div {
+        padding: 15px 20px;
+        background: #ff9c00;
+        h1{
+          margin-bottom: 2px;
+          font-size: 16px;
+        }
+        h2{
+          margin-bottom: 15px;
+          font-size: 16px;
+        }
+        p{
+          color:#552f2b;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
