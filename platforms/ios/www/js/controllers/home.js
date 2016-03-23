@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('HomeController', function($scope, $ionicModal, Children) {
+.controller('HomeController', function($scope, $ionicModal, $ionicScrollDelegate, Children) {
   $ionicModal.fromTemplateUrl('templates/profile.html', {
     scope: $scope,
     animation: 'slide-in-up',
@@ -24,36 +24,20 @@ angular.module('clubinho.controllers')
   var $elements = $('.home .rank li'),
     open = false;
 
-  $scope.toggleChild = function(child, $event) {
-    var $element = $($event.target);
+  $scope.toggleChild = function(child, e) {
+    var $this = $(e.target);
+    
+    $this = $this.is('li') ? $this : $this.closest('li');
 
-    if ($element.is('.isopen')) {
-      $elements.removeClass('isopen cordiv'); 
+    $this
+      .toggleClass('open')
+      .siblings('li').removeClass('open');
 
-      $element
-        .css('border-top-right-radius', '25px')
-        .css('border-top-left-radius', '25px');
+    $ionicScrollDelegate.resize();
 
-      open = false;
-    } if(!open && !$(this).is('.isopen')) {
-      $element.addClass('isopen cordiv');
-
-      $element
-        .css('border-top-right-radius', '25px')
-        .css('border-top-left-radius', '25px');
-
-      open = true;      
-    } else {
-      $elements.removeClass('isopen cordiv'); 
-
-      $element
-        .css('border-top-right-radius', '0')
-        .css('border-top-left-radius', '0');
-
-      open = false;
-    }
-
-    $event.preventDefault();
+    setTimeout(function() {
+      $ionicScrollDelegate.resize();
+    }, 500);
   };
 
   // Activate slider

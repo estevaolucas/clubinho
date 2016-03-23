@@ -1,0 +1,47 @@
+<div class="add-child-modal" ng-controller="AddChildrenController">
+  <form name="form" novalidate class="content">
+    <h2>Adicionar criança</h2>
+    <input type="text" name="name" ng-model="child.name" placeholder="Nome da Criança" required />
+    <div ng-show="form.$submitted || form.name.$touched">
+      <div ng-show="form.name.$error.required">Por favor informe o nome da criança.</div>
+    </div>
+    <input name="birthday" ng-model="child.birthday" type="text" placeholder="Data de Nascimento" required />
+    <div ng-show="form.$submitted || form.birthday.$touched">
+      <div ng-show="form.birthday.$error.required">Por favor informe o dia de namcimento.</div>
+    </div>
+
+    <h3>Escolha o avatar:</h3>
+    
+    <div class="choose-avatar">
+      <ul>
+        <li class="item-avatar item-coelha">
+          <input name="avatar" ng-model="child.avatar" type="radio" id="item-coelha" value="1" required>
+          <label for="item-coelha"></label>
+        </li>
+        <li class="item-avatar item-passarinha">
+          <input name="avatar" ng-model="child.avatar" type="radio" id="item-passarinha" value="2">
+          <label for="item-passarinha"></label>
+        </li>
+        <li class="item-avatar item-tigre">
+          <input name="avatar" ng-model="child.avatar" type="radio" id="item-tigre" value="3">
+          <label for="item-tigre"></label>
+        </li>
+        <li class="item-avatar item-lobo">
+          <input name="avatar" ng-model="child.avatar" type="radio" id="item-lobo" value="4">
+          <label for="item-lobo"></label>
+        </li>
+      </ul>
+
+      <div ng-show="form.$submitted || form.birthday.$touched">
+        <div ng-show="form.avatar.$error.required">Por favor escolha um avatar.</div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn btn-cancelar" ng-click="cancel(form)">Cancelar</button>
+      <button type="submit" class="btn btn-adicionar" ng-click="save(child)">Adicionar</button>
+    </div>
+  </form>
+  <div class="clear"></div>
+</div>

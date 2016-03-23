@@ -2780,7 +2780,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 50px;
 }
 .about main {
-  background: url('../img/bg-premios.png') no-repeat center top;
+  background: url('../img/bg-premios.png?1458128504') no-repeat center top;
   background-size: 100%;
   padding-top: 10px;
 }
@@ -2834,7 +2834,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 50px;
 }
 .prizes main {
-  background: url('../img/bg-premios.png') no-repeat center top;
+  background: url('../img/bg-premios.png?1458128504') no-repeat center top;
   background-size: 100%;
   padding-top: 10px;
 }
@@ -2922,7 +2922,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 50px;
 }
 .profile .modal header {
-  background: url('../img/bg-premios.png') no-repeat center bottom;
+  background: url('../img/bg-premios.png?1458128504') no-repeat center bottom;
   background-size: 100%;
   padding-top: 210px;
   position: relative;
@@ -2943,13 +2943,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 128px;
   left: 107px;
   border: 0;
-  background: url('../img/edit.png');
+  background: url('../img/edit.png?1458128502');
   width: 12vw;
   height: 12vw;
   background-size: cover;
 }
 .profile .modal header .close {
-  background: url('../img/x.png');
+  background: url('../img/x.png?1458128490');
   position: absolute;
   top: 160px;
   right: 9px;
@@ -3002,6 +3002,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .profile .modal .detail .cont-prof-right .tel-number {
   padding-top: 12px;
 }
+.profile .modal .detail .btn-see-children {
+  width: 100%;
+  background: #ff9c00;
+  border: none;
+  margin-bottom: 20px;
+}
+.profile .modal .detail .btn-see-children span {
+  max-height: 60px;
+  background: white;
+  width: 95%;
+  margin: 0 auto;
+  display: block;
+  font-size: 20px;
+  padding: 18px;
+  color: #784900;
+  font-family: 'Love Ya Like A Sister';
+}
 .profile .modal h1 span .fa {
   font-size: 32px;
 }
@@ -3015,163 +3032,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .profile .modal article p span {
   font-size: 35px;
-}
-.profile .modal .cont-rank .rank .pontuacao {
-  padding: 9px 8px;
-  line-height: 11px;
-}
-.profile .modal .cont-rank .rank ul .adicionar {
-  background: #ffffff;
-}
-.profile .modal .cont-rank .rank ul .adicionar .dados-rank {
-  max-width: 100%;
-  float: left;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 17px;
-  margin-top: 8px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .dados-rank .pontuacao {
-  color: #ff9c00;
-  font-size: 60px;
-  right: 5px;
-  top: 0px;
-  padding: 0px 4px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido {
-  max-height: 100%;
-  margin-top: 15px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .nome, .profile .modal .cont-rank .rank ul .adicionar .escondido .data-nascimento {
-  border: 1px solid #934e22;
-  border-radius: 4px;
-  width: 88%;
-  padding: 10px;
-  font-size: 13px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-inputs {
-  line-height: 35px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido h3 {
-  margin-top: 14px;
-  margin-bottom: 10px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido a {
-  text-decoration: none;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-btn {
-  width: 90%;
-  margin: 0 auto;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-btn .btn-cancelar {
-  background: #932222;
-  float: left;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .cont-btn .btn-adicionar {
-  background: #4a9322;
-  float: right;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar {
-  margin-bottom: 14px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar ul li {
-  float: left;
-  width: 64px;
-  height: 70px;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-avatar label {
-  background: #fff no-repeat center center;
-  bottom: 1px;
-  cursor: pointer;
-  display: block;
-  font-size: 0;
-  left: 1px;
-  position: absolute;
-  right: 1px;
-  text-indent: 100%;
-  top: 1px;
-  white-space: nowrap;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-coelha label {
-  background: url('../img/coelha-nao-selecionada.png') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-coelha input:checked + label {
-  background: url('../img/coelha-selecionada.png') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-passarinha label {
-  background: url('../img/passarinha-nao-selecionada.png') no-repeat;
-  background-size: contain;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-passarinha input:checked + label {
-  background: url('../img/passarinha-selecionada.png') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-tigre label {
-  background: url('../img/tigre-nao-selecionado.png') no-repeat;
-  background-size: contain;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-tigre input:checked + label {
-  background: url('../img/tigre-selecionado.png') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-lobo label {
-  background: url('../img/lobo-nao-selecionado.png') no-repeat;
-  background-size: contain;
-}
-.profile .modal .cont-rank .rank ul .adicionar .escondido .escolha-avatar .item-lobo input:checked + label {
-  background: url('../img/lobo-selecionado.png') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-rank .rank ul .adicionar ::-webkit-input-placeholder {
-  color: #784900;
-}
-.profile .modal .cont-rank .rank ul .adicionar :-moz-placeholder {
-  color: #784900;
-}
-.profile .modal .cont-rank .rank ul .adicionar ::-moz-placeholder {
-  color: #784900;
-}
-.profile .modal .cont-rank .rank ul .adicionar :-ms-input-placeholder {
-  color: #784900;
-}
-.profile .modal .rank-profile {
-  display: none;
-}
-.profile .modal .rank-profile .edit-profile-crianca {
-  position: absolute;
-  top: 54px;
-  right: 4px;
-  width: 40px;
-}
-.profile .modal .rank-profile .edit-profile-crianca img {
-  width: 75%;
-  height: auto;
-}
-.profile .modal .cont-cadastradas {
-  width: 100%;
-  background: #ff9c00;
-}
-.profile .modal .cont-cadastradas .cadastradas {
-  position: relative;
-  max-height: 60px;
-  overflow: hidden;
-  background: white;
-  width: 95%;
-  margin: 0 auto;
-}
-.profile .modal .cont-cadastradas .cadastradas h2 {
-  font-size: 20px;
-  text-align: center;
-  margin-top: 22px;
-  margin-bottom: 19px;
-  color: #784900;
 }
 .profile .modal .cont-mensagem {
   width: 100%;
@@ -3218,23 +3078,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 19px;
   color: #784900;
 }
-.profile .modal .msg-confirmar-delete-crianca .cont-btn {
+.profile .modal .msg-confirmar-delete-crianca .actions {
   width: 72%;
   margin: 0 auto;
 }
-.profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-cancelar {
+.profile .modal .msg-confirmar-delete-crianca .actions .btn-cancelar {
   background: #932222;
   float: left;
 }
-.profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-adicionar, .profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-salvar, .profile .modal .msg-confirmar-delete-crianca .cont-btn .btn-deletar-crianca {
+.profile .modal .msg-confirmar-delete-crianca .actions .btn-adicionar, .profile .modal .msg-confirmar-delete-crianca .actions .btn-salvar, .profile .modal .msg-confirmar-delete-crianca .actions .btn-deletar-crianca {
   background: #4a9322;
   float: right;
 }
-.profile .modal .msg-confirmar-delete-crianca .cont-btn p {
+.profile .modal .msg-confirmar-delete-crianca .actions p {
   text-align: center;
   clear: both;
 }
-.profile .modal .msg-confirmar-delete-crianca .cont-btn p .btn-deletar {
+.profile .modal .msg-confirmar-delete-crianca .actions p .btn-deletar {
   color: #932222;
   font-size: 19px;
 }
@@ -3252,7 +3112,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .profile .modal .cont-adicionar-crianca .adicionar-crianca {
   max-height: 60px;
 }
-.profile .modal .cont-btn p {
+.profile .modal .actions p {
   clear: both;
 }
 .profile .modal .cont-adicionar-crianca, .profile .modal .cont-editar-crianca {
@@ -3313,23 +3173,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a {
   text-decoration: none;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn {
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions {
   width: 85%;
   margin: 0 auto;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-cancelar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-cancelar {
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-cancelar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-cancelar {
   background: #932222;
   float: left;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-adicionar, .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-salvar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-adicionar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn .btn-salvar {
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-adicionar, .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-salvar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-adicionar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-salvar {
   background: #4a9322;
   float: right;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p {
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p {
   text-align: center;
   clear: both;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p .btn-deletar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-btn p .btn-deletar {
+.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p .btn-deletar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p .btn-deletar {
   color: #932222;
   font-size: 19px;
 }
@@ -3358,76 +3218,76 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   white-space: nowrap;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label {
-  background: url('../img/coelha-nao-selecionada.png') no-repeat;
+  background: url('../img/coelha-nao-selecionada.png?1458759246') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label {
-  background: url('../img/coelha-selecionada.png') no-repeat;
+  background: url('../img/coelha-selecionada.png?1458128504') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label {
-  background: url('../img/passarinha-nao-selecionada.png') no-repeat;
+  background: url('../img/passarinha-nao-selecionada.png?1458128494') no-repeat;
   background-size: contain;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label {
-  background: url('../img/passarinha-selecionada.png') no-repeat;
+  background: url('../img/passarinha-selecionada.png?1458128494') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label {
-  background: url('../img/tigre-nao-selecionado.png') no-repeat;
+  background: url('../img/tigre-nao-selecionado.png?1458128492') no-repeat;
   background-size: contain;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label {
-  background: url('../img/tigre-selecionado.png') no-repeat;
+  background: url('../img/tigre-selecionado.png?1458128492') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label {
-  background: url('../img/lobo-nao-selecionado.png') no-repeat;
+  background: url('../img/lobo-nao-selecionado.png?1458128494') no-repeat;
   background-size: contain;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label {
-  background: url('../img/lobo-selecionado.png') no-repeat;
+  background: url('../img/lobo-selecionado.png?1458128494') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label {
-  background: url('../img/coelha-nao-selecionada.png') no-repeat;
+  background: url('../img/coelha-nao-selecionada.png?1458759246') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label {
-  background: url('../img/coelha-selecionada.png') no-repeat;
+  background: url('../img/coelha-selecionada.png?1458128504') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label {
-  background: url('../img/passarinha-nao-selecionada.png') no-repeat;
+  background: url('../img/passarinha-nao-selecionada.png?1458128494') no-repeat;
   background-size: contain;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label {
-  background: url('../img/passarinha-selecionada.png') no-repeat;
+  background: url('../img/passarinha-selecionada.png?1458128494') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label {
-  background: url('../img/tigre-nao-selecionado.png') no-repeat;
+  background: url('../img/tigre-nao-selecionado.png?1458128492') no-repeat;
   background-size: contain;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label {
-  background: url('../img/tigre-selecionado.png') no-repeat;
+  background: url('../img/tigre-selecionado.png?1458128492') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label {
-  background: url('../img/lobo-nao-selecionado.png') no-repeat;
+  background: url('../img/lobo-nao-selecionado.png?1458128494') no-repeat;
   background-size: contain;
 }
 .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label {
-  background: url('../img/lobo-selecionado.png') no-repeat;
+  background: url('../img/lobo-selecionado.png?1458128494') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -3531,7 +3391,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 50px;
 }
 .schedule main {
-  background: url('../img/bg-premios.png') no-repeat center top;
+  background: url('../img/bg-premios.png?1458128504') no-repeat center top;
   background-size: 100%;
   padding-top: 10px;
 }
@@ -3646,7 +3506,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: relative;
 }
 .schedule-detail .modal header .close {
-  background: url('../img/x.png');
+  background: url('../img/x.png?1458128490');
   position: absolute;
   top: 160px;
   right: 9px;
@@ -3678,7 +3538,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 15px;
 }
 .schedule-detail .modal main .sidebar time {
-  background: url('../img/tracinho.png') no-repeat center bottom;
+  background: url('../img/tracinho.png?1458128492') no-repeat center bottom;
   background-size: contain;
   color: #ff9c00;
   display: block;
@@ -3754,6 +3614,10 @@ div.loader .overlay {
   src: url("../font/LoveYaLikeASister.ttf");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+a {
+  text-decoration: none;
+}
+
 .btn {
   border-radius: 10px;
   font-size: 22px;
@@ -3791,14 +3655,12 @@ body .main .eventos .bx-wrapper {
   position: relative;
 }
 body .main .eventos .bx-wrapper .bx-prev {
-  text-decoration: none;
   color: #eeb37e;
   font-size: 70px;
   position: absolute;
   z-index: 99;
 }
 body .main .eventos .bx-wrapper .bx-next {
-  text-decoration: none;
   color: #eeb37e;
   font-size: 70px;
   position: absolute;
@@ -3872,163 +3734,264 @@ body .main .eventos .cont-carousel {
     z-index: 99;
     right: -25px;
   }
-  body .cont-rank {
-    margin: 0px 5px;
-  }
-  body .cont-rank .rank {
-    width: 95%;
-    margin: 0 auto;
-    -moz-border-radius-topleft: 25px;
-    -webkit-border-top-left-radius: 25px;
-    border-top-left-radius: 25px;
-    -moz-border-radius-topright: 25px;
-    -webkit-border-top-right-radius: 25px;
-    border-top-right-radius: 25px;
-  }
-  body .cont-rank .rank .aberto {
-    padding-bottom: 15px;
-  }
-  body .cont-rank .rank li {
-    position: relative;
-    max-height: 60px;
-    overflow: hidden;
-  }
-  body .cont-rank .rank li:first-child {
-    -moz-border-radius-topleft: 25px;
-    -webkit-border-top-left-radius: 25px;
-    border-top-left-radius: 25px;
-    -moz-border-radius-topright: 25px;
-    -webkit-border-top-right-radius: 25px;
-    border-top-right-radius: 25px;
-  }
-  body .cont-rank .rank .dados-rank {
-    max-width: 140px;
-    float: left;
-    margin-left: 2%;
-  }
-  body .cont-rank .rank .dados-rank h2 {
-    margin-top: 15px;
-  }
-  body .cont-rank .rank .dados-rank .escondido {
-    margin-top: 20px;
-    max-height: 140px;
-    overflow-y: scroll;
-  }
-  body .cont-rank .rank .dados-rank .escondido .borda2 {
-    height: 1px;
-    display: block;
-    width: 100%;
-    border-bottom: 2px dotted #784900;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-  body .cont-rank .rank .avatar {
-    float: left;
-    max-width: 90px;
-    overflow: hidden;
-  }
-  body .cont-rank .rank .avatar img {
-    width: 100%;
-  }
-  body .cont-rank .rank .pontuacao {
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    float: right;
-    position: absolute;
-    right: 9px;
-    top: 4px;
-    padding: 8px;
-    color: white;
-    text-align: center;
-    line-height: 18px;
-  }
-  body .cont-rank .rank .pontuacao h3 {
-    font-size: 25px;
-    color: white;
-  }
-  body .cont-rank .rank .pontuacao span {
-    font-size: 14px;
-  }
-  body .cont-rank .rank h2 {
-    color: #784900;
-    font-size: 20px;
-  }
-  body .cont-rank .rank h3 {
-    color: #784900;
-    font-size: 15px;
-  }
-  body .cont-rank .rank .ana {
-    background: #fff3f7;
-  }
-  body .cont-rank .rank .ana .pontuacao {
-    background: #886bae;
-  }
-  body .cont-rank .rank .ana .avatar img {
-    margin-top: -40px;
-  }
-  body .cont-rank .rank .maria {
-    background: #fdf190;
-  }
-  body .cont-rank .rank .maria .pontuacao {
-    background: #eabb1f;
-  }
-  body .cont-rank .rank .luiz {
-    background: #b1fff6;
-  }
-  body .cont-rank .rank .luiz .pontuacao {
-    background: #58a746;
-  }
-  body .cont-rank .rank .luiz .escondido p {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  body .cont-rank .rank .luiz .escondido a {
-    text-decoration: none;
-    color: white;
-  }
-  body .cont-rank .rank .luiz .escondido .nao {
-    font-size: 17px;
-    background: #a74646;
-    color: white;
-    border: 2px solid white;
-    border-radius: 66px;
-    float: left;
-    padding: 10px 6px;
-    margin-right: 8px;
-    text-transform: uppercase;
-  }
-  body .cont-rank .rank .luiz .escondido .nao h3 {
-    color: white;
-  }
-  body .cont-rank .rank .luiz .escondido .sim {
-    font-size: 17px;
-    background: #58a746;
-    color: white;
-    border: 2px solid white;
-    border-radius: 66px;
-    float: left;
-    padding: 10px 8px;
-    margin-right: 8px;
-    text-transform: uppercase;
-  }
-  body .cont-rank .rank .luiz .escondido .sim h3 {
-    color: white;
-  }
-  body .cont-rank .rank .escondido h3 {
-    color: #784900;
-    font-size: 16px;
-  }
-  body .cont-rank .rank .escondido h4 {
-    color: #784900;
-    font-size: 15px;
-  }
-  body .cont-rank .rank .cordiv {
-    margin-top: -100px;
-    max-height: 300px !important;
-    -webkit-transition: margin-top 0.5s linear, max-height 0.5s linear;
-    -moz-transition: margin-top 0.5s linear, max-height 0.5s linear;
-    -o-transition: margin-top 0.5s linear, max-height 0.5s linear;
-    transition: margin-top 0.5s linear, max-height 0.5s linear;
-  }
+}
+.children {
+  width: 95%;
+  margin: 0 auto;
+  -moz-border-radius-topleft: 25px;
+  -webkit-border-top-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -moz-border-radius-topright: 25px;
+  -webkit-border-top-right-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.children .aberto {
+  padding-bottom: 15px;
+}
+.children li {
+  position: relative;
+  max-height: 60px;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  background: #fff3f7;
+}
+.children li h2 {
+  color: #784900;
+  font-size: 20px;
+}
+.children li h3 {
+  color: #784900;
+  font-size: 15px;
+}
+.children li .avatar {
+  float: left;
+  max-width: 90px;
+  overflow: hidden;
+}
+.children li .avatar img {
+  width: 100%;
+}
+.children li .user {
+  max-width: 140px;
+  float: left;
+  margin-left: 2%;
+}
+.children li .user h2 {
+  margin-top: 15px;
+}
+.children li .user .details {
+  margin: 20px 0;
+  max-height: 0;
+  overflow-y: scroll;
+  transition: max-height 0.5s ease-out;
+}
+.children li .user .details .border {
+  height: 1px;
+  display: block;
+  width: 100%;
+  border-bottom: 2px dotted #784900;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.children li .user .details h3 {
+  color: #784900;
+  font-size: 16px;
+}
+.children li .user .details h4 {
+  color: #784900;
+  font-size: 15px;
+}
+.children li .points {
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  float: right;
+  position: absolute;
+  right: 9px;
+  top: 4px;
+  padding: 8px;
+  color: white;
+  text-align: center;
+  line-height: 18px;
+  background: #886bae;
+  min-width: 55px;
+}
+.children li .points h3 {
+  font-size: 25px;
+  color: white;
+}
+.children li .points span {
+  font-size: 14px;
+}
+.children li:first-child {
+  -moz-border-radius-topleft: 25px;
+  -webkit-border-top-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -moz-border-radius-topright: 25px;
+  -webkit-border-top-right-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.children li.open {
+  max-height: 9999px;
+  transition: max-height 0.5s ease-in;
+}
+.children li.open .details {
+  max-height: 99999px;
+  transition: max-height 0.5s ease-in;
+}
+.children li.ana .avatar img {
+  margin-top: -40px;
+}
+.children li.maria {
+  background: #fdf190;
+}
+.children li.maria .points {
+  background: #eabb1f;
+}
+.children li.luiz {
+  background: #b1fff6;
+}
+.children li.luiz .points {
+  background: #58a746;
+}
+.children li.luiz .details p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.children li.luiz .details a {
+  color: white;
+}
+.children li.luiz .details .btn-no, .children li.luiz .details .btn-yes {
+  font-size: 17px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 66px;
+  float: left;
+  padding: 10px 6px;
+  margin-right: 8px;
+  text-transform: uppercase;
+}
+.children li.luiz .details .btn-no h3, .children li.luiz .details .btn-yes h3 {
+  color: white;
+}
+.children li.luiz .details .btn-no {
+  background: #a74646;
+}
+.children li.luiz .details .btn-yes {
+  background: #58a746;
+}
+.children li .add-children {
+  background: #ffffff;
+}
+.children li .add-children .details {
+  max-width: 100%;
+  float: left;
+  margin: 8px 5% 17px;
+}
+.children li .add-children .details .points {
+  color: #ff9c00;
+  font-size: 60px;
+  right: 5px;
+  top: 0px;
+  padding: 0px 4px;
+}
+.children li .add-children .details {
+  max-height: 100%;
+  margin-top: 15px;
+}
+.children li .add-children .details input[type=text] {
+  border: 1px solid #934e22;
+  border-radius: 4px;
+  width: 88%;
+  padding: 10px;
+  font-size: 13px;
+}
+.children li .add-children .details .cont-inputs {
+  line-height: 35px;
+}
+.children li .add-children .details h3 {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+.children li .add-children .details .actions {
+  width: 90%;
+  margin: 0 auto;
+}
+.children li .add-children .details .actions .btn-cancelar {
+  background: #932222;
+  float: left;
+}
+.children li .add-children .details .actions .btn-adicionar {
+  background: #4a9322;
+  float: right;
+}
+.children li .add-children .details .choose-avatar {
+  margin-bottom: 14px;
+}
+.children li .add-children .details .choose-avatar ul li {
+  float: left;
+  width: 64px;
+  height: 70px;
+}
+.children li .add-children .details .choose-avatar .item-avatar label {
+  background: #fff no-repeat center center;
+  bottom: 1px;
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  left: 1px;
+  position: absolute;
+  right: 1px;
+  text-indent: 100%;
+  top: 1px;
+  white-space: nowrap;
+}
+.children li .add-children .details .choose-avatar .item-coelha label {
+  background: url('../img/coelha-nao-selecionada.png?1458759246') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.children li .add-children .details .choose-avatar .item-coelha input:checked + label {
+  background: url('../img/coelha-selecionada.png?1458128504') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.children li .add-children .details .choose-avatar .item-passarinha label {
+  background: url('../img/passarinha-nao-selecionada.png?1458128494') no-repeat;
+  background-size: contain;
+}
+.children li .add-children .details .choose-avatar .item-passarinha input:checked + label {
+  background: url('../img/passarinha-selecionada.png?1458128494') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.children li .add-children .details .choose-avatar .item-tigre label {
+  background: url('../img/tigre-nao-selecionado.png?1458128492') no-repeat;
+  background-size: contain;
+}
+.children li .add-children .details .choose-avatar .item-tigre input:checked + label {
+  background: url('../img/tigre-selecionado.png?1458128492') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.children li .add-children .details .choose-avatar .item-lobo label {
+  background: url('../img/lobo-nao-selecionado.png?1458128494') no-repeat;
+  background-size: contain;
+}
+.children li .add-children .details .choose-avatar .item-lobo input:checked + label {
+  background: url('../img/lobo-selecionado.png?1458128494') no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.children li .add-children ::-webkit-input-placeholder {
+  color: #784900;
+}
+.children li .add-children :-moz-placeholder {
+  color: #784900;
+}
+.children li .add-children ::-moz-placeholder {
+  color: #784900;
+}
+.children li .add-children :-ms-input-placeholder {
+  color: #784900;
 }

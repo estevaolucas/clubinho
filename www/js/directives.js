@@ -11,3 +11,31 @@ angular.module('clubinho.directives', [])
     }
   }
 })
+
+.directive('clubinhoChildrenList', function($ionicScrollDelegate) {
+  return {
+    restrict: 'A',
+    scope: {
+      children: '=list',
+      addChild: '='
+    },
+    templateUrl: 'templates/directives/clubinho-children-list.html',
+    link: function(scope, element, attr ) {
+      scope.toggleChild = function(child, e) {
+        var $this = $(e.target);
+        
+        $this = $this.is('li') ? $this : $this.closest('li');
+
+        $this
+          .toggleClass('open')
+          .siblings('li').removeClass('open');
+
+        $ionicScrollDelegate.resize();
+
+        setTimeout(function() {
+          $ionicScrollDelegate.resize();
+        }, 500);
+      };
+    } 
+  }
+});

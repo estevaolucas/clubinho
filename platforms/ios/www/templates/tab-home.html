@@ -25,13 +25,11 @@
           </div>
         </div>
       </div>
-      <div class="cont-rank" ng-if="children">
-        <div class="rank">
-          <ul>
-            <ng-include src="'templates/_children.html'"></ng-include>
-          </ul>
-          <div class="clear"></div>
-        </div>
+      <div class="children" ng-if="children">
+        <ul>
+          <ng-include src="'templates/_children.html'"></ng-include>
+        </ul>
+        <div class="clear"></div>
       </div>
       <div class="clear"></div>
     </div>

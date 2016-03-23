@@ -1,13 +1,28 @@
-<div class="conteudo-editar-perfil" ng-controller="EditProfileController">
-  <div class="cont-conteudo-editar-perfil">
+<div class="edit-profile-modal" ng-controller="EditProfileController">
+  <form name="form" novalidate class="content">
     <h2>Editar dados do responsavel</h2>
     
-    <div class="cont-inputs">
-      <input type="text" placeholder="Nome do Responsavel" ng-model="editData.name" />
-      <input type="tel" placeholder="CPF" ng-model="editData.cpf" />
-      <input type="text" placeholder="Telefone" ng-model="editData.phone" />
-      <input type="email" placeholder="E-mail" ng-model="editData.email" />
-      <input type="text" placeholder="Endereço" ng-model="editData.address" />
+    <div class="inputs">
+      <input name="name" type="text" placeholder="Nome do Responsavel" ng-model="data.name" required /> 
+      <div ng-show="form.$submitted || form.name.$touched">
+        <div ng-show="form.name.$error.required">Por favor informe o seu nome</div>
+      </div>
+      <input name="cpf" type="text" placeholder="CPF" ng-model="data.cpf" required />
+      <div ng-show="form.$submitted || form.name.$touched">
+        <div ng-show="form.name.$error.required">Por favor informe seu CPF</div>
+      </div>
+      <input name="phone" type="text" placeholder="Telefone" ng-model="data.phone" required />
+      <div ng-show="form.$submitted || form.name.$touched">
+        <div ng-show="form.name.$error.required">Por favor informe o seu telefone</div>
+      </div>
+      <input name="email" type="email" placeholder="E-mail" ng-model="data.email" required />
+      <div ng-show="form.$submitted || form.name.$touched">
+        <div ng-show="form.name.$error.required">Por favor informe o seu email</div>
+      </div>
+      <input name="address" type="text" placeholder="Endereço" ng-model="data.address" required />
+      <div ng-show="form.$submitted || form.name.$touched">
+        <div ng-show="form.name.$error.required">Por favor informe o seu endereço</div>
+      </div>
     </div>
 
     <div class="editar-foto">
@@ -16,10 +31,10 @@
       <div class="clear"></div>
     </div>
     
-    <div class="cont-btn-editar">
-      <button class="btn btn-cancelar" ng-click="cancel()">Cancelar</button>
-      <button class="btn btn-adicionar btn-salvar-perfil" ng-click="update()">Salvar</button>
+    <div class="actions">
+      <button class="btn btn-cancel" ng-click="cancel(form)">Cancelar</button>
+      <button type="submit" class="btn btn-add" ng-click="update(form)" ng-disabled="form.$invalid">Salvar</button>
       <div class="clear"></div>
     </div>
-  </div>
+  </form>
 </div>

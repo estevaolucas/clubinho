@@ -57,7 +57,11 @@ angular.module('clubinho', [
   $urlRouterProvider.otherwise('/tab/home');
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
+  $rootScope.app = {
+    loading: false
+  };
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

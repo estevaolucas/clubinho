@@ -16,9 +16,10 @@ gulp.task('default', ['compass']);
 gulp.task('compass', function(done) {
   gulp.src(paths.compass)
     .pipe(compass({
-      css: 'css',
+      css: 'www/css',
       sass: 'scss',
-      image: 'img'
+      image: 'www/img',
+      font: 'www/font'
     }))
     .on('error', function(error) {
       console.log(error);
