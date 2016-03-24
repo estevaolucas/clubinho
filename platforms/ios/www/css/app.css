@@ -2911,34 +2911,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 17px;
 }
 
-.profile .modal {
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin-top: 0;
-  background: transparent;
-  color: #563029;
-  font-size: 50px;
-}
-.profile .modal header {
-  background: url('../img/bg-premios.png?1458128504') no-repeat center bottom;
-  background-size: 100%;
-  padding-top: 210px;
-  position: relative;
-}
-.profile .modal header .profile-foto {
+.profile .modal .profile-avatar {
   position: absolute;
   top: 110px;
   left: 20px;
   width: 112px;
 }
-.profile .modal header .profile-foto img {
+.profile .modal .profile-avatar img {
   border: 5px solid #563029;
   border-radius: 50px;
   width: 88%;
 }
-.profile .modal header .edit-profile {
+.profile .modal .edit-profile {
   position: absolute;
   top: 128px;
   left: 107px;
@@ -2946,16 +2930,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: url('../img/edit.png?1458128502');
   width: 12vw;
   height: 12vw;
-  background-size: cover;
-}
-.profile .modal header .close {
-  background: url('../img/x.png?1458128490');
-  position: absolute;
-  top: 160px;
-  right: 9px;
-  width: 5vh;
-  height: 5vh;
-  border: none;
   background-size: cover;
 }
 .profile .modal main {
@@ -2977,50 +2951,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .profile .modal .detail {
   background: #ff9c00;
   color: #ff9c00;
+  margin: 20px 0;
 }
-.profile .modal .detail .cont-prof-left {
+.profile .modal .detail .left {
   float: left;
-  width: 20%;
+  width: 26%;
   font-size: 13px;
+  padding-left: 20px;
 }
-.profile .modal .detail .cont-prof-left div {
-  margin: 0px auto;
-  width: 60%;
-}
-.profile .modal .detail .cont-prof-left .endereco {
+.profile .modal .detail .left .endereco {
   margin-top: 6px;
 }
-.profile .modal .detail .cont-prof-right {
+.profile .modal .detail .right {
   float: right;
-  width: 80%;
+  width: 74%;
   font-size: 15px;
 }
-.profile .modal .detail .cont-prof-right div {
+.profile .modal .detail .right div {
   margin: 0px auto;
   width: 72%;
 }
-.profile .modal .detail .cont-prof-right .tel-number {
+.profile .modal .detail .right .tel-number {
   padding-top: 12px;
-}
-.profile .modal .detail .btn-see-children {
-  width: 100%;
-  background: #ff9c00;
-  border: none;
-  margin-bottom: 20px;
-}
-.profile .modal .detail .btn-see-children span {
-  max-height: 60px;
-  background: white;
-  width: 95%;
-  margin: 0 auto;
-  display: block;
-  font-size: 20px;
-  padding: 18px;
-  color: #784900;
-  font-family: 'Love Ya Like A Sister';
-}
-.profile .modal h1 span .fa {
-  font-size: 32px;
 }
 .profile .modal article {
   background: #563029;
@@ -3115,96 +3067,78 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .profile .modal .actions p {
   clear: both;
 }
-.profile .modal .cont-adicionar-crianca, .profile .modal .cont-editar-crianca {
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 20px;
-  display: none;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca, .profile .modal .cont-editar-crianca .adicionar-crianca {
-  position: relative;
-  overflow: hidden;
+.profile .modal .btn-see-children {
+  width: 96%;
   background: white;
-  width: 95%;
+  border: none;
+  border-radius: 25px 25px 0 0;
   margin: 0 auto;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca {
-  max-width: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 17px;
-  margin-top: 18px;
-  padding-bottom: 50px;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca h2, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca h2 {
-  color: #784900;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .pontuacao, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .pontuacao {
-  position: absolute;
-  color: #ff9c00;
-  font-size: 60px;
-  right: 5px;
-  top: 0px;
-  padding: 0px 4px;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido {
-  max-height: 100%;
-  margin-top: 15px;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .nome, .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .data-nascimento, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .nome, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .data-nascimento {
-  border: 1px solid #934e22;
-  border-radius: 4px;
-  width: 88%;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: 24px;
   padding: 10px;
-  font-size: 13px;
+  color: #784900;
+  font-family: 'Love Ya Like A Sister';
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-inputs, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .cont-inputs {
-  line-height: 35px;
+
+.add-child-modal {
+  background-color: transparent;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido h3, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido h3 {
+.add-child-modal .modal {
+  background-color: transparent;
+}
+.add-child-modal .content {
+  width: 95%;
+  background: white;
+  padding: 18px 10px;
+  border-radius: 15px 15px 0 0;
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.add-child-modal .content h2, .add-child-modal .content h3 {
+  color: #563029;
+}
+.add-child-modal .content h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.add-child-modal .content h3 {
   margin-top: 14px;
   margin-bottom: 10px;
-  font-size: 16px;
-  color: #784900;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido a {
-  text-decoration: none;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions {
-  width: 85%;
+.add-child-modal .content .actions {
+  width: 90%;
   margin: 0 auto;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-cancelar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-cancelar {
+.add-child-modal .content .actions .btn-cancel {
   background: #932222;
   float: left;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-adicionar, .profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-salvar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-adicionar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions .btn-salvar {
+.add-child-modal .content .actions .btn-add {
   background: #4a9322;
   float: right;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p {
-  text-align: center;
-  clear: both;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p .btn-deletar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .actions p .btn-deletar {
-  color: #932222;
-  font-size: 19px;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar {
+.add-child-modal .content .choose-avatar {
   margin-bottom: 14px;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar ul li, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar ul li {
+.add-child-modal .content .choose-avatar ul li {
   float: left;
   width: 65px;
   height: 70px;
   position: relative;
-  max-height: 60px;
   overflow: hidden;
+  padding-left: 2px;
+  min-height: auto;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-avatar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-avatar label {
+.add-child-modal .content .choose-avatar .item-avatar input {
+  display: none;
+}
+.add-child-modal .content .choose-avatar .item-avatar label {
   background: #fff no-repeat center center;
   bottom: 1px;
   cursor: pointer;
@@ -3217,170 +3151,101 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 1px;
   white-space: nowrap;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha label {
+.add-child-modal .content .choose-avatar .item-coelha label {
   background: url('../img/coelha-nao-selecionada.png?1458759246') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha input:checked + label {
+.add-child-modal .content .choose-avatar .item-coelha input:checked + label {
   background: url('../img/coelha-selecionada.png?1458128504') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha label {
+.add-child-modal .content .choose-avatar .item-passarinha label {
   background: url('../img/passarinha-nao-selecionada.png?1458128494') no-repeat;
   background-size: contain;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha input:checked + label {
+.add-child-modal .content .choose-avatar .item-passarinha input:checked + label {
   background: url('../img/passarinha-selecionada.png?1458128494') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre label {
+.add-child-modal .content .choose-avatar .item-tigre label {
   background: url('../img/tigre-nao-selecionado.png?1458128492') no-repeat;
   background-size: contain;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre input:checked + label {
+.add-child-modal .content .choose-avatar .item-tigre input:checked + label {
   background: url('../img/tigre-selecionado.png?1458128492') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo label {
+.add-child-modal .content .choose-avatar .item-lobo label {
   background: url('../img/lobo-nao-selecionado.png?1458128494') no-repeat;
   background-size: contain;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo input:checked + label {
+.add-child-modal .content .choose-avatar .item-lobo input:checked + label {
   background: url('../img/lobo-selecionado.png?1458128494') no-repeat;
   background-size: contain;
   background-repeat: no-repeat;
 }
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar label {
-  background: url('../img/coelha-nao-selecionada.png?1458759246') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-coelha-editar input:checked + label {
-  background: url('../img/coelha-selecionada.png?1458128504') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar label {
-  background: url('../img/passarinha-nao-selecionada.png?1458128494') no-repeat;
-  background-size: contain;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-passarinha-editar input:checked + label {
-  background: url('../img/passarinha-selecionada.png?1458128494') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar label {
-  background: url('../img/tigre-nao-selecionado.png?1458128492') no-repeat;
-  background-size: contain;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-tigre-editar input:checked + label {
-  background: url('../img/tigre-selecionado.png?1458128492') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar label {
-  background: url('../img/lobo-nao-selecionado.png?1458128494') no-repeat;
-  background-size: contain;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca .escondido .escolha-avatar .item-lobo-editar input:checked + label {
-  background: url('../img/lobo-selecionado.png?1458128494') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-webkit-input-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-webkit-input-placeholder {
-  color: #784900;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-moz-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-moz-placeholder {
-  color: #784900;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-moz-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca ::-moz-placeholder {
-  color: #784900;
-}
-.profile .modal .cont-adicionar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-ms-input-placeholder, .profile .modal .cont-editar-crianca .adicionar-crianca .conteudo-adicionar-crianca :-ms-input-placeholder {
-  color: #784900;
-}
-.profile .modal .primeiro-cadastro {
-  display: none;
-}
-.profile .modal .edit-profile, .profile .modal .primeiro-cadastro {
-  overflow: hidden;
-  position: absolute;
-  top: 100px;
-  display: block;
-  width: 100%;
-}
-.profile .modal .edit-profile .conteudo-editar-perfil, .profile .modal .primeiro-cadastro .conteudo-editar-perfil {
-  width: 90%;
+.add-child-modal .content .actions {
   margin: 0 auto;
-  display: block;
 }
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-conteudo-editar-perfil, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-conteudo-editar-perfil {
+.add-child-modal .content .actions .btn {
+  font-size: 22px;
+}
+.add-child-modal .content .actions .btn-cancel {
+  background: #932222;
+  float: left;
+}
+.add-child-modal .content .actions .btn-add {
+  background: #4a9322;
+  float: right;
+}
+
+.edit-profile-modal {
+  background-color: transparent;
+}
+.edit-profile-modal .modal {
+  background-color: transparent;
+}
+.edit-profile-modal .content {
+  width: 90%;
   background: white;
-  display: block;
   padding: 18px 20px;
-  border-radius: 25px;
+  border-radius: 15px;
+  position: absolute;
+  z-index: 9999;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
-.profile .modal .edit-profile .conteudo-editar-perfil h2, .profile .modal .primeiro-cadastro .conteudo-editar-perfil h2 {
+.edit-profile-modal .content h2 {
   color: #563029;
   font-size: 20px;
   margin-bottom: 15px;
 }
-.profile .modal .edit-profile .conteudo-editar-perfil .editar-foto, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .editar-foto {
+.edit-profile-modal .content .editar-foto {
   margin-bottom: 30px;
 }
-.profile .modal .edit-profile .conteudo-editar-perfil .editar-foto h3, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .editar-foto h3 {
+.edit-profile-modal .content .editar-foto h3 {
   color: #563029;
   float: left;
   font-size: 19px;
 }
-.profile .modal .edit-profile .conteudo-editar-perfil .editar-foto .profile-foto-edit a img, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .editar-foto .profile-foto-edit a img {
+.edit-profile-modal .content .editar-foto .profile-foto-edit a img {
   float: left;
   margin-left: 20px;
 }
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs {
-  padding-right: 20px;
-  margin-bottom: 15px;
-  line-height: 20px;
-}
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs input, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs input {
-  border: 1px solid #934e22;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  width: 100%;
-  padding: 7px;
-  font-size: 15px;
-}
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs ::-webkit-input-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs ::-webkit-input-placeholder {
-  color: #563029;
-  font-family: 'Love Ya Like A Sister', cursive;
-}
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs :-moz-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs :-moz-placeholder {
-  color: #563029;
-  font-family: 'Love Ya Like A Sister', cursive;
-}
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs ::-moz-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs ::-moz-placeholder {
-  color: #563029;
-  font-family: 'Love Ya Like A Sister', cursive;
-}
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-inputs :-ms-input-placeholder, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-inputs :-ms-input-placeholder {
-  color: #563029;
-  font-family: 'Love Ya Like A Sister', cursive;
-}
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-btn-editar, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar {
-  width: 80%;
+.edit-profile-modal .content .actions {
+  width: 90%;
   margin: 0 auto;
-  background: white;
-  padding-bottom: 25px;
 }
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-btn-editar .btn-cancelar, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar .btn-cancelar {
+.edit-profile-modal .content .actions .btn-cancel {
   background: #932222;
   float: left;
 }
-.profile .modal .edit-profile .conteudo-editar-perfil .cont-btn-editar .btn-adicionar, .profile .modal .primeiro-cadastro .conteudo-editar-perfil .cont-btn-editar .btn-adicionar {
+.edit-profile-modal .content .actions .btn-add {
   background: #4a9322;
   float: right;
 }
@@ -3491,29 +3356,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-.schedule-detail .modal {
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin-top: 0;
-  background: transparent;
-  color: white;
-  font-size: 50px;
-}
 .schedule-detail .modal header {
   padding-top: 210px;
   position: relative;
-}
-.schedule-detail .modal header .close {
-  background: url('../img/x.png?1458128490');
-  position: absolute;
-  top: 160px;
-  right: 9px;
-  width: 5vh;
-  height: 5vh;
-  border: none;
-  background-size: cover;
 }
 .schedule-detail .modal main {
   background: #552f2b;
@@ -3522,6 +3367,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .schedule-detail .modal main .cover {
   line-height: 0px;
   border-bottom: 3px white dotted;
+  position: relative;
+  z-index: 1;
 }
 .schedule-detail .modal main .cover img {
   width: 100%;
@@ -3554,6 +3401,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .schedule-detail .modal main .sidebar button i {
   display: block;
+  font-size: 25px;
 }
 .schedule-detail .modal main .container {
   width: 80%;
@@ -3562,6 +3410,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .schedule-detail .modal main .container > div {
   padding: 15px 20px;
   background: #ff9c00;
+}
+.schedule-detail .modal main .container > div h1, .schedule-detail .modal main .container > div h2 {
+  color: white;
 }
 .schedule-detail .modal main .container > div h1 {
   margin-bottom: 2px;
@@ -3576,8 +3427,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 16px;
 }
 
-/* LOADER */
-div.loader {
+/* 
+* LOADER 
+* clubinho-loader
+*/
+div[clubinho-loader] .loader {
   position: fixed;
   left: 0;
   right: 0;
@@ -3585,7 +3439,7 @@ div.loader {
   top: 0;
   z-index: 9999999;
 }
-div.loader ion-spinner {
+div[clubinho-loader] .loader ion-spinner {
   background-color: black;
   position: fixed;
   left: 50%;
@@ -3597,11 +3451,11 @@ div.loader ion-spinner {
   padding: 3vw 3vh;
   border-radius: 4vw;
 }
-div.loader ion-spinner svg {
+div[clubinho-loader] .loader ion-spinner svg {
   width: 12vw;
   height: 12vh;
 }
-div.loader .overlay {
+div[clubinho-loader] .loader .overlay {
   position: fixed;
   left: 0;
   right: 0;
@@ -3609,11 +3463,195 @@ div.loader .overlay {
   top: 0;
 }
 
+/* 
+* LOADER 
+* clubinho-children-list
+*/
+div[clubinho-children-list] .children {
+  width: 95%;
+  margin: 0 auto;
+  -moz-border-radius-topleft: 25px;
+  -webkit-border-top-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -moz-border-radius-topright: 25px;
+  -webkit-border-top-right-radius: 25px;
+  border-top-right-radius: 25px;
+}
+div[clubinho-children-list] .children .open {
+  padding-bottom: 15px;
+}
+div[clubinho-children-list] .children li {
+  position: relative;
+  max-height: 60px;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  background: #fff3f7;
+}
+div[clubinho-children-list] .children li h2 {
+  color: #784900;
+  font-size: 20px;
+}
+div[clubinho-children-list] .children li h3 {
+  color: #784900;
+  font-size: 15px;
+}
+div[clubinho-children-list] .children li .avatar {
+  float: left;
+  max-width: 90px;
+  overflow: hidden;
+}
+div[clubinho-children-list] .children li .avatar img {
+  width: 100%;
+}
+div[clubinho-children-list] .children li .user {
+  max-width: 140px;
+  float: left;
+  margin-left: 2%;
+}
+div[clubinho-children-list] .children li .user h2 {
+  margin-top: 15px;
+}
+div[clubinho-children-list] .children li .user .details {
+  margin: 20px 0;
+  max-height: 0;
+  overflow-y: scroll;
+  transition: max-height 0.5s ease-out;
+}
+div[clubinho-children-list] .children li .user .details .border {
+  height: 1px;
+  display: block;
+  width: 100%;
+  border-bottom: 2px dotted #784900;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+div[clubinho-children-list] .children li .user .details h3 {
+  color: #784900;
+  font-size: 16px;
+}
+div[clubinho-children-list] .children li .user .details h4 {
+  color: #784900;
+  font-size: 15px;
+}
+div[clubinho-children-list] .children li .points {
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  float: right;
+  position: absolute;
+  right: 9px;
+  top: 4px;
+  padding: 8px;
+  color: white;
+  text-align: center;
+  line-height: 18px;
+  background: #886bae;
+  min-width: 55px;
+}
+div[clubinho-children-list] .children li .points h3 {
+  font-size: 25px;
+  color: white;
+}
+div[clubinho-children-list] .children li .points span {
+  font-size: 14px;
+}
+div[clubinho-children-list] .children li:first-child {
+  -moz-border-radius-topleft: 25px;
+  -webkit-border-top-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -moz-border-radius-topright: 25px;
+  -webkit-border-top-right-radius: 25px;
+  border-top-right-radius: 25px;
+}
+div[clubinho-children-list] .children li.open {
+  max-height: 9999px;
+  transition: max-height 0.5s ease-in;
+}
+div[clubinho-children-list] .children li.open .details {
+  max-height: 99999px;
+  transition: max-height 0.5s ease-in;
+}
+div[clubinho-children-list] .children li.ana .avatar img {
+  margin-top: -40px;
+}
+div[clubinho-children-list] .children li.maria {
+  background: #fdf190;
+}
+div[clubinho-children-list] .children li.maria .points {
+  background: #eabb1f;
+}
+div[clubinho-children-list] .children li.luiz {
+  background: #b1fff6;
+}
+div[clubinho-children-list] .children li.luiz .points {
+  background: #58a746;
+}
+div[clubinho-children-list] .children li.luiz .details p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+div[clubinho-children-list] .children li.luiz .details a {
+  color: white;
+}
+div[clubinho-children-list] .children li.luiz .details .btn-no, div[clubinho-children-list] .children li.luiz .details .btn-yes {
+  font-size: 17px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 66px;
+  float: left;
+  padding: 10px 6px;
+  margin-right: 8px;
+  text-transform: uppercase;
+}
+div[clubinho-children-list] .children li.luiz .details .btn-no h3, div[clubinho-children-list] .children li.luiz .details .btn-yes h3 {
+  color: white;
+}
+div[clubinho-children-list] .children li.luiz .details .btn-no {
+  background: #a74646;
+}
+div[clubinho-children-list] .children li.luiz .details .btn-yes {
+  background: #58a746;
+}
+div[clubinho-children-list] .children li.add-children {
+  background: #ffffff;
+}
+div[clubinho-children-list] .children li.add-children .btn-add-child {
+  border: none;
+  background: transparent;
+  margin: 0 auto;
+  display: block;
+  font-size: 20px;
+  padding: 10px 0;
+  color: #784900;
+  font-family: 'Love Ya Like A Sister';
+}
+div[clubinho-children-list] .children li.add-children .user {
+  max-width: 100%;
+  float: left;
+  margin: 8px 5% 17px;
+}
+div[clubinho-children-list] .children li.add-children .user .points {
+  background-color: transparent;
+  color: #ff9c00;
+  font-size: 60px;
+  right: 5px;
+  top: 0px;
+  padding: 0px 4px;
+}
+
 @font-face {
   font-family: 'Love Ya Like A Sister';
   src: url("../font/LoveYaLikeASister.ttf");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+.hide, .preload {
+  display: none;
+}
+
+.clear {
+  clear: both;
+}
+
 a {
   text-decoration: none;
 }
@@ -3621,16 +3659,26 @@ a {
 .btn {
   border-radius: 10px;
   font-size: 22px;
-  padding: 10px;
+  padding: 3px 13px;
   color: white;
   border: none;
+  font-family: 'Love Ya Like A Sister';
+}
+.btn:disabled {
+  opacity: 0.5;
+}
+
+input[type=text], input[type=email] {
+  border: 2px solid #934e22;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  margin-bottom: 10px;
 }
 
 body {
   font-family: 'Love Ya Like A Sister', cursive;
-}
-body .clear {
-  clear: both;
 }
 body .main .eventos h1 {
   background: #563029;
@@ -3671,7 +3719,6 @@ body .main .eventos .cont-carousel {
   margin-bottom: 15px;
 }
 
-/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media only screen and (min-width: 320px) {
   body header {
     padding: 30px 0px 10px 0px;
@@ -3735,263 +3782,40 @@ body .main .eventos .cont-carousel {
     right: -25px;
   }
 }
-.children {
-  width: 95%;
-  margin: 0 auto;
-  -moz-border-radius-topleft: 25px;
-  -webkit-border-top-left-radius: 25px;
-  border-top-left-radius: 25px;
-  -moz-border-radius-topright: 25px;
-  -webkit-border-top-right-radius: 25px;
-  border-top-right-radius: 25px;
+.schedule-detail .modal, .profile .modal {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #ff9c00;
+  color: #563029;
+  font-size: 50px;
 }
-.children .aberto {
-  padding-bottom: 15px;
+.schedule-detail .modal span.logo, .profile .modal span.logo {
+  background: url('../img/titulo.png?1458128492') no-repeat center 212px;
+  background-size: 165px;
+  background-color: #ffe9bb;
+  width: 100vw;
+  height: 410px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -200px;
 }
-.children li {
+.schedule-detail .modal header, .profile .modal header {
+  background: url('../img/bg-premios.png?1458128504') no-repeat center bottom;
+  background-size: 100%;
+  padding-top: 210px;
   position: relative;
-  max-height: 60px;
-  overflow: hidden;
-  transition: max-height 0.5s ease-out;
-  background: #fff3f7;
 }
-.children li h2 {
-  color: #784900;
-  font-size: 20px;
-}
-.children li h3 {
-  color: #784900;
-  font-size: 15px;
-}
-.children li .avatar {
-  float: left;
-  max-width: 90px;
-  overflow: hidden;
-}
-.children li .avatar img {
-  width: 100%;
-}
-.children li .user {
-  max-width: 140px;
-  float: left;
-  margin-left: 2%;
-}
-.children li .user h2 {
-  margin-top: 15px;
-}
-.children li .user .details {
-  margin: 20px 0;
-  max-height: 0;
-  overflow-y: scroll;
-  transition: max-height 0.5s ease-out;
-}
-.children li .user .details .border {
-  height: 1px;
-  display: block;
-  width: 100%;
-  border-bottom: 2px dotted #784900;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.children li .user .details h3 {
-  color: #784900;
-  font-size: 16px;
-}
-.children li .user .details h4 {
-  color: #784900;
-  font-size: 15px;
-}
-.children li .points {
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
-  float: right;
+.schedule-detail .modal header .close, .profile .modal header .close {
+  background: url('../img/x.png?1458128490');
   position: absolute;
+  top: 160px;
   right: 9px;
-  top: 4px;
-  padding: 8px;
-  color: white;
-  text-align: center;
-  line-height: 18px;
-  background: #886bae;
-  min-width: 55px;
-}
-.children li .points h3 {
-  font-size: 25px;
-  color: white;
-}
-.children li .points span {
-  font-size: 14px;
-}
-.children li:first-child {
-  -moz-border-radius-topleft: 25px;
-  -webkit-border-top-left-radius: 25px;
-  border-top-left-radius: 25px;
-  -moz-border-radius-topright: 25px;
-  -webkit-border-top-right-radius: 25px;
-  border-top-right-radius: 25px;
-}
-.children li.open {
-  max-height: 9999px;
-  transition: max-height 0.5s ease-in;
-}
-.children li.open .details {
-  max-height: 99999px;
-  transition: max-height 0.5s ease-in;
-}
-.children li.ana .avatar img {
-  margin-top: -40px;
-}
-.children li.maria {
-  background: #fdf190;
-}
-.children li.maria .points {
-  background: #eabb1f;
-}
-.children li.luiz {
-  background: #b1fff6;
-}
-.children li.luiz .points {
-  background: #58a746;
-}
-.children li.luiz .details p {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-.children li.luiz .details a {
-  color: white;
-}
-.children li.luiz .details .btn-no, .children li.luiz .details .btn-yes {
-  font-size: 17px;
-  color: white;
-  border: 2px solid white;
-  border-radius: 66px;
-  float: left;
-  padding: 10px 6px;
-  margin-right: 8px;
-  text-transform: uppercase;
-}
-.children li.luiz .details .btn-no h3, .children li.luiz .details .btn-yes h3 {
-  color: white;
-}
-.children li.luiz .details .btn-no {
-  background: #a74646;
-}
-.children li.luiz .details .btn-yes {
-  background: #58a746;
-}
-.children li .add-children {
-  background: #ffffff;
-}
-.children li .add-children .details {
-  max-width: 100%;
-  float: left;
-  margin: 8px 5% 17px;
-}
-.children li .add-children .details .points {
-  color: #ff9c00;
-  font-size: 60px;
-  right: 5px;
-  top: 0px;
-  padding: 0px 4px;
-}
-.children li .add-children .details {
-  max-height: 100%;
-  margin-top: 15px;
-}
-.children li .add-children .details input[type=text] {
-  border: 1px solid #934e22;
-  border-radius: 4px;
-  width: 88%;
-  padding: 10px;
-  font-size: 13px;
-}
-.children li .add-children .details .cont-inputs {
-  line-height: 35px;
-}
-.children li .add-children .details h3 {
-  margin-top: 14px;
-  margin-bottom: 10px;
-}
-.children li .add-children .details .actions {
-  width: 90%;
-  margin: 0 auto;
-}
-.children li .add-children .details .actions .btn-cancelar {
-  background: #932222;
-  float: left;
-}
-.children li .add-children .details .actions .btn-adicionar {
-  background: #4a9322;
-  float: right;
-}
-.children li .add-children .details .choose-avatar {
-  margin-bottom: 14px;
-}
-.children li .add-children .details .choose-avatar ul li {
-  float: left;
-  width: 64px;
-  height: 70px;
-}
-.children li .add-children .details .choose-avatar .item-avatar label {
-  background: #fff no-repeat center center;
-  bottom: 1px;
-  cursor: pointer;
-  display: block;
-  font-size: 0;
-  left: 1px;
-  position: absolute;
-  right: 1px;
-  text-indent: 100%;
-  top: 1px;
-  white-space: nowrap;
-}
-.children li .add-children .details .choose-avatar .item-coelha label {
-  background: url('../img/coelha-nao-selecionada.png?1458759246') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.children li .add-children .details .choose-avatar .item-coelha input:checked + label {
-  background: url('../img/coelha-selecionada.png?1458128504') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.children li .add-children .details .choose-avatar .item-passarinha label {
-  background: url('../img/passarinha-nao-selecionada.png?1458128494') no-repeat;
-  background-size: contain;
-}
-.children li .add-children .details .choose-avatar .item-passarinha input:checked + label {
-  background: url('../img/passarinha-selecionada.png?1458128494') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.children li .add-children .details .choose-avatar .item-tigre label {
-  background: url('../img/tigre-nao-selecionado.png?1458128492') no-repeat;
-  background-size: contain;
-}
-.children li .add-children .details .choose-avatar .item-tigre input:checked + label {
-  background: url('../img/tigre-selecionado.png?1458128492') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.children li .add-children .details .choose-avatar .item-lobo label {
-  background: url('../img/lobo-nao-selecionado.png?1458128494') no-repeat;
-  background-size: contain;
-}
-.children li .add-children .details .choose-avatar .item-lobo input:checked + label {
-  background: url('../img/lobo-selecionado.png?1458128494') no-repeat;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.children li .add-children ::-webkit-input-placeholder {
-  color: #784900;
-}
-.children li .add-children :-moz-placeholder {
-  color: #784900;
-}
-.children li .add-children ::-moz-placeholder {
-  color: #784900;
-}
-.children li .add-children :-ms-input-placeholder {
-  color: #784900;
+  width: 6vh;
+  height: 6vh;
+  border: none;
+  background-size: cover;
+  z-index: 2;
 }

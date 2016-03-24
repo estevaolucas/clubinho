@@ -1,8 +1,7 @@
 angular.module('clubinho.controllers')
 
-.controller('PrizesController', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+.controller('PrizesController', function($scope, $ionicScrollDelegate) {
+  $scope.$on('$ionicView.beforeLeave', function() {
+    $ionicScrollDelegate.scrollTop();
+  });
 });

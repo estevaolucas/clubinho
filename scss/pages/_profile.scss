@@ -1,53 +1,26 @@
 .profile .modal {
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin-top: 0;
-  background: transparent;
-  color:#563029;
-  font-size: 50px;
+  .profile-avatar-mini{
+    position: absolute;
+    top: 110px;
+    left: 20px;
+    width: 112px;
 
-  header {
-    background: image-url("bg-premios.png") no-repeat center bottom;
-    background-size: 100%;
-    padding-top: 210px;
-    position: relative;
-
-    .profile-foto{
-      position: absolute;
-      top: 110px;
-      left: 20px;
-      width: 112px;
-
-      img{
-        border: 5px solid #563029;
-        border-radius: 50px;
-        width: 88%;
-      }
+    img{
+      border: 5px solid #563029;
+      border-radius: 50px;
+      width: 88%;
     }
+  }
 
-    .edit-profile{
-      position: absolute;
-      top: 128px;
-      left: 107px;
-      border: 0;
-      background: image-url("edit.png");
-      width: 12vw;
-      height: 12vw;
-      background-size: cover;
-    }
-
-    .close{
-      background: image-url("x.png");
-      position: absolute;
-      top: 160px;
-      right: 9px;
-      width: 5vh;
-      height: 5vh;
-      border: none;
-      background-size: cover;
-    }
+  .edit-profile{
+    position: absolute;
+    top: 128px;
+    left: 107px;
+    border: 0;
+    background: image-url("edit.png");
+    width: 12vw;
+    height: 12vw;
+    background-size: cover;
   }
 
   main {
@@ -72,22 +45,21 @@
   .detail{
     background: #ff9c00;
     color:#ff9c00;
+    margin: 20px 0;
     
-    .cont-prof-left{
-      float:left;
-      width: 20%;
+    .left{
+      float: left;
+      width: 26%;
       font-size: 13px;
-      div{
-        margin: 0px auto;
-        width: 60%;
-      }
+      padding-left: 20px;
+
       .endereco{
         margin-top: 6px;
       }
     }
-    .cont-prof-right{
-      float:right;
-      width: 80%;
+    .right{
+      float: right;
+      width: 74%;
       font-size: 15px;
       div{
         margin: 0px auto;
@@ -97,28 +69,6 @@
         padding-top: 12px;
       }
     }
-
-    .btn-see-children{
-      width: 100%;
-      background: #ff9c00;
-      border: none;
-      margin-bottom: 20px;
-
-      span{
-        max-height: 60px;
-        background: white;
-        width: 95%;
-        margin: 0 auto;
-        display: block;
-        font-size: 20px;
-        padding: 18px;
-        color: #784900;
-        font-family:'Love Ya Like A Sister';
-      }
-    }
-  }
-  h1 span .fa{
-    font-size: 32px;
   }
   article{
     background: #563029;
@@ -224,37 +174,53 @@
       clear: both;
     }
   }
+
+  .btn-see-children{
+    width: 96%;
+    background: white;
+    border: none;
+    border-radius: 25px 25px 0 0;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 24px;
+    padding: 10px;
+    color: #784900;
+    font-family: 'Love Ya Like A Sister';
+  }
 }
 
 
 // MODAL add child
 .add-child-modal{
+  background-color: transparent;
+
+  .modal {
+    background-color: transparent;
+  }
+
   .content{
-    width: 90%;
+    width: 95%;
     background: white;
-    padding: 18px 20px;
-    border-radius: 25px;
+    padding: 18px 10px;
+    border-radius: 15px 15px 0 0;
     position: fixed;
     z-index: 9999;
-    top: 50%;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
+
+    h2, h3 {
+      color: #563029;
+    }
 
     h2{
-      color: #563029;
       font-size: 20px;
       margin-bottom: 15px;
     }
     
-    input[type=text]{
-      border: 1px solid #934e22;
-      border-radius: 4px;
-      width: 88%;
-      padding: 10px;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
     h3{
       margin-top: 14px;
       margin-bottom: 10px;
@@ -264,11 +230,11 @@
       width: 90%;
       margin: 0 auto;
 
-      .btn-cancelar{
+      .btn-cancel{
         background: #932222;
         float: left;
       }
-      .btn-adicionar{
+      .btn-add{
         background: #4a9322;
         float: right;
       }
@@ -278,11 +244,13 @@
       margin-bottom: 14px;
       ul li{
         float: left;
-        width: 64px;
+        width: 65px;
         height: 70px;
         position: relative;
-        max-height: 60px;
+        // max-height: 60px;
         overflow: hidden;
+        padding-left: 2px;
+        min-height:auto;
       }
       .item-avatar {
         input {
@@ -350,10 +318,11 @@
     }
 
     .actions{
-      width: 80%;
       margin: 0 auto;
-      background: white;
-      padding-bottom: 25px;
+
+      .btn {
+        font-size: 22px;
+      }
 
       .btn-cancel{
         background: #932222;
@@ -369,14 +338,20 @@
 
 // MODAL update profile
 .edit-profile-modal{
+  background-color: transparent;
+
+  .modal {
+    background-color: transparent;
+  }
+
   .content{
     width: 90%;
     background: white;
     padding: 18px 20px;
-    border-radius: 25px;
+    border-radius: 15px;
     position: absolute;
     z-index: 9999;
-    top: 100px;
+    top: 50px;
     left: 50%;
     transform: translate(-50%, 0);
 
@@ -393,47 +368,15 @@
         float: left;
         font-size: 19px;
       }
-      .profile-foto-edit{
-        a{
-          img{
-            float: left;
-            margin-left: 20px;
-          }
-        }
+      .profile-foto-edit a img{
+        float: left;
+        margin-left: 20px;
       }
     }
     
-    .inputs{
-      padding-right: 20px;
-      margin-bottom: 15px;
-      line-height: 20px;
-
-      input{
-        border: 1px solid #934e22;
-        margin-bottom: 10px;
-        border-radius: 6px;
-        width: 100%;
-        padding: 7px;
-        font-size: 15px;
-      }
-      ::-webkit-input-placeholder {
-        color: #563029;
-        font-family: 'Love Ya Like A Sister', cursive;
-      }
-      :-moz-placeholder {
-        color: #563029;
-        font-family: 'Love Ya Like A Sister', cursive;
-      }
-      ::-moz-placeholder {
-        color: #563029;
-        font-family: 'Love Ya Like A Sister', cursive;
-      }
-    }
     .actions{
-      width: 80%;
+      width: 90%;
       margin: 0 auto;
-      background: white;
-      padding-bottom: 25px;
 
       .btn-cancel{
         background: #932222;

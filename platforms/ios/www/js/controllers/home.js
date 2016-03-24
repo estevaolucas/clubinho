@@ -1,44 +1,36 @@
 angular.module('clubinho.controllers')
 
 .controller('HomeController', function($scope, $ionicModal, $ionicScrollDelegate, Children) {
+  var $profileScope = $scope.$new(true);
+
   $ionicModal.fromTemplateUrl('templates/profile.html', {
-    scope: $scope,
+    scope: $profileScope,
     animation: 'slide-in-up',
     controller: 'ProfileController'
   }).then(function(modal) {
-    $scope.profile = modal;
+    $profileScope.modal = modal;
   });
 
-  $scope.$on('$destroy', function() {
-    $scope.profile.remove();
-  });
-  
   $scope.openProfile = function() {
-    $scope.profile.show()
+    $profileScope.modal.show()
   }
 
   Children.getList().then(function(children) {
     $scope.children = children;
   });
 
-  var $elements = $('.home .rank li'),
-    open = false;
+  // children list updated
+  $scope.$on('clubinho-children-update', function(e, children) {
+    $scope.children = children;
+  });
 
-  $scope.toggleChild = function(child, e) {
-    var $this = $(e.target);
-    
-    $this = $this.is('li') ? $this : $this.closest('li');
+  $scope.$on('$destroy', function() {
+    $profileScope.remove();
+  });
 
-    $this
-      .toggleClass('open')
-      .siblings('li').removeClass('open');
-
-    $ionicScrollDelegate.resize();
-
-    setTimeout(function() {
-      $ionicScrollDelegate.resize();
-    }, 500);
-  };
+  $scope.$on('$ionicView.beforeLeave', function() {
+    $ionicScrollDelegate.scrollTop();
+  });
 
   // Activate slider
   $('.home .bxslider').bxSlider({

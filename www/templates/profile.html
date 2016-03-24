@@ -1,9 +1,14 @@
 <div class="profile" ng-controller="ProfileController">
   <ion-modal-view>
     <ion-content>
+      <span class="logo"></span>
+        
       <header>
         <button class="close close-profile" ng-click="close()"></button>
-        <div class="profile-foto"><img src="img/usuario.png"></div>
+        <div class="profile-avatar-mini">
+          <img ng-if="data.avatar"  ng-src="{{data.avatar}}" />
+          <img ng-if="!data.avatar" src="img/avatar-default.png" />
+        </div>
         <buttom class="edit-profile" ng-click="edit()"></buttom>
       </header>
       <main>
@@ -52,5 +57,14 @@
         </div>
       </main>
     </ion-content>
+
+    <button class="btn-see-children" ng-click="toggleChildrenList()" ng-hide="showChildrenList">Crianças cadastradas</button>
+
+    <div class="preload">
+      <img src="coelha-selecionada.png" />
+      <img src="passarinha-selecionada.png" />
+      <img src="tigre-selecionado.png" />
+      <img src="lobo-selecionado.png" />
+    </div>
   </ion-modal-view>
 </div>

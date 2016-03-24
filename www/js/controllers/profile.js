@@ -1,7 +1,7 @@
 angular.module('clubinho.controllers')
 
 .controller('ProfileController', function($scope, $ionicModal, Children) {
-  $scope.showChildrenList = false;
+  $scope.showChildrenList = true;
 
   $scope.data = {
     name: 'Estevão Lucas',

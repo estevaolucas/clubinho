@@ -1,35 +1,34 @@
 <div class="responsible">
-  <h1>{{profileCtrl.data.name}}</h1>
-  <h3>{{profileCtrl.data.cpf}}</h3>
+  <h1>{{data.name}}</h1>
+  <h3>{{data.cpf}}</h3>
 </div>
 
 <div class="detail">
   <article>
-    <div class="cont-prof-left">
+    <div class="left">
       <div>Telefone<br/> para contato</div>
     </div>
-    <div class="cont-prof-right">
-      <div class="tel-number">{{profileCtrl.data.phone}}</div>
+    <div class="right">
+      <div class="tel-number">{{data.phone}}</div>
     </div>
     <div class="clear"></div>
   </article>
   <article>
-    <div class="cont-prof-left">
+    <div class="left">
       <div>E-mail </div>
     </div>
-    <div class="cont-prof-right">
-      <div>{{profileCtrl.data.email}}</div>
+    <div class="right">
+      <div>{{data.email}}</div>
     </div>
     <div class="clear"></div>
   </article>
   <article>
-    <div class="cont-prof-left">
+    <div class="left">
       <div class="endereco">Endereço </div>
     </div>
-    <div class="cont-prof-right">
-      <div>{{profileCtrl.data.address}}</div>
+    <div class="right">
+      <div>{{data.address}}</div>
     </div>
     <div class="clear"></div>
   </article>
-  <button class="btn-see-children"><span>crianças cadastradas</span></button>
 </div>

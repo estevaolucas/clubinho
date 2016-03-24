@@ -1,27 +1,7 @@
 .schedule-detail .modal {
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin-top: 0;
-  background: transparent;
-  color: white;
-  font-size: 50px;
-
   header {
     padding-top: 210px;
     position: relative;
-
-    .close{
-      background: image-url('x.png');
-      position: absolute;
-      top: 160px;
-      right: 9px;
-      width: 5vh;
-      height: 5vh;
-      border: none;
-      background-size: cover;
-    }
   }
   
   main{
@@ -31,6 +11,8 @@
     .cover {
       line-height: 0px;
       border-bottom: 3px white dotted;
+      position: relative;
+      z-index: 1;
 
       img{
         width: 100%;
@@ -56,6 +38,8 @@
         padding: 0 0 10px;
         width: 60%;
         margin: 0 auto 10px;
+        font-size: 20px;
+        line-height: 28px;
       }
 
       button {
@@ -63,9 +47,11 @@
         border: none;
         background: none;
         font-family: 'Love Ya Like A Sister', cursive;
+        font-size: 20px;
 
         i {
-          display: block
+          display: block;
+          font-size: 25px;
         }
       }
     }
@@ -75,6 +61,9 @@
       > div {
         padding: 15px 20px;
         background: #ff9c00;
+        h1, h2 {
+          color: white;
+        }
         h1{
           margin-bottom: 2px;
           font-size: 16px;

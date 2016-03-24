@@ -1,0 +1,58 @@
+.home {
+  .main {
+    .events {
+      h1 {
+        background: #563029;
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 0.2em;
+        padding: 6px 0px;
+        font-size: 1.0em;
+        
+        &:before{
+          content: "||";
+          display:inline-block;
+          color: white;
+          margin-right: 10px;
+        }
+        &:after{
+          content: "||";
+          display:inline-block;
+          color: white;
+          margin-left: 10px;
+        }
+      }
+
+      .cont-carousel{
+        position: relative;
+        padding: 15px 0px;
+        background: #fff6ed;
+        margin-bottom: 15px;
+
+        .carousel{
+          max-width: 260px;
+          margin: 0 auto;
+        }
+      }
+      .bx-wrapper{
+        position: relative;
+        
+        .bx-prev, .bx-next {
+          text-decoration: none;
+          font-size: 70px;
+          position: absolute;
+          top: 6px;
+          z-index: 99;
+          color: #eeb37e;
+        }
+        .bx-prev{
+          left: -25px;
+        }
+        .bx-next{
+          right: -25px;
+        }
+      }
+    }
+  }
+}

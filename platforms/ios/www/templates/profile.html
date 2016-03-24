@@ -1,65 +1,21 @@
-<div class="profile" ng-controller="ProfileController as profileCtrl">
+<div class="profile" ng-controller="ProfileController">
   <ion-modal-view>
     <ion-content>
-      <div clubinho-loader show="profileCtrl.loading"></div>
-
+      <span class="logo"></span>
+        
       <header>
         <button class="close close-profile" ng-click="close()"></button>
-        <div class="profile-foto"><img src="img/usuario.png"></div>
+        <div class="profile-avatar">
+          <img ng-if="data.avatar"  ng-src="{{data.avatar}}" />
+          <img ng-if="!data.avatar" src="img/avatar-default.png" />
+        </div>
         <buttom class="edit-profile" ng-click="edit()"></buttom>
       </header>
       <main>
         <ng-include src="'templates/_profile-detail.html'"></ng-include>
-
-        <div class="children" style="display: block;">
-          <ul>
-            <ng-include src="'templates/_children.html'"></ng-include>
-            <li class="add-children">
-              <div class="user">
-                <h2>Adicionar criança</h2>
-                <div class="pontuacao"><i class="ion-android-add-circle"></i></div>
-
-                <div class="details">
-                  <div class="cont-inputs">
-                    <input type="text" placeholder="Nome da Criança">
-                    <input type="text" placeholder="Data de Nascimento">
-                  </div>
-
-                  <h3>Escolha o avatar:</h3>
-                  
-                  <div class="choose-avatar">
-                    <ul>
-                      <li class="item-avatar item-coelha">
-                        <input type="radio" id="item-coelha">
-                        <label for="item-coelha"></label>
-                      </li>
-                      <li class="item-avatar item-passarinha">
-                        <input type="radio" id="item-passarinha">
-                        <label for="item-passarinha"></label>
-                      </li>
-                      <li class="item-avatar item-tigre">
-                        <input type="radio" id="item-tigre">
-                        <label for="item-tigre"></label>
-                      </li>
-                      <li class="item-avatar item-lobo">
-                        <input type="radio" id="item-lobo">
-                        <label for="item-lobo"></label>
-                      </li>
-                    </ul>
-                    <div class="clear"></div>
-                  </div>
-
-                  <div class="actions">
-                    <button type="button" class="btn-cancelar">Cancelar</button>
-                    <button type="button" class="btn-adicionar">Adicionar</button>
-                  </div>
-                </div>
-                <div class="clear"></div>
-              </div>
-            </li>
-          </ul>
-          <div class="clear"></div>
-        </div>
+        
+        <div ng-show="showChildrenList" clubinho-children-list list="children" add-child="addChild"></div>
+        
         <div class="clear"></div>
         
         <!-- Edit children -->
@@ -91,7 +47,7 @@
           </div>
         </div>
         <div class="msg-confirmar-delete-crianca" style="">
-          <div class="mensagem-deletar-crianca"style="">
+          <div class="mensagem-deletar-crianca" style="">
             <h2 style="">Tem certeza que quer deletar<br/> o perfil dessa criança?</h2>
             <div class="cont-btn">
               <button class="btn-cancelar">Cancelar</button>
@@ -99,12 +55,16 @@
             </div>
           </div>
         </div>
-        
-        <!-- Edit profile -->
-        <div class="edit-profile" ng-show="profileCtrl.isEditing">
-          <ng-include src="'templates/_profile-edit.html'"></ng-include>
-        </div>
       </main>
     </ion-content>
+
+    <button class="btn-see-children" ng-click="toggleChildrenList()" ng-hide="showChildrenList">Crianças cadastradas</button>
+
+    <div class="preload">
+      <img src="coelha-selecionada.png" />
+      <img src="passarinha-selecionada.png" />
+      <img src="tigre-selecionado.png" />
+      <img src="lobo-selecionado.png" />
+    </div>
   </ion-modal-view>
 </div>

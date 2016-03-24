@@ -28,13 +28,14 @@ angular.module('clubinho.controllers')
     });
   }
 
-  // FIXME: remove this simulation
-  $timeout(function() {
-    Schedule.getList().then(function(schedule) {
-      $scope.schedule = schedule;
-      $scope.loading = false;
-    });
-  }, 1000);
+  Schedule.getList().then(function(schedule) {
+    $scope.schedule = schedule;
+    $scope.loading = false;
+  });
+
+  $scope.$on('$ionicView.beforeLeave', function() {
+    $ionicScrollDelegate.scrollTop();
+  });
 })
 
 .controller('ScheduleDetailController', function($scope) {

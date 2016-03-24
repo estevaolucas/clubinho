@@ -1,36 +1,227 @@
-/* LOADER */
+/* 
+* LOADER 
+* clubinho-loader
+*/
 
-div.loader{
-  position:fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  z-index: 9999999;
-
-  ion-spinner{
-    background-color: black;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    height: 20vh;
-    width: 20vh;
-    opacity: 0.9;
-    transform: translate(-50%, -50%);
-    padding: 3vw 3vh;
-    border-radius: 4vw;
-
-    svg {
-      width: 12vw;
-      height: 12vh;
-    }
-  }
-
-  .overlay{
+div[clubinho-loader] {
+    .loader {
     position:fixed;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
+    z-index: 9999999;
+
+    ion-spinner {
+      background-color: black;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      height: 20vh;
+      width: 20vh;
+      opacity: 0.9;
+      transform: translate(-50%, -50%);
+      padding: 3vw 3vh;
+      border-radius: 4vw;
+
+      svg {
+        width: 12vw;
+        height: 12vh;
+      }
+    }
+
+    .overlay {
+      position:fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+    }
+  }
+}
+
+/* 
+* LOADER 
+* clubinho-children-list
+*/
+
+div[clubinho-children-list] {
+  .children{
+    width: 95%;
+    margin: 0 auto;
+    @include border-top-radius(25px);
+    
+    .open{
+      padding-bottom: 15px;
+    }
+    
+    li{
+      position: relative;
+      max-height: 60px;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+      background: #fff3f7;
+
+      h2{
+        color:#784900;
+        font-size: 20px;
+      }
+      h3{
+        color:#784900;
+        font-size: 15px;
+      }
+
+      .avatar{
+        float: left;
+        max-width: 90px;
+        overflow: hidden;
+        img{
+          width: 100%
+        }
+      }
+      .user{
+        max-width: 140px;
+        float: left;
+        margin-left: 2%;
+
+        h2{
+          margin-top: 15px;
+        }
+        .details{
+          margin: 20px 0;
+          max-height: 0;
+          overflow-y: scroll;
+          transition: max-height 0.5s ease-out;
+
+          .border{
+            height: 1px;
+            display: block;
+            width: 100%;
+            border-bottom: 2px dotted #784900;
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+
+          h3{
+            color: #784900;
+            font-size: 16px;
+          }
+          h4{
+            color: #784900;
+            font-size: 15px;
+          }
+        }
+      }
+      .points {
+        @include border-radius(50px);
+        float: right;
+        position: absolute;
+        right: 9px;
+        top: 4px;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        line-height: 18px;
+        background: #886bae;
+        min-width: 55px;
+
+        h3{
+          font-size: 25px;
+          color:white;
+        }
+        span{
+          font-size: 14px;
+        }
+      }
+
+      &:first-child {
+        @include border-top-radius(25px);
+      }
+
+      &.open {
+        max-height: 9999px;
+        transition: max-height 0.5s ease-in;
+
+        .details {
+          max-height: 99999px;
+          transition: max-height 0.5s ease-in;
+        }
+      }
+      
+      &.ana {
+        .avatar img {
+          margin-top: -40px;
+        }
+      }
+      &.maria {
+        background: #fdf190;
+        .points{
+          background: #eabb1f;
+        }
+      }
+      &.luiz {
+        background: #b1fff6;
+        .points {
+          background: #58a746;
+        }
+        .details {
+          p{
+            font-size: 14px;
+            margin-bottom: 10px;
+          }
+          a{
+            color: white;
+          }
+          .btn-no, .btn-yes {
+            font-size: 17px;
+            color: white;
+            border: 2px solid white;
+            border-radius: 66px;
+            float: left;
+            padding: 10px 6px;
+            margin-right: 8px;
+            text-transform: uppercase;
+            h3{
+              color: white;
+            }
+          }
+          .btn-no {
+            background: #a74646;
+          }
+          .btn-yes {
+            background: #58a746;
+          }
+        }
+      }
+
+      &.add-children {
+        background: #ffffff;
+        
+        .btn-add-child {
+          border: none;
+          background: transparent;
+          margin: 0 auto;
+          display: block;
+          font-size: 20px;
+          padding: 10px 0;
+          color: #784900;
+          font-family: 'Love Ya Like A Sister';
+        }
+        .user {
+          max-width: 100%;
+          float: left;
+          margin: 8px 5% 17px;
+          
+          .points {
+            background-color: transparent;
+            color:#ff9c00;
+            font-size: 60px;
+            right: 5px;
+            top: 0px;
+            padding: 0px 4px;
+          }
+        }
+      }
+    }
   }
 }

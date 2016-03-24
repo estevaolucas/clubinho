@@ -28,6 +28,10 @@ angular.module('clubinho.controllers')
     $profileScope.remove();
   });
 
+  $scope.$on('$ionicView.beforeLeave', function() {
+    $ionicScrollDelegate.scrollTop();
+  });
+
   // Activate slider
   $('.home .bxslider').bxSlider({
     auto: true,
