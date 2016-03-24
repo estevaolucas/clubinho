@@ -3497,8 +3497,8 @@ div[clubinho-loader] .loader ion-spinner {
   position: fixed;
   left: 50%;
   top: 50%;
-  height: 20vh;
-  width: 20vh;
+  height: 16vh;
+  width: 16vh;
   opacity: 0.9;
   transform: translate(-50%, -50%);
   padding: 3vw 3vh;
@@ -3507,8 +3507,14 @@ div[clubinho-loader] .loader ion-spinner {
 div[clubinho-loader] .loader ion-spinner svg {
   width: 12vw;
   height: 12vh;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 div[clubinho-loader] .loader .overlay {
+  pointer-events: none;
+  opacity: 0.4;
   position: fixed;
   left: 0;
   right: 0;
@@ -3646,7 +3652,7 @@ div[clubinho-children-list] .children li.luiz .details p {
 div[clubinho-children-list] .children li.luiz .details a {
   color: white;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-no, div[clubinho-children-list] .children li.luiz .details .btn-yes {
+div[clubinho-children-list] .children li .btn-no, div[clubinho-children-list] .children li .btn-yes {
   font-size: 17px;
   color: white;
   border: 2px solid white;
@@ -3656,13 +3662,18 @@ div[clubinho-children-list] .children li.luiz .details .btn-no, div[clubinho-chi
   margin-right: 8px;
   text-transform: uppercase;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-no h3, div[clubinho-children-list] .children li.luiz .details .btn-yes h3 {
+div[clubinho-children-list] .children li .btn-no h3, div[clubinho-children-list] .children li .btn-yes h3 {
   color: white;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-no {
+div[clubinho-children-list] .children li .btn-no i, div[clubinho-children-list] .children li .btn-yes i {
+  font-size: 22px;
+  width: 41px;
+  display: block;
+}
+div[clubinho-children-list] .children li .btn-no {
   background: #a74646;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-yes {
+div[clubinho-children-list] .children li .btn-yes {
   background: #58a746;
 }
 div[clubinho-children-list] .children li.add-children {
@@ -3709,6 +3720,15 @@ a {
   text-decoration: none;
 }
 
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
+
 .btn {
   border-radius: 10px;
   font-size: 22px;
@@ -3721,10 +3741,11 @@ a {
   opacity: 0.5;
 }
 
-input[type=text], input[type=email] {
+input[type=text], input[type=email], input[type=date] {
   border: 2px solid #934e22;
   border-radius: 4px;
   width: 100%;
+  min-width: 95%;
   padding: 10px;
   font-size: 13px;
   margin-bottom: 10px;

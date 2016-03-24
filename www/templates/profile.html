@@ -14,7 +14,7 @@
       <main>
         <ng-include src="'templates/_profile-detail.html'"></ng-include>
         
-        <div ng-show="showChildrenList" clubinho-children-list list="children" add-child="addChild"></div>
+        <div ng-show="showChildrenList" clubinho-children-list list="children" add-child="addChild" edit-child="editChild" delete-child="deleteChild"></div>
         
         <div class="clear"></div>
         
@@ -61,10 +61,10 @@
     <button class="btn-see-children" ng-click="toggleChildrenList()" ng-hide="showChildrenList">Crianças cadastradas</button>
 
     <div class="preload">
-      <img src="coelha-selecionada.png" />
-      <img src="passarinha-selecionada.png" />
-      <img src="tigre-selecionado.png" />
-      <img src="lobo-selecionado.png" />
+      <img src="img/coelha-selecionada.png" />
+      <img src="img/passarinha-selecionada.png" />
+      <img src="img/tigre-selecionado.png" />
+      <img src="img/lobo-selecionado.png" />
     </div>
   </ion-modal-view>
 </div>

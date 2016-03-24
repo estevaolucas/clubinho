@@ -17,7 +17,9 @@ angular.module('clubinho.directives', [])
     restrict: 'A',
     scope: {
       children: '=list',
-      addChild: '='
+      addChild: '=',
+      editChild: '=',
+      deleteChild: '='
     },
     templateUrl: 'templates/directives/clubinho-children-list.html',
     link: function(scope, element, attr ) {

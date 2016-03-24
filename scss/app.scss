@@ -26,6 +26,14 @@
 a {
   text-decoration: none
 }
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
 .btn {
   border-radius: 10px;
   font-size: 22px;
@@ -39,10 +47,11 @@ a {
   }
 }
 
-input[type=text], input[type=email]{
+input[type=text], input[type=email], input[type=date]{
   border: 2px solid #934e22;
   border-radius: 4px;
   width: 100%;
+  min-width:95%;
   padding: 10px;
   font-size: 13px;
   margin-bottom: 10px;

@@ -1,6 +1,20 @@
 angular.module('clubinho.controllers')
 
-.controller('ProfileController', function($scope, $ionicModal, Children) {
+.controller('ProfileController', function($scope, $ionicModal, $ionicScrollDelegate, $cordovaDialogs, $rootScope, Children) {
+  var createChildModal = function(child) {
+    var $childScope = $scope.$new(true);
+
+    $ionicModal.fromTemplateUrl('templates/_children-form.html', {
+      scope: $childScope,
+      animation: 'slide-in-up',
+      controller: 'ChildrenController'
+    }).then(function(modal) {
+      $childScope.modal = modal;
+      $childScope.modal.show();
+      $childScope.editing = !!child;
+      $childScope.child = child ? angular.copy(child) : {};
+    });
+  }
   $scope.showChildrenList = true;
 
   $scope.data = {
@@ -35,16 +49,31 @@ angular.module('clubinho.controllers')
   }
 
   $scope.addChild = function() {
-    var $addChildScope = $scope.$new(true);
+    createChildModal();
+  }
 
-    $ionicModal.fromTemplateUrl('templates/_children-add.html', {
-      scope: $addChildScope,
-      animation: 'slide-in-up',
-      controller: 'AddChildrenController'
-    }).then(function(modal) {
-      $addChildScope.modal = modal;
-      $addChildScope.modal.show();
-    });
+  $scope.editChild = function(child) {
+    createChildModal(child);
+  }
+
+  $scope.deleteChild = function(child) {
+    var title = 'Remover o ' + child.name,
+      message = 'Você tem certeza?',
+      buttons = ['Cancelar', 'Sim'];
+
+    $cordovaDialogs.confirm(title, message, buttons).then(function(buttonIndex) {
+      if (buttonIndex == 2) {
+        $rootScope.app.loading = true;
+
+        Children.removeChild(child).then(function() {
+
+        }, function() {
+          $cordovaDialogs.alert('Desculpe', 'Não foi possível remover o usuário.', 'OK');
+        }).finally(function() {
+          $rootScope.app.loading = false;
+        });
+      }
+    })
   }
 
   Children.getList().then(function(children) {
@@ -59,6 +88,8 @@ angular.module('clubinho.controllers')
   // children list updated
   $scope.$on('clubinho-children-update', function(e, children) {
     $scope.children = children;
+
+    $ionicScrollDelegate.resize();
   });
 })
 
@@ -83,9 +114,7 @@ angular.module('clubinho.controllers')
   }
 })
 
-.controller('AddChildrenController', function($scope, $rootScope, $timeout, Children) {
-  $scope.child = {};
-
+.controller('ChildrenController', function($scope, $rootScope, $timeout, Children) {
   $scope.save = function() {
     if (form.$invalid) {
       return;
@@ -93,14 +122,27 @@ angular.module('clubinho.controllers')
 
     $rootScope.app.loading = true;
 
-    Children.addChild($scope.child).then(function() {
-      $scope.modal.remove();
-      $rootScope.$broadcast('clubinho-child-added', $scope.child);
-    }, function() {
-      console.log('ERROR: adding child', child);
-    }).finally(function() {
-      $rootScope.app.loading = false;
-    });
+    // creating a child
+    if (!$scope.editing) {
+      Children.addChild($scope.child).then(function() {
+        $scope.modal.remove();
+        $rootScope.$broadcast('clubinho-child-added', $scope.child);
+      }, function() {
+        console.log('ERROR: adding child', child);
+      }).finally(function() {
+        $rootScope.app.loading = false;
+      });
+    // editing a child
+    } else {
+      Children.editChild($scope.child).then(function() {
+        $scope.modal.remove();
+        $rootScope.$broadcast('clubinho-child-updated', $scope.child);
+      }, function() {
+        console.log('ERROR: editint child', child);
+      }).finally(function() {
+        $rootScope.app.loading = false;
+      });
+    }
   }
 
   $scope.cancel = function() {

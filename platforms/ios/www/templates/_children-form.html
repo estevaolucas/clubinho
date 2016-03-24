@@ -1,11 +1,12 @@
-<ion-modal-view class="add-child-modal" ng-controller="AddChildrenController">
+<ion-modal-view class="add-child-modal" ng-controller="ChildrenController">
   <form name="form" novalidate class="content">
-    <h2>Adicionar criança</h2>
+    <h2 ng-if="!editing">Adicionar criança</h2>
+    <h2 ng-if="editing">Editar criança</h2>
     <input type="text" name="name" ng-model="child.name" placeholder="Nome da Criança" required />
     <div ng-show="form.$submitted || form.name.$touched">
       <div ng-show="form.name.$error.required">Por favor informe o nome da criança.</div>
     </div>
-    <input name="birthday" ng-model="child.birthday" type="text" placeholder="Data de Nascimento" required />
+    <input name="birthday" ng-model="child.birthday" type="date" placeholder="Data de Nascimento" required />
     <div ng-show="form.$submitted || form.birthday.$touched">
       <div ng-show="form.birthday.$error.required">Por favor informe o dia de namcimento.</div>
     </div>
@@ -15,21 +16,21 @@
     <div class="choose-avatar">
       <ul>
         <li class="item-avatar item-coelha">
-          <input name="avatar" ng-model="child.avatar" type="radio" id="item-coelha" value="1" required>
+          <input name="avatar" ng-model="child.avatar" type="radio" id="item-coelha" value="ana" required>
           <label for="item-coelha"></label>
         </li>
         <li class="item-avatar item-passarinha">
-          <input name="avatar" ng-model="child.avatar" type="radio" id="item-passarinha" value="2">
+          <input name="avatar" ng-model="child.avatar" type="radio" id="item-passarinha" value="maria">
           <label for="item-passarinha"></label>
         </li>
         <li class="item-avatar item-tigre">
-          <input name="avatar" ng-model="child.avatar" type="radio" id="item-tigre" value="3">
+          <input name="avatar" ng-model="child.avatar" type="radio" id="item-tigre" value="luiz">
           <label for="item-tigre"></label>
         </li>
-        <li class="item-avatar item-lobo">
+        <!-- <li class="item-avatar item-lobo">
           <input name="avatar" ng-model="child.avatar" type="radio" id="item-lobo" value="4">
           <label for="item-lobo"></label>
-        </li>
+        </li> -->
       </ul>
 
       <div ng-show="form.$submitted || form.birthday.$touched">

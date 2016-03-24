@@ -17,8 +17,8 @@ div[clubinho-loader] {
       position: fixed;
       left: 50%;
       top: 50%;
-      height: 20vh;
-      width: 20vh;
+      height: 16vh;
+      width: 16vh;
       opacity: 0.9;
       transform: translate(-50%, -50%);
       padding: 3vw 3vh;
@@ -27,10 +27,16 @@ div[clubinho-loader] {
       svg {
         width: 12vw;
         height: 12vh;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
       }
     }
 
     .overlay {
+      pointer-events: none;
+      opacity: 0.4;
       position:fixed;
       left: 0;
       right: 0;
@@ -172,26 +178,32 @@ div[clubinho-children-list] {
           a{
             color: white;
           }
-          .btn-no, .btn-yes {
-            font-size: 17px;
-            color: white;
-            border: 2px solid white;
-            border-radius: 66px;
-            float: left;
-            padding: 10px 6px;
-            margin-right: 8px;
-            text-transform: uppercase;
-            h3{
-              color: white;
-            }
-          }
-          .btn-no {
-            background: #a74646;
-          }
-          .btn-yes {
-            background: #58a746;
-          }
         }
+      }
+
+      .btn-no, .btn-yes {
+        font-size: 17px;
+        color: white;
+        border: 2px solid white;
+        border-radius: 66px;
+        float: left;
+        padding: 10px 6px;
+        margin-right: 8px;
+        text-transform: uppercase;
+        h3{
+          color: white;
+        }
+        i {
+          font-size: 22px;
+          width: 41px;
+          display: block;
+        }
+      }
+      .btn-no {
+        background: #a74646;
+      }
+      .btn-yes {
+        background: #58a746;
       }
 
       &.add-children {

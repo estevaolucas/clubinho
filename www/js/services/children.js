@@ -10,7 +10,7 @@ angular.module('clubinho.services')
         deferred = deferred || $q.defer();
 
       promise.then(function(children) {
-        var childrenList = children.data;
+        childrenList = children.data;
 
         deferred.resolve(children.data);
       }, function(reason) {
@@ -30,6 +30,28 @@ angular.module('clubinho.services')
         "avatar": "ana",
         "events": []
       });
+
+      $rootScope.$broadcast('clubinho-children-update', childrenList);
+      deferred.resolve(childrenList);
+      
+      return deferred.promise;
+    },
+
+    editChild: function(data) {
+      var deferred = $q.defer();
+
+      $rootScope.$broadcast('clubinho-children-update', childrenList);
+      deferred.resolve(childrenList);
+      
+      return deferred.promise;
+    },
+
+    removeChild: function(data) {
+      var deferred = $q.defer();
+
+      if (childrenList.indexOf(data) != -1) {
+        childrenList.splice(childrenList.indexOf(data), 1);
+      }
 
       $rootScope.$broadcast('clubinho-children-update', childrenList);
       deferred.resolve(childrenList);

@@ -2828,6 +2828,55 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: auto;
 }
 
+.home .main .events h1 {
+  background: #563029;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.2em;
+  padding: 6px 0px;
+  font-size: 1.0em;
+}
+.home .main .events h1:before {
+  content: "||";
+  display: inline-block;
+  color: white;
+  margin-right: 10px;
+}
+.home .main .events h1:after {
+  content: "||";
+  display: inline-block;
+  color: white;
+  margin-left: 10px;
+}
+.home .main .events .cont-carousel {
+  position: relative;
+  padding: 15px 0px;
+  background: #fff6ed;
+  margin-bottom: 15px;
+}
+.home .main .events .cont-carousel .carousel {
+  max-width: 260px;
+  margin: 0 auto;
+}
+.home .main .events .bx-wrapper {
+  position: relative;
+}
+.home .main .events .bx-wrapper .bx-prev, .home .main .events .bx-wrapper .bx-next {
+  text-decoration: none;
+  font-size: 70px;
+  position: absolute;
+  top: 6px;
+  z-index: 99;
+  color: #eeb37e;
+}
+.home .main .events .bx-wrapper .bx-prev {
+  left: -25px;
+}
+.home .main .events .bx-wrapper .bx-next {
+  right: -25px;
+}
+
 .prizes {
   background: #ffe9bb;
   color: white;
@@ -2911,13 +2960,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 17px;
 }
 
-.profile .modal .profile-avatar {
+.profile .modal .profile-avatar-mini {
   position: absolute;
   top: 110px;
   left: 20px;
   width: 112px;
 }
-.profile .modal .profile-avatar img {
+.profile .modal .profile-avatar-mini img {
   border: 5px solid #563029;
   border-radius: 50px;
   width: 88%;
@@ -3316,8 +3365,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .schedule section ul li .date {
   float: left;
   width: 20vw;
-  font-size: 15px;
+  font-size: 20px;
   padding: 8% 7px;
+  line-height: 28px;
 }
 .schedule section ul li .content {
   float: left;
@@ -3344,7 +3394,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .schedule section ul li .actions button {
   border: none;
   background: none;
-  font-size: 16px;
+  font-size: 20px;
   padding: 0;
   margin: 0;
   color: #552f2b;
@@ -3392,12 +3442,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 0 0 10px;
   width: 60%;
   margin: 0 auto 10px;
+  font-size: 20px;
+  line-height: 28px;
 }
 .schedule-detail .modal main .sidebar button {
   color: #ff9c00;
   border: none;
   background: none;
   font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 20px;
 }
 .schedule-detail .modal main .sidebar button i {
   display: block;
@@ -3593,7 +3646,7 @@ div[clubinho-children-list] .children li.luiz .details p {
 div[clubinho-children-list] .children li.luiz .details a {
   color: white;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-no, div[clubinho-children-list] .children li.luiz .details .btn-yes {
+div[clubinho-children-list] .children li .btn-no, div[clubinho-children-list] .children li .btn-yes {
   font-size: 17px;
   color: white;
   border: 2px solid white;
@@ -3603,13 +3656,18 @@ div[clubinho-children-list] .children li.luiz .details .btn-no, div[clubinho-chi
   margin-right: 8px;
   text-transform: uppercase;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-no h3, div[clubinho-children-list] .children li.luiz .details .btn-yes h3 {
+div[clubinho-children-list] .children li .btn-no h3, div[clubinho-children-list] .children li .btn-yes h3 {
   color: white;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-no {
+div[clubinho-children-list] .children li .btn-no i, div[clubinho-children-list] .children li .btn-yes i {
+  font-size: 22px;
+  width: 41px;
+  display: block;
+}
+div[clubinho-children-list] .children li .btn-no {
   background: #a74646;
 }
-div[clubinho-children-list] .children li.luiz .details .btn-yes {
+div[clubinho-children-list] .children li .btn-yes {
   background: #58a746;
 }
 div[clubinho-children-list] .children li.add-children {
@@ -3656,6 +3714,15 @@ a {
   text-decoration: none;
 }
 
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
+
 .btn {
   border-radius: 10px;
   font-size: 22px;
@@ -3668,10 +3735,11 @@ a {
   opacity: 0.5;
 }
 
-input[type=text], input[type=email] {
+input[type=text], input[type=email], input[type=date] {
   border: 2px solid #934e22;
   border-radius: 4px;
   width: 100%;
+  min-width: 95%;
   padding: 10px;
   font-size: 13px;
   margin-bottom: 10px;
@@ -3680,108 +3748,34 @@ input[type=text], input[type=email] {
 body {
   font-family: 'Love Ya Like A Sister', cursive;
 }
-body .main .eventos h1 {
-  background: #563029;
-  color: white;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 0.2em;
+
+header {
+  padding: 30px 0px 10px 0px;
 }
-body .main .eventos h1:before {
-  content: "||";
-  display: inline-block;
-  color: white;
-  margin-right: 10px;
+header .logo {
+  margin: 0 auto;
+  max-width: 185px;
+  height: auto;
 }
-body .main .eventos h1:after {
-  content: "||";
-  display: inline-block;
-  color: white;
-  margin-left: 10px;
+header .logo img {
+  width: 100%;
 }
-body .main .eventos .bx-wrapper {
-  position: relative;
-}
-body .main .eventos .bx-wrapper .bx-prev {
-  color: #eeb37e;
-  font-size: 70px;
+header .profile-avatar {
+  padding: 0;
+  max-width: 40px;
+  max-height: 40px;
   position: absolute;
-  z-index: 99;
+  top: 22px;
+  right: 11px;
+  border: 4px solid #563029;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
 }
-body .main .eventos .bx-wrapper .bx-next {
-  color: #eeb37e;
-  font-size: 70px;
-  position: absolute;
-  z-index: 99;
-}
-body .main .eventos .cont-carousel {
-  background: #fff6ed;
-  margin-bottom: 15px;
+header .profile-avatar img {
+  width: 100%;
 }
 
-@media only screen and (min-width: 320px) {
-  body header {
-    padding: 30px 0px 10px 0px;
-  }
-  body header .logo {
-    margin: 0 auto;
-    max-width: 185px;
-    height: auto;
-  }
-  body header .logo img {
-    width: 100%;
-  }
-  body header .img-usuario {
-    padding: 0;
-    max-width: 40px;
-    max-height: 40px;
-    position: absolute;
-    top: 22px;
-    right: 11px;
-    border: 4px solid #563029;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    border-radius: 30px;
-  }
-  body header .img-usuario img {
-    width: 100%;
-  }
-  body .main .eventos h1 {
-    padding: 6px 0px;
-    font-size: 1.0em;
-  }
-  body .main .eventos h1:before {
-    margin-right: 10px;
-  }
-  body .main .eventos h1:after {
-    margin-left: 10px;
-  }
-  body .main .eventos .cont-carousel {
-    position: relative;
-    padding: 15px 0px;
-  }
-  body .main .eventos .cont-carousel .carousel {
-    max-width: 260px;
-    margin: 0 auto;
-  }
-  body .main .eventos .bx-wrapper .bx-prev {
-    text-decoration: none;
-    font-size: 70px;
-    position: absolute;
-    top: 6px;
-    z-index: 99;
-    left: -25px;
-  }
-  body .main .eventos .bx-wrapper .bx-next {
-    text-decoration: none;
-    font-size: 70px;
-    position: absolute;
-    top: 6px;
-    right: 0px;
-    z-index: 99;
-    right: -25px;
-  }
-}
 .schedule-detail .modal, .profile .modal {
   width: 100%;
   left: 0;
