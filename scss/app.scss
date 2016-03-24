@@ -8,6 +8,7 @@
 @import "pages/profile";
 @import "pages/schedule";
 @import "pages/schedule-detail";
+@import "pages/signin";
 @import "_directives";
 
 @font-face {
@@ -47,7 +48,7 @@ a[x-apple-data-detectors] {
   }
 }
 
-input[type=text], input[type=email], input[type=date]{
+input[type=text], input[type=email], input[type=date], input[type=password]{
   border: 2px solid #934e22;
   border-radius: 4px;
   width: 100%;

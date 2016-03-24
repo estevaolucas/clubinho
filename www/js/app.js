@@ -8,53 +8,60 @@ angular.module('clubinho', [
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+
+    .state('signin', {
+      url: '/sign-in',
+      templateUrl: 'templates/sign-in.html',
+      controller: 'SignInController'
+    })
+
     .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/tabs.html'
+    })
 
-  .state('tab.home', {
-    url: '/home',
-    views: {
-      'tab-home': {
-        templateUrl: 'templates/tab-home.html',
-        controller: 'HomeController'
+    .state('tab.home', {
+      url: '/home',
+      views: {
+        'tab-home': {
+          templateUrl: 'templates/tab-home.html',
+          controller: 'HomeController'
+        }
       }
-    }
-  })
+    })
 
-  .state('tab.schedule', {
-    url: '/schedule',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/tab-schedule.html',
-        controller: 'ScheduleController'
+    .state('tab.schedule', {
+      url: '/schedule',
+      views: {
+        'tab-schedule': {
+          templateUrl: 'templates/tab-schedule.html',
+          controller: 'ScheduleController'
+        }
       }
-    }
-  })
+    })
 
-  .state('tab.prizes', {
-    url: '/prizes',
-    views: {
-      'tab-prizes': {
-        templateUrl: 'templates/tab-prizes.html',
-        controller: 'PrizesController'
+    .state('tab.prizes', {
+      url: '/prizes',
+      views: {
+        'tab-prizes': {
+          templateUrl: 'templates/tab-prizes.html',
+          controller: 'PrizesController'
+        }
       }
-    }
-  })
+    })
 
-  .state('tab.about', {
-    url: '/about',
-    views: {
-      'tab-about': {
-        templateUrl: 'templates/tab-about.html',
-        controller: 'AboutController'
+    .state('tab.about', {
+      url: '/about',
+      views: {
+        'tab-about': {
+          templateUrl: 'templates/tab-about.html',
+          controller: 'AboutController'
+        }
       }
-    }
-  });
+    });
 
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/sign-in');
 })
 
 .run(function($ionicPlatform, $rootScope) {

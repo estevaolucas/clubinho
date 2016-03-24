@@ -1,0 +1,40 @@
+input.has-error, input.ng-invalid {
+  border: 2px solid rgb(249, 103, 103) !important;
+}
+
+.form-errors {
+  margin: 5px 0;
+
+  .form-error {
+    padding: 0 0 5px 12px;
+    color: rgb(249, 103, 103);
+    font-size: 14px;
+  }
+}
+
+.login form {
+  border-radius: 15px 15px 0 0;
+  background: white;
+  padding: 20px 12px;
+  width: 90%;
+  margin: 0 auto;
+
+  .btn-login {
+    display: block;
+    background: #4a9322;
+    margin: 0 auto 20px;
+    font-size: 26px;
+  }
+
+  span.border-bottom {
+    background: white;
+    width: 90%;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    padding: 12px;
+    transform: translate(-50%, 0);
+    bottom: -10px;
+    z-index: -1;
+  }
+}
