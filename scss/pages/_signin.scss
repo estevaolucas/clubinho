@@ -1,17 +1,3 @@
-input.has-error, input.ng-invalid {
-  border: 2px solid rgb(249, 103, 103) !important;
-}
-
-.form-errors {
-  margin: 5px 0;
-
-  .form-error {
-    padding: 0 0 5px 12px;
-    color: rgb(249, 103, 103);
-    font-size: 14px;
-  }
-}
-
 .login form {
   border-radius: 15px 15px 0 0;
   background: white;

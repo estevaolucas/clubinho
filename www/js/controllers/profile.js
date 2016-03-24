@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('ProfileController', function($scope, $ionicModal, $ionicScrollDelegate, $cordovaDialogs, $rootScope, Children, ionicToast) {
+.controller('ProfileController', function($scope, $ionicModal, $ionicScrollDelegate, $cordovaDialogs, $rootScope, Children, Authorization, ionicToast) {
   var createChildModal = function(child) {
     var $childScope = $scope.$new(true);
 
@@ -30,6 +30,11 @@ angular.module('clubinho.controllers')
   }
 
   $scope.close = function() {
+    $scope.modal.hide();
+  }
+
+  $scope.logout = function() {
+    Authorization.clear();
     $scope.modal.hide();
   }
 

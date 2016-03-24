@@ -8,59 +8,99 @@ angular.module('clubinho', [
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+
+    .state('signin', {
+      url: '/sign-in',
+      templateUrl: 'templates/sign-in.html',
+      controller: 'SignInController'
+    })
+
     .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
-  .state('tab.home', {
-    url: '/home',
-    views: {
-      'tab-home': {
-        templateUrl: 'templates/tab-home.html',
-        controller: 'HomeController'
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/tabs.html',
+      data: {
+        authorization: true
       }
-    }
-  })
+    })
 
-  .state('tab.schedule', {
-    url: '/schedule',
-    views: {
-      'tab-schedule': {
-        templateUrl: 'templates/tab-schedule.html',
-        controller: 'ScheduleController'
+    .state('tab.home', {
+      url: '/home',
+      views: {
+        'tab-home': {
+          templateUrl: 'templates/tab-home.html',
+          controller: 'HomeController'
+        }
       }
-    }
-  })
+    })
 
-  .state('tab.prizes', {
-    url: '/prizes',
-    views: {
-      'tab-prizes': {
-        templateUrl: 'templates/tab-prizes.html',
-        controller: 'PrizesController'
+    .state('tab.schedule', {
+      url: '/schedule',
+      views: {
+        'tab-schedule': {
+          templateUrl: 'templates/tab-schedule.html',
+          controller: 'ScheduleController'
+        }
       }
-    }
-  })
+    })
 
-  .state('tab.about', {
-    url: '/about',
-    views: {
-      'tab-about': {
-        templateUrl: 'templates/tab-about.html',
-        controller: 'AboutController'
+    .state('tab.prizes', {
+      url: '/prizes',
+      views: {
+        'tab-prizes': {
+          templateUrl: 'templates/tab-prizes.html',
+          controller: 'PrizesController'
+        }
       }
-    }
-  });
+    })
+
+    .state('tab.about', {
+      url: '/about',
+      views: {
+        'tab-about': {
+          templateUrl: 'templates/tab-about.html',
+          controller: 'AboutController'
+        }
+      }
+    });
 
   $urlRouterProvider.otherwise('/tab/home');
 })
 
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $state, Authorization) {
   $rootScope.app = {
     loading: false
   };
+
+  // if (Authorization.authorized()) {
+  //   alert('autorizado');
+  //   $state.go('tab.home');
+  // }
+
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+
+    if (toState.data && toState.data.authorization) {
+      if (!Authorization.authorized()) {
+        alert('autorizado?');
+        alert(Authorization.authorized());
+        $state.go('signin');   
+      } else {
+        alert('na')
+      }
+      
+    } else {
+      alert('não precisa');
+    }
+  });
+
+  $rootScope.$on('user-did-login', function() {
+    alert('login feito');
+    $state.go('tab.home'); 
+  });
+
+  $rootScope.$on('user-did-logout', function() {
+    $state.go('signin');
+  });
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard for form inputs)

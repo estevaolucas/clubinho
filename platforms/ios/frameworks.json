@@ -3,5 +3,7 @@
     "AudioToolbox.framework": 1,
     "AddressBook.framework": null,
     "libsqlite3.tbd": null,
-    "libz.tbd": null
+    "libz.tbd": null,
+    "SystemConfiguration.framework": 1,
+    "CoreTelephony.framework": 1
 }

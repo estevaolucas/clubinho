@@ -21,7 +21,7 @@
   display: none;
 }
 .clear{
-  clear:both;
+  clear: both;
 }
 
 a {
@@ -48,6 +48,9 @@ a[x-apple-data-detectors] {
   }
 }
 
+input.has-error, input.ng-invalid {
+  border: 2px solid rgb(249, 103, 103) !important;
+}
 input[type=text], input[type=email], input[type=date], input[type=password]{
   border: 2px solid #934e22;
   border-radius: 4px;
@@ -56,6 +59,15 @@ input[type=text], input[type=email], input[type=date], input[type=password]{
   padding: 10px;
   font-size: 13px;
   margin-bottom: 10px;
+}
+.form-errors {
+  margin: 5px 0;
+
+  .form-error {
+    padding: 0 0 5px 12px;
+    color: rgb(249, 103, 103);
+    font-size: 14px;
+  }
 }
 
 body{
@@ -117,7 +129,7 @@ header{
     padding-top: 210px;
     position: relative;
 
-    .close{
+    .close {
       background: image-url("x.png");
       position: absolute;
       top: 160px;

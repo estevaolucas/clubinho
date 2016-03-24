@@ -51,6 +51,10 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -100,6 +104,9 @@
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
         },
         "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        },
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
         }
     },
@@ -358,6 +365,23 @@
             "clobbers": [
                 "window.FileTransfer"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-network-information/www/network.js",
+            "id": "cordova-plugin-network-information.network",
+            "pluginId": "cordova-plugin-network-information",
+            "clobbers": [
+                "navigator.connection",
+                "navigator.network.connection"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+            "id": "cordova-plugin-network-information.Connection",
+            "pluginId": "cordova-plugin-network-information",
+            "clobbers": [
+                "Connection"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -370,6 +394,7 @@
         "cordova-plugin-dialogs": "1.2.0",
         "beaconCtrl": "0.1.0",
         "cordova-plugin-file": "4.1.1",
-        "cordova-plugin-file-transfer": "1.5.0"
+        "cordova-plugin-file-transfer": "1.5.0",
+        "cordova-plugin-network-information": "1.2.0"
     }
 }

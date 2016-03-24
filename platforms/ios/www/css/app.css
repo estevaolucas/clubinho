@@ -3415,6 +3415,31 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 16px;
 }
 
+.login form {
+  border-radius: 15px 15px 0 0;
+  background: white;
+  padding: 20px 12px;
+  width: 90%;
+  margin: 0 auto;
+}
+.login form .btn-login {
+  display: block;
+  background: #4a9322;
+  margin: 0 auto 20px;
+  font-size: 26px;
+}
+.login form span.border-bottom {
+  background: white;
+  width: 90%;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  padding: 12px;
+  transform: translate(-50%, 0);
+  bottom: -10px;
+  z-index: -1;
+}
+
 /* 
 * LOADER 
 * clubinho-loader
@@ -3676,7 +3701,11 @@ a[x-apple-data-detectors] {
   opacity: 0.5;
 }
 
-input[type=text], input[type=email], input[type=date] {
+input.has-error, input.ng-invalid {
+  border: 2px solid #f96767 !important;
+}
+
+input[type=text], input[type=email], input[type=date], input[type=password] {
   border: 2px solid #934e22;
   border-radius: 4px;
   width: 100%;
@@ -3684,6 +3713,15 @@ input[type=text], input[type=email], input[type=date] {
   padding: 10px;
   font-size: 13px;
   margin-bottom: 10px;
+}
+
+.form-errors {
+  margin: 5px 0;
+}
+.form-errors .form-error {
+  padding: 0 0 5px 12px;
+  color: #f96767;
+  font-size: 14px;
 }
 
 body {

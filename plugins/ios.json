@@ -81,6 +81,9 @@
         },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.clubinho835391"
         }
     },
     "dependent_plugins": {}

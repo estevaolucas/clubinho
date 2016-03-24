@@ -18,7 +18,10 @@ angular.module('clubinho', [
     .state('tab', {
       url: '/tab',
       abstract: true,
-      templateUrl: 'templates/tabs.html'
+      templateUrl: 'templates/tabs.html',
+      data: {
+        authorization: true
+      }
     })
 
     .state('tab.home', {
@@ -61,13 +64,31 @@ angular.module('clubinho', [
       }
     });
 
-  $urlRouterProvider.otherwise('/sign-in');
+  $urlRouterProvider.otherwise('/tab/home');
 })
 
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $state, Authorization) {
   $rootScope.app = {
     loading: false
   };
+
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+
+    if (toState.data && toState.data.authorization) {
+      if (!Authorization.authorized()) {
+        $state.go('signin');   
+      }
+    }
+  });
+
+  $rootScope.$on('user-did-login', function() {
+    alert('login feito');
+    $state.go('tab.home'); 
+  });
+
+  $rootScope.$on('user-did-logout', function() {
+    $state.go('signin');
+  });
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard for form inputs)
