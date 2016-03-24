@@ -1,1 +1,1 @@
-angular.module('clubinho.controllers', [])
+angular.module('clubinho.controllers', ['ionic-toast'])

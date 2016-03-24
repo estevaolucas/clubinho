@@ -11,60 +11,16 @@
         </div>
         <buttom class="edit-profile" ng-click="edit()"></buttom>
       </header>
+
       <main>
         <ng-include src="'templates/_profile-detail.html'"></ng-include>
         
         <div ng-show="showChildrenList" clubinho-children-list list="children" add-child="addChild" edit-child="editChild" delete-child="deleteChild"></div>
         
         <div class="clear"></div>
-        
-        <!-- Edit children -->
-        <ng-include src="'templates/_children-edit.html'"></ng-include>
-
-        <div class="cont-mensagem msg-crianca-adicionada" >
-          <div class="mensagem"style="">
-            <h2 style="">criança adicionada com sucesso</h2>
-          </div>
-        </div>
-        <div class="cont-mensagem crianca-deletada" >
-          <div class="mensagem"style="">
-            <h2 style="">criança deletada com sucesso</h2>
-          </div>
-        </div>
-        <div class="cont-mensagem msg-adicionado">
-          <div class="mensagem">
-            <h2>Perfil adicionado com sucesso</h2>
-          </div>
-        </div>
-        <div class="cont-mensagem msg-deletado">
-          <div class="mensagem">
-            <h2>Perfil deletado com sucesso</h2>
-          </div>
-        </div>
-        <div class="cont-mensagem msg-atualizado">
-          <div class="mensagem">
-            <h2>Dados atualizados com sucesso</h2>
-          </div>
-        </div>
-        <div class="msg-confirmar-delete-crianca" style="">
-          <div class="mensagem-deletar-crianca" style="">
-            <h2 style="">Tem certeza que quer deletar<br/> o perfil dessa criança?</h2>
-            <div class="cont-btn">
-              <button class="btn-cancelar">Cancelar</button>
-              <button class="btn-deletar-crianca">Deletar</button>
-            </div>
-          </div>
-        </div>
       </main>
     </ion-content>
 
     <button class="btn-see-children" ng-click="toggleChildrenList()" ng-hide="showChildrenList">Crianças cadastradas</button>
-
-    <div class="preload">
-      <img src="img/coelha-selecionada.png" />
-      <img src="img/passarinha-selecionada.png" />
-      <img src="img/tigre-selecionado.png" />
-      <img src="img/lobo-selecionado.png" />
-    </div>
   </ion-modal-view>
 </div>

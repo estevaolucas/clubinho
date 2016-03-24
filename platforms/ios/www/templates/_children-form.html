@@ -41,7 +41,10 @@
 
     <div class="actions">
       <button type="button" class="btn btn-cancel" ng-click="cancel(form)">Cancelar</button>
-      <button type="submit" class="btn btn-add" ng-click="save(child)">Adicionar</button>
+      <button type="submit" class="btn btn-add" ng-click="save(child)" ng-disabled="form.$invalid">
+        <span ng-if="!editing">Adicionar</span>
+        <span ng-if="editing">Salvar</span>
+      </button>
     </div>
   </form>
   <div class="clear"></div>

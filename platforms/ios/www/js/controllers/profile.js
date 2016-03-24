@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('ProfileController', function($scope, $ionicModal, $ionicScrollDelegate, $cordovaDialogs, $rootScope, Children) {
+.controller('ProfileController', function($scope, $ionicModal, $ionicScrollDelegate, $cordovaDialogs, $rootScope, Children, ionicToast) {
   var createChildModal = function(child) {
     var $childScope = $scope.$new(true);
 
@@ -66,9 +66,9 @@ angular.module('clubinho.controllers')
         $rootScope.app.loading = true;
 
         Children.removeChild(child).then(function() {
-
+          ionicToast.show('Criança deletada com sucesso.', 'top', false, 2500);
         }, function() {
-          $cordovaDialogs.alert('Desculpe', 'Não foi possível remover o usuário.', 'OK');
+          ionicToast.show('Não foi possível deletar a criança.', 'top', false, 2500);
         }).finally(function() {
           $rootScope.app.loading = false;
         });
@@ -93,7 +93,7 @@ angular.module('clubinho.controllers')
   });
 })
 
-.controller('EditProfileController', function($scope, $timeout, $rootScope) {
+.controller('EditProfileController', function($scope, $timeout, $rootScope, ionicToast) {
   $scope.update = function(form) {
     if (form.$invalid) {
       return;
@@ -106,6 +106,8 @@ angular.module('clubinho.controllers')
       $scope.modal.remove();
       $rootScope.$broadcast('clubinho-profile-updated', $scope.data);
       $rootScope.app.loading = false;
+
+      ionicToast.show('Dados atualizados com sucesso', 'top', false, 2500);
     }, 1000);
   }
 
@@ -114,7 +116,7 @@ angular.module('clubinho.controllers')
   }
 })
 
-.controller('ChildrenController', function($scope, $rootScope, $timeout, Children) {
+.controller('ChildrenController', function($scope, $rootScope, $timeout, Children, ionicToast) {
   $scope.save = function() {
     if (form.$invalid) {
       return;
@@ -127,8 +129,10 @@ angular.module('clubinho.controllers')
       Children.addChild($scope.child).then(function() {
         $scope.modal.remove();
         $rootScope.$broadcast('clubinho-child-added', $scope.child);
+
+        ionicToast.show('Criança adicionada com sucesso.', 'top', false, 2500);
       }, function() {
-        console.log('ERROR: adding child', child);
+        ionicToast.show('Não foi possivel adicionar a criança.', 'top', false, 2500);
       }).finally(function() {
         $rootScope.app.loading = false;
       });
@@ -137,8 +141,10 @@ angular.module('clubinho.controllers')
       Children.editChild($scope.child).then(function() {
         $scope.modal.remove();
         $rootScope.$broadcast('clubinho-child-updated', $scope.child);
+
+        ionicToast.show('Criança editada com sucesso.', 'top', false, 2500);
       }, function() {
-        console.log('ERROR: editint child', child);
+        ionicToast.show('Não foi possivel editar criança', 'top', false, 2500);
       }).finally(function() {
         $rootScope.app.loading = false;
       });
