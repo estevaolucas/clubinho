@@ -24,32 +24,93 @@
         }
       }
 
-      .cont-carousel{
+      ion-slide {
+        background: #FFF6ED;
+
+        time {
+          background-color: #0826AA;
+          float: left;
+          padding: 30px 6px;
+          text-align: center;
+          color: white;
+          margin-right: 10px;
+          font-size: 12px;
+          
+          strong {
+            display: block;
+            font-size: 18px;
+          }
+        }
+        h2, h3, p {
+          font-family: helvetica neue, Verdana;
+        }
+        h3, p {
+          color: #63453D;
+        }
+        h2 {
+          color: #0826AA;
+        }
+        h3 {
+          font-size: 11px;
+          border-bottom: 1px solid #57302B;
+          padding-bottom: 8px;
+          margin-bottom: 8px;
+          margin-top: 4px;
+          width: 90%;
+        }
+        p {
+          font-size: 12px
+        }
+
+        &.orange {
+          time {
+            background-color: #FF9C00;
+          }
+          h2 {
+            color: #FF9C00;
+          }
+        }
+        &.red {
+          time {
+            background-color: #BB0504;
+          }
+          h2 {
+            color: #BB0504;
+          }
+        }
+      }
+
+      .carousel{
         position: relative;
         padding: 15px 0px;
         background: #fff6ed;
         margin-bottom: 15px;
 
-        .carousel{
+        .wrapper{
           max-width: 260px;
           margin: 0 auto;
         }
       }
-      .bx-wrapper{
+      .action{
         position: relative;
         
-        .bx-prev, .bx-next {
+        .bt-prev, .bt-next {
           text-decoration: none;
           font-size: 70px;
           position: absolute;
           top: 6px;
           z-index: 99;
           color: #eeb37e;
+          border: none;
+          background: transparent;
+          font-family: 'Love Ya Like A Sister', cursive;
+          width: 18px;
+          padding: 0;
         }
-        .bx-prev{
+        .bt-prev{
           left: -25px;
         }
-        .bx-next{
+        .bt-next{
           right: -25px;
         }
       }

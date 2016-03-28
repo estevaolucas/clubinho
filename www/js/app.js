@@ -90,7 +90,6 @@ angular.module('clubinho', [
   });
 
   $rootScope.$on('user-did-login', function() {
-    alert('login feito');
     $state.go('tab.home'); 
   });
 

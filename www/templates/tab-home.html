@@ -14,13 +14,22 @@
     <div class="main">
       <div class="events">
         <h1>próximos eventos</h1>
-        <div class="cont-carousel">
-          <div class="carousel">
-            <ul class="bxslider">
-              <li><img src="img/img-carousel.jpg" width="100%" alt=""></li>
-              <li><img src="img/img-carousel2.jpg" width="100%" alt=""></li>
-              <li><img src="img/img-carousel3.jpg" width="100%" alt=""></li>
-            </ul>
+        <div class="carousel">
+          <div class="wrapper">
+            <div class="action">
+              <button class="bt-prev" ng-click="prev()"> < </button>
+              <button class="bt-next" ng-click="next()"> > </button>
+            </div>
+            <ion-slide-box show-pager="false" auto-play="true" does-continue
+="true">
+              <ion-slide class="slider-slide {{event.className}}" ng-repeat="event in schedule | limitTo: 3" ng-click="openEvent(event)">
+                <time>{{event.date | date:'dd/MM'}} <strong>{{event.date | date:'HH:ss'}}</strong></time>
+                <h2>{{event.title_plain}}</h2>
+                <h3>com {{event.custom_fields.palestrante[0]}}</h3>
+                <p ng-bind-html="event.excerpt"></p>
+                <div class="clear"></div>
+              </ion-slide>
+            </ion-slide-box>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('ProfileController', function($scope, $ionicModal, $ionicScrollDelegate, $cordovaDialogs, $rootScope, Children, Authorization, ionicToast) {
+.controller('ProfileController', function($scope, $ionicModal, $ionicScrollDelegate, $cordovaDialogs, $rootScope, Children, Authorization, ionicToast, Profile) {
   var createChildModal = function(child) {
     var $childScope = $scope.$new(true);
 
@@ -17,6 +17,7 @@ angular.module('clubinho.controllers')
   }
   $scope.showChildrenList = true;
 
+  // $scope.data = Profile.getData();
   $scope.data = {
     name: 'Estevão Lucas',
     cpf: '016.788.888-72',

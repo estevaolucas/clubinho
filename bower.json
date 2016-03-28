@@ -3,7 +3,6 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4",
-    "bxSlider": "~4.2.5"
   },
   "resolutions": {
     "angular": "1.4.3",

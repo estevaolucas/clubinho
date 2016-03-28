@@ -1,7 +1,7 @@
 angular.module('clubinho.services')
 
 .service('Authorization', function($http, $q, $rootScope, apiConfig) {
-  var authorized = true;
+  var authorized = false;
 
   return {
     authorized: function() {
@@ -11,8 +11,6 @@ angular.module('clubinho.services')
 
         authorized = username && password;
       }
-
-      console.log('passou', authorized);
 
       return authorized;
     },
@@ -32,7 +30,8 @@ angular.module('clubinho.services')
       var deferred = $q.defer(), 
         request = $http({
           method: 'get',
-          url: apiConfig.baseUrl + 'auth/generate_auth_cookie/',
+          url: 'mockup/login.json',
+          // url: apiConfig.baseUrl + 'auth/generate_auth_cookie/',
           params: {
             insecure: 'cool',
             username: data.username,
@@ -60,6 +59,18 @@ angular.module('clubinho.services')
       });
 
       return deferred.promise;
+    }
+  };
+})
+
+.service('Profile', function(Authorization) {
+  var authorized = false;
+
+  return {
+    getData: function() {
+      if (Authorization.authorized()) {
+        return JSON.parse(localStorage.getItem('data'));
+      }
     }
   };
 })

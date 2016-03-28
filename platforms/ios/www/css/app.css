@@ -2849,31 +2849,84 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: white;
   margin-left: 10px;
 }
-.home .main .events .cont-carousel {
+.home .main .events ion-slide {
+  background: #FFF6ED;
+}
+.home .main .events ion-slide time {
+  background-color: #0826AA;
+  float: left;
+  padding: 30px 6px;
+  text-align: center;
+  color: white;
+  margin-right: 10px;
+  font-size: 12px;
+}
+.home .main .events ion-slide time strong {
+  display: block;
+  font-size: 18px;
+}
+.home .main .events ion-slide h2, .home .main .events ion-slide h3, .home .main .events ion-slide p {
+  font-family: helvetica neue, Verdana;
+}
+.home .main .events ion-slide h3, .home .main .events ion-slide p {
+  color: #63453D;
+}
+.home .main .events ion-slide h2 {
+  color: #0826AA;
+}
+.home .main .events ion-slide h3 {
+  font-size: 11px;
+  border-bottom: 1px solid #57302B;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  margin-top: 4px;
+  width: 90%;
+}
+.home .main .events ion-slide p {
+  font-size: 12px;
+}
+.home .main .events ion-slide.orange time {
+  background-color: #FF9C00;
+}
+.home .main .events ion-slide.orange h2 {
+  color: #FF9C00;
+}
+.home .main .events ion-slide.red time {
+  background-color: #BB0504;
+}
+.home .main .events ion-slide.red h2 {
+  color: #BB0504;
+}
+.home .main .events .carousel {
   position: relative;
   padding: 15px 0px;
   background: #fff6ed;
   margin-bottom: 15px;
 }
-.home .main .events .cont-carousel .carousel {
+.home .main .events .carousel .wrapper {
   max-width: 260px;
   margin: 0 auto;
 }
-.home .main .events .bx-wrapper {
+.home .main .events .action {
   position: relative;
 }
-.home .main .events .bx-wrapper .bx-prev, .home .main .events .bx-wrapper .bx-next {
+.home .main .events .action .bt-prev, .home .main .events .action .bt-next {
   text-decoration: none;
   font-size: 70px;
   position: absolute;
   top: 6px;
   z-index: 99;
   color: #eeb37e;
+  border: none;
+  background: transparent;
+  font-family: 'Love Ya Like A Sister', cursive;
+  width: 18px;
+  padding: 0;
 }
-.home .main .events .bx-wrapper .bx-prev {
+.home .main .events .action .bt-prev {
   left: -25px;
 }
-.home .main .events .bx-wrapper .bx-next {
+.home .main .events .action .bt-next {
   right: -25px;
 }
 
@@ -2980,6 +3033,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 12vw;
   height: 12vw;
   background-size: cover;
+}
+.profile .modal .btn-logout {
+  position: absolute;
+  right: 10px;
+  border: none;
+  background: transparent;
+  color: #563029;
+  font-size: 14px;
+  padding: 0;
 }
 .profile .modal main {
   background-color: #ff9c00;

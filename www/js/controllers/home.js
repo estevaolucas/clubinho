@@ -1,8 +1,21 @@
 angular.module('clubinho.controllers')
 
-.controller('HomeController', function($scope, $ionicModal, $ionicScrollDelegate, Children) {
-  var $profileScope = $scope.$new(true);
+.controller('HomeController', function($scope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, Children, Schedule) {
+  $scope.loading = true;
+  
+  Schedule.getList().then(function(schedule) {
+    var colors = ['blue', 'orange', 'red'],
+      max = colors.length,
+      min = 0;
 
+    $scope.schedule = schedule.map(function(event, i) {
+      event.className = colors[i % 3];
+      return event;
+    });
+    $scope.loading = false;
+  });
+
+  var $profileScope = $scope.$new(true);
   $ionicModal.fromTemplateUrl('templates/profile.html', {
     scope: $profileScope,
     animation: 'slide-in-up',
@@ -10,6 +23,10 @@ angular.module('clubinho.controllers')
   }).then(function(modal) {
     $profileScope.modal = modal;
   });
+
+  $scope.openEvent = function(event) {
+    $state.go('tab.schedule', {id: event.id})
+  }
 
   $scope.openProfile = function() {
     $profileScope.modal.show()
@@ -32,13 +49,10 @@ angular.module('clubinho.controllers')
     $ionicScrollDelegate.scrollTop();
   });
 
-  // Activate slider
-  $('.home .bxslider').bxSlider({
-    auto: true,
-    responsive: true,
-    adaptiveHeight: true,
-    pager: false,
-    nextText: ' > ',
-    prevText: ' < '  
-  });
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.prev = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
 });

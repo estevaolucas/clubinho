@@ -23,6 +23,16 @@
     background-size: cover;
   }
 
+  .btn-logout {
+    position: absolute;
+    right: 10px;
+    border: none;
+    background: transparent;
+    color: #563029;
+    font-size: 14px;
+    padding: 0;
+  }
+
   main {
     background-color:#ff9c00;
 
