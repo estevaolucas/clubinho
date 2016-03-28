@@ -37,8 +37,6 @@
     background-color:#ff9c00;
 
     .responsible{
-      padding-bottom: 20px;
-
       h1{
         text-transform: capitalize;
         font-size: 23px;
@@ -52,62 +50,28 @@
     }
   }
 
-  .detail{
-    background: #ff9c00;
-    color:#ff9c00;
+  table {
+    width: 100%;
     margin: 20px 0;
-    
-    .left{
-      float: left;
-      width: 26%;
-      font-size: 13px;
-      padding-left: 20px;
 
-      .endereco{
-        margin-top: 6px;
-      }
-    }
-    .right{
-      float: right;
-      width: 74%;
-      font-size: 15px;
-      div{
-        margin: 0px auto;
-        width: 72%;
-      }
-      .tel-number{
-        padding-top: 12px;
-      }
-    }
-  }
-  article{
-    background: #563029;
-    border-top: 3px dotted white;
-    padding: 13px 0px;
-    p{
-      font-size: 25px;
-      span{
-        font-size: 35px;
-      }
-    }
-  }
+    tr {
+      td {
+        border-top: 3px dotted white;
 
-  .cont-editar-crianca{
-    display:none;
-    position: absolute;
-    margin: 0 auto;
-    top: 0px;
-    width: 95%;
-    .adicionar-crianca {
-      max-height: 100%;
-      border-radius: 25px;
+        background: #563029;
+        color:#ff9c00;
+        font-size: 20px;
+        padding: 13px 0;
+
+        &:first-child {
+          width: 26%;
+          font-size: 13px;
+          padding-left: 20px;
+        }
+      }
     }
-  }
-  .cont-adicionar-crianca{
-    .adicionar-crianca{
-      max-height: 60px;
-    }
-  }
+  } 
+
   .actions{
     p{
       clear: both;
@@ -130,7 +94,6 @@
     font-family: 'Love Ya Like A Sister';
   }
 }
-
 
 // MODAL add child
 .add-child-modal{

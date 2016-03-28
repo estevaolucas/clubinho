@@ -15,8 +15,25 @@
       </header>
 
       <main>
-        <ng-include src="'templates/_profile-detail.html'"></ng-include>
-        
+        <div class="responsible">
+          <h1>{{data.name}}</h1>
+          <h3>{{data.cpf}}</h3>
+        </div>
+        <table>
+          <tr>
+            <td>Telefone</td>
+            <td>{{data.phone}}</td>
+          </tr>
+          <tr>
+            <td>E-mail</td>
+            <td>{{data.email}}</td>
+          </tr>
+          <tr>
+            <td>Endereço</td>
+            <td>{{data.address}}</td>
+          </tr>
+        </table>
+
         <div ng-show="showChildrenList" clubinho-children-list list="children" add-child="addChild" edit-child="editChild" delete-child="deleteChild"></div>
         
         <div class="clear"></div>
