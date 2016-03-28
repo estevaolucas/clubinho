@@ -3255,47 +3255,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: white;
   border-bottom: 3px dotted white;
 }
+.schedule section h2, .schedule section h3 {
+  color: white;
+}
 .schedule section h2 {
   text-align: center;
   background: #ff9c00;
   padding: 11px 0px;
   font-size: 26px;
 }
-.schedule section ul li:nth-child(2n+2) {
-  background: #ff9c00;
-}
-.schedule section ul li:nth-child(2n+2) article, .schedule section ul li:nth-child(2n+2) article p {
-  color: #552f2b;
-}
-.schedule section ul li:nth-child(2n+2) .content {
-  border-right: 1px solid #552f2b;
-  border-left: 1px solid #552f2b;
-}
-.schedule section ul li:nth-child(2n+2) .content p {
-  color: #552f2b;
-}
-.schedule section ul li:nth-child(2n+1) {
-  background: #552f2b;
-}
-.schedule section ul li:nth-child(2n+1) article, .schedule section ul li:nth-child(2n+1) article p {
-  color: #ff9c00;
-}
-.schedule section ul li:nth-child(2n+1) article.content, .schedule section ul li:nth-child(2n+1) article p.content {
-  border-right: 1px solid #ff9c00;
-  border-left: 1px solid #ff9c00;
-}
-.schedule section ul li:nth-child(2n+1) article.content p, .schedule section ul li:nth-child(2n+1) article p.content p {
-  color: #ff9c00;
-}
-.schedule section ul li:nth-child(2n+1) article.actions button, .schedule section ul li:nth-child(2n+1) article p.actions button {
-  color: #ff9c00;
-}
 .schedule section ul li {
   background: red;
   text-align: center;
-}
-.schedule section ul li .content h2, .schedule section ul li .content h3 {
-  color: white;
 }
 .schedule section ul li .date {
   float: left;
@@ -3340,6 +3311,38 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .schedule section ul li .actions button i {
   display: block;
 }
+.schedule section ul li:nth-child(2n+2) {
+  background: #ff9c00;
+}
+.schedule section ul li:nth-child(2n+2) article, .schedule section ul li:nth-child(2n+2) article p {
+  color: #552f2b;
+}
+.schedule section ul li:nth-child(2n+2) .content {
+  border-right: 1px solid #552f2b;
+  border-left: 1px solid #552f2b;
+}
+.schedule section ul li:nth-child(2n+2) .content h2 {
+  background-color: #552f2b;
+}
+.schedule section ul li:nth-child(2n+2) .content p {
+  color: #552f2b;
+}
+.schedule section ul li:nth-child(2n+1) {
+  background: #552f2b;
+}
+.schedule section ul li:nth-child(2n+1) article, .schedule section ul li:nth-child(2n+1) article p {
+  color: #ff9c00;
+}
+.schedule section ul li:nth-child(2n+1) article.content, .schedule section ul li:nth-child(2n+1) article p.content {
+  border-right: 1px solid #ff9c00;
+  border-left: 1px solid #ff9c00;
+}
+.schedule section ul li:nth-child(2n+1) article.content p, .schedule section ul li:nth-child(2n+1) article p.content p {
+  color: #ff9c00;
+}
+.schedule section ul li:nth-child(2n+1) article.actions button, .schedule section ul li:nth-child(2n+1) article p.actions button {
+  color: #ff9c00;
+}
 
 .schedule-detail .modal header {
   padding-top: 210px;
@@ -3380,6 +3383,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 20px;
   line-height: 28px;
 }
+.schedule-detail .modal main .sidebar time.hour {
+  font-size: 16px;
+}
 .schedule-detail .modal main .sidebar button {
   color: #ff9c00;
   border: none;
@@ -3413,6 +3419,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .schedule-detail .modal main .container > div p {
   color: #552f2b;
   font-size: 16px;
+  margin-bottom: 14px;
 }
 
 .login form {

@@ -6,6 +6,14 @@ angular.module('clubinho', [
   'clubinho.directives'
 ])
 
+.constant('apiConfig', {
+  baseUrl: 'http://peppersp.com.br/beacon/api/',
+  status: {
+    success: 'ok',
+    error: 'error'
+  }
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -35,7 +43,7 @@ angular.module('clubinho', [
     })
 
     .state('tab.schedule', {
-      url: '/schedule',
+      url: '/schedule?:id',
       views: {
         'tab-schedule': {
           templateUrl: 'templates/tab-schedule.html',
@@ -67,7 +75,7 @@ angular.module('clubinho', [
   $urlRouterProvider.otherwise('/tab/home');
 })
 
-.run(function($ionicPlatform, $rootScope, $state, Authorization) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule) {
   $rootScope.app = {
     loading: false
   };
@@ -90,12 +98,28 @@ angular.module('clubinho', [
     $state.go('signin');
   });
 
+  $rootScope.$on('$cordovaLocalNotification:click', function(event, notification, state) {
+    console.log(notification);
+  });
+
   $ionicPlatform.ready(function() {
+    // Local notification handle
+    if (window.cordova && window.cordova.plugins && window.cordova.plugins.notification) {
+      cordova.plugins.notification.local.on('click', function(notification) {
+        var data = JSON.parse(notification.data);
+
+        // Open event detail
+        if (data.type == 'event') {
+          $state.go('tab.schedule', {id: data.id})
+        }
+      });
+    }
+
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(false);
-
     }
 
     if (window.StatusBar) {

@@ -6,11 +6,13 @@
     "bxSlider": "~4.2.5"
   },
   "resolutions": {
-    "angular": "1.4.3"
+    "angular": "1.4.3",
+    "angular-sanitize": "1.4.3"
   },
   "dependencies": {
     "ionic-toast": "^0.2.0",
     "angular-messages": "^1.5.2",
-    "ionic-cache-src": "^0.7.1"
+    "ionic-cache-src": "^0.7.1",
+    "angular-sanitize": "^1.5.3"
   }
 }

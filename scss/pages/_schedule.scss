@@ -21,51 +21,21 @@
     border-bottom: 3px dotted white;
   }
   section {
+    h2, h3{
+      color: white;
+    }
+
     h2 {
       text-align: center;
       background: #ff9c00;
       padding: 11px 0px;
       font-size: 26px;
     }
-    ul {
-      li:nth-child(2n+2) {
-        background: #ff9c00;
-        article, article p {
-          color: #552f2b;
-        }
-        .content {
-          border-right: 1px solid #552f2b;
-          border-left: 1px solid #552f2b;
-          p {
-            color: #552f2b;
-          }
-        }
-      }
-      li:nth-child(2n+1) {
-        background: #552f2b;
-        article, article p {
-          color: #ff9c00;
 
-          &.content {
-            border-right: 1px solid #ff9c00;
-            border-left: 1px solid #ff9c00;
-            p {
-              color: #ff9c00;
-            }
-          }
-          &.actions button {
-            color: #ff9c00;
-          }
-        }
-      }
+    ul {
       li {
         background: red;
         text-align: center;
-        .content {
-          h2, h3{
-            color: white;
-          }
-        }
         .date {
           float: left;
           width: 20vw;
@@ -94,6 +64,7 @@
           width: 20vw;
           font-size: 15px;
           padding: 7% 7px;
+
           button {
             border: none;
             background: none;
@@ -107,6 +78,40 @@
 
             i {
               display: block;  
+            }
+          }
+        }
+
+        &:nth-child(2n+2) {
+          background: #ff9c00;
+          article, article p {
+            color: #552f2b;
+          }
+          .content {
+            border-right: 1px solid #552f2b;
+            border-left: 1px solid #552f2b;
+            h2 {
+              background-color: #552f2b;
+            }
+            p {
+              color: #552f2b;
+            }
+          }
+        }
+        &:nth-child(2n+1) {
+          background: #552f2b;
+          article, article p {
+            color: #ff9c00;
+
+            &.content {
+              border-right: 1px solid #ff9c00;
+              border-left: 1px solid #ff9c00;
+              p {
+                color: #ff9c00;
+              }
+            }
+            &.actions button {
+              color: #ff9c00;
             }
           }
         }

@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "clubinho",
   "dependencies": {
+    "angular-sanitize": "^1.5.3",
     "gulp": "^3.5.6",
     "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.2.0",

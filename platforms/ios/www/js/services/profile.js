@@ -1,7 +1,7 @@
 angular.module('clubinho.services')
 
-.service('Authorization', function($http, $q, $rootScope) {
-  var authorized = false;
+.service('Authorization', function($http, $q, $rootScope, apiConfig) {
+  var authorized = true;
 
   return {
     authorized: function() {
@@ -9,9 +9,10 @@ angular.module('clubinho.services')
         var username = localStorage.getItem('username'),
           password = localStorage.getItem('password');
 
-        alert("teste: " + username + " " + password);
         authorized = username && password;
       }
+
+      console.log('passou', authorized);
 
       return authorized;
     },
@@ -26,10 +27,12 @@ angular.module('clubinho.services')
     },
 
     go: function(data) {
+      delete $http.defaults.headers.common['X-Requested-With'];
+
       var deferred = $q.defer(), 
         request = $http({
           method: 'get',
-          url: 'http://peppersp.com.br/beacon/api/auth/generate_auth_cookie/',
+          url: apiConfig.baseUrl + 'auth/generate_auth_cookie/',
           params: {
             insecure: 'cool',
             username: data.username,
@@ -52,6 +55,7 @@ angular.module('clubinho.services')
           deferred.resolve(data);
         }
       }, function(response) {
+        console.log(response);
         deferred.reject('Erro');
       });
 

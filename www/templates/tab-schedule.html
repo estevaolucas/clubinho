@@ -14,15 +14,15 @@
         <h2>Próximos eventos</h2>
         <ul>
           <li ng-repeat="event in schedule">
-            <article class="date">
-              {{event.date | date:'EEE'}}<br/>
+            <article class="date">            
               {{event.date | date:'dd'}}<br/>
-              {{event.date | date:'mm'}}
+              {{event.date | date:'MM'}}<br/>
+              {{event.date | date:'HH:ss'}}
             </article>
-            <article class="content">
-              <h2>{{event.title}}</h2>
-              <h3>com {{event.author}}</h3>
-              <p>{{event.description}}</p>
+            <article class="content" ng-click="detail(event)">
+              <h2>{{event.title_plain}}</h2>
+              <h3>com {{event.custom_fields.palestrante[0]}}</h3>
+              <div ng-bind-html="event.excerpt"></div>
             </article>
             <article class="actions">
               <button ng-click="toggleFavorite(event)"><i ng-class="{'ion-star': event.favorite, 'ion-ios-star-outline': !event.favorite}"></i> Fav</button>

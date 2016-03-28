@@ -8,11 +8,11 @@ angular.module('clubinho.controllers')
       return;
     }
     
-    if ($cordovaNetwork.isOffline()) {
-      ionicToast.show('Você está desconectado da internet', 'top', false, 2500);
+    // if ($cordovaNetwork.isOffline()) {
+    //   ionicToast.show('Você está desconectado da internet', 'top', false, 2500);
 
-      return;
-    }
+    //   return;
+    // }
 
     $scope.error = null;
     $rootScope.app.loading = true;

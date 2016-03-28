@@ -10,20 +10,20 @@
 
       <main>
         <div class="cover">
-          <img cache-src="{{event.cover}}">
+          <img cache-src="{{event.attachments[0].images.full.url}}">
         </div> 
         <div class="container">
           <div>
-            <h1>{{event.title}}</h1>
-            <h2>com {{event.author}}</h2>
-            <p>{{event.content}}</p>
+            <h1>{{event.title_plain}}</h1>
+            <h2>com {{event.custom_fields.palestrante[0]}}</h2>
+            <div ng-bind-html="event.content"></div>
           </div>
         </div>
         <div class="sidebar">
           <h5>
-            <time datetime="{{event.date}}">{{event.date | date:'EEE'}}</time>
             <time datetime="{{event.date}}">{{event.date | date:'dd'}}</time>
-            <time datetime="{{event.date}}">{{event.date | date:'mm'}}</time>
+            <time datetime="{{event.date}}">{{event.date | date:'MM'}}</time>
+            <time datetime="{{event.date}}" class="hour">{{event.date | date:'HH:ss'}}</time>
             
             <button ng-click="toggleFavorite(event)">
               <i ng-class="{'ion-star': event.favorite, 'ion-ios-star-outline': !event.favorite}"></i> Fav

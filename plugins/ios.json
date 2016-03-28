@@ -84,7 +84,14 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.ionicframework.clubinho835391"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        }
+    }
 }
