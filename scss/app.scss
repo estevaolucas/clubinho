@@ -51,7 +51,8 @@ a[x-apple-data-detectors] {
 input.has-error, input.ng-invalid {
   border: 2px solid rgb(249, 103, 103) !important;
 }
-input[type=text], input[type=email], input[type=date], input[type=password]{
+input[type=text], input[type=email], input[type=date], input[type=password], select{
+  // -webkit-appearance: none;
   border: 2px solid #934e22;
   border-radius: 4px;
   width: 100%;
@@ -59,6 +60,13 @@ input[type=text], input[type=email], input[type=date], input[type=password]{
   padding: 10px;
   font-size: 13px;
   margin-bottom: 10px;
+  height: 34px;
+  background: white;
+
+  option {
+    font-size: 13px;
+    padding: 0px 2px 1px;
+  }
 }
 .form-errors {
   margin: 5px 0;

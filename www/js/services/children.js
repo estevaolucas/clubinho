@@ -2,7 +2,25 @@ angular.module('clubinho.services')
 
 .service('Children', function($http, $q, $rootScope) {
   var deferred,
-    childrenList = [];
+    childrenList = [],
+    avatars = ['ana', 'luiz', 'maria'],
+    normalizeChild = function(child) {
+      var newChild = {};
+
+      newChild.name   = child.title;
+      newChild.avatar = child.custom_fields.avatar[0];
+      newChild.age    = child.custom_fields.idade[0];
+      newChild.points = 50;
+
+      newChild.avatar = avatars.indexOf(newChild.avatar) == -1 ? avatars[1] : newChild.avatar;
+
+      return newChild;
+    }
+    normalize = function(children) {
+      return children.map(function(child) {
+        return normalizeChild(child);
+      })
+    };
 
   return {
     getList: function() {
@@ -10,9 +28,9 @@ angular.module('clubinho.services')
         deferred = deferred || $q.defer();
 
       promise.then(function(children) {
-        childrenList = children.data;
+        childrenList = normalize(children.data.posts);
 
-        deferred.resolve(children.data);
+        deferred.resolve(childrenList);
       }, function(reason) {
         deferred.reject(reason);
       });

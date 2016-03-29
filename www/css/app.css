@@ -3753,7 +3753,7 @@ input.has-error, input.ng-invalid {
   border: 2px solid #f96767 !important;
 }
 
-input[type=text], input[type=email], input[type=date], input[type=password] {
+input[type=text], input[type=email], input[type=date], input[type=password], select {
   border: 2px solid #934e22;
   border-radius: 4px;
   width: 100%;
@@ -3761,6 +3761,12 @@ input[type=text], input[type=email], input[type=date], input[type=password] {
   padding: 10px;
   font-size: 13px;
   margin-bottom: 10px;
+  height: 34px;
+  background: white;
+}
+input[type=text] option, input[type=email] option, input[type=date] option, input[type=password] option, select option {
+  font-size: 13px;
+  padding: 0px 2px 1px;
 }
 
 .form-errors {
