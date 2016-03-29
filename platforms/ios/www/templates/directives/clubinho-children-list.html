@@ -1,32 +1,34 @@
 <div class="children" ng-if="children">
   <ul>
     <li ng-repeat="child in children" class="{{child.avatar}}" ng-click="toggleChild(child, $event)">
-      <div class="avatar">
-        <img ng-src="img/avatar-{{child.avatar}}.png">
-      </div>
-      <div class="user">
-        <h2>{{child.name}}</h2>
-        <h3>{{child.age}} anos</h3>
-        <div class="details" ng-if="child.events.length && !addChild">
-          <h3>últimos eventos</h3>
-          
-          <span ng-repeat="event in child.events">
-            <span class="border"></span>
-            <h4>{{event.title}} <span>+{{event.points}} pts</span></h4>
-            <h4>{{event.date}}</h4>
-          </span>                                          
+      <div class="wrapper">
+        <div class="avatar">
+          <img ng-src="img/avatar-{{child.avatar}}.png">
         </div>
-        <div class="details" ng-if="!child.events.length && !addChild">
-          <h3>criança sem pontuação</h3>
+        <div class="user">
+          <h2>{{child.name}}</h2>
+          <h3>{{child.age}} anos</h3>
+          <div class="details" ng-if="child.events.length && !addChild">
+            <h3>últimos eventos</h3>
+            
+            <span ng-repeat="event in child.events">
+              <span class="border"></span>
+              <h4>{{event.title}} <span>+{{event.points}} pts</span></h4>
+              <h4>{{event.date}}</h4>
+            </span>                                          
+          </div>
+          <div class="details" ng-if="!child.events.length && !addChild">
+            <h3>criança sem pontuação</h3>
+          </div>
+          <div class="details" ng-if="addChild">
+            <button type="button" class="btn-yes" ng-click="editChild(child)"><i class="ion-edit"></i></button>
+            <button type="button" class="btn-no" ng-click="deleteChild(child)"><i class="ion-ios-trash-outline"></i></button>
+          </div>
         </div>
-        <div class="details" ng-if="addChild">
-          <button type="button" class="btn-yes" ng-click="editChild(child)"><i class="ion-edit"></i></button>
-          <button type="button" class="btn-no" ng-click="deleteChild(child)"><i class="ion-ios-trash-outline"></i></button>
+        <div class="points">
+          <h3>{{child.points}}</h3>
+          <span>pts</span>
         </div>
-      </div>
-      <div class="points">
-        <h3>{{child.points}}</h3>
-        <span>pts</span>
       </div>
       <div class="clear"></div>
     </li>
