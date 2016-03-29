@@ -2,7 +2,7 @@
   "name": "Clubinho",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.4",
+    "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "resolutions": {
     "angular": "1.4.3",
@@ -12,6 +12,7 @@
     "ionic-toast": "^0.2.0",
     "angular-messages": "^1.5.2",
     "ionic-cache-src": "^0.7.1",
-    "angular-sanitize": "^1.5.3"
+    "angular-sanitize": "^1.5.3",
+    "angular-ui-mask": "^1.8.2"
   }
 }
