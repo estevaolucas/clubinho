@@ -3515,29 +3515,44 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 14px;
 }
 
+.login header {
+  margin-top: 20px;
+}
 .login form {
-  border-radius: 15px 15px 0 0;
-  background: white;
   padding: 20px 12px;
   width: 90%;
   margin: 0 auto;
 }
-.login form .btn-login {
+.login form span.or {
+  color: #563029;
+  font-size: 18px;
   display: block;
-  background: #4a9322;
-  margin: 0 auto 20px;
-  font-size: 26px;
+  text-align: center;
+  margin-bottom: 10px;
 }
-.login form span.border-bottom {
-  background: white;
+.login form .btn-facebook {
+  background: url('../img/btn-facebook.png?1459197662') no-repeat;
+  background-size: contain;
+  border: none;
+  text-indent: -9999em;
   width: 90%;
-  height: 200px;
-  position: absolute;
-  left: 50%;
-  padding: 12px;
-  transform: translate(-50%, 0);
-  bottom: -10px;
-  z-index: -1;
+  height: 35px;
+  margin: 0 auto 10px;
+  display: block;
+}
+.login form .btn-login {
+  background: #4a9322;
+  display: block;
+  margin: 0 auto 20px;
+  font-size: 19px;
+  font-weight: bold;
+  padding: 7px 24px;
+}
+.login form .actions a {
+  color: #563029;
+  font-size: 15px;
+  margin-bottom: 10px;
+  display: block;
 }
 
 /* 

@@ -18,7 +18,7 @@ angular.module('clubinho.controllers')
     $rootScope.app.loading = true;
 
     Authorization.go($scope.user).then(function() {
-      
+      $scope.user = {};      
     }, function(error) {
       $scope.error = error;
     }).finally(function() {
