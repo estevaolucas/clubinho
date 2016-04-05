@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('HomeController', function($scope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $ionicPlatform, $cordovaLocalNotification, Children, Schedule, ionicToast) {
+.controller('HomeController', function($scope, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $ionicPlatform, $cordovaLocalNotification, Children, Schedule, ionicToast) {
   $scope.loading = true;
   
   Schedule.getList().then(function(schedule) {
@@ -56,6 +56,24 @@ angular.module('clubinho.controllers')
   $scope.prev = function() {
     $ionicSlideBoxDelegate.previous();
   };
+
+  $rootScope.$on('user-did-login', function() {
+    // Onboarding modal
+    if (!localStorage.getItem('onboarded')) {
+      $ionicModal.fromTemplateUrl('templates/onboarding.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+      }).then(function(modal) {
+        modal.show();
+
+        localStorage.setItem('onboarded', true);
+
+        $scope.close = function() {
+          modal.hide();
+        }
+      });
+    }
+  })
 
   // $scope.start = function() {
   $ionicPlatform.ready(function() {

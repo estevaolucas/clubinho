@@ -2930,6 +2930,75 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   right: -25px;
 }
 
+.onboarding {
+  background: #ffe9bb;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+}
+.onboarding ion-slide {
+  width: 100vw;
+  height: 100vh;
+}
+.onboarding ion-slide header {
+  background: url('../img/titulo.png?1458128492') no-repeat;
+  margin: 20px auto 0;
+  width: 84vw;
+  height: 220px;
+  background-size: contain;
+}
+.onboarding ion-slide p {
+  font-size: 15px;
+  line-height: 1.4em;
+}
+.onboarding ion-slide p span {
+  font-size: 18px;
+}
+.onboarding ion-slide:nth-child(1) header {
+  margin-top: 125px;
+  margin-bottom: 20;
+}
+.onboarding ion-slide:nth-child(1) p {
+  font-size: 22px;
+  line-height: 1.2em;
+}
+.onboarding ion-slide:nth-child(2) header, .onboarding ion-slide:nth-child(3) header {
+  width: 50vw;
+  height: 142px;
+}
+.onboarding ion-slide:nth-child(2) p {
+  font-size: 17px;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+}
+.onboarding ion-slide:nth-child(2) img {
+  width: 40%;
+  margin: 0 auto;
+}
+.onboarding ion-slide:nth-child(3) p {
+  font-size: 17px;
+  line-height: 1.2em;
+  margin-bottom: 45px;
+}
+.onboarding ion-slide:nth-child(3) img {
+  width: 75%;
+  margin: 0 auto;
+}
+.onboarding ion-slide .close {
+  background: url('../img/x.png?1458128490');
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6vh;
+  height: 6vh;
+  border: none;
+  background-size: cover;
+  z-index: 2;
+}
+
 .prizes {
   background: #ffe9bb;
   color: white;
