@@ -119,11 +119,8 @@ NSString * const BeaconManagerFirmwareUpdateDidFinishNotification = @"BeaconMana
 - (void)startWithDelegate:(id<BCLBeaconCtrlDelegate>)delegate withCompletion:(void (^)(BOOL, NSError *))completion {
     __typeof__(self) __weak weakSelf = self;
 
-    NSString *clientId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BeaconCtrlAPIClientId"];
-    NSString *clientSecret = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"BeaconCtrlAPIClientSecret"];
-    
-    [BCLBeaconCtrl setupBeaconCtrlWithClientId:clientId
-                                  clientSecret:clientSecret
+    [BCLBeaconCtrl setupBeaconCtrlWithClientId:self.clientId
+                                  clientSecret:self.clientSecret
                                         userId:nil
                                pushEnvironment:self.pushEnvironment
                                      pushToken:self.pushNotificationDeviceToken
@@ -155,50 +152,6 @@ NSString * const BeaconManagerFirmwareUpdateDidFinishNotification = @"BeaconMana
             }
         });
     }];
-}
-
-- (NSDictionary *)normalizeCustomValuesForAction:(BCLAction *)action {
-    NSMutableDictionary *tempCustomValues = [[NSMutableDictionary alloc] init];
-    
-    [action.customValues enumerateObjectsUsingBlock:^(NSDictionary *pair, NSUInteger idx, BOOL *stop) {
-        NSString *name = pair[@"name"];
-        NSString *value = pair[@"value"];
-        
-        tempCustomValues[name] = value;
-    }];
-    
-    return [tempCustomValues copy];
-}
-
-- (BOOL)actionCanBePerformed:(BCLAction *)action saveTimestamp:(BOOL)save {
-    NSDictionary *values = [self normalizeCustomValuesForAction:action];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    NSString *timestampKey = [NSString stringWithFormat:@"timestamp-%@", action.name];
-    NSNumber *actionTimestampValue = values[@"timestamp"];
-    NSDate *actionTimestampStored = [userDefaults objectForKey:timestampKey];
-    
-    // there is timestamp for this action
-    if (actionTimestampValue) {
-        // alredy save same value
-        if (actionTimestampStored) {
-            int now = [[NSDate new] timeIntervalSince1970];
-            int stored = [actionTimestampStored timeIntervalSince1970];
-            
-            // already did the action
-            NSLog(@"----- Checkin time difference: %ld", (stored + [actionTimestampValue integerValue] - now));
-            if ((stored + [actionTimestampValue integerValue]) > now) {
-                return NO;
-            }
-        }
-        
-        // save this action's time
-        if (save) {
-            [userDefaults setObject:[NSDate new] forKey:timestampKey];
-        }
-    }
-    
-    return YES;
 }
 
 #pragma mark - Private

@@ -39,14 +39,17 @@ static NSDictionary *launchOptions;
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types
                                                                                  categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
         
         [[BeaconCtrlManager sharedManager] startWithDelegate:self withCompletion:^(BOOL success, NSError *error) {
-            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{ @"type": @"    "}];
             
             if (!success) {
+                NSDictionary *errorDic = @{@"error": error.localizedDescription,
+                                           @"code": [NSNumber numberWithInt:(int)error.code],
+                                           @"info": error.userInfo};
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
-                                                 messageAsDictionary:error.userInfo];
+                                             messageAsDictionary:errorDic];
             }
             
             self.callbackId = command.callbackId;
@@ -78,7 +81,7 @@ static NSDictionary *launchOptions;
 }
 
 - (void)notifyAction:(BCLAction *)action {    
-    [self fireEvent:@"willNotifyAction" values:[self normalizeAction:action]];
+    [self fireEvent:@"n otifyAction" values:[self normalizeAction:action]];
 }
 
 - (BOOL)shouldAutomaticallyPerformAction:(BCLAction *)action {

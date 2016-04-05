@@ -31,7 +31,22 @@ BeaconCtrl.prototype.start = function(config) {
   }, function (e) {
     console.log('Error initializing BeaconControl: ' + e);
 
-    cordova.fireDocumentEvent('error', e);
+    // cordova.fireDocumentEvent('error', e);
+    var error = JSON.stringify(e),
+      userInfo = error.info,
+      keys = Object.keys(userInfo);
+      values = Object.values(userInfo),
+      newError = new Array(keys.length);
+
+    for(var i = 0; i < newError.length; i++) {
+      newError.push({
+        code: keys[i],
+        message: values[i]
+      });
+    }
+
+    console.log('teste', newError);
+    cordova.fireDocumentEvent('error', newError);
   });
 }
 

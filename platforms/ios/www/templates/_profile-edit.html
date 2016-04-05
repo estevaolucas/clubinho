@@ -4,23 +4,27 @@
     
     <div class="inputs">
       <input name="name" type="text" placeholder="Nome do Responsavel" ng-model="data.name" required /> 
-      <div ng-show="form.$submitted || form.name.$touched">
-        <div ng-show="form.name.$error.required">Por favor informe o seu nome</div>
+      <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
+        <div class="form-error" ng-show="form.name.$error.required">Por favor informe o seu nome</div>
       </div>
-      <input name="cpf" type="text" placeholder="CPF" ng-model="data.cpf" required />
-      <div ng-show="form.$submitted || form.name.$touched">
-        <div ng-show="form.name.$error.required">Por favor informe seu CPF</div>
+
+      <input name="cpf" type="text" placeholder="CPF" ng-model="data.cpf" ui-mask="999.999.999-99" ui-mask-placeholder required />
+      <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
+        <div class="form-error" ng-show="form.name.$error.required">Por favor informe seu CPF</div>
       </div>
-      <input name="phone" type="text" placeholder="Telefone" ng-model="data.phone" required />
-      <div ng-show="form.$submitted || form.name.$touched">
-        <div ng-show="form.name.$error.required">Por favor informe o seu telefone</div>
+
+      <input name="phone" type="text" placeholder="Telefone" ng-model="data.phone" ui-mask="(99) 9999-9999?9" ui-mask-placeholder required />
+      <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
+        <div class="form-error" ng-show="form.name.$error.required">Por favor informe o seu telefone</div>
       </div>
+
       <input name="email" type="email" placeholder="E-mail" ng-model="data.email" required />
-      <div ng-show="form.$submitted || form.name.$touched">
-        <div ng-show="form.name.$error.required">Por favor informe o seu email</div>
+      <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
+        <div class="form-error" ng-show="form.name.$error.required">Por favor informe o seu email</div>
       </div>
+      
       <input name="address" type="text" placeholder="Endereço" ng-model="data.address" required />
-      <div ng-show="form.$submitted || form.name.$touched">
+      <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
         <div ng-show="form.name.$error.required">Por favor informe o seu endereço</div>
       </div>
     </div>

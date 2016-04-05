@@ -1,1 +1,1 @@
-angular.module('clubinho.controllers', ['ionic-toast', 'ngMessages', 'ngSanitize'])
+angular.module('clubinho.controllers', ['ionic-toast', 'ngMessages', 'ngSanitize', 'ui.mask'])

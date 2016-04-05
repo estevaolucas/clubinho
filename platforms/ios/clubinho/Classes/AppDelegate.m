@@ -28,6 +28,8 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+#import "BeaconCtrlManager.h"
+
 #import <Cordova/CDVPlugin.h>
 
 @implementation AppDelegate
@@ -110,6 +112,7 @@
     didReceiveLocalNotification:(UILocalNotification*)notification
 {
     // re-post ( broadcast )
+    [[BeaconCtrlManager sharedManager].beaconCtrl handleNotification:notification.userInfo error:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:CDVLocalNotification object:notification];
 }
 
@@ -147,5 +150,11 @@
 {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [[BeaconCtrlManager sharedManager].beaconCtrl handleNotification:userInfo error:nil];
+}
+
 
 @end
