@@ -1,6 +1,19 @@
-.login {
+.signin, .forgot-password {
+  color:#563029;
+  text-align: center;
+
+  p {
+    margin-bottom: 10px;
+  }
+    
   header {
     margin-top: 20px;
+  }
+
+  .success {
+    font-size: 18px;
+    margin-top: 50px;
+    padding: 10px;
   }
 
   form {
@@ -9,7 +22,6 @@
     margin: 0 auto;
 
     span.or {
-      color:#563029;
       font-size: 18px;
       display: block;
       text-align: center;
@@ -32,6 +44,16 @@
       font-size: 19px;
       font-weight: bold;
       padding: 7px 24px;
+      float: right;
+    }
+    .btn-cancel {
+      background: #932222;
+      display: block;
+      margin: 0 auto 20px;
+      font-size: 19px;
+      font-weight: bold;
+      padding: 7px 24px;
+      float: left;
     }
 
     .actions a {
@@ -40,5 +62,11 @@
       margin-bottom: 10px;
       display: block;
     }
+  }
+}
+
+.forgot-password {
+  .btn-login {
+    float: none;
   }
 }

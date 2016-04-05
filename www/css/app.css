@@ -3515,22 +3515,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 14px;
 }
 
-.login header {
+.signin, .forgot-password {
+  color: #563029;
+  text-align: center;
+}
+.signin p, .forgot-password p {
+  margin-bottom: 10px;
+}
+.signin header, .forgot-password header {
   margin-top: 20px;
 }
-.login form {
+.signin .success, .forgot-password .success {
+  font-size: 18px;
+  margin-top: 50px;
+  padding: 10px;
+}
+.signin form, .forgot-password form {
   padding: 20px 12px;
   width: 90%;
   margin: 0 auto;
 }
-.login form span.or {
-  color: #563029;
+.signin form span.or, .forgot-password form span.or {
   font-size: 18px;
   display: block;
   text-align: center;
   margin-bottom: 10px;
 }
-.login form .btn-facebook {
+.signin form .btn-facebook, .forgot-password form .btn-facebook {
   background: url('../img/btn-facebook.png?1459197662') no-repeat;
   background-size: contain;
   border: none;
@@ -3540,19 +3551,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: 0 auto 10px;
   display: block;
 }
-.login form .btn-login {
+.signin form .btn-login, .forgot-password form .btn-login {
   background: #4a9322;
   display: block;
   margin: 0 auto 20px;
   font-size: 19px;
   font-weight: bold;
   padding: 7px 24px;
+  float: right;
 }
-.login form .actions a {
+.signin form .btn-cancel, .forgot-password form .btn-cancel {
+  background: #932222;
+  display: block;
+  margin: 0 auto 20px;
+  font-size: 19px;
+  font-weight: bold;
+  padding: 7px 24px;
+  float: left;
+}
+.signin form .actions a, .forgot-password form .actions a {
   color: #563029;
   font-size: 15px;
   margin-bottom: 10px;
   display: block;
+}
+
+.forgot-password .btn-login {
+  float: none;
 }
 
 /* 

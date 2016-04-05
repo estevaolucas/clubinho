@@ -23,6 +23,12 @@ angular.module('clubinho', [
       controller: 'SignInController'
     })
 
+    .state('forgotpassword', {
+      url: '/forgot-password',
+      templateUrl: 'templates/forgot-password.html',
+      controller: 'ForgotPasswordController'
+    })
+
     .state('tab', {
       url: '/tab',
       abstract: true,
