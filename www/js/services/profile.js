@@ -1,56 +1,8 @@
 angular.module('clubinho.services')
 
 .service('Authorization', function($http, $q, $rootScope, apiConfig) {
-  var authorized = false;
-
-  return {
-    authorized: function() {
-      var token = localStorage.getItem('token'),
-        deferred = $q.defer();
-
-      if (authorized) {
-        deferred.resolve(true);
-      }
-
-      if (token) {
-        deferred.reject();
-      }
-
-      request = $http({
-        method: 'get',
-        url: apiConfig.baseUrl + '/auth/validate_auth_cookie/',
-        params: {
-          insecure: 'cool',
-          cookie: token
-        }
-      });
-
-      request.then(function(response) {
-        if (response.data.status == 'error') {
-          deferred.reject();
-        } else {
-          $rootScope.$broadcast('user-did-login');
-
-          authorized = true;
-          deferred.resolve(true);
-        }
-      }, function(response) {
-        deferred.reject();
-      });
-
-      return deferred.promise;
-    },
-
-    clear: function() {
-      localStorage.removeItem('username');
-      localStorage.removeItem('password');
-
-      $rootScope.$broadcast('user-did-logout');
-
-      authorized = false
-    },
-
-    go: function(data) {
+  var authorized = false,
+    authenticate = function(data) {
       delete $http.defaults.headers.common['X-Requested-With'];
 
       var deferred = $q.defer(), 
@@ -79,12 +31,73 @@ angular.module('clubinho.services')
           deferred.resolve(data);
         }
       }, function(response) {
-        console.log(response);
+        console.log('Error login', response);
         deferred.reject('Erro');
       });
 
       return deferred.promise;
-    }
+    };
+
+  return {
+    authorized: function() {
+      var token = localStorage.getItem('token'),
+        deferred = $q.defer();
+
+      if (authorized) {
+        deferred.resolve(true);
+      }
+
+      if (!token) {
+        deferred.reject(); 
+      } else {
+        var request = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + '/auth/validate_auth_cookie/',
+          params: {
+            insecure: 'cool',
+            cookie: token
+          }
+        });
+
+        request.then(function(response) {
+          if (response.data.status == 'error' || !response.data.valid) {
+            var username = localStorage.getItem('username'),
+              password = localStorage.getItem('password');
+
+            // in case of cookie expired
+            if (username && password) {
+              console.log('cookie expired');
+              return authenticate({
+                username: username,
+                password: password
+              });
+            }
+
+            deferred.reject();
+          } else {
+            $rootScope.$broadcast('user-did-login');
+
+            authorized = true;
+            deferred.resolve(true);
+          }
+        }, function(response) {
+          deferred.reject();
+        });
+      }
+
+      return deferred.promise;
+    },
+
+    clear: function() {
+      ['username', 'password', 'data', 'token'].forEach(function(key) {
+        localStorage.removeItem(key);
+      });
+      
+      $rootScope.$broadcast('user-did-logout');
+      authorized = false
+    },
+
+    go: authenticate
   };
 })
 
