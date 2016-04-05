@@ -106,7 +106,7 @@ angular.module('clubinho.services')
 
   return {
     getData: function() {
-      if (Authorization.authorized()) {
+      if (localStorage.getItem('data')) {
         return JSON.parse(localStorage.getItem('data'));
       }
     }

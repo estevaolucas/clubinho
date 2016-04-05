@@ -1,6 +1,6 @@
 angular.module('clubinho.services')
 
-.service('Children', function($http, $q, $rootScope) {
+.service('Children', function($http, $q, $rootScope, apiConfig, Profile) {
   var deferred,
     childrenList = [],
     avatars = ['ana', 'luiz', 'maria'],
@@ -24,7 +24,14 @@ angular.module('clubinho.services')
 
   return {
     getList: function() {
-      var promise = $http.get('mockup/children.json'),
+      var promise = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + 'get_author_posts/',
+          params: {
+            post_type: 'filho',
+            id: Profile.getData().id
+          }
+        }),
         deferred = deferred || $q.defer();
 
       promise.then(function(children) {
