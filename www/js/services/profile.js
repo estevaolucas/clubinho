@@ -3,8 +3,6 @@ angular.module('clubinho.services')
 .service('Authorization', function($http, $q, $rootScope, apiConfig) {
   var authorized = false,
     authenticate = function(data) {
-      delete $http.defaults.headers.common['X-Requested-With'];
-
       var deferred = $q.defer(), 
         request = $http({
           method: 'get',
@@ -45,9 +43,7 @@ angular.module('clubinho.services')
 
       if (authorized) {
         deferred.resolve(true);
-      }
-
-      if (!token) {
+      } else if (!token) {
         deferred.reject(); 
       } else {
         var request = $http({
@@ -66,7 +62,6 @@ angular.module('clubinho.services')
 
             // in case of cookie expired
             if (username && password) {
-              console.log('cookie expired');
               return authenticate({
                 username: username,
                 password: password

@@ -90,12 +90,14 @@ angular.module('clubinho', [
 
     if (toState.data && toState.data.authorization) {
       Authorization.authorized(angular.noop, function() {
+        console.log('go login')
         $state.go('signin');
       })
     }
   });
 
   $rootScope.$on('user-did-login', function() {
+    console.log('logged');
     $state.go('tab.home'); 
   });
 

@@ -12,8 +12,7 @@
     </header>
 
     <div class="main">
-      <div class="events">
-        <!-- <button ng-click="start()">start</button> -->
+      <div class="events" ng-if="schedule">
         <h1>próximos eventos</h1>
         <div class="carousel">
           <div class="wrapper">
@@ -25,8 +24,8 @@
 ="true">
               <ion-slide class="slider-slide {{event.className}}" ng-repeat="event in schedule | limitTo: 3" ng-click="openEvent(event)">
                 <time>{{event.date | date:'dd/MM'}} <strong>{{event.date | date:'HH:ss'}}</strong></time>
-                <h2>{{event.title_plain}}</h2>
-                <h3>com {{event.custom_fields.palestrante[0]}}</h3>
+                <h2>{{event.title}}</h2>
+                <h3>com {{event.author}}</h3>
                 <p ng-bind-html="event.excerpt"></p>
                 <div class="clear"></div>
               </ion-slide>
