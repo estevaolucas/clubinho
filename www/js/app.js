@@ -89,9 +89,9 @@ angular.module('clubinho', [
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
     if (toState.data && toState.data.authorization) {
-      if (!Authorization.authorized()) {
-        $state.go('signin');   
-      }
+      Authorization.authorized(angular.noop, function() {
+        $state.go('signin');
+      })
     }
   });
 
@@ -123,7 +123,6 @@ angular.module('clubinho', [
         }
       });
     }
-
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

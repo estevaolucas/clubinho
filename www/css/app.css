@@ -3576,7 +3576,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-.forgot-password .btn-login {
+.signin form .btn-login {
   float: none;
 }
 

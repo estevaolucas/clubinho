@@ -5,14 +5,40 @@ angular.module('clubinho.services')
 
   return {
     authorized: function() {
-      if (!authorized) {
-        var username = localStorage.getItem('username'),
-          password = localStorage.getItem('password');
+      var token = localStorage.getItem('token'),
+        deferred = $q.defer();
 
-        authorized = username && password;
+      if (authorized) {
+        deferred.resolve(true);
       }
 
-      return authorized;
+      if (token) {
+        deferred.reject();
+      }
+
+      request = $http({
+        method: 'get',
+        url: apiConfig.baseUrl + '/auth/validate_auth_cookie/',
+        params: {
+          insecure: 'cool',
+          cookie: token
+        }
+      });
+
+      request.then(function(response) {
+        if (response.data.status == 'error') {
+          deferred.reject();
+        } else {
+          $rootScope.$broadcast('user-did-login');
+
+          authorized = true;
+          deferred.resolve(true);
+        }
+      }, function(response) {
+        deferred.reject();
+      });
+
+      return deferred.promise;
     },
 
     clear: function() {
@@ -30,8 +56,7 @@ angular.module('clubinho.services')
       var deferred = $q.defer(), 
         request = $http({
           method: 'get',
-          url: 'mockup/login.json',
-          // url: apiConfig.baseUrl + 'auth/generate_auth_cookie/',
+          url: apiConfig.baseUrl + 'auth/generate_auth_cookie/',
           params: {
             insecure: 'cool',
             username: data.username,

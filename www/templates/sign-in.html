@@ -12,7 +12,7 @@
         <div class="form-error">{{error}}</div>
       </div>
 
-      <input type="email" name="username" ng-model="user.username" placeholder="E-mail" autocorrect="off" autocapitalize="none" required>
+      <input type="text" name="username" ng-model="user.username" placeholder="E-mail" autocorrect="off" autocapitalize="none" required>
 
       <div class="form-errors" ng-show="form.username.$error && form.username.$dirty" ng-messages="form.username.$error">
         <div class="form-error" ng-message="required">O email é obrigatório</div>
