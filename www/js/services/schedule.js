@@ -44,7 +44,7 @@ angular.module('clubinho.services')
 
   return {
     getList: function() {
-      var promise = $http.get(apiConfig.baseUrl + 'get_posts/?post_type=agenda'),
+      var promise = $http.get(apiConfig.baseUrl + 'api/get_posts/?post_type=agenda'),
         deferred = deferred || $q.defer();
 
       promise.then(function(schedule) {

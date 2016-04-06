@@ -7,7 +7,7 @@ angular.module('clubinho', [
 ])
 
 .constant('apiConfig', {
-  baseUrl: 'http://peppersp.com.br/beacon/api/',
+  baseUrl: 'http://peppersp.com.br/beacon/',
   status: {
     success: 'ok',
     error: 'error'

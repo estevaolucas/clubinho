@@ -6,7 +6,7 @@ angular.module('clubinho.services')
       var deferred = $q.defer(), 
         request = $http({
           method: 'get',
-          url: apiConfig.baseUrl + 'auth/generate_auth_cookie/',
+          url: apiConfig.baseUrl + 'api/auth/generate_auth_cookie/',
           params: {
             insecure: 'cool',
             username: data.username,
@@ -48,7 +48,7 @@ angular.module('clubinho.services')
       } else {
         var request = $http({
           method: 'get',
-          url: apiConfig.baseUrl + '/auth/validate_auth_cookie/',
+          url: apiConfig.baseUrl + 'api/auth/validate_auth_cookie/',
           params: {
             insecure: 'cool',
             cookie: token
@@ -104,6 +104,14 @@ angular.module('clubinho.services')
       if (localStorage.getItem('data')) {
         return JSON.parse(localStorage.getItem('data'));
       }
+    },
+
+    token: function() {
+      if (localStorage.getItem('token')) {
+        return localStorage.getItem('token');
+      }
+
+      return false
     }
   };
 })
