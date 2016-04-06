@@ -14,7 +14,7 @@ angular.module('clubinho', [
   }
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
   $stateProvider
 
     .state('signin', {
@@ -79,9 +79,11 @@ angular.module('clubinho', [
     });
 
   $urlRouterProvider.otherwise('/tab/home');
+  
+  facebookConnectPlugin && $cordovaFacebookProvider.browserInit('977939322243298', 'v2.5');
 })
 
-.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout) {
   $rootScope.app = {
     loading: false
   };
@@ -89,20 +91,21 @@ angular.module('clubinho', [
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
     if (toState.data && toState.data.authorization) {
-      Authorization.authorized(angular.noop, function() {
-        console.log('go login')
+      Authorization.authorized().then(angular.noop, function() {
         $state.go('signin');
       })
     }
   });
 
   $rootScope.$on('user-did-login', function() {
-    console.log('logged');
-    $state.go('tab.home'); 
+    $state.go('tab.home');
   });
 
   $rootScope.$on('user-did-logout', function() {
     $state.go('signin');
+    $timeout(function(){
+      $ionicHistory.clearCache();
+    }, 100);
 
     if (window.cordova && window.cordova.plugins.beaconCtrl) {
       cordova.plugins.beaconCtrl.stop();

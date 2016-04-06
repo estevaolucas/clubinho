@@ -65,10 +65,10 @@ angular.module('clubinho.controllers')
   $scope.deleteChild = function(child) {
     var title = 'Remover o ' + child.name,
       message = 'Você tem certeza?',
-      buttons = ['Cancelar', 'Sim'];
+      buttons = ['Sim', 'Cancelar'];
 
     $cordovaDialogs.confirm(title, message, buttons).then(function(buttonIndex) {
-      if (buttonIndex == 2) {
+      if (buttonIndex == 1) {
         $rootScope.app.loading = true;
 
         Children.removeChild(child).then(function() {

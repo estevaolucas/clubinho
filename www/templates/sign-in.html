@@ -5,7 +5,7 @@
       <div class="clear"></div>
     </header>
     <form name="form" novalidate>
-      <button type="buttton" class="btn-facebook">Login pelo facebook</button>
+      <button type="button" class="btn-facebook" ng-click="facebook()">Login pelo facebook</button>
       <span class="or">ou</span>
 
       <div class="form-errors" ng-show="error">
@@ -14,13 +14,13 @@
 
       <input type="text" name="username" ng-model="user.username" placeholder="E-mail" autocorrect="off" autocapitalize="none" required>
 
-      <div class="form-errors" ng-show="form.username.$error && form.username.$dirty" ng-messages="form.username.$error">
+      <div class="form-errors" ng-show="form.$submitted && form.username.$error && form.username.$dirty" ng-messages="form.username.$error">
         <div class="form-error" ng-message="required">O email é obrigatório</div>
       </div>
 
       <input type="password" name="password" ng-model="user.password" ng-minlength="5" ng-maxlength="25" placeholder="Senha" required>
 
-      <div class="form-errors" ng-show="form.password.$error && form.password.$dirty" ng-messages="form.password.$error">
+      <div class="form-errors" ng-show="form.$submitted && form.password.$error && form.password.$dirty" ng-messages="form.password.$error">
         <div class="form-error" ng-message="required">Esse campo é obrigatório</div>
         <div class="form-error" ng-message="minlength">A senha deve ter no mínimo 5 caracteres.</div>
         <div class="form-error" ng-message="maxlength">A senha deve ter no máximo 25 caracteres.</div>

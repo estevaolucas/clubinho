@@ -20,8 +20,8 @@
               {{event.date | date:'HH:ss'}}
             </article>
             <article class="content" ng-click="detail(event)">
-              <h2>{{event.title_plain}}</h2>
-              <h3>com {{event.custom_fields.palestrante[0]}}</h3>
+              <h2>{{event.title}}</h2>
+              <h3>com {{event.author}}</h3>
               <div ng-bind-html="event.excerpt"></div>
             </article>
             <article class="actions">

@@ -13,7 +13,7 @@ angular.module('clubinho.controllers')
     }
     
     if (window.cordova && $cordovaNetwork.isOffline()) {
-      ionicToast.show('Você sem internet!', 'top', false, 2500);
+      ionicToast.show('Você está sem internet!', 'top', false, 2500);
       return;
     }
 
@@ -21,7 +21,23 @@ angular.module('clubinho.controllers')
     $rootScope.app.loading = true;
 
     Authorization.go($scope.user).then(function() {
-      $scope.user = {};      
+      $scope.user = {};
+      form.$setPristine(true);
+    }, function(error) {
+      $scope.error = error;
+    }).finally(function() {
+      $rootScope.app.loading = false;
+    });
+  }
+
+  $scope.facebook = function() {
+    if (window.cordova && $cordovaNetwork.isOffline()) {
+      ionicToast.show('Você está sem internet!', 'top', false, 2500);
+      return;
+    }
+    
+    Authorization.facebook().then(function(user) {
+      console.log(user);
     }, function(error) {
       $scope.error = error;
     }).finally(function() {

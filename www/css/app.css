@@ -3542,7 +3542,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 10px;
 }
 .signin form .btn-facebook, .forgot-password form .btn-facebook {
-  background: url('../img/btn-facebook.png?1459197662') no-repeat;
+  background: url('../img/btn-facebook.png?1459197662') no-repeat center center;
   background-size: contain;
   border: none;
   text-indent: -9999em;

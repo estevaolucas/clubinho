@@ -1,9 +1,9 @@
 angular.module('clubinho.services')
 
-.service('Authorization', function($http, $q, $rootScope, apiConfig) {
+.service('Authorization', function($http, $q, $rootScope, $cordovaFacebook, apiConfig) {
   var authorized = false,
-    authenticate = function(data) {
-      var deferred = $q.defer(), 
+    authenticate = function(data, deferred) {
+      var deferred = deferred || $q.defer(), 
         request = $http({
           method: 'get',
           url: apiConfig.baseUrl + 'api/auth/generate_auth_cookie/',
@@ -23,10 +23,9 @@ angular.module('clubinho.services')
           localStorage.setItem('token', response.data.cookie);
           localStorage.setItem('data', JSON.stringify(response.data.user));
 
-          $rootScope.$broadcast('user-did-login');
-
           authorized = true;
           deferred.resolve(data);
+          $rootScope.$broadcast('user-did-login');
         }
       }, function(response) {
         console.log('Error login', response);
@@ -34,7 +33,43 @@ angular.module('clubinho.services')
       });
 
       return deferred.promise;
-    };
+    }, createOrLoginFromFacebook = function(accessToken, deferred) {
+      return $http.get(apiConfig.baseUrl + 'fb_connect/?access_token=' + accessToken)
+        .then(function(response) {
+          if (response.data.cookie) {
+            localStorage.setItem('token', response.data.cookie);
+
+            authorized = true;
+            deferred.resolve(response.data.msg);
+          } else {
+            deferred.reject(response.data.msg);
+          }
+        }, function(reason) {
+          deferred.reject(reason);
+        });
+    }, getUserData = function() {
+      var deferred = $q.defer();
+
+      $http({
+        method: 'get',
+        url: apiConfig.baseUrl + 'get_currentuserinfo/',
+        params: { 
+          cookie: localStorage.getItem('token'),
+          insecure: 'cool'
+        }
+      }).then(function(response) {
+        if (response.data.status == 'ok') {
+          localStorage.setItem('data', JSON.stringify(response.data.user));
+          deferred.resolve(response.data.user)
+        } else {
+          deferred.reject(response.data.error);
+        }
+      }, function(reason) {
+        deferred.reject(reason);
+      });
+
+      return deferred.promise;
+    }
 
   return {
     authorized: function() {
@@ -58,22 +93,21 @@ angular.module('clubinho.services')
         request.then(function(response) {
           if (response.data.status == 'error' || !response.data.valid) {
             var username = localStorage.getItem('username'),
-              password = localStorage.getItem('password');
+              password = localStorage.getItem('password'), 
+              accessToken = localStorage.getItem('facebookToken');
 
             // in case of cookie expired
             if (username && password) {
-              return authenticate({
-                username: username,
-                password: password
-              });
+              authenticate({username: username, password: password}, deferred);
+            } else if (accessToken) {
+              createOrLoginFromFacebook(accessToken, deferred);
+            } else {
+              deferred.reject();
             }
-
-            deferred.reject();
           } else {
-            $rootScope.$broadcast('user-did-login');
-
             authorized = true;
             deferred.resolve(true);
+            $rootScope.$broadcast('user-did-login');
           }
         }, function(response) {
           deferred.reject();
@@ -84,15 +118,35 @@ angular.module('clubinho.services')
     },
 
     clear: function() {
-      ['username', 'password', 'data', 'token'].forEach(function(key) {
+      ['username', 'password', 'data', 'token', 'facebookToken'].forEach(function(key) {
         localStorage.removeItem(key);
       });
       
+      $cordovaFacebook.logout()
+
       $rootScope.$broadcast('user-did-logout');
       authorized = false
     },
 
-    go: authenticate
+    go: authenticate,
+
+    facebook: function() {
+      var deferred = $q.defer();
+
+      $cordovaFacebook.login(['public_profile', 'email']).then(function(response) {
+        var accessToken = response.authResponse.accessToken;
+        console.log(accessToken);
+        localStorage.setItem('facebookToken', accessToken);
+        createOrLoginFromFacebook(accessToken, deferred).then(function() {
+          getUserData();
+        });        
+      }, function(error) {
+        console.log('error', error);
+        deferred.reject(error);
+      });
+
+      return deferred.promise;
+    }
   };
 })
 
@@ -111,7 +165,7 @@ angular.module('clubinho.services')
         return localStorage.getItem('token');
       }
 
-      return false
+      return false;
     }
-  };
+  }
 })

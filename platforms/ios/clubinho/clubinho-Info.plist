@@ -62,14 +62,46 @@
     <string>0.0.1</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>fb977939322243298</string>
+        </array>
+      </dict>
+    </array>
     <key>CFBundleVersion</key>
     <string>0.0.1</string>
+    <key>FacebookAppID</key>
+    <string>977939322243298</string>
+    <key>FacebookDisplayName</key>
+    <string>Clubinho Terraço Shopping</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>m.facebook.com</key>
+        <dict/>
+        <key>graph.facebook.com</key>
+        <dict/>
+        <key>api.facebook.com</key>
+        <dict/>
+        <key>fbcdn.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+        <key>akamaihd.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+        </dict>
+      </dict>
     </dict>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Your location is used to instantly inform you when you are near a location that is interesting to you.</string>

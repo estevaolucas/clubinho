@@ -30,19 +30,21 @@ angular.module('clubinho.services')
 
         hour = hour.length == 2 ? hour + ':00' : hour;
 
-        event.date = new Date(parts.join('/') + ' ' + hour);
-        
-        event.excerpt = $sce.trustAsHtml(event.excerpt);
-        event.content = $sce.trustAsHtml(event.content);
-        event.favorite = isFavorited(event);
-        return event;
+        return {
+          date: new Date(parts.join('/') + ' ' + hour),
+          title: event.title_plain,
+          excerpt: event.excerpt,
+          content: event.content,
+          favorite: isFavorited(event),
+          author: event.custom_fields.palestrante[0],
+          cover: event.attachments[0].images.full.url
+        }
       });
     }, deferred;
 
   return {
     getList: function() {
-      // var promise = $http.get(apiConfig.baseUrl + 'mockup/schedule.json'),
-      var promise = $http.get('mockup/schedule.json'),
+      var promise = $http.get(apiConfig.baseUrl + 'api/get_posts/?post_type=agenda', {cache: true}),
         deferred = deferred || $q.defer();
 
       promise.then(function(schedule) {

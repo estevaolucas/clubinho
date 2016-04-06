@@ -10,12 +10,12 @@
 
       <main>
         <div class="cover">
-          <img cache-src="{{event.attachments[0].images.full.url}}">
+          <img cache-src="{{event.cover}}">
         </div> 
         <div class="container">
           <div>
             <h1>{{event.title_plain}}</h1>
-            <h2>com {{event.custom_fields.palestrante[0]}}</h2>
+            <h2>com {{event.author}}</h2>
             <div ng-bind-html="event.content"></div>
           </div>
         </div>

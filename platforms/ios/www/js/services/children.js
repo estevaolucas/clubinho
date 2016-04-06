@@ -1,20 +1,20 @@
 angular.module('clubinho.services')
 
-.service('Children', function($http, $q, $rootScope) {
+.service('Children', function($http, $q, $rootScope, apiConfig, Profile) {
   var deferred,
     childrenList = [],
     avatars = ['ana', 'luiz', 'maria'],
     normalizeChild = function(child) {
-      var newChild = {};
+      var avatar = child.custom_fields.avatar[0];
 
-      newChild.name   = child.title;
-      newChild.avatar = child.custom_fields.avatar[0];
-      newChild.age    = child.custom_fields.idade[0];
-      newChild.points = 50;
-
-      newChild.avatar = avatars.indexOf(newChild.avatar) == -1 ? avatars[1] : newChild.avatar;
-
-      return newChild;
+      return {
+        name: child.title,
+        avatar: child.custom_fields.avatar[0],
+        age: child.custom_fields.idade[0],
+        points: 50,
+        avatar: avatars.indexOf(avatar) == -1 ? avatars[1] : avatar,
+        id: child.id
+      }
     }
     normalize = function(children) {
       return children.map(function(child) {
@@ -24,7 +24,15 @@ angular.module('clubinho.services')
 
   return {
     getList: function() {
-      var promise = $http.get('mockup/children.json'),
+      var promise = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + 'api/get_author_posts/',
+          params: {
+            post_type: 'filho',
+            id: Profile.getData().id,
+            cookie: Profile.token(),
+          }
+        }),
         deferred = deferred || $q.defer();
 
       promise.then(function(children) {
@@ -39,40 +47,100 @@ angular.module('clubinho.services')
     },
 
     addChild: function(data) {
-      var deferred = $q.defer();
+      var deferred = $q.defer(),
+        promise = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + 'insere-filho',
+          params: {
+            id: Profile.getData().id,
+            cookie: Profile.token(),
+            nome_filho: data.name,
+            idade: data.age,
+            avatar: data.avatar,
+            action: 'insere'
+          }
+        });
 
-      childrenList.push({
-        "name": data.name,
-        "age": 11,
-        "points": 0,
-        "avatar": "ana",
-        "events": []
+      promise.then(function(response) {
+        if (response.data.status == apiConfig.status.error) {
+          deferred.reject(response.data.description);
+        } else {
+          childrenList.unshift(data);
+          $rootScope.$broadcast('clubinho-children-update', childrenList);
+          deferred.resolve(childrenList);
+        }
+      }, function(reason) {
+        deferred.reject(reason);
       });
 
-      $rootScope.$broadcast('clubinho-children-update', childrenList);
-      deferred.resolve(childrenList);
-      
       return deferred.promise;
     },
 
     editChild: function(data) {
-      var deferred = $q.defer();
+      var deferred = $q.defer(),
+        promise = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + 'insere-filho/',
+          params: {
+            id: Profile.getData().id,
+            cookie: Profile.token(),
+            nome_filho: data.name,
+            idade: data.age,
+            avatar: data.avatar,
+            id_crianca: data.id,
+            action: 'edita'
+          }
+        });
 
-      $rootScope.$broadcast('clubinho-children-update', childrenList);
-      deferred.resolve(childrenList);
-      
+      promise.then(function(response) {
+        if (response.data.status == apiConfig.status.error) {
+          deferred.reject(response.data.description);
+        } else {
+          var child = childrenList.filter(function(child) {
+              return child.id == data.id;
+            })[0];
+
+          if (childrenList.indexOf(child) != -1) {
+            childrenList.splice(childrenList.indexOf(child), 1, data);
+          }
+
+          $rootScope.$broadcast('clubinho-children-update', childrenList);
+          deferred.resolve(childrenList);
+        }
+      }, function(reason) {
+        deferred.reject(reason);
+      });
+
       return deferred.promise;
     },
 
     removeChild: function(data) {
-      var deferred = $q.defer();
+      var deferred = $q.defer(),
+        promise = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + 'insere-filho/',
+          params: {
+            id: Profile.getData().id,
+            cookie: Profile.token(),
+            id_crianca: data.id,
+            action: 'deleta'
+          }
+        });
 
-      if (childrenList.indexOf(data) != -1) {
-        childrenList.splice(childrenList.indexOf(data), 1);
-      }
+      promise.then(function(response) {
+        if (response.data.status == apiConfig.status.error) {
+          deferred.reject(response.data.description);
+        } else {
+          if (childrenList.indexOf(data) != -1) {
+            childrenList.splice(childrenList.indexOf(data), 1);
+          }
 
-      $rootScope.$broadcast('clubinho-children-update', childrenList);
-      deferred.resolve(childrenList);
+          $rootScope.$broadcast('clubinho-children-update', childrenList);
+          deferred.resolve(childrenList);
+        }
+      }, function(reason) {
+        deferred.reject(reason);
+      });
       
       return deferred.promise;
     }
