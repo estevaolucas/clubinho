@@ -96,7 +96,14 @@ angular.module('clubinho.services')
         if (response.data.status == apiConfig.status.error) {
           deferred.reject(response.data.description);
         } else {
-          // childrenList.push(data);
+          var child = childrenList.filter(function(child) {
+              return child.id == data.id;
+            })[0];
+
+          if (childrenList.indexOf(child) != -1) {
+            childrenList.splice(childrenList.indexOf(child), 1, data);
+          }
+
           $rootScope.$broadcast('clubinho-children-update', childrenList);
           deferred.resolve(childrenList);
         }
@@ -108,14 +115,32 @@ angular.module('clubinho.services')
     },
 
     removeChild: function(data) {
-      var deferred = $q.defer();
+      var deferred = $q.defer(),
+        promise = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + 'insere-filho/',
+          params: {
+            id: Profile.getData().id,
+            cookie: Profile.token(),
+            id_crianca: data.id,
+            action: 'deleta'
+          }
+        });
 
-      if (childrenList.indexOf(data) != -1) {
-        childrenList.splice(childrenList.indexOf(data), 1);
-      }
+      promise.then(function(response) {
+        if (response.data.status == apiConfig.status.error) {
+          deferred.reject(response.data.description);
+        } else {
+          if (childrenList.indexOf(data) != -1) {
+            childrenList.splice(childrenList.indexOf(data), 1);
+          }
 
-      $rootScope.$broadcast('clubinho-children-update', childrenList);
-      deferred.resolve(childrenList);
+          $rootScope.$broadcast('clubinho-children-update', childrenList);
+          deferred.resolve(childrenList);
+        }
+      }, function(reason) {
+        deferred.reject(reason);
+      });
       
       return deferred.promise;
     }
