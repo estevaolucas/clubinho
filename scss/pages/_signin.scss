@@ -1,4 +1,4 @@
-.signin, .forgot-password {
+.signin, .signup, .forgot-password {
   color:#563029;
   text-align: center;
 
@@ -37,7 +37,7 @@
       margin: 0 auto 10px;
       display: block;
     }
-    .btn-login {
+    .btn-login, .btn-signup {
       background: #4a9322;
       display: block;
       margin: 0 auto 20px;
@@ -67,4 +67,74 @@
 
 .signin form .btn-login {
   float: none;
+}
+
+.signup {
+  ion-content {
+    padding: 0 10px;
+  }
+  form {
+    width: 98%;
+    padding: 10px;
+    background: white;
+    border-radius: 25px;
+
+    h2 {
+      color: #563029;
+      text-align: left;
+      font-size: 24px;
+      padding: 10px 10px 20px;
+    }
+
+    .cpf, .password {
+      min-width: 49%;
+      width: 49%;
+      float: left
+    }
+    .phone, .password_verify {
+      min-width: 49%;
+      width: 49%;
+      float: right;
+    }
+    .email {
+      width: 65%;
+      min-width: 65%;
+      float: left;
+    }
+    .zipcode {
+      width: 33%;
+      min-width: 33%;
+      float: right;
+    }
+
+    .actions {
+      margin-top: 20px;
+      float: left;
+      width: 100%;
+      text-align: center;
+
+      button {
+        display: inline;
+        float: none;
+      }
+    }
+  }
+
+  // span.border {
+  //   position: absolute;
+  //   height: 30vh;
+  //   width: 98%;
+  //   border: 1px solid red;
+  //   transform: translate(-50%, 0);
+  //   left: 50%;
+  //   bottom: 0;
+  //   // display: none;
+  //   z-index: -1;
+  //   span {
+  //     display:block;
+  //     height: 100%;
+  //     width: 100%;
+  //     background: white;    
+  //   }
+  // }
 }

@@ -3515,33 +3515,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-bottom: 14px;
 }
 
-.signin, .forgot-password {
+.signin, .signup, .forgot-password {
   color: #563029;
   text-align: center;
 }
-.signin p, .forgot-password p {
+.signin p, .signup p, .forgot-password p {
   margin-bottom: 10px;
 }
-.signin header, .forgot-password header {
+.signin header, .signup header, .forgot-password header {
   margin-top: 20px;
 }
-.signin .success, .forgot-password .success {
+.signin .success, .signup .success, .forgot-password .success {
   font-size: 18px;
   margin-top: 50px;
   padding: 10px;
 }
-.signin form, .forgot-password form {
+.signin form, .signup form, .forgot-password form {
   padding: 20px 12px;
   width: 90%;
   margin: 0 auto;
 }
-.signin form span.or, .forgot-password form span.or {
+.signin form span.or, .signup form span.or, .forgot-password form span.or {
   font-size: 18px;
   display: block;
   text-align: center;
   margin-bottom: 10px;
 }
-.signin form .btn-facebook, .forgot-password form .btn-facebook {
+.signin form .btn-facebook, .signup form .btn-facebook, .forgot-password form .btn-facebook {
   background: url('../img/btn-facebook.png?1459197662') no-repeat center center;
   background-size: contain;
   border: none;
@@ -3551,7 +3551,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: 0 auto 10px;
   display: block;
 }
-.signin form .btn-login, .forgot-password form .btn-login {
+.signin form .btn-login, .signin form .btn-signup, .signup form .btn-login, .signup form .btn-signup, .forgot-password form .btn-login, .forgot-password form .btn-signup {
   background: #4a9322;
   display: block;
   margin: 0 auto 20px;
@@ -3560,7 +3560,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 7px 24px;
   float: right;
 }
-.signin form .btn-cancel, .forgot-password form .btn-cancel {
+.signin form .btn-cancel, .signup form .btn-cancel, .forgot-password form .btn-cancel {
   background: #932222;
   display: block;
   margin: 0 auto 20px;
@@ -3569,7 +3569,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 7px 24px;
   float: left;
 }
-.signin form .actions a, .forgot-password form .actions a {
+.signin form .actions a, .signup form .actions a, .forgot-password form .actions a {
   color: #563029;
   font-size: 15px;
   margin-bottom: 10px;
@@ -3577,6 +3577,52 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .signin form .btn-login {
+  float: none;
+}
+
+.signup ion-content {
+  padding: 0 10px;
+}
+.signup form {
+  width: 98%;
+  padding: 10px;
+  background: white;
+  border-radius: 25px;
+}
+.signup form h2 {
+  color: #563029;
+  text-align: left;
+  font-size: 24px;
+  padding: 10px 10px 20px;
+}
+.signup form .cpf, .signup form .password {
+  min-width: 49%;
+  width: 49%;
+  float: left;
+}
+.signup form .phone, .signup form .password_verify {
+  min-width: 49%;
+  width: 49%;
+  float: right;
+}
+.signup form .email {
+  width: 65%;
+  min-width: 65%;
+  float: left;
+}
+.signup form .zipcode {
+  width: 33%;
+  min-width: 33%;
+  float: right;
+}
+.signup form .actions {
+  margin-top: 20px;
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.signup form .actions button {
+  display: inline;
   float: none;
 }
 

@@ -40,4 +40,38 @@ angular.module('clubinho.directives', [])
       };
     } 
   }
+})
+
+.directive('passwordVerify', function() {
+  return {
+    require: 'ngModel',
+    scope: {
+      passwordVerify: '='
+    },
+    link: function(scope, element, attrs, controller) {
+      scope.$watch(function() {
+        var combined;
+
+        if (scope.passwordVerify || controller.$viewValue) {
+          combined = scope.passwordVerify + '_' + controller.$viewValue; 
+        }                    
+        
+        return combined;
+      }, function(value) {
+        if (value) {
+          controller.$parsers.unshift(function(viewValue) {
+            var origin = scope.passwordVerify;
+
+            if (origin !== viewValue) {
+              controller.$setValidity('passwordVerify', false);
+              return undefined;
+            } else {
+              controller.$setValidity('passwordVerify', true);
+              return viewValue;
+            }
+          });
+        }
+      });
+     }
+   };
 });

@@ -146,6 +146,37 @@ angular.module('clubinho.services')
       });
 
       return deferred.promise;
+    }, 
+
+    signUp: function(user) {
+      var deferred = $q.defer(),
+        request = $http({
+          method: 'get',
+          url: apiConfig.baseUrl + 'insere-responsavel/',
+          params: {
+            nome: user.name, 
+            cpf: user.cpf,
+            email: user.email,
+            password: user.password,
+            endereco: user.address, 
+            cep: user.cep
+            telefone: user.phone
+            insecure: 'cool',
+            cookie: token
+          }
+        });
+
+      request.then(function(response) {
+        if (response.data.status != 'error') {
+          authenticate({username: data.email, password: user.password}, deferred);
+        } else {
+          deferred.reject(response.data.description);
+        }
+      }, function(response) {
+        deferred.reject();
+      });
+
+      return deferred.promise;
     }
   };
 })

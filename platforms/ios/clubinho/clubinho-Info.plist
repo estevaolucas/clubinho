@@ -111,6 +111,8 @@
     <string>https://beacon-nobot.herokuapp.com/api/v1</string>
     <key>UIBackgroundModes</key>
     <array>
+      <string>bluetooth-central</string>
+      <string>bluetooth-peripheral</string>
       <string>fetch</string>
       <string>location</string>
       <string>remote-notification</string>

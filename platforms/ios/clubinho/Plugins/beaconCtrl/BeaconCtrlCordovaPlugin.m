@@ -81,7 +81,7 @@ static NSDictionary *launchOptions;
 }
 
 - (void)notifyAction:(BCLAction *)action {    
-    [self fireEvent:@"n otifyAction" values:[self normalizeAction:action]];
+    [self fireEvent:@"notifyAction" values:[self normalizeAction:action]];
 }
 
 - (BOOL)shouldAutomaticallyPerformAction:(BCLAction *)action {

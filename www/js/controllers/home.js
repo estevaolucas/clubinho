@@ -5,7 +5,6 @@ angular.module('clubinho.controllers')
     hideLoading = function() {
       loading--;
       !loading && ($rootScope.app.loading = false);
-      console.log('finaly', loading);
     };
 
   $scope.$on('$ionicView.loaded', function() {
@@ -18,7 +17,6 @@ angular.module('clubinho.controllers')
         event.className = colors[i % 3];
         return event;
       });
-      console.log('entrou');
     }).finally(hideLoading);
 
     Children.getList().then(function(children) {
@@ -179,7 +177,6 @@ angular.module('clubinho.controllers')
   });
 
   $scope.$on('$ionicView.enter', function() {
-    console.log('loading', loading);
     loading && ($rootScope.app.loading = true);
   
     if (!localStorage.getItem('onboarded')) {

@@ -1,0 +1,54 @@
+<ion-view class="signup" hide-nav-bar="true">
+  <ion-content>
+    <header>
+      <div class="logo"><img src="img/titulo.png"></div>      
+      <div class="clear"></div>
+    </header>
+    <form name="form" novalidate>
+      <h2>Cadastre-se</h2>
+      <div class="form-errors" ng-show="error">
+        <div class="form-error">{{error}}</div>
+      </div>
+
+      <div class="form-errors" ng-show="form.name.$error && form.name.$dirty" ng-messages="form.name.$error">
+        <div class="form-error" ng-message="required">Nome do responsável é obrigatório</div>
+      </div>
+      <input name="name" class="name" ng-model="user.name" type="text" placeholder="Nome do responsável" required />
+      
+      <div class="form-errors" ng-show="form.cpf.$error && form.cpf.$dirty" ng-messages="form.cpf.$error">
+        <div class="form-error" ng-message="required">O CPF é obrigatório</div>
+      </div>
+      <input name="cpf" class="cpf" ng-model="user.cpf" type="text" placeholder="CPF" ui-mask="999.999.999-99" ui-mask-placeholder required />
+
+      <input name="phone" class="phone" ng-model="user.phone" type="text" placeholder="Telefone" ui-mask="(99) 9999-9999?9" ui-mask-placeholder />
+
+      <input name="email" class="email" ng-model="user.email" type="email" placeholder="E-mail" autocorrect="off" autocapitalize="none" />
+
+      <input name="zipcode" class="zipcode" ng-model="user.zipcode" type="text" placeholder="CEP" autocorrect="off" autocapitalize="none" ui-mask="99999-999" ui-mask-placeholder />
+
+      <input name="address" class="address" ng-model="user.address" type="text" placeholder="Endereço" autocorrect="off" autocapitalize="none" />
+
+      <div class="form-errors" ng-show="form.password.$error && form.password.$dirty" ng-messages="form.password.$error">
+        <div class="form-error" ng-message="required">A senha é obrigatória</div>
+        <div class="form-error" ng-message="minlength">A senha deve ter no mínimo 5 caracteres.</div>
+        <div class="form-error" ng-message="maxlength">A senha deve ter no máximo 25 caracteres.</div>
+      </div>
+
+      <div class="form-errors" ng-show="form.password_verify.$error && form.password_verify.$dirty" ng-messages="form.password_verify.$error">
+        <div class="form-error" ng-message="passwordVerify">A senha não confere</div>
+      </div>
+
+      <input name="password" class="password" ng-model="user.password" type="password" placeholder="Senha"  ng-minlength="5" ng-maxlength="25" required />
+
+      <input name="password_verify" class="password_verify" ng-model="user.password_verify" type="password" placeholder="Confirme a senha" ng-minlength="5" ng-maxlength="25" required password-verify="user.password" />
+
+      <div class="actions">
+        <button class="btn btn-cancel" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-signup" ng-click="signUp(form)" ng-disabled="form.$invalid">Enviar</button>
+      </div>
+      <div class="clear"></div>
+    </form>
+    <span class="border"><span></span></span>
+    <div class="clear"></div>
+  </ion-content>
+</ion-view>
