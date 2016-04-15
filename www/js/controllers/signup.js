@@ -21,11 +21,10 @@ angular.module('clubinho.controllers')
     $rootScope.app.loading = true;
 
     Authorization.signUp($scope.user).then(function() {
-      debugger;
+      ionicToast.show('Usário cadastrado com sucesso!', 'top', false, 2500);
       $scope.user = {};
       form.$setPristine(true);
     }, function(error) {
-      debugger;
       $scope.error = error;
     }).finally(function() {
       $rootScope.app.loading = false;

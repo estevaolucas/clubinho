@@ -159,16 +159,15 @@ angular.module('clubinho.services')
             email: user.email,
             password: user.password,
             endereco: user.address, 
-            cep: user.cep,
+            cep: user.zipcode,
             telefone: user.phone,
-            action: 'insere',
-            insecure: 'cool'
+            action: 'insere'
           }
         });
 
       request.then(function(response) {
-        if (response.data.status != 'error') {
-          authenticate({username: data.email, password: user.password}, deferred);
+        if (response.data.status == 'ok') {
+          authenticate({username: user.email, password: user.password}, deferred);
         } else {
           deferred.reject(response.data.description);
         }
