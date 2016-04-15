@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope) {
+.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal) {
   var credentials = {
       clientId     : '9c04ef1ef670e73d1e12bf03751b19076664772945d7c15490bca24facd9bbd9',
       clientSecret : 'ae8baaf4377f0cd8ef5c56a3ed6cd78db06cda4ed8279f7c5d4690b36d8539b2'
@@ -169,4 +169,21 @@ angular.module('clubinho.controllers')
       });
     }
   });  
+
+
+  // Onboarding modal
+  if (!localStorage.getItem('onboarded')) {
+    $ionicModal.fromTemplateUrl('templates/onboarding.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function(modal) {
+      modal.show();
+      
+      localStorage.setItem('onboarded', true);
+
+      $scope.close = function() {
+        modal.hide();
+      }
+    });
+  }
 });

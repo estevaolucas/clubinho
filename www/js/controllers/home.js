@@ -61,21 +61,6 @@ angular.module('clubinho.controllers')
 
   $scope.$on('$ionicView.enter', function() {
     loading && ($rootScope.app.loading = true);
-  
-    if (!localStorage.getItem('onboarded')) {
-      $ionicModal.fromTemplateUrl('templates/onboarding.html', {
-        scope: $scope,
-        animation: 'slide-in-up',
-      }).then(function(modal) {
-        modal.show();
-        
-        localStorage.setItem('onboarded', true);
-
-        $scope.close = function() {
-          modal.hide();
-        }
-      });
-    }
   });
 
   $scope.$on('$destroy', function() {
