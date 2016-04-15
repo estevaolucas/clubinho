@@ -3774,7 +3774,7 @@ div[clubinho-children-list] .children li .wrapper {
   left: 0;
   width: 100%;
   z-index: 999;
-  transition: max-height .5s linear;
+  transition: max-height 4.5s linear;
   transition: overflow .5s linear;
 }
 div[clubinho-children-list] .children li.open {
@@ -3782,7 +3782,7 @@ div[clubinho-children-list] .children li.open {
 }
 div[clubinho-children-list] .children li.open .wrapper {
   max-height: 9999px;
-  transition: max-height 1s ease-in;
+  transition: max-height 5s ease-in;
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
   border-top-left-radius: 25px;

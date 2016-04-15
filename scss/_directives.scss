@@ -152,7 +152,7 @@ div[clubinho-children-list] {
         left: 0;
         width: 100%;
         z-index: 999;
-        transition: max-height .5s linear;
+        transition: max-height 4.5s linear;
         transition: overflow .5s linear;
       }
 
@@ -161,7 +161,7 @@ div[clubinho-children-list] {
 
         .wrapper {
           max-height: 9999px;
-          transition: max-height 1s ease-in;
+          transition: max-height 5s ease-in;
           @include border-top-radius(25px);
         }
         .details {
