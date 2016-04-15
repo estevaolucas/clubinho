@@ -17,14 +17,7 @@ angular.module('clubinho.controllers')
   }
   $scope.showChildrenList = true;
 
-  // $scope.data = Profile.getData();
-  $scope.data = {
-    name: 'Estevão Lucas',
-    cpf: '016.788.888-72',
-    phone: '61 9211-1011',
-    email: 'estevaolucas@gmail.com',
-    address: 'QNS 12 - J - 12'
-  };
+  $scope.data = Profile.getData();
 
   $scope.toggleChildrenList = function () {
     $scope.showChildrenList = !$scope.showChildrenList;

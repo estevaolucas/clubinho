@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		016F0C81544C48F0B86996A7 /* APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03947A1AE44CAB9DF642C1 /* APPLocalNotification.m */; };
 		0A1DC68CCA2949A9AF5F1085 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05B7C6BB78F449EA21339FC /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -35,6 +36,7 @@
 		55D8D80BC14E46CF985CEE38 /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = EE04E32D4CF94AC59F126A03 /* FacebookConnectPlugin.m */; };
 		5C604283135B451A8D3CB39B /* AppDelegate+APPAppEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4A99CE8DC343B08347386E /* AppDelegate+APPAppEvent.m */; };
 		69B726CF04A246BDBA1439FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE916031A98041CE8E5483AC /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		69CFE1F0F91B48CCAD807E44 /* NativeSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEF77BFB5094C6993D3DC80 /* NativeSettings.m */; };
 		6B8776442A3245FEB113A00A /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F3466B75F4BB4908A5F16E42 /* CDVStatusBar.m */; };
 		6CB25B09AD084393BEA1E9A1 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 68598C81D29C468386B74826 /* CDVSplashScreen.m */; };
 		73F2A7EFBF044B6590A2FE2C /* UIApplication+APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 413C0424189749A6BF0340E9 /* UIApplication+APPLocalNotification.m */; };
@@ -73,7 +75,6 @@
 		F570A4F8148545C9AE31654B /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFABD020F01411E811A0E5A /* CDVLocalFilesystem.m */; };
 		F57D596D57B14B23BF102CDE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7308B9F6C0F47EEA8141230 /* FacebookSDK.framework */; };
 		FB7FE3CF32D9448F9DB3A32F /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 269354009BE84560BFFBF25E /* CDVFileTransfer.m */; };
-		69CFE1F0F91B48CCAD807E44 /* NativeSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEF77BFB5094C6993D3DC80 /* NativeSettings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		DD12DA5FF52549EE8ECE79CF /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = "cordova-plugin-dialogs/CDVNotification.h"; sourceTree = "<group>"; };
 		E05B7C6BB78F449EA21339FC /* Accounts.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		E075B68FE3AE43CD9DC0A543 /* NativeSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeSettings.h; path = com.phonegap.plugins.nativesettingsopener/NativeSettings.h; sourceTree = "<group>"; };
 		E22FFA08120B422986C1D4C5 /* APPLocalNotificationOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APPLocalNotificationOptions.m; path = "de.appplant.cordova.plugin.local-notification/APPLocalNotificationOptions.m"; sourceTree = "<group>"; };
 		E3A99E43925C48D8A16162E0 /* CDVFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVFile.m; path = "cordova-plugin-file/CDVFile.m"; sourceTree = "<group>"; };
 		E41B212B99744E61B4A8CE49 /* UIWebViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIWebViewExtension.m; path = "ionic-plugin-keyboard/UIWebViewExtension.m"; sourceTree = "<group>"; };
@@ -197,8 +199,7 @@
 		F382034F306C4F569CE2DA9C /* BeaconCtrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeaconCtrlManager.h; path = beaconCtrl/BeaconCtrlManager.h; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = clubinho/config.xml; sourceTree = "<group>"; };
 		FAF7C92A159B4E329D8BF703 /* CDVSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
-		FDEF77BFB5094C6993D3DC80 /* NativeSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NativeSettings.m"; path = "com.phonegap.plugins.nativesettingsopener/NativeSettings.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		E075B68FE3AE43CD9DC0A543 /* NativeSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NativeSettings.h"; path = "com.phonegap.plugins.nativesettingsopener/NativeSettings.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		FDEF77BFB5094C6993D3DC80 /* NativeSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeSettings.m; path = com.phonegap.plugins.nativesettingsopener/NativeSettings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

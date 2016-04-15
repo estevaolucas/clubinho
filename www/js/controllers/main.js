@@ -170,7 +170,6 @@ angular.module('clubinho.controllers')
     }
   });  
 
-
   // Onboarding modal
   if (!localStorage.getItem('onboarded')) {
     $ionicModal.fromTemplateUrl('templates/onboarding.html', {

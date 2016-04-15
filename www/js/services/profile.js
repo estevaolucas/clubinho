@@ -122,7 +122,7 @@ angular.module('clubinho.services')
         localStorage.removeItem(key);
       });
       
-      $cordovaFacebook.logout()
+      $cordovaFacebook.logout();
 
       $rootScope.$broadcast('user-did-logout');
       authorized = false
@@ -186,7 +186,16 @@ angular.module('clubinho.services')
   return {
     getData: function() {
       if (localStorage.getItem('data')) {
-        return JSON.parse(localStorage.getItem('data'));
+        var user = JSON.parse(localStorage.getItem('data'));
+
+        return {
+          id: user.id,
+          name: user.nickname,
+          cpf: user.cpf,
+          phone: user.telefone,
+          email: user.email,
+          address: user.endereco
+        }
       }
     },
 
