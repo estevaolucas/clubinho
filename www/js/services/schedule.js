@@ -31,6 +31,7 @@ angular.module('clubinho.services')
         hour = hour.length == 2 ? hour + ':00' : hour;
 
         return {
+          id: event.id,
           date: new Date(parts.join('/') + ' ' + hour),
           title: event.title_plain,
           excerpt: event.excerpt,
