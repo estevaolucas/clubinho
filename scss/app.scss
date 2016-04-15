@@ -101,19 +101,19 @@ header{
     max-height: 40px;
     position: absolute;
     top: 22px;
-    right: 11px;
-    border: 4px solid #563029;
+    right: 15px;
     border-radius: 30px;
+    border: none;
 
     i.gear {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       display: block;
-      font-size: 28px;
+      font-size: 32px;
       color: #FFE9BC;
       background: #563029;
       border-radius: 21px;
-      line-height: 31px;
+      line-height: 42px;
     }
 
     i.alert{
@@ -127,7 +127,7 @@ header{
       color: white;
       height: 20px;
       line-height: 22px;
-      bottom: -12px;
+      bottom: -4px;
     }
   }
 }
