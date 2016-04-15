@@ -29,12 +29,18 @@ BeaconCtrl.prototype.stopMonitoring = function(successCallback, errorCallback) {
       );
 };
 
-BeaconCtrl.prototype.start = function(config) {
+BeaconCtrl.prototype.start = function(config, callback) {
   var config = config || {};
 
   this.startMonitoring(config, function(result) {
-    if (result.type) {
+    console.log('result beaconCtrl', result);
+
+    if (result && result.type) {
       cordova.fireDocumentEvent(result.type, result.data || {});
+    }
+
+    if (!result || result.type == 'started') {
+      callback();
     }
   }, function (e) {
     console.log('Error initializing BeaconControl: ' + e);
@@ -49,18 +55,28 @@ BeaconCtrl.prototype.start = function(config) {
       });
     }
 
-    e.data = data;
-
+    e.data = data
+    
+    callback();
     cordova.fireDocumentEvent('error', e);
   });
 }
 
 var plugin = new BeaconCtrl();
 
-exports.start = function(config) {
-  plugin.start(config);
+exports.start = function(config, callback) {
+  var callback = callback || function() {};
+  plugin.start(config, callback);
 }
 
 exports.stop = function() {
   plugin.stopMonitoring();
+}
+
+exports.errorCodes = {
+  BCLBluetoothNotTurnedOnErrorKey: 'BCLBluetoothNotTurnedOnErrorKey',
+  BCLDeniedMonitoringErrorKey: 'BCLDeniedMonitoringErrorKey',
+  BCLDeniedLocationServicesErrorKey: 'BCLDeniedLocationServicesErrorKey',
+  BCLDeniedBackgroundAppRefreshErrorKey: 'BCLDeniedBackgroundAppRefreshErrorKey',
+  BCLDeniedNotificationsErrorKey: 'BCLDeniedNotificationsErrorKey',
 }

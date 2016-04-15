@@ -115,5 +115,14 @@
             "APP_ID": "977939322243298",
             "APP_NAME": "Clubinho Terraço Shopping"
         }
+    },
+    "com.phonegap.plugins.nativesettingsopener": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/selahssea/Cordova-open-native-settings.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

@@ -3,7 +3,7 @@
     <h2 ng-if="!editing">Adicionar criança</h2>
     <h2 ng-if="editing">Editar criança</h2>
     <input type="hidden" name="id" ng-model="child.id" />
-    <input type="text" name="name" ng-model="child.name" placeholder="Nome da Criança" required />
+    <input type="text" name="name" ng-model="child.name" placeholder="Nome da Criança" required autocorrect="off" />
     <div ng-show="form.$submitted || form.name.$touched">
       <div ng-show="form.name.$error.required">Por favor informe o nome da criança.</div>
     </div>

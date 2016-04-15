@@ -20,13 +20,18 @@ angular.module('clubinho.controllers')
     $scope.error = null;
     $rootScope.app.loading = true;
 
-    // Authorization.go($scope.user).then(function() {
-    //   $scope.user = {};
-    //   form.$setPristine(true);
-    // }, function(error) {
-    //   $scope.error = error;
-    // }).finally(function() {
-    //   $rootScope.app.loading = false;
-    // });
+    Authorization.signUp($scope.user).then(function() {
+      ionicToast.show('Usário cadastrado com sucesso!', 'top', false, 2500);
+      $scope.user = {};
+      form.$setPristine(true);
+    }, function(error) {
+      $scope.error = error;
+    }).finally(function() {
+      $rootScope.app.loading = false;
+    });
+  }
+
+  $scope.cancel = function() {
+    $state.go('signin');
   }
 });

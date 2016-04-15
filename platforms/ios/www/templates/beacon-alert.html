@@ -1,0 +1,49 @@
+<div class="beacon-alert">
+  <ion-modal-view>
+    <ion-content>
+      <button class="close close-profile" ng-click="close()"></button>
+      <div class="list list-inset" ng-if="beacon.errors.indexOf('BCLDeniedMonitoringErrorKey') != -1">
+        <div class="item item-text-wrap">Seu aparelho não dá o suporte necessário para o devido funcionamento de autenticação diretamente no aplicativo.</div>
+      </div>
+      <div class="list list-inset" ng-if="beacon.errors.indexOf('BCLDeniedMonitoringErrorKey') == -1">
+        <div class="list card">
+          <div class="item item-text-wrap">Para o perfeito funcionamento do sistema de autenticação do Clubinho diretamente no aplicativo é necessário que habilite os seguintes itens: </div>
+
+          <div ng-repeat="error in beacon.errors">
+            <div class="item item-icon-left" ng-show="error ==           'BCLBluetoothNotTurnedOnErrorKey'">
+              <i class="icon ion-bluetooth"></i>
+              Bluetooth ativado
+
+            </div>
+
+            <div class="item item-icon-left item-icon-right" ng-show="error == 'BCLDeniedLocationServicesErrorKey'" ng-click="openSettings()">
+              <i class="icon ion-navigate"></i>
+              Serviço localização
+              <i class="icon ion-ios-arrow-forward"></i>
+            </div>
+
+            <div class="item item-icon-left item-icon-right" ng-show="error == 'BCLDeniedBackgroundAppRefreshErrorKey'" ng-click="openSettings()">
+              <i class="icon ion-iphone"></i>
+              Modo background
+              <i class="icon ion-ios-arrow-forward"></i>
+            </div>
+
+            <div class="item item-icon-left item-icon-right" ng-show="error == 'BCLDeniedNotificationsErrorKey'" ng-click="openSettings()">
+              <i class="icon ion-android-notifications-none"></i>
+              Notificações
+              <i class="icon ion-ios-arrow-forward"></i>
+            </div>
+          </div>
+  
+          <div class="item item-body">
+            Para a ativação dos itens acima, vá no aplicativo Ajustes > Clubinho e habilite item por item.
+            <br />
+            Após a atualização:
+            <button class="button button-full button-positive" ng-click="tryAgain()">tentar novamente</button>
+          </div>
+
+        </div>
+      </div>      
+    </ion-content>
+  </ion-modal-view>
+</div>

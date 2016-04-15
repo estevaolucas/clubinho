@@ -146,7 +146,7 @@ angular.module('clubinho.services')
       });
 
       return deferred.promise;
-    }, 
+    },
 
     signUp: function(user) {
       var deferred = $q.defer(),
@@ -159,16 +159,15 @@ angular.module('clubinho.services')
             email: user.email,
             password: user.password,
             endereco: user.address, 
-            cep: user.cep
-            telefone: user.phone
-            insecure: 'cool',
-            cookie: token
+            cep: user.zipcode,
+            telefone: user.phone,
+            action: 'insere'
           }
         });
 
       request.then(function(response) {
-        if (response.data.status != 'error') {
-          authenticate({username: data.email, password: user.password}, deferred);
+        if (response.data.status == 'ok') {
+          authenticate({username: user.email, password: user.password}, deferred);
         } else {
           deferred.reject(response.data.description);
         }

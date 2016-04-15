@@ -39,13 +39,14 @@
     <script src="js/controllers/signin.js"></script>
     <script src="js/controllers/signup.js"></script>
     <script src="js/controllers/forgotpassword.js"></script>
+    <script src="js/controllers/main.js"></script>
     <script src="js/services/index.js"></script>
     <script src="js/services/children.js"></script>
     <script src="js/services/schedule.js"></script>
     <script src="js/services/profile.js"></script>
     <script src="js/directives.js"></script>
   </head>
-  <body ng-app="clubinho" class="platform-ios platform-cordova platform-webview">
+  <body ng-app="clubinho" ng-controller="MainController" class="platform-ios platform-cordova platform-webview">
     <div clubinho-loader="" show="app.loading"></div>
 
     <ion-nav-bar class="bar-stable">

@@ -42,7 +42,7 @@ static NSDictionary *launchOptions;
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         
         [[BeaconCtrlManager sharedManager] startWithDelegate:self withCompletion:^(BOOL success, NSError *error) {
-            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{ @"type": @"    "}];
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{ @"type": @"started"}];
             
             if (!success) {
                 NSDictionary *errorDic = @{@"error": error.localizedDescription,

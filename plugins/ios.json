@@ -92,6 +92,9 @@
             "APP_ID": "977939322243298",
             "APP_NAME": "Clubinho Terraço Shopping",
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        },
+        "com.phonegap.plugins.nativesettingsopener": {
+            "PACKAGE_NAME": "com.ionicframework.clubinho835391"
         }
     },
     "dependent_plugins": {

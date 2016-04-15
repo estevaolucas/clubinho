@@ -87,6 +87,10 @@
                         {
                             "xml": "<access origin=\"https://*.akamaihd.net\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NativeSettings\"><param name=\"ios-package\" value=\"NativeSettings\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -168,6 +172,9 @@
         "phonegap-facebook-plugin": {
             "APP_ID": "977939322243298",
             "APP_NAME": "Clubinho Terraço Shopping",
+            "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        },
+        "com.phonegap.plugins.nativesettingsopener": {
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
         }
     },
@@ -478,6 +485,14 @@
             "clobbers": [
                 "facebookConnectPlugin"
             ]
+        },
+        {
+            "file": "plugins/com.phonegap.plugins.nativesettingsopener/www/settings.js",
+            "id": "com.phonegap.plugins.nativesettingsopener.Settings",
+            "pluginId": "com.phonegap.plugins.nativesettingsopener",
+            "clobbers": [
+                "cordova.plugins.settings"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -494,6 +509,7 @@
         "cordova-plugin-network-information": "1.2.0",
         "cordova-plugin-app-event": "1.2.0",
         "de.appplant.cordova.plugin.local-notification": "0.8.4",
-        "phonegap-facebook-plugin": "0.12.0"
+        "phonegap-facebook-plugin": "0.12.0",
+        "com.phonegap.plugins.nativesettingsopener": "1.2"
     }
 }

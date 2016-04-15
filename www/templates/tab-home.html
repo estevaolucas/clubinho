@@ -2,10 +2,10 @@
   <ion-content>
     <header>
       <div class="logo"><img src="img/titulo.png"></div>
-
-      <button type="button" class="profile-avatar" ng-click="openProfile()">
-        <img ng-if="user.avatar"  ng-src="{{user.avatar}}" />
-        <img ng-if="!user.avatar" src="img/avatar-default.png" />
+      
+      <button type="button" class="profile-avatar" ng-click="beacon.disabled ? openAlert() : openProfile()">
+        <i class="ion-ios-gear gear"></i>
+        <i ng-show="beacon.disabled" class="ion-alert alert"></i>
       </button>
       
       <div class="clear"></div>

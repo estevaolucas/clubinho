@@ -1,7 +1,15 @@
 cordova.define("beaconCtrl.beaconCtrl", function(require, exports, module) { var exec = require('cordova/exec'),
   cordova = require('cordova');
 
-function BeaconCtrl() {};
+function BeaconCtrl() {
+  this.errorTypes = {
+    BCLBluetoothNotTurnedOnErrorKey: 'BCLBluetoothNotTurnedOnErrorKey',
+    BCLDeniedMonitoringErrorKey: 'BCLDeniedMonitoringErrorKey',
+    BCLDeniedLocationServicesErrorKey: 'BCLDeniedLocationServicesErrorKey',
+    BCLDeniedBackgroundAppRefreshErrorKey: 'BCLDeniedBackgroundAppRefreshErrorKey',
+    BCLDeniedNotificationsErrorKey: 'BCLDeniedNotificationsErrorKey',
+  }
+};
 
 BeaconCtrl.prototype.startMonitoring = function(config, successCallback, errorCallback) {
   exec(successCallback,
@@ -21,43 +29,56 @@ BeaconCtrl.prototype.stopMonitoring = function(successCallback, errorCallback) {
       );
 };
 
-BeaconCtrl.prototype.start = function(config) {
+BeaconCtrl.prototype.start = function(config, callback) {
   var config = config || {};
 
   this.startMonitoring(config, function(result) {
-    if (result.type) {
+    console.log('result beaconCtrl', result);
+
+    if (result && result.type) {
       cordova.fireDocumentEvent(result.type, result.data || {});
+    }
+
+    if (!result || result.type == 'started') {
+      callback();
     }
   }, function (e) {
     console.log('Error initializing BeaconControl: ' + e);
 
-    // cordova.fireDocumentEvent('error', e);
-    var error = JSON.stringify(e),
-      userInfo = error.info,
-      keys = Object.keys(userInfo);
-      values = Object.values(userInfo),
-      newError = new Array(keys.length);
+    var userInfo = e.info,
+      data = [];
 
-    for(var i = 0; i < newError.length; i++) {
-      newError.push({
-        code: keys[i],
-        message: values[i]
+    for (var key in userInfo) {
+      data.push({
+        code: key,
+        message: userInfo[key]
       });
     }
 
-    console.log('teste', newError);
-    cordova.fireDocumentEvent('error', newError);
+    e.data = data
+    
+    callback();
+    cordova.fireDocumentEvent('error', e);
   });
 }
 
 var plugin = new BeaconCtrl();
 
-exports.start = function(config) {
-  plugin.start(config);
+exports.start = function(config, callback) {
+  var callback = callback || function() {};
+  plugin.start(config, callback);
 }
 
 exports.stop = function() {
   plugin.stopMonitoring();
+}
+
+exports.errorCodes = {
+  BCLBluetoothNotTurnedOnErrorKey: 'BCLBluetoothNotTurnedOnErrorKey',
+  BCLDeniedMonitoringErrorKey: 'BCLDeniedMonitoringErrorKey',
+  BCLDeniedLocationServicesErrorKey: 'BCLDeniedLocationServicesErrorKey',
+  BCLDeniedBackgroundAppRefreshErrorKey: 'BCLDeniedBackgroundAppRefreshErrorKey',
+  BCLDeniedNotificationsErrorKey: 'BCLDeniedNotificationsErrorKey',
 }
 
 });
