@@ -22,26 +22,25 @@ static NSDictionary *launchOptions;
 - (void)startMonitoring:(CDVInvokedUrlCommand *)command {
     NSDictionary *config = [command.arguments objectAtIndex:0];
     
-    [self.commandDelegate runInBackground:^{
-        
-        if (config) {
-            if ([config objectForKey:@"clientId"]) {
-                [BeaconCtrlManager sharedManager].clientId = config[@"clientId"];
-            }
-            
-            if ([config objectForKey:@"clientSecret"]) {
-                [BeaconCtrlManager sharedManager].clientSecret = config[@"clientSecret"];
-            }
+    if (config) {
+        if ([config objectForKey:@"clientId"]) {
+            [BeaconCtrlManager sharedManager].clientId = config[@"clientId"];
         }
         
-        // Register for notifications
-        UIUserNotificationType types = (UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert);
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types
-                                                                                 categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        
-        [[BeaconCtrlManager sharedManager] startWithDelegate:self withCompletion:^(BOOL success, NSError *error) {
+        if ([config objectForKey:@"clientSecret"]) {
+            [BeaconCtrlManager sharedManager].clientSecret = config[@"clientSecret"];
+        }
+    }
+    
+    // Register for notifications
+    UIUserNotificationType types = (UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types
+                                                                             categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    [[BeaconCtrlManager sharedManager] startWithDelegate:self withCompletion:^(BOOL success, NSError *error) {
+        [self.commandDelegate runInBackground:^{
             CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{ @"type": @"started"}];
             
             if (!success) {
@@ -52,6 +51,7 @@ static NSDictionary *launchOptions;
                                              messageAsDictionary:errorDic];
             }
             
+            [pluginResult setKeepCallback:@YES];
             self.callbackId = command.callbackId;
             [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         }];
@@ -122,6 +122,7 @@ static NSDictionary *launchOptions;
                         @"id": action.identifier,
                         @"name": action.name,
                         @"type": action.type,
+                        @"actionType": action.type,
                         @"isTestAction": [NSNumber numberWithBool:action.isTestAction],
                         @"customValues": action.customValues,
                         @"payload": action.payload
@@ -135,9 +136,8 @@ static NSDictionary *launchOptions;
                               @"data": values };
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                   messageAsDictionary:result];
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
-    }];
+    [pluginResult setKeepCallback:@YES];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
 }
 
 @end

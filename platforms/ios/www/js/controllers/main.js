@@ -1,16 +1,19 @@
 angular.module('clubinho.controllers')
 
-.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal) {
+.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal, $cordovaDialogs) {
   var credentials = {
       clientId     : '9c04ef1ef670e73d1e12bf03751b19076664772945d7c15490bca24facd9bbd9',
       clientSecret : 'ae8baaf4377f0cd8ef5c56a3ed6cd78db06cda4ed8279f7c5d4690b36d8539b2'
     },
     normalizeCustomValues = function(action) {
+      console.log('normalizeCustomValues start');
       var data = {};
 
-      action.customValues.each(function(value) {
+      action.customValues.forEach(function(value) {
         data[value.name] = value.value
       });
+
+      console.log('normalizeCustomValues', data);
 
       return data;
     }, 
@@ -21,6 +24,8 @@ angular.module('clubinho.controllers')
         actionTimestampStored = localStorage.getItem(timestampKey);        
 
       if (actionTimestampValue) {
+        actionTimestampValue = actionTimestampValue * 1000;
+
         if (actionTimestampStored) {
           var now = new Date().getTime(),
             stored = parseInt(actionTimestampStored);
@@ -31,21 +36,25 @@ angular.module('clubinho.controllers')
         }
 
         if (save) {
-          localStorage.setItem(timestamp, new Date().getTime());
+          localStorage.setItem(timestampKey, new Date().getTime());
         }
       }
 
       return true;
     },
     startBeaconMonitoring = function() {
-      if (!loggedIn || !ionicPlatformReady) {
+      if (!loggedIn || !ionicPlatformReady || beaconStarted) {
         return;
       }
       
       if (window.cordova && window.cordova.plugins.beaconCtrl) {
-        cordova.plugins.beaconCtrl.start(credentials);  
+        beaconStarted = true
+        cordova.plugins.beaconCtrl.start(credentials, function() {
+          console.log('beacon event - beacon iniciado');
+        });  
       }
     }, 
+    beaconStarted = false,
     ionicPlatformReady = false,
     loggedIn = false;
 
@@ -105,8 +114,13 @@ angular.module('clubinho.controllers')
     startBeaconMonitoring();
   });
 
+  document.addEventListener('started', function(data) {
+    $scope.beacon.disabled = false;
+    $scope.beacon.errors = null;
+  });
+
   document.addEventListener('notifyAction', function(action) {
-    alert('notifyAction');
+    console.log('notifyAction', 'beacon event');
     var values = normalizeCustomValues(action),
       actionType = values.type;
 
@@ -114,24 +128,25 @@ angular.module('clubinho.controllers')
       return;
     }
 
-    if (action.type == 'custom' && actionType == 'notification') {
+    console.log('action', action);
+    if (action.actionType == 'custom' && actionType == 'notification') {
       var body = values.text,
         title = ('title' in values) ? values.title : '', 
         now = new Date().getTime(),
-        _10SecondsFromNow = new Date(now + 10 * 1000);
+        _1SecondsFromNow = new Date(now + 1 * 1000);
 
       $cordovaLocalNotification.schedule({
         id: 1,
-        title: title,
+        title: title + ' ' + body,
         data: {
           type: 'action',
           action_id: action.identifier
         },
-        at: _10SecondsFromNow
+        at: _1SecondsFromNow
       });
-    } else if (action.type == 'custom' && actionType == 'checkin') {
+    } else if (action.actionType == 'custom' && actionType == 'checkin') {
       var now = new Date().getTime(),
-        _10SecondsFromNow = new Date(now + 10 * 1000);
+        _1SecondsFromNow = new Date(now + 1 * 1000);
 
       $cordovaLocalNotification.schedule({
         id: 1,
@@ -140,28 +155,31 @@ angular.module('clubinho.controllers')
           type: 'action',
           action_id: action.identifier
         },
-        at: _10SecondsFromNow
+        at: _1SecondsFromNow
       });
     }
   });
 
-  document.addEventListener('started', function(data) {
-    $scope.beacon.disabled = false;
-    $scope.beacon.errors = null;
-  });
-
-  document.addEventListener('didPerformAction', function(data) {
-    alert('didPerformAction');
-    var values = normalizeCustomValues(action),
-      actionType = values.type;
-
+  document.addEventListener('didPerformAction', function(action) {
+    var values = normalizeCustomValues(action);
+    
     if (!actionCanBePerfomed(action, true)) {
-      alert('salvou');
       return;
+    }
+
+    if (action.actionType == 'custom' && values.type == 'notification') {
+      var message = values.text,
+        title = ('title' in values) ? values.title : '';
+ 
+      $cordovaDialogs.confirm(message, title, ['OK']);
+    } else if (action.actionType == 'custom' && values.type == 'checkin') {
+      $rootScope.$broadcast('clubinho-beacon-checkin', values);
     }
   });
 
   document.addEventListener('error', function(error) {
+    console.log('error', 'beacon event', JSON.stringify(error));
+
     if (error.data && angular.isArray(error.data)) {
       $scope.beacon.disabled = true;
       $scope.beacon.errors = error.data.map(function(error) {
