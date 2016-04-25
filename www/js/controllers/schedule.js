@@ -1,21 +1,24 @@
 angular.module('clubinho.controllers')
 
 .controller('ScheduleController', function($scope, $ionicModal, $rootScope, $timeout, $ionicScrollDelegate, $cordovaLocalNotification, $stateParams, Schedule) {
-  $scope.scheduleCtrl = {
-    loading: true
-  }
-
+  
+  // Add/remove event from favorite list
   $scope.toggleFavorite = function(event) {
     $scope.loading = true;
 
     $timeout(function() {
-      $scope.loading = false;
       var isFavorite = Schedule.setFavorite(event),
         notificationId = event.id + 200,
         now = new Date().getTime(),
         _10SecondsFromNow = new Date(now + 10 * 1000);
 
-      // Create Local notification
+      $scope.loading = false;
+
+      if (!window.cordova) {
+        return event.favorite = isFavorite;
+      }
+
+      // Add a local notification
       if (isFavorite) {
         $cordovaLocalNotification.schedule({
           id: notificationId,
@@ -24,7 +27,7 @@ angular.module('clubinho.controllers')
             type: 'event',
             id: event.id
           },
-          at: _10SecondsFromNow
+          at: _10SecondsFromNow // FIXME: add currect time
         }).then(function(result) {
           event.favorite = isFavorite;
         });
@@ -38,6 +41,7 @@ angular.module('clubinho.controllers')
     }, 500);
   }
 
+  // Show event's detail
   $scope.detail = function(event) {
     $ionicModal.fromTemplateUrl('templates/schedule-detail.html', {
       scope: $scope,
@@ -46,12 +50,13 @@ angular.module('clubinho.controllers')
     }).then(function(modal) {
       $ionicScrollDelegate.scrollTop();
 
-      $scope.scheduleCtrl.modal = modal;
-      $scope.scheduleCtrl.modal.show();
+      $scope.modal = modal;
+      $scope.modal.show();
       $scope.event = event;
     });
   }
 
+  // Get list of events
   Schedule.getList().then(function(schedule) {
     $scope.schedule = schedule;
     $scope.loading = false;
@@ -75,12 +80,8 @@ angular.module('clubinho.controllers')
 })
 
 .controller('ScheduleDetailController', function($scope) {
-  $scope.toggleFavorite = function(event) {
-    event.favorite = !event.favorite;
-  }
-
   $scope.close = function() {
-    $scope.$parent.scheduleCtrl.modal.hide();
-    $scope.$parent.scheduleCtrl.modal.remove();
+    $scope.$parent.modal.hide();
+    $scope.$parent.modal.remove();
   }
 });
