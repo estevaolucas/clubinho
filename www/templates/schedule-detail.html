@@ -23,7 +23,7 @@
           <h5>
             <time datetime="{{event.date}}">{{event.date | date:'dd'}}</time>
             <time datetime="{{event.date}}">{{event.date | date:'MM'}}</time>
-            <time datetime="{{event.date}}" class="hour">{{event.date | date:'HH:ss'}}</time>
+            <time datetime="{{event.date}}" class="hour">{{event.date | date:'HH:mm'}}</time>
             
             <button ng-click="toggleFavorite(event)">
               <i ng-class="{'ion-star': event.favorite, 'ion-ios-star-outline': !event.favorite}"></i> Fav

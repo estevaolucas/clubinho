@@ -23,7 +23,7 @@
             <ion-slide-box show-pager="false" auto-play="true" does-continue
 ="true">
               <ion-slide class="slider-slide {{event.className}}" ng-repeat="event in schedule | limitTo: 3" ng-click="openEvent(event)">
-                <time>{{event.date | date:'dd/MM'}} <strong>{{event.date | date:'HH:ss'}}</strong></time>
+                <time>{{event.date | date:'dd/MM'}} <strong>{{event.date | date:'HH:mm'}}</strong></time>
                 <h2>{{event.title}}</h2>
                 <h3>com {{event.author}}</h3>
                 <p ng-bind-html="event.excerpt"></p>
@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div clubinho-children-list list="children"></div>
+      <div clubinho-children-list list="children" events-to-confirm="true"></div>
       <div class="clear"></div>
     </div>
   </ion-content>

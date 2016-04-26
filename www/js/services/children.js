@@ -20,11 +20,30 @@ angular.module('clubinho.services')
       return children.map(function(child) {
         return normalizeChild(child);
       })
+    },
+    saveList = function(childrenList) {
+      localStorage.setItem('children-list', JSON.stringify(childrenList));
+
+      return childrenList;
+    },
+    getCachedList = function() {
+      return JSON.parse(localStorage.getItem('children-list') || '[]')
     };
 
   return {
-    getList: function() {
-      var promise = $http({
+    getList: function(cached) {
+      var deferred = deferred || $q.defer();
+
+      if (cached) { 
+        var childrenList = getCachedList();
+
+        if (childrenList && childrenList.length) {
+          deferred.resolve(childrenList);
+        } else {
+          deferred.reject();
+        }
+      } else {
+        var promise = $http({
           method: 'get',
           url: apiConfig.baseUrl + 'api/get_author_posts/',
           params: {
@@ -32,17 +51,17 @@ angular.module('clubinho.services')
             id: Profile.getData().id,
             cookie: Profile.token(),
           }
-        }),
-        deferred = deferred || $q.defer();
+        });
 
-      promise.then(function(children) {
-        childrenList = normalize(children.data.posts);
+        promise.then(function(children) {
+          childrenList = normalize(children.data.posts);
 
-        deferred.resolve(childrenList);
-      }, function(reason) {
-        deferred.reject(reason);
-      });
-
+          deferred.resolve(saveList(childrenList));
+        }, function(reason) {
+          deferred.reject(reason);
+        });
+      }
+  
       return deferred.promise;
     },
 
@@ -67,7 +86,7 @@ angular.module('clubinho.services')
         } else {
           childrenList.unshift(data);
           $rootScope.$broadcast('clubinho-children-update', childrenList);
-          deferred.resolve(childrenList);
+          deferred.resolve(saveList(childrenList));
         }
       }, function(reason) {
         deferred.reject(reason);
@@ -105,7 +124,7 @@ angular.module('clubinho.services')
           }
 
           $rootScope.$broadcast('clubinho-children-update', childrenList);
-          deferred.resolve(childrenList);
+          deferred.resolve(saveList(childrenList));
         }
       }, function(reason) {
         deferred.reject(reason);
@@ -136,13 +155,43 @@ angular.module('clubinho.services')
           }
 
           $rootScope.$broadcast('clubinho-children-update', childrenList);
-          deferred.resolve(childrenList);
+          deferred.resolve(saveList(childrenList));
         }
       }, function(reason) {
         deferred.reject(reason);
       });
       
       return deferred.promise;
-    }
+    },
+
+    confirmPresence: function(confirm, event, child) {
+      var deferred = deferred || $q.defer();
+
+      // FIXME: use correct endpoint
+      
+      // $http({
+      //   method: 'get',
+      //   url: apiConfig.baseUrl + 'api/get_author_posts/',
+      //   params: {
+      //     post_type: 'filho',
+      //     id: Profile.getData().id,
+      //     cookie: Profile.token(),
+      //     filho: child.id,
+      //     evento: event.id
+      //   }
+      // }).then(function(response) {
+      //   if (response.status == 'ok') {
+          deferred.resolve();  
+      //   } else {
+      //     deferred.reject(response.message);
+      //   }
+      // }, function(reason) {
+      //   deferred.reject(reason);
+      // });
+  
+      return deferred.promise;
+    },
+
+    getCachedList: getCachedList
   };
 });

@@ -1,6 +1,7 @@
 angular.module('clubinho', [
   'ionic', 
   'ionic-cache-src',
+  'angular-cache',
   'clubinho.controllers', 
   'clubinho.services',
   'clubinho.directives'
@@ -147,3 +148,10 @@ angular.module('clubinho', [
     }
   });
 });
+
+window.onerror = function(msg, url, line, col, error) {
+  var extra = !col ? '' : '\ncolumn: ' + col;
+  
+  extra += !error ? '' : '\nerror: ' + error;
+  console.log('JS Error: ' + msg + '\nurl: ' + url + '\nline: ' + line + extra);
+};

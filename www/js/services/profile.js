@@ -180,10 +180,9 @@ angular.module('clubinho.services')
   };
 })
 
-.service('Profile', function(Authorization) {
-  var authorized = false;
-
-  return {
+.service('Profile', function(Authorization, Schedule) {
+  var authorized = false,
+    methods = {
     getData: function() {
       if (localStorage.getItem('data')) {
         var user = JSON.parse(localStorage.getItem('data'));
@@ -194,17 +193,108 @@ angular.module('clubinho.services')
           cpf: user.cpf,
           phone: user.telefone,
           email: user.email,
-          address: user.endereco
+          address: user.endereco,
+          children: JSON.parse(localStorage.getItem('children-list') || '[]')
         }
       }
     },
 
+    // user's session cookie to login
     token: function() {
       if (localStorage.getItem('token')) {
         return localStorage.getItem('token');
       }
 
       return false;
-    }
-  }
+    },
+
+    // add an event to the list of events to confirm presence
+    addEventToConfirm: function(eventToAdd) {
+      var events = methods.eventsToConfirm(true),
+        eventsArray = events.map(function(event) {
+          return event.id;
+        });
+        
+      if (eventsArray.indexOf(eventToAdd.id) === -1) {
+        events.push({
+          id: eventToAdd.id,
+          children: methods.getData().children.map(function(child) {
+            return child.id
+          })
+        });
+      }
+
+      methods._saveEventsToConfirm(events);
+    },
+
+    // remove an event from the list of events to confirm presence
+    removeEventToConfirm: function(eventToRemove, child) {
+      var events = methods.eventsToConfirm(true),
+        eventsArray = events.map(function(event) {
+          return event.id;
+        }),
+        index = eventsArray.indexOf(eventToRemove.id);
+        
+      console.log('index', index);
+
+      if (index !== -1) {
+        var event = events[index];
+
+        console.log('event', event);
+        if (event.children.length) {
+          if (event.children.indexOf(child.id) !== -1) {
+            event.children.splice(event.children.indexOf(child.id), 1)
+
+            if (!event.children.length) {
+              events.splice(index, 1);
+            }
+          }
+        } else {
+          events.splice(index, 1);  
+        }
+      }
+
+      methods._saveEventsToConfirm(events);
+    },
+
+    // list events from the list. Opcionaly list just from the current user
+    eventsToConfirm: function(justCurrentUser, detailedList) {
+      var usersEvents = JSON.parse(localStorage.getItem(methods.eventsToConfirmKey) || '{}');
+
+      if (justCurrentUser) {
+        var userId = 'user-' + methods.getData().id,
+          events = usersEvents[userId] ? usersEvents[userId] : [],
+          eventsArray = events.map(function(event) {
+            return event.id;
+          });
+
+        if (detailedList) {
+          var eventsFromCache = Schedule.getScheduleFromCache();
+
+          return eventsFromCache.filter(function(event) {
+            return eventsArray.indexOf(event.id) !== -1
+          }).map(function(event) {
+            return angular.extend(event, events[eventsArray.indexOf(event.id)]);
+          });
+        }
+
+        return events;
+      }
+
+      return usersEvents;
+    },
+
+    _saveEventsToConfirm: function(events) {
+      var eventsToConfirm = methods.eventsToConfirm();
+
+      eventsToConfirm['user-' + methods.getData().id] = events;
+
+      localStorage.setItem(methods.eventsToConfirmKey, JSON.stringify(eventsToConfirm));
+    },
+
+    eventsToConfirmKey: 'events-to-confirm'
+  };
+
+  window.Profile = methods;
+  return methods;
 })

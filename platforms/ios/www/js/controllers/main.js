@@ -1,19 +1,16 @@
 angular.module('clubinho.controllers')
 
-.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal, $cordovaDialogs) {
+.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal, $cordovaDialogs, Children, Profile) {
   var credentials = {
       clientId     : '9c04ef1ef670e73d1e12bf03751b19076664772945d7c15490bca24facd9bbd9',
       clientSecret : 'ae8baaf4377f0cd8ef5c56a3ed6cd78db06cda4ed8279f7c5d4690b36d8539b2'
     },
     normalizeCustomValues = function(action) {
-      console.log('normalizeCustomValues start');
       var data = {};
 
       action.customValues.forEach(function(value) {
         data[value.name] = value.value
       });
-
-      console.log('normalizeCustomValues', data);
 
       return data;
     }, 
@@ -54,6 +51,16 @@ angular.module('clubinho.controllers')
         });  
       }
     }, 
+    templateEngine = function(tpl, data) {
+      var re = /{{([^}}]+)?}}/g, 
+        match;
+
+      while(match = re.exec(tpl)) {
+        tpl = tpl.replace(match[0], data[match[1]])
+      }
+      
+      return tpl;
+    },
     beaconStarted = false,
     ionicPlatformReady = false,
     loggedIn = false;
@@ -119,6 +126,7 @@ angular.module('clubinho.controllers')
     $scope.beacon.errors = null;
   });
 
+  // Evento acontece em background.
   document.addEventListener('notifyAction', function(action) {
     console.log('notifyAction', 'beacon event');
     var values = normalizeCustomValues(action),
@@ -128,22 +136,44 @@ angular.module('clubinho.controllers')
       return;
     }
 
-    console.log('action', action);
     if (action.actionType == 'custom' && actionType == 'notification') {
-      var body = values.text,
+      var message = values.text,
         title = ('title' in values) ? values.title : '', 
         now = new Date().getTime(),
-        _1SecondsFromNow = new Date(now + 1 * 1000);
+        _1SecondsFromNow = new Date(now + 1 * 1000),
+        notify = function(message) {
+          console.log('NOTIFY', message);
 
-      $cordovaLocalNotification.schedule({
-        id: 1,
-        title: title + ' ' + body,
-        data: {
-          type: 'action',
-          action_id: action.identifier
-        },
-        at: _1SecondsFromNow
-      });
+          $cordovaLocalNotification.schedule({
+            id: 1,
+            title: message,
+            data: {
+              type: 'action',
+              action_id: action.identifier
+            },
+            at: _1SecondsFromNow
+          });
+        };
+
+      // Wellcome message
+      if (values.id == 'onHello') {
+        notify('TESTES');
+
+        Children.getList(true).then(function(children) {
+          console.log('CHILDREN LIST', Profile.getData().name);
+
+          notify(templateEngine(message, {
+            name: Profile.getData().name,
+            children: children.map(function(child) {
+              return child.name;
+            }).join(', ')
+          }));
+        }, function() {
+          console.log('ERROR CHILDREN')
+        });
+      } else {
+        notify(message);
+      }
     } else if (action.actionType == 'custom' && actionType == 'checkin') {
       var now = new Date().getTime(),
         _1SecondsFromNow = new Date(now + 1 * 1000);
@@ -160,6 +190,7 @@ angular.module('clubinho.controllers')
     }
   });
 
+  // Evento acontece quando o aplicativo está aberto e rodando na tela do usuário
   document.addEventListener('didPerformAction', function(action) {
     var values = normalizeCustomValues(action);
     
@@ -171,7 +202,25 @@ angular.module('clubinho.controllers')
       var message = values.text,
         title = ('title' in values) ? values.title : '';
  
-      $cordovaDialogs.confirm(message, title, ['OK']);
+      // Wellcome message
+      if (values.id == 'onHello') {
+        console.log('CHILDREN LIST', Profile.getData().name)
+
+        Children.getList(true).then(function(children) {
+          message = templateEngine(message, {
+            name: Profile.getData().name,
+            children: children.map(function(child) {
+              return child.name;
+            }).join(', ')
+          });
+
+          $cordovaDialogs.confirm(message, title, ['OK']);  
+        }, function() {
+          console.log('ERROR CHILDREN')
+        });
+      } else {
+        $cordovaDialogs.confirm(message, title, ['OK']);
+      }
     } else if (action.actionType == 'custom' && values.type == 'checkin') {
       $rootScope.$broadcast('clubinho-beacon-checkin', values);
     }

@@ -6,13 +6,15 @@
   },
   "resolutions": {
     "angular": "1.4.3",
-    "angular-sanitize": "1.4.3"
+    "angular-sanitize": "1.4.3",
+    "angular-animate": "1.4.3"
   },
   "dependencies": {
     "ionic-toast": "^0.2.0",
     "angular-messages": "^1.5.2",
     "ionic-cache-src": "^0.7.1",
     "angular-sanitize": "^1.5.3",
-    "angular-ui-mask": "^1.8.2"
+    "angular-ui-mask": "^1.8.2",
+    "angular-cache": "^4.5.0"
   }
 }

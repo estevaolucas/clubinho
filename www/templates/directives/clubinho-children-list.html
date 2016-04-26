@@ -8,7 +8,7 @@
         <div class="user">
           <h2>{{child.name}}</h2>
           <h3>{{child.age}} anos</h3>
-          <div class="details" ng-if="child.events.length && !addChild">
+          <div class="details" ng-if="child.events.length && !addChild && !child.eventToConfirm">
             <h3>últimos eventos</h3>
             
             <span ng-repeat="event in child.events">
@@ -17,8 +17,13 @@
               <h4>{{event.date}}</h4>
             </span>                                          
           </div>
-          <div class="details" ng-if="!child.events.length && !addChild">
+          <div class="details" ng-if="!child.events.length && !addChild && !child.eventToConfirm">
             <h3>criança sem pontuação</h3>
+          </div>
+          <div class="details" ng-if="child.eventToConfirm">
+            <h3>O {{child.name}} estava presente no evento <strong>{{child.eventToConfirm.title}}</strong> dia <strong>{{child.eventToConfirm.date | date:'dd/MM'}}</strong> às <strong>{{child.eventToConfirm.date | date:'HH:mm'}}</strong>?</h3>
+            <button type="button" class="btn-yes" ng-click="confirm(child)">Sim</button>
+            <button type="button" class="btn-no" ng-click="decline(child)">Não</button>
           </div>
           <div class="details" ng-if="addChild">
             <button type="button" class="btn-yes" ng-click="editChild(child)"><i class="ion-edit"></i></button>

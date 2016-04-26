@@ -6,23 +6,62 @@ angular.module('clubinho.directives', [])
     scope: {
       show: '='
     },
-    templateUrl: 'templates/directives/clubinho-loader.html',
-    link: function(scope, element, attr) {
-    }
+    templateUrl: 'templates/directives/clubinho-loader.html'
   }
 })
 
-.directive('clubinhoChildrenList', function($ionicScrollDelegate) {
+.directive('clubinhoChildrenList', function($ionicScrollDelegate, Children, Profile, $timeout) {
   return {
     restrict: 'A',
     scope: {
       children: '=list',
       addChild: '=',
       editChild: '=',
-      deleteChild: '='
+      deleteChild: '=',
+      eventsToConfirm: '='
     },
     templateUrl: 'templates/directives/clubinho-children-list.html',
-    link: function(scope, element, attr ) {
+    link: function(scope, element, attr) {
+      if (scope.eventsToConfirm) {
+        var updateScope = function() {
+            var eventsToConfirm = Profile.eventsToConfirm(true, true);
+
+            if (scope.hasOwnProperty('children') && scope.children.length) {
+              scope.children.forEach(function(child) {
+                var filteredEventsToConfirm = eventsToConfirm.filter(function(event) {
+                    return event.children.indexOf(child.id) !== -1;
+                });
+
+                child.eventToConfirm = filteredEventsToConfirm.length ? 
+                  filteredEventsToConfirm[0] : 
+                  null;
+              });
+            }
+          },
+          confirm = function(confirm, child) {
+            Children.confirmPresence(confirm, child.eventToConfirm, child).then(function() {
+              Profile.removeEventToConfirm(child.eventToConfirm, child);
+              updateScope();
+            });
+          },
+          unwatch = scope.$watch('children', function(newValue, oldValue) {
+            if (newValue === oldValue) {
+              return;
+            }
+
+            updateScope();
+            unwatch();
+          });
+
+        scope.confirm = function(child) {
+          confirm(true, child);
+        }
+
+        scope.decline = function(child) {
+          confirm(false, child);
+        }
+      }
+
       scope.toggleChild = function(child, e) {
         var $this = $(e.target);
         

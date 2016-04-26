@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('HomeController', function($scope, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization) {
+.controller('HomeController', function($scope, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile) {
   var loading = 2, 
     hideLoading = function() {
       loading--;
@@ -48,9 +48,16 @@ angular.module('clubinho.controllers')
   });
 
   $scope.$on('clubinho-beacon-checkin', function(e, values) {
-    console.log('clubinho-beacon-checkin', JSON.stringify(values));
-    $cordovaDialogs.confirm('Você entrou na área de check-in - home', 'Check-in', ['OK']);
-  })
+    var newEvent = Schedule.getNextEventFromNow();
+
+    if (newEvent) {
+      console.log('clubinho-beacon-checkin-event', JSON.stringify(newEvent));
+      $cordovaDialogs.confirm(newEvent.title, 'Check-in', ['OK']);
+      Profile.addEventToConfirm(newEvent);
+    } else {
+      console.log('clubinho-beacon-checkin-no-event', JSON.stringify(values), newEvent);
+    }
+  });
 
   $scope.next = function() {
     $ionicSlideBoxDelegate.next();
