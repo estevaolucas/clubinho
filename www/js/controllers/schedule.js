@@ -22,7 +22,7 @@ angular.module('clubinho.controllers')
       if (isFavorite) {
         $cordovaLocalNotification.schedule({
           id: notificationId,
-          title: event.title_plain + ' já vai começar.',
+          title: event.title + ' já vai começar.',
           data: {
             type: 'event',
             id: event.id

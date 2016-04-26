@@ -24,12 +24,13 @@ angular.module('clubinho.directives', [])
     link: function(scope, element, attr) {
       if (scope.eventsToConfirm) {
         var updateScope = function() {
-            var eventsToConfirm = Profile.eventsToConfirm(true, true);
+            var eventsToConfirm = Profile.eventsToConfirm(true, true),
+              now = new Date();
 
             if (scope.hasOwnProperty('children') && scope.children.length) {
               scope.children.forEach(function(child) {
                 var filteredEventsToConfirm = eventsToConfirm.filter(function(event) {
-                    return event.children.indexOf(child.id) !== -1;
+                    return event.children.indexOf(child.id) !== -1 && event.date < now;
                 });
 
                 child.eventToConfirm = filteredEventsToConfirm.length ? 
