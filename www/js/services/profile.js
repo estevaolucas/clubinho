@@ -5,28 +5,23 @@ angular.module('clubinho.services')
     authenticate = function(data, deferred) {
       var deferred = deferred || $q.defer(), 
         request = $http({
-          method: 'get',
-          url: apiConfig.baseUrl + 'api/auth/generate_auth_cookie/',
-          params: {
-            insecure: 'cool',
+          method: 'post',
+          url: apiConfig.baseUrl + '/token',
+          data: {
             username: data.username,
             password: data.password
           }
         });
 
       request.then(function(response) {
-        if (response.data.status == 'error') {
-          deferred.reject(response.data.error);
-        } else {
-          localStorage.setItem('username', data.username);
-          localStorage.setItem('password', data.password);
-          localStorage.setItem('token', response.data.cookie);
-          localStorage.setItem('data', JSON.stringify(response.data.user));
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('password', data.password);
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('data', JSON.stringify(response.data.data));
 
-          authorized = true;
-          deferred.resolve(data);
-          $rootScope.$broadcast('user-did-login');
-        }
+        authorized = true;
+        deferred.resolve(data);
+        $rootScope.$broadcast('user-did-login');
       }, function(response) {
         console.log('Error login', response);
         deferred.reject('Erro');
@@ -34,16 +29,13 @@ angular.module('clubinho.services')
 
       return deferred.promise;
     }, createOrLoginFromFacebook = function(accessToken, deferred) {
-      return $http.get(apiConfig.baseUrl + 'fb_connect/?access_token=' + accessToken)
+      return $http.get(apiConfig.baseUrl + '/facebook?access_token=' + accessToken)
         .then(function(response) {
-          if (response.data.cookie) {
-            localStorage.setItem('token', response.data.cookie);
-
-            authorized = true;
-            deferred.resolve(response.data.msg);
-          } else {
-            deferred.reject(response.data.msg);
-          }
+          localStorage.setItem('token', response.data.cookie);
+          
+          authorized = true;
+          deferred.resolve(response.data.msg);
+          
         }, function(reason) {
           deferred.reject(reason);
         });
@@ -52,18 +44,13 @@ angular.module('clubinho.services')
 
       $http({
         method: 'get',
-        url: apiConfig.baseUrl + 'get_currentuserinfo/',
-        params: { 
-          cookie: localStorage.getItem('token'),
-          insecure: 'cool'
+        url:  apiConfig.baseUrl + '/me',
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       }).then(function(response) {
-        if (response.data.status == 'ok') {
-          localStorage.setItem('data', JSON.stringify(response.data.user));
-          deferred.resolve(response.data.user)
-        } else {
-          deferred.reject(response.data.error);
-        }
+        localStorage.setItem('data', JSON.stringify(response.data.data));
+        deferred.resolve(response.data.user)
       }, function(reason) {
         deferred.reject(reason);
       });
@@ -82,11 +69,10 @@ angular.module('clubinho.services')
         deferred.reject(); 
       } else {
         var request = $http({
-          method: 'get',
-          url: apiConfig.baseUrl + 'api/auth/validate_auth_cookie/',
-          params: {
-            insecure: 'cool',
-            cookie: token
+          method: 'post',
+          url: apiConfig.baseUrl + '/token/validate',
+          headers: {
+            Authorization: 'Bearer ' + token
           }
         });
 
@@ -152,17 +138,8 @@ angular.module('clubinho.services')
       var deferred = $q.defer(),
         request = $http({
           method: 'get',
-          url: apiConfig.baseUrl + 'insere-responsavel/',
-          params: {
-            nome: user.name, 
-            cpf: user.cpf,
-            email: user.email,
-            password: user.password,
-            endereco: user.address, 
-            cep: user.zipcode,
-            telefone: user.phone,
-            action: 'insere'
-          }
+          url: apiConfig.baseUrl + '/create-user',
+          params: user
         });
 
       request.then(function(response) {

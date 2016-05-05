@@ -8,16 +8,15 @@ angular.module('clubinho', [
 ])
 
 .constant('apiConfig', {
-  baseUrl: 'http://peppersp.com.br/beacon/',
+  baseUrl: 'http://localhost/clubinho-api/api/v1',
   status: {
     success: 'ok',
     error: 'error'
   }
 })
 
-.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
+.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider, $httpProvider) {
   $stateProvider
-
     .state('signin', {
       url: '/sign-in',
       templateUrl: 'templates/sign-in.html',
