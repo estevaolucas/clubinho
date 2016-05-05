@@ -4,24 +4,9 @@ angular.module('clubinho.services')
   var favKey = 'events-favorited',
     normalize = function(events) {
       return events.map(function(event) {
-        var date = event.custom_fields.data_evento[0],
-          hour = event.custom_fields.horario_evento[0],
-          parts = [date.substring(0, 4), date.substring(4, 6), date.substring(6,8)];
+        event['date'] = new Date(event.date);
 
-        hour = hour.length == 2 ? hour + ':00' : hour;
-
-        return {
-          id: event.id,
-          date: new Date(parts.join('/') + ' ' + hour),
-          title: event.title_plain,
-          excerpt: event.excerpt,
-          content: event.content,
-          favorite: methods.isFavorited(event),
-          author: event.custom_fields.palestrante[0],
-          cover: event.attachments && event.attachments.length ? 
-            event.attachments[0].images.full.url : 
-            null
-        }
+        return event;
       });
     },
     updateCachedList = function(events) {
@@ -67,17 +52,13 @@ angular.module('clubinho.services')
     },
     methods = {
       getList: function() {
-        var promise = $http.get(apiConfig.baseUrl + 'api/get_posts/?post_type=agenda', {
+        var promise = $http.get(apiConfig.baseUrl + '/get-schedule-list', {
             cache: CacheFactory.get('scheduleCache')
           }),
           deferred = deferred || $q.defer();
 
         promise.then(function(schedule) {
-          if (schedule.data.status == apiConfig.status.success) {
-            deferred.resolve(updateCachedList(normalize(schedule.data.posts)));
-          } else {
-            deferred.reject(apiConfig.error);  
-          }
+          deferred.resolve(updateCachedList(normalize(schedule.data.data)));
         }, function(reason) {
           deferred.reject(reason);
         });
