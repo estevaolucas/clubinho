@@ -29,13 +29,20 @@ angular.module('clubinho.services')
 
       return deferred.promise;
     }, createOrLoginFromFacebook = function(accessToken, deferred) {
-      return $http.get(apiConfig.baseUrl + '/facebook?access_token=' + accessToken)
+      return $http({
+          method: 'post', 
+          url: apiConfig.baseUrl + '/facebook',
+          data: {
+            access_token: accessToken
+          }
+        })
         .then(function(response) {
-          localStorage.setItem('token', response.data.cookie);
-          
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('data', JSON.stringify(response.data.data));
+
           authorized = true;
-          deferred.resolve(response.data.msg);
-          
+          deferred.resolve();
+          $rootScope.$broadcast('user-did-login');
         }, function(reason) {
           deferred.reject(reason);
         });
@@ -123,9 +130,7 @@ angular.module('clubinho.services')
         var accessToken = response.authResponse.accessToken;
         console.log(accessToken);
         localStorage.setItem('facebookToken', accessToken);
-        createOrLoginFromFacebook(accessToken, deferred).then(function() {
-          getUserData();
-        });        
+        createOrLoginFromFacebook(accessToken, deferred);
       }, function(error) {
         console.log('error', error);
         deferred.reject(error);
