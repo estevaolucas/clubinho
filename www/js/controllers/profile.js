@@ -104,11 +104,13 @@ angular.module('clubinho.controllers')
       $scope.modal.remove();
       $rootScope.$broadcast('clubinho-profile-updated', data);
       ionicToast.show('Dados atualizados com sucesso', 'top', false, 2500);
-    }, function(reason) {
-      if (reason.data.data.params) {
-        for(var error in reason.data.data.params) {
-          ionicToast.show(reason.data.data.params[error], 'top', false, 2500);
+    }, function(response) {
+      if (response.data.data && response.data.params) {
+        for(var error in response.data.data.params) {
+          ionicToast.show(response.data.data.params[error], 'top', false, 2500);
         };
+      } else if(response.data.message) {
+        ionicToast.show(response.data.message, 'top', false, 2500);
       } else {
         ionicToast.show('Não foi possível alterar seus dados.', 'top', false, 2500);
       }

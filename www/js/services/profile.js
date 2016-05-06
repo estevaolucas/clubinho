@@ -56,7 +56,7 @@ angular.module('clubinho.services')
 
       $http({
         method: 'get',
-        url:  apiConfig.baseUrl + '/me'
+        url: apiConfig.baseUrl + '/me'
       }).then(function(response) {
         localStorage.setItem('data', JSON.stringify(response.data.data));
         deferred.resolve(response.data.user)
