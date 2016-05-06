@@ -12,6 +12,22 @@ angular.module('clubinho', [
 })
 
 .config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider, $httpProvider) {
+  $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
+    return {
+      'request': function( config ) {
+        var token = localStorage.getItem('token');
+
+        config.headers = config.headers || {};
+
+        if (token) {
+          config.headers.Authorization = 'Bearer ' + token;
+        }
+        
+        return config;
+      }
+    };
+  }]);
+
   $stateProvider
     .state('signin', {
       url: '/sign-in',

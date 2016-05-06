@@ -100,14 +100,21 @@ angular.module('clubinho.controllers')
 
     $rootScope.app.loading = true;
 
-    // FIXME: update from API
-    $timeout(function(form) {
+    Profile.updateData(angular.copy($scope.data)).then(function(data) {
       $scope.modal.remove();
-      $rootScope.$broadcast('clubinho-profile-updated', $scope.data);
-      $rootScope.app.loading = false;
-
+      $rootScope.$broadcast('clubinho-profile-updated', data);
       ionicToast.show('Dados atualizados com sucesso', 'top', false, 2500);
-    }, 1000);
+    }, function(reason) {
+      if (reason.data.data.params) {
+        for(var error in reason.data.data.params) {
+          ionicToast.show(reason.data.data.params[error], 'top', false, 2500);
+        };
+      } else {
+        ionicToast.show('Não foi possível alterar seus dados.', 'top', false, 2500);
+      }
+    }).finally(function() {
+      $rootScope.app.loading = false;
+    });
   }
 
   $scope.cancel = function() {

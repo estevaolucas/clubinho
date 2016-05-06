@@ -7,34 +7,28 @@ angular.module('clubinho.controllers')
       !loading && ($rootScope.app.loading = false);
     },
     loadContent = function() {
-      Schedule.getList().then(function(schedule) {
-        var colors = ['blue', 'orange', 'red'],
-          max = colors.length,
-          min = 0;
-
-        $scope.schedule = schedule.map(function(event, i) {
-          event.className = colors[i % 3];
-          return event;
-        });
-      }).finally(hideLoading);
-
       Children.getList().then(function(children) {
         $scope.children = children;
       }).finally(hideLoading);
-
-      // Profile modal
-      $profileScope = $scope.$new(true);
-      $ionicModal.fromTemplateUrl('templates/profile.html', {
-        scope: $profileScope,
-        animation: 'slide-in-up',
-        controller: 'ProfileController'
-      }).then(function(modal) {
-        $profileScope.modal = modal;
-      });
     },
     $profileScope;
 
-  Authorization.authorized().then(loadContent, function() {
+  Authorization.authorized().then(function() {
+    loadContent();
+
+    $rootScope.$on('user-did-login', loadContent);
+
+    Schedule.getList().then(function(schedule) {
+      var colors = ['blue', 'orange', 'red'],
+        max = colors.length,
+        min = 0;
+
+      $scope.schedule = schedule.map(function(event, i) {
+        event.className = colors[i % 3];
+        return event;
+      });
+    }).finally(hideLoading);
+  }, function() {
     $rootScope.$on('user-did-login', loadContent);
   });
 
@@ -92,7 +86,17 @@ angular.module('clubinho.controllers')
   };
 
   $scope.openProfile = function() {
-    $profileScope.modal.show()
+    // Profile modal
+    $profileScope = $scope.$new(true);
+    $ionicModal.fromTemplateUrl('templates/profile.html', {
+      scope: $profileScope,
+      animation: 'slide-in-up',
+      controller: 'ProfileController'
+    }).then(function(modal) {
+      $profileScope.modal = modal;
+
+      modal.show();
+    });
   }
 
   // View's lifecicle

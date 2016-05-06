@@ -52,12 +52,11 @@ angular.module('clubinho.services')
     },
     methods = {
       getList: function() {
-        var promise = $http.get(apiConfig.baseUrl + '/get-schedule-list', {
-            cache: CacheFactory.get('scheduleCache')
-          }),
-          deferred = deferred || $q.defer();
+        var deferred = $q.defer();
 
-        promise.then(function(schedule) {
+        $http.get(apiConfig.baseUrl + '/get-schedule-list', {
+          cache: CacheFactory.get('scheduleCache')
+        }).then(function(schedule) {
           deferred.resolve(updateCachedList(normalize(schedule.data.data)));
         }, function(reason) {
           deferred.reject(reason);

@@ -12,10 +12,7 @@ angular.module('clubinho.services')
         config = {
           method: method,
           url: apiConfig.baseUrl + '/me/child',
-          data: data,
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('token')
-          }
+          data: data
         };
 
       if (method.toLowerCase() != 'post') {
@@ -57,10 +54,7 @@ angular.module('clubinho.services')
     confirmPresence: function(confirm, event, child) {
       return $http({
         method: 'POSt',
-        url: apiConfig.baseUrl + '/me/child/' + child.id + '/confirm/' + event.id,
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
+        url: apiConfig.baseUrl + '/me/child/' + child.id + '/confirm/' + event.id
       });
     }
   };

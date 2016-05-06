@@ -21,17 +21,23 @@
         </div>
         <table>
           <tr>
-            <td>Telefone</td>
-            <td>{{data.phone}}</td>
-          </tr>
-          <tr>
             <td>E-mail</td>
             <td>{{data.email}}</td>
           </tr>
           <tr>
             <td>Endereço</td>
-            <td>{{data.address}}</td>
+            <td>{{data.address}} <span ng-if="!data.address.length">não informado</span></td>
           </tr>
+          <tr>
+            <td>CEP</td>
+            <td>{{data.zipcode}} <span ng-if="!data.zipcode.length">não informado</span></td>
+          </tr>
+
+          <tr>
+            <td>Telefone</td>
+            <td>{{data.phone}} <span ng-if="!data.phone.length">não informado</span></td>
+          </tr>
+
         </table>
 
         <div ng-show="showChildrenList" clubinho-children-list list="children" add-child="addChild" edit-child="editChild" delete-child="deleteChild"></div>

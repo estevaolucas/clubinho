@@ -56,10 +56,7 @@ angular.module('clubinho.services')
 
       $http({
         method: 'get',
-        url:  apiConfig.baseUrl + '/me',
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
-        }
+        url:  apiConfig.baseUrl + '/me'
       }).then(function(response) {
         localStorage.setItem('data', JSON.stringify(response.data.data));
         deferred.resolve(response.data.user)
@@ -82,10 +79,7 @@ angular.module('clubinho.services')
       } else {
         var request = $http({
           method: 'post',
-          url: apiConfig.baseUrl + '/token/validate',
-          headers: {
-            Authorization: 'Bearer ' + token
-          }
+          url: apiConfig.baseUrl + '/token/validate'
         });
 
         request.then(function(response) {
@@ -164,7 +158,7 @@ angular.module('clubinho.services')
   };
 })
 
-.service('Profile', function(Authorization, Schedule) {
+.service('Profile', function(Authorization, Schedule, $q, $http, apiConfig) {
   var authorized = false,
     methods = {
     getData: function() {
@@ -173,6 +167,36 @@ angular.module('clubinho.services')
       user.children = JSON.parse(localStorage.getItem('children-list') || '[]');
 
       return user;
+    },
+
+    updateData: function(data) {
+      var deferred = $q.defer();
+      
+      delete data.children;
+
+      for (key in data) {
+        if (!data[key].length || data[key] == null) {
+          delete data[key];
+        }
+      }
+
+      $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/me',
+        data: data
+      }).then(function(response) {
+        var data = response.data.data;
+
+        delete data.children;
+
+        localStorage.setItem('data', JSON.stringify(data));
+      
+        deferred.resolve(data);
+      }, function(reason) {
+        deferred.reject(reason);
+      });
+
+      return deferred.promise;
     },
 
     // user's session cookie to login
