@@ -2,6 +2,20 @@ angular.module('clubinho.services')
 
 .service('Authorization', function($http, $q, $rootScope, $cordovaFacebook, apiConfig) {
   var authorized = false,
+    proccessLogin = function(response, deferred) {
+      var children = response.data.data.children,
+        data = response.data.data;
+
+      delete data.children;
+
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('data', JSON.stringify(data));
+      localStorage.setItem('children-list', JSON.stringify(children));
+
+      authorized = true;
+      deferred.resolve(data);
+      $rootScope.$broadcast('user-did-login');
+    },
     authenticate = function(data, deferred) {
       var deferred = deferred || $q.defer(), 
         request = $http({
@@ -16,12 +30,8 @@ angular.module('clubinho.services')
       request.then(function(response) {
         localStorage.setItem('username', data.username);
         localStorage.setItem('password', data.password);
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('data', JSON.stringify(response.data.data));
 
-        authorized = true;
-        deferred.resolve(data);
-        $rootScope.$broadcast('user-did-login');
+        proccessLogin(response, deferred);
       }, function(response) {
         console.log('Error login', response);
         deferred.reject('Erro');
@@ -37,12 +47,7 @@ angular.module('clubinho.services')
           }
         })
         .then(function(response) {
-          localStorage.setItem('token', response.data.token);
-          localStorage.setItem('data', JSON.stringify(response.data.data));
-
-          authorized = true;
-          deferred.resolve();
-          $rootScope.$broadcast('user-did-login');
+          proccessLogin(response, deferred);
         }, function(reason) {
           deferred.reject(reason);
         });
@@ -84,26 +89,22 @@ angular.module('clubinho.services')
         });
 
         request.then(function(response) {
-          if (response.data.status == 'error' || !response.data.valid) {
-            var username = localStorage.getItem('username'),
-              password = localStorage.getItem('password'), 
-              accessToken = localStorage.getItem('facebookToken');
-
-            // in case of cookie expired
-            if (username && password) {
-              authenticate({username: username, password: password}, deferred);
-            } else if (accessToken) {
-              createOrLoginFromFacebook(accessToken, deferred);
-            } else {
-              deferred.reject();
-            }
-          } else {
-            authorized = true;
-            deferred.resolve(true);
-            $rootScope.$broadcast('user-did-login');
-          }
+          authorized = true;
+          deferred.resolve(true);
+          $rootScope.$broadcast('user-did-login');
         }, function(response) {
-          deferred.reject();
+          var username = localStorage.getItem('username'),
+            password = localStorage.getItem('password'), 
+            accessToken = localStorage.getItem('facebookToken');
+
+          // in case of cookie expired
+          if (username && password) {
+            authenticate({username: username, password: password}, deferred);
+          } else if (accessToken) {
+            createOrLoginFromFacebook(accessToken, deferred);
+          } else {
+            deferred.reject();
+          }
         });
       }
 
@@ -111,7 +112,8 @@ angular.module('clubinho.services')
     },
 
     clear: function() {
-      ['username', 'password', 'data', 'token', 'facebookToken'].forEach(function(key) {
+      var keys = ['username', 'password', 'data', 'token', 'facebookToken', 'children-list'];
+      keys.forEach(function(key) {
         localStorage.removeItem(key);
       });
       
@@ -166,19 +168,11 @@ angular.module('clubinho.services')
   var authorized = false,
     methods = {
     getData: function() {
-      if (localStorage.getItem('data')) {
-        var user = JSON.parse(localStorage.getItem('data'));
+      var user = JSON.parse(localStorage.getItem('data') || '[]');
 
-        return {
-          id: user.id,
-          name: user.nickname,
-          cpf: user.cpf,
-          phone: user.telefone,
-          email: user.email,
-          address: user.endereco,
-          children: JSON.parse(localStorage.getItem('children-list') || '[]')
-        }
-      }
+      user.children = JSON.parse(localStorage.getItem('children-list') || '[]');
+
+      return user;
     },
 
     // user's session cookie to login
