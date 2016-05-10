@@ -15,13 +15,8 @@ angular.module('clubinho.controllers')
       $childScope.child = child ? angular.copy(child) : {};
     });
   }
-  $scope.showChildrenList = true;
-
+  
   $scope.data = Profile.getData();
-
-  $scope.toggleChildrenList = function () {
-    $scope.showChildrenList = !$scope.showChildrenList;
-  }
 
   $scope.close = function() {
     $scope.modal.hide();
@@ -105,7 +100,7 @@ angular.module('clubinho.controllers')
       $rootScope.$broadcast('clubinho-profile-updated', data);
       ionicToast.show('Dados atualizados com sucesso', 'top', false, 2500);
     }, function(response) {
-      if (response.data.data && response.data.params) {
+      if (response.data.data && response.data.data.params) {
         for(var error in response.data.data.params) {
           ionicToast.show(response.data.data.params[error], 'top', false, 2500);
         };

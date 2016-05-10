@@ -175,7 +175,7 @@ angular.module('clubinho.services')
       delete data.children;
 
       for (key in data) {
-        if (!data[key].length || data[key] == null) {
+        if (data[key] == null) {
           delete data[key];
         }
       }

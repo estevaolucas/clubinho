@@ -7,7 +7,7 @@
     <form name="form" novalidate>
       <h2>Cadastre-se</h2>
       <div class="form-errors" ng-show="error">
-        <div class="form-error" ng-repeat="e in error">{{e}}</div>
+        <div class="form-error">{{error}}</div>
       </div>
 
       <div class="form-errors" ng-show="form.name.$error && form.name.$dirty" ng-messages="form.name.$error">
@@ -34,13 +34,13 @@
         <div class="form-error" ng-message="maxlength">A senha deve ter no máximo 25 caracteres.</div>
       </div>
 
-      <div class="form-errors" ng-show="form.password_verify.$error && form.password_verify.$dirty" ng-messages="form.password_verify.$error">
+      <div class="form-errors" ng-show="form.password_confirmation.$error && form.password_confirmation.$dirty" ng-messages="form.password_confirmation.$error">
         <div class="form-error" ng-message="passwordVerify">A senha não confere</div>
       </div>
 
       <input name="password" class="password" ng-model="user.password" type="password" placeholder="Senha"  ng-minlength="5" ng-maxlength="25" required />
 
-      <input name="password_verify" class="password_verify" ng-model="user.password_verify" type="password" placeholder="Confirme a senha" ng-minlength="5" ng-maxlength="25" required password-verify="user.password" />
+      <input name="password_confirmation" class="password_verify" ng-model="user.password_confirmation" type="password" placeholder="Confirme a senha" ng-minlength="5" ng-maxlength="25" required password-verify="user.password" />
 
       <div class="actions">
         <button class="btn btn-cancel" type="button" ng-click="cancel()">Cancelar</button>

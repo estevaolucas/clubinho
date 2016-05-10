@@ -26,26 +26,22 @@
           </tr>
           <tr>
             <td>Endereço</td>
-            <td>{{data.address}} <span ng-if="!data.address.length">não informado</span></td>
+            <td>{{data.address}} <small ng-if="!data.address.length">não informado</small></td>
           </tr>
           <tr>
             <td>CEP</td>
-            <td>{{data.zipcode}} <span ng-if="!data.zipcode.length">não informado</span></td>
+            <td>{{data.zipcode}} <small ng-if="!data.zipcode.length">não informado</small></td>
           </tr>
-
           <tr>
             <td>Telefone</td>
-            <td>{{data.phone}} <span ng-if="!data.phone.length">não informado</span></td>
+            <td>{{data.phone}} <small ng-if="!data.phone.length">não informado</small></td>
           </tr>
-
         </table>
 
-        <div ng-show="showChildrenList" clubinho-children-list list="children" add-child="addChild" edit-child="editChild" delete-child="deleteChild"></div>
+        <div clubinho-children-list list="children" add-child="addChild" edit-child="editChild" delete-child="deleteChild"></div>
         
         <div class="clear"></div>
       </main>
     </ion-content>
-
-    <button class="btn-see-children" ng-click="toggleChildrenList()" ng-hide="showChildrenList">Crianças cadastradas</button>
   </ion-modal-view>
 </div>
