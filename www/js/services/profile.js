@@ -141,6 +141,16 @@ angular.module('clubinho.services')
       });
 
       return deferred.promise;
+    },
+
+    forgotPassword: function(email) {
+      return $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/forgot-password',
+        data: {
+          email: email
+        }
+      });
     }
   };
 })

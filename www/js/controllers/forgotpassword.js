@@ -16,16 +16,16 @@ angular.module('clubinho.controllers')
     }
 
     $scope.error = null;
-    // $rootScope.app.loading = true;
+    $rootScope.app.loading = true;
 
-    // Authorization.go($scope.user).then(function() {
+    Authorization.forgotPassword($scope.user.email).then(function() {
       $scope.user = {};
       $scope.success = true;
-    // }, function(error) {
-    //   $scope.error = error;
-    // }).finally(function() {
-    //   $rootScope.app.loading = false;
-    // });
+    }, function(error) {
+      $scope.error = error.data.message;
+    }).finally(function() {
+      $rootScope.app.loading = false;
+    });
   }
 
   $scope.cancel = function() {
