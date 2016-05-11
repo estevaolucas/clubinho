@@ -93,6 +93,7 @@ div[clubinho-children-list] {
           margin-top: 15px;
         }
         .details {
+          width: 160%;
           margin: 20px 0;
           max-height: 0;
           overflow-y: scroll;
@@ -113,7 +114,11 @@ div[clubinho-children-list] {
 
           h4 {
             color: #784900;
-            font-size: 15px;
+            font-size: 14px;
+
+            small {
+              font-size: 12px;
+            }
           }
         }
       }

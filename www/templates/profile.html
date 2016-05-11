@@ -5,10 +5,11 @@
         
       <header>
         <button class="close close-profile" ng-click="close()"></button>
-        <div class="profile-avatar-mini">
+        <!-- <div class="profile-avatar-mini">
           <img ng-if="data.avatar"  ng-src="{{data.avatar}}" />
           <img ng-if="!data.avatar" src="img/avatar-default.png" />
         </div>
+         -->
         <buttom class="edit-profile" ng-click="edit()"></buttom>
 
         <button ng-click="logout()" class="btn btn-logout">Sair da conta</button>
@@ -21,19 +22,19 @@
         </div>
         <table>
           <tr>
-            <td>E-mail</td>
+            <td>E-mail:</td>
             <td>{{data.email}}</td>
           </tr>
           <tr>
-            <td>Endereço</td>
+            <td>Endereço:</td>
             <td>{{data.address}} <small ng-if="!data.address.length">não informado</small></td>
           </tr>
           <tr>
-            <td>CEP</td>
+            <td>CEP:</td>
             <td>{{data.zipcode}} <small ng-if="!data.zipcode.length">não informado</small></td>
           </tr>
           <tr>
-            <td>Telefone</td>
+            <td>Telefone:</td>
             <td>{{data.phone}} <small ng-if="!data.phone.length">não informado</small></td>
           </tr>
         </table>

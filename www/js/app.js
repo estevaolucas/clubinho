@@ -8,7 +8,8 @@ angular.module('clubinho', [
 ])
 
 .constant('apiConfig', {
-  baseUrl: 'http://localhost/clubinho-api/api/v1'
+  // baseUrl: 'http://localhost/clubinho-api/api/v1',
+  baseUrl: 'http://192.168.25.15/clubinho-api/api/v1'
 })
 
 .config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider, $httpProvider) {

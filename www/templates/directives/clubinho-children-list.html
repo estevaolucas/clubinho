@@ -8,16 +8,16 @@
         <div class="user">
           <h2>{{child.name}}</h2>
           <h3>{{child.age}} anos</h3>
-          <div class="details" ng-if="child.events.length && !addChild && !child.eventToConfirm">
-            <h3>últimos eventos</h3>
+          <div class="details" ng-if="child.timeline.length && !addChild && !child.eventToConfirm">
+            <h3>Últimos eventos e resgates:</h3>
             
-            <span ng-repeat="event in child.events">
+            <span ng-repeat="event in child.timeline | limitTo: 10">
               <span class="border"></span>
-              <h4>{{event.title}} <span>+{{event.points}} pts</span></h4>
-              <h4>{{event.date}}</h4>
+              <h4 ng-if="event.type == 'event'">{{event.title}} <span>+{{event.points}} pts</span> <small>{{event.date | date:'dd/MM'}}</small></h4>
+              <h4 ng-if="event.type == 'reedem'">Resgate {{event.prize}} <span>-{{event.points}} pts</span> <small>{{event.date | date:'dd/MM'}}</small></h4>
             </span>                                          
           </div>
-          <div class="details" ng-if="!child.events.length && !addChild && !child.eventToConfirm">
+          <div class="details" ng-if="!child.timeline.length && !addChild && !child.eventToConfirm">
             <h3>criança sem pontuação</h3>
           </div>
           <div class="details" ng-if="child.eventToConfirm">

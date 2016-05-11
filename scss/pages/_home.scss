@@ -115,5 +115,31 @@
         }
       }
     }
+
+    .empty-list {
+      font-size: 24px;
+      text-align: center;
+      padding: 32px;
+      color: #563029;
+
+      strong {
+        display: block;
+        font-size: 16px;
+      }
+    }
+
+    .fixed {
+      .children {
+        height: 29vh;
+        position: relative;
+
+        > ul {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
   }
 }

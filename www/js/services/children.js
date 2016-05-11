@@ -4,8 +4,17 @@ angular.module('clubinho.services')
   var deferred,
     saveList = function(childrenList) {
       localStorage.setItem('children-list', JSON.stringify(childrenList));
-
       return childrenList;
+    },
+    normalize = function(children) {
+      return children.map(function(child) {
+        child.timeline.map(function(timeline) {
+          timeline.date = new Date(timeline.date);
+          return timeline;
+        });
+
+        return child;
+      });
     },
     restRequest = function(method, data) {
       var deferred = $q.defer(),
@@ -27,14 +36,14 @@ angular.module('clubinho.services')
       });
 
       return deferred.promise;
-    }
+    };
 
   return {
     getList: function(cached) {
       var deferred = deferred || $q.defer(),
         childrenList = JSON.parse(localStorage.getItem('children-list') || '[]');
 
-      deferred.resolve(childrenList);
+      deferred.resolve(normalize(childrenList));
       
       return deferred.promise;
     },

@@ -31,9 +31,12 @@
     color: #563029;
     font-size: 14px;
     padding: 0;
+    z-index: 1;
   }
 
   main {
+    margin-top: -35px;
+    position: relative;
     background-color:#ff9c00;
 
     .responsible{
@@ -65,8 +68,16 @@
 
         &:first-child {
           width: 26%;
-          font-size: 13px;
+          font-size: 12px;
           padding-left: 20px;
+        }
+        &:last-child {
+          padding-right: 20px;
+          font-size: 15px;
+        }
+
+        small {
+          font-size: 10px
         }
       }
     }

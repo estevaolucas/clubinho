@@ -8,7 +8,11 @@ angular.module('clubinho.services')
 
       delete data.children;
 
-      localStorage.setItem('token', response.data.token);
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
+
+      delete data.token;
       localStorage.setItem('data', JSON.stringify(data));
       localStorage.setItem('children-list', JSON.stringify(children));
 
@@ -51,20 +55,6 @@ angular.module('clubinho.services')
         }, function(reason) {
           deferred.reject(reason);
         });
-    }, getUserData = function() {
-      var deferred = $q.defer();
-
-      $http({
-        method: 'get',
-        url: apiConfig.baseUrl + '/me'
-      }).then(function(response) {
-        localStorage.setItem('data', JSON.stringify(response.data.data));
-        deferred.resolve(response.data.user)
-      }, function(reason) {
-        deferred.reject(reason);
-      });
-
-      return deferred.promise;
     }
 
   return {
@@ -83,9 +73,11 @@ angular.module('clubinho.services')
         });
 
         request.then(function(response) {
-          authorized = true;
-          deferred.resolve(true);
-          $rootScope.$broadcast('user-did-login');
+          $http.get(apiConfig.baseUrl + '/me').then(function(response) {
+            proccessLogin(response, deferred);
+          }, function(response) {
+            deferred.reject(response);    
+          });
         }, function(response) {
           var username = localStorage.getItem('username'),
             password = localStorage.getItem('password'), 
@@ -97,7 +89,7 @@ angular.module('clubinho.services')
           } else if (accessToken) {
             createOrLoginFromFacebook(accessToken, deferred);
           } else {
-            deferred.reject();
+            deferred.reject(response);
           }
         });
       }
@@ -136,21 +128,16 @@ angular.module('clubinho.services')
     },
 
     signUp: function(user) {
-      var deferred = $q.defer(),
-        request = $http({
-          method: 'get',
-          url: apiConfig.baseUrl + '/create-user',
-          params: user
-        });
-
-      request.then(function(response) {
-        if (response.data.status == 'ok') {
-          authenticate({username: user.email, password: user.password}, deferred);
-        } else {
-          deferred.reject(response.data.description);
-        }
+      var deferred = $q.defer();
+      
+      $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/create-user',
+        data: user
+      }).then(function(response) {
+        authenticate({username: user.email, password: user.password}, deferred);
       }, function(response) {
-        deferred.reject();
+        deferred.reject(response);
       });
 
       return deferred.promise;
