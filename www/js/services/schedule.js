@@ -4,7 +4,7 @@ angular.module('clubinho.services')
   var favKey = 'events-favorited',
     normalize = function(events) {
       return events.map(function(event) {
-        event['date'] = new Date(event.date);
+        event.date = new Date(event.date.replace(/-/g, '/'));
 
         return event;
       });

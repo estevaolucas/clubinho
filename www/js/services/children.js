@@ -9,7 +9,7 @@ angular.module('clubinho.services')
     normalize = function(children) {
       return children.map(function(child) {
         child.timeline.map(function(timeline) {
-          timeline.date = new Date(timeline.date);
+          timeline.date = new Date(timeline.date.replace(/-/g, '/'));
           return timeline;
         });
 

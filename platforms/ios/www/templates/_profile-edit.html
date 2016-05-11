@@ -3,38 +3,45 @@
     <h2>Editar dados do responsavel</h2>
     
     <div class="inputs">
-      <input name="name" type="text" placeholder="Nome do Responsavel" ng-model="data.name" required /> 
       <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
         <div class="form-error" ng-show="form.name.$error.required">Por favor informe o seu nome</div>
       </div>
+      <input name="name" type="text" placeholder="Nome do Responsavel" ng-model="data.name" required /> 
 
-      <input name="cpf" type="text" placeholder="CPF" ng-model="data.cpf" ui-mask="999.999.999-99" ui-mask-placeholder required />
       <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
         <div class="form-error" ng-show="form.name.$error.required">Por favor informe seu CPF</div>
       </div>
+      <input name="cpf" type="text" placeholder="CPF" ng-model="data.cpf" ui-mask="999.999.999-99" model-view-value="true" ui-mask-placeholder required />
 
-      <input name="phone" type="text" placeholder="Telefone" ng-model="data.phone" ui-mask="(99) 9999-9999?9" ui-mask-placeholder required />
-      <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
-        <div class="form-error" ng-show="form.name.$error.required">Por favor informe o seu telefone</div>
-      </div>
-
-      <input name="email" type="email" placeholder="E-mail" ng-model="data.email" required />
       <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
         <div class="form-error" ng-show="form.name.$error.required">Por favor informe o seu email</div>
-      </div>
-      
-      <input name="address" type="text" placeholder="Endereço" ng-model="data.address" required />
+      </div>      
+      <input name="email" type="email" placeholder="E-mail" ng-model="data.email" required />
+
+      <input name="phone" type="text" placeholder="Telefone" ng-model="data.phone" ui-mask="(99) 9999-9999?9" model-view-value="true" ui-mask-placeholder />
+
+      <input name="zipcode" type="text" placeholder="Telefone" ng-model="data.zipcode" ui-mask="99999-999" model-view-value="true" ui-mask-placeholder />
+
       <div class="form-errors" ng-show="form.$submitted || form.name.$touched">
         <div ng-show="form.name.$error.required">Por favor informe o seu endereço</div>
       </div>
+      <input name="address" type="text" placeholder="Endereço" ng-model="data.address" />
+
+      <div ng-if="!data.facebook_user">
+        <br />
+        Trocar a senha
+        <div class="form-errors" ng-show="form.password.$error && form.password.$dirty" ng-messages="form.password.$error">
+          <div class="form-error" ng-message="required">A senha é obrigatória</div>
+          <div class="form-error" ng-message="minlength">A senha deve ter no mínimo 5 caracteres.</div>
+          <div class="form-error" ng-message="maxlength">A senha deve ter no máximo 25 caracteres.</div>
+        </div>
+
+        <input name="password" class="password" ng-model="data.password" type="password" placeholder="Senha atual"  ng-minlength="5" ng-maxlength="25" />
+
+        <input name="password_new" class="password" ng-model="data.password_new" type="password" placeholder="Nova senha"  ng-minlength="5" ng-maxlength="25" />
+      </div>
     </div>
 
-    <div class="editar-foto">
-      <h3>Clique na foto<br/> para alterar<br/> o seu avatar:</h3>
-      <div class="profile-foto-edit"></div>
-      <div class="clear"></div>
-    </div>
-    
     <div class="actions">
       <button class="btn btn-cancel" ng-click="cancel(form)">Cancelar</button>
       <button type="submit" class="btn btn-add" ng-click="update(form)" ng-disabled="form.$invalid">Salvar</button>

@@ -3745,7 +3745,7 @@ div[clubinho-children-list] .children li .user h2 {
   margin-top: 15px;
 }
 div[clubinho-children-list] .children li .user .details {
-  width: 160%;
+  width: 150%;
   margin: 20px 0;
   max-height: 0;
   overflow-y: scroll;
@@ -3987,7 +3987,7 @@ header .profile-avatar {
   max-width: 40px;
   max-height: 40px;
   position: absolute;
-  top: 22px;
+  top: 25px;
   right: 15px;
   border-radius: 30px;
   border: none;

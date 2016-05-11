@@ -116,11 +116,9 @@ angular.module('clubinho.services')
 
       $cordovaFacebook.login(['public_profile', 'email']).then(function(response) {
         var accessToken = response.authResponse.accessToken;
-        console.log(accessToken);
         localStorage.setItem('facebookToken', accessToken);
         createOrLoginFromFacebook(accessToken, deferred);
       }, function(error) {
-        console.log('error', error);
         deferred.reject(error);
       });
 

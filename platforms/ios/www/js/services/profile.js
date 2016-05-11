@@ -2,31 +2,40 @@ angular.module('clubinho.services')
 
 .service('Authorization', function($http, $q, $rootScope, $cordovaFacebook, apiConfig) {
   var authorized = false,
+    proccessLogin = function(response, deferred) {
+      var children = response.data.data.children,
+        data = response.data.data;
+
+      delete data.children;
+
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+      }
+
+      delete data.token;
+      localStorage.setItem('data', JSON.stringify(data));
+      localStorage.setItem('children-list', JSON.stringify(children));
+
+      authorized = true;
+      deferred.resolve(data);
+      $rootScope.$broadcast('user-did-login');
+    },
     authenticate = function(data, deferred) {
       var deferred = deferred || $q.defer(), 
         request = $http({
-          method: 'get',
-          url: apiConfig.baseUrl + 'api/auth/generate_auth_cookie/',
-          params: {
-            insecure: 'cool',
+          method: 'post',
+          url: apiConfig.baseUrl + '/token',
+          data: {
             username: data.username,
             password: data.password
           }
         });
 
       request.then(function(response) {
-        if (response.data.status == 'error') {
-          deferred.reject(response.data.error);
-        } else {
-          localStorage.setItem('username', data.username);
-          localStorage.setItem('password', data.password);
-          localStorage.setItem('token', response.data.cookie);
-          localStorage.setItem('data', JSON.stringify(response.data.user));
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('password', data.password);
 
-          authorized = true;
-          deferred.resolve(data);
-          $rootScope.$broadcast('user-did-login');
-        }
+        proccessLogin(response, deferred);
       }, function(response) {
         console.log('Error login', response);
         deferred.reject('Erro');
@@ -34,41 +43,18 @@ angular.module('clubinho.services')
 
       return deferred.promise;
     }, createOrLoginFromFacebook = function(accessToken, deferred) {
-      return $http.get(apiConfig.baseUrl + 'fb_connect/?access_token=' + accessToken)
-        .then(function(response) {
-          if (response.data.cookie) {
-            localStorage.setItem('token', response.data.cookie);
-
-            authorized = true;
-            deferred.resolve(response.data.msg);
-          } else {
-            deferred.reject(response.data.msg);
+      return $http({
+          method: 'post', 
+          url: apiConfig.baseUrl + '/facebook',
+          data: {
+            access_token: accessToken
           }
+        })
+        .then(function(response) {
+          proccessLogin(response, deferred);
         }, function(reason) {
           deferred.reject(reason);
         });
-    }, getUserData = function() {
-      var deferred = $q.defer();
-
-      $http({
-        method: 'get',
-        url: apiConfig.baseUrl + 'get_currentuserinfo/',
-        params: { 
-          cookie: localStorage.getItem('token'),
-          insecure: 'cool'
-        }
-      }).then(function(response) {
-        if (response.data.status == 'ok') {
-          localStorage.setItem('data', JSON.stringify(response.data.user));
-          deferred.resolve(response.data.user)
-        } else {
-          deferred.reject(response.data.error);
-        }
-      }, function(reason) {
-        deferred.reject(reason);
-      });
-
-      return deferred.promise;
     }
 
   return {
@@ -82,35 +68,29 @@ angular.module('clubinho.services')
         deferred.reject(); 
       } else {
         var request = $http({
-          method: 'get',
-          url: apiConfig.baseUrl + 'api/auth/validate_auth_cookie/',
-          params: {
-            insecure: 'cool',
-            cookie: token
-          }
+          method: 'post',
+          url: apiConfig.baseUrl + '/token/validate'
         });
 
         request.then(function(response) {
-          if (response.data.status == 'error' || !response.data.valid) {
-            var username = localStorage.getItem('username'),
-              password = localStorage.getItem('password'), 
-              accessToken = localStorage.getItem('facebookToken');
-
-            // in case of cookie expired
-            if (username && password) {
-              authenticate({username: username, password: password}, deferred);
-            } else if (accessToken) {
-              createOrLoginFromFacebook(accessToken, deferred);
-            } else {
-              deferred.reject();
-            }
-          } else {
-            authorized = true;
-            deferred.resolve(true);
-            $rootScope.$broadcast('user-did-login');
-          }
+          $http.get(apiConfig.baseUrl + '/me').then(function(response) {
+            proccessLogin(response, deferred);
+          }, function(response) {
+            deferred.reject(response);    
+          });
         }, function(response) {
-          deferred.reject();
+          var username = localStorage.getItem('username'),
+            password = localStorage.getItem('password'), 
+            accessToken = localStorage.getItem('facebookToken');
+
+          // in case of cookie expired
+          if (username && password) {
+            authenticate({username: username, password: password}, deferred);
+          } else if (accessToken) {
+            createOrLoginFromFacebook(accessToken, deferred);
+          } else {
+            deferred.reject(response);
+          }
         });
       }
 
@@ -118,7 +98,8 @@ angular.module('clubinho.services')
     },
 
     clear: function() {
-      ['username', 'password', 'data', 'token', 'facebookToken'].forEach(function(key) {
+      var keys = ['username', 'password', 'data', 'token', 'facebookToken', 'children-list'];
+      keys.forEach(function(key) {
         localStorage.removeItem(key);
       });
       
@@ -135,13 +116,9 @@ angular.module('clubinho.services')
 
       $cordovaFacebook.login(['public_profile', 'email']).then(function(response) {
         var accessToken = response.authResponse.accessToken;
-        console.log(accessToken);
         localStorage.setItem('facebookToken', accessToken);
-        createOrLoginFromFacebook(accessToken, deferred).then(function() {
-          getUserData();
-        });        
+        createOrLoginFromFacebook(accessToken, deferred);
       }, function(error) {
-        console.log('error', error);
         deferred.reject(error);
       });
 
@@ -149,54 +126,72 @@ angular.module('clubinho.services')
     },
 
     signUp: function(user) {
-      var deferred = $q.defer(),
-        request = $http({
-          method: 'get',
-          url: apiConfig.baseUrl + 'insere-responsavel/',
-          params: {
-            nome: user.name, 
-            cpf: user.cpf,
-            email: user.email,
-            password: user.password,
-            endereco: user.address, 
-            cep: user.zipcode,
-            telefone: user.phone,
-            action: 'insere'
-          }
-        });
-
-      request.then(function(response) {
-        if (response.data.status == 'ok') {
-          authenticate({username: user.email, password: user.password}, deferred);
-        } else {
-          deferred.reject(response.data.description);
-        }
+      var deferred = $q.defer();
+      
+      $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/create-user',
+        data: user
+      }).then(function(response) {
+        authenticate({username: user.email, password: user.password}, deferred);
       }, function(response) {
-        deferred.reject();
+        deferred.reject(response);
       });
 
       return deferred.promise;
+    },
+
+    forgotPassword: function(email) {
+      return $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/forgot-password',
+        data: {
+          email: email
+        }
+      });
     }
   };
 })
 
-.service('Profile', function(Authorization, Schedule) {
+.service('Profile', function(Authorization, Schedule, $q, $http, apiConfig) {
   var authorized = false,
     methods = {
     getData: function() {
-      if (localStorage.getItem('data')) {
-        var user = JSON.parse(localStorage.getItem('data'));
+      var user = JSON.parse(localStorage.getItem('data') || '[]');
 
-        return {
-          id: user.id,
-          name: user.nickname,
-          cpf: user.cpf,
-          phone: user.telefone,
-          email: user.email,
-          address: user.endereco,
-          children: JSON.parse(localStorage.getItem('children-list') || '[]')
+      user.children = JSON.parse(localStorage.getItem('children-list') || '[]');
+
+      return user;
+    },
+
+    updateData: function(data) {
+      var deferred = $q.defer();
+      
+      delete data.children;
+
+      for (key in data) {
+        if (data[key] == null) {
+          delete data[key];
         }
       }
+
+      $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/me',
+        data: data
+      }).then(function(response) {
+        var data = response.data.data;
+
+        delete data.children;
+
+        localStorage.setItem('data', JSON.stringify(data));
+      
+        deferred.resolve(data);
+      }, function(reason) {
+        deferred.reject(reason);
+      });
+
+      return deferred.promise;
     },
 
     // user's session cookie to login

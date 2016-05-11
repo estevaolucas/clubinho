@@ -8,16 +8,29 @@ angular.module('clubinho', [
 ])
 
 .constant('apiConfig', {
-  baseUrl: 'http://peppersp.com.br/beacon/',
-  status: {
-    success: 'ok',
-    error: 'error'
-  }
+  // baseUrl: 'http://localhost/clubinho-api/api/v1',
+  baseUrl: 'http://192.168.25.15/clubinho-api/api/v1'
 })
 
-.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider) {
-  $stateProvider
+.config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider, $httpProvider) {
+  $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
+    return {
+      request: function(config) {
+        var token = localStorage.getItem('token');
 
+        if (!token) {
+          return config;
+        }
+
+        config.headers = config.headers || {};
+        config.headers.Authorization = 'Bearer ' + token;
+        
+        return config;
+      }
+    };
+  }]);
+
+  $stateProvider
     .state('signin', {
       url: '/sign-in',
       templateUrl: 'templates/sign-in.html',

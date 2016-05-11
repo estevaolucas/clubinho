@@ -15,13 +15,8 @@ angular.module('clubinho.controllers')
       $childScope.child = child ? angular.copy(child) : {};
     });
   }
-  $scope.showChildrenList = true;
-
+  
   $scope.data = Profile.getData();
-
-  $scope.toggleChildrenList = function () {
-    $scope.showChildrenList = !$scope.showChildrenList;
-  }
 
   $scope.close = function() {
     $scope.modal.hide();
@@ -100,14 +95,23 @@ angular.module('clubinho.controllers')
 
     $rootScope.app.loading = true;
 
-    // FIXME: update from API
-    $timeout(function(form) {
+    Profile.updateData(angular.copy($scope.data)).then(function(data) {
       $scope.modal.remove();
-      $rootScope.$broadcast('clubinho-profile-updated', $scope.data);
-      $rootScope.app.loading = false;
-
+      $rootScope.$broadcast('clubinho-profile-updated', data);
       ionicToast.show('Dados atualizados com sucesso', 'top', false, 2500);
-    }, 1000);
+    }, function(response) {
+      if (response.data.data && response.data.data.params) {
+        for(var error in response.data.data.params) {
+          ionicToast.show(response.data.data.params[error], 'top', false, 2500);
+        };
+      } else if(response.data.message) {
+        ionicToast.show(response.data.message, 'top', false, 2500);
+      } else {
+        ionicToast.show('Não foi possível alterar seus dados.', 'top', false, 2500);
+      }
+    }).finally(function() {
+      $rootScope.app.loading = false;
+    });
   }
 
   $scope.cancel = function() {

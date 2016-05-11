@@ -2929,6 +2929,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .home .main .events .action .bt-next {
   right: -25px;
 }
+.home .main .empty-list {
+  font-size: 24px;
+  text-align: center;
+  padding: 32px;
+  color: #563029;
+}
+.home .main .empty-list strong {
+  display: block;
+  font-size: 16px;
+}
+.home .main .fixed .children {
+  height: 29vh;
+  position: relative;
+}
+.home .main .fixed .children > ul {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 
 .onboarding {
   background: #ffe9bb;
@@ -3111,8 +3131,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #563029;
   font-size: 14px;
   padding: 0;
+  z-index: 1;
 }
 .profile .modal main {
+  margin-top: -35px;
+  position: relative;
   background-color: #ff9c00;
 }
 .profile .modal main .responsible h1 {
@@ -3138,8 +3161,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .profile .modal table tr td:first-child {
   width: 26%;
-  font-size: 13px;
+  font-size: 12px;
   padding-left: 20px;
+}
+.profile .modal table tr td:last-child {
+  padding-right: 20px;
+  font-size: 15px;
+}
+.profile .modal table tr td small {
+  font-size: 10px;
 }
 .profile .modal .actions p {
   clear: both;
@@ -3715,6 +3745,7 @@ div[clubinho-children-list] .children li .user h2 {
   margin-top: 15px;
 }
 div[clubinho-children-list] .children li .user .details {
+  width: 150%;
   margin: 20px 0;
   max-height: 0;
   overflow-y: scroll;
@@ -3733,7 +3764,10 @@ div[clubinho-children-list] .children li .user .details h3 {
 }
 div[clubinho-children-list] .children li .user .details h4 {
   color: #784900;
-  font-size: 15px;
+  font-size: 14px;
+}
+div[clubinho-children-list] .children li .user .details h4 small {
+  font-size: 12px;
 }
 div[clubinho-children-list] .children li .points {
   -moz-border-radius: 50px;
@@ -3953,7 +3987,7 @@ header .profile-avatar {
   max-width: 40px;
   max-height: 40px;
   position: absolute;
-  top: 22px;
+  top: 25px;
   right: 15px;
   border-radius: 30px;
   border: none;
