@@ -3745,7 +3745,7 @@ div[clubinho-children-list] .children li .user h2 {
   margin-top: 15px;
 }
 div[clubinho-children-list] .children li .user .details {
-  width: 150%;
+  width: 130%;
   margin: 20px 0;
   max-height: 0;
   overflow-y: scroll;
