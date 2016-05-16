@@ -208,7 +208,8 @@ angular.module('clubinho.services')
       var events = methods.eventsToConfirm(true),
         eventsArray = events.map(function(event) {
           return event.id;
-        });
+        }),
+        saved = false;
         
       if (eventsArray.indexOf(eventToAdd.id) === -1) {
         events.push({
@@ -217,9 +218,13 @@ angular.module('clubinho.services')
             return child.id
           })
         });
+
+        saved = true;
       }
 
       methods._saveEventsToConfirm(events);
+
+      return saved;
     },
 
     // remove an event from the list of events to confirm presence
@@ -277,6 +282,24 @@ angular.module('clubinho.services')
       }
 
       return usersEvents;
+    },
+
+    eventAvailableToConfirm: function() {
+      var eventsToConfirm = methods.eventsToConfirm(true, true),
+        now = new Date(), 
+        events = eventsToConfirm.filter(function(event) {
+          var endToConfirm = new Date(event.date);
+
+          endToConfirm.setHours(endToConfirm.getHours() + 1);
+
+          return now < endToConfirm;
+        });
+
+      if (events.length) {
+        return events[0]
+      };
+
+      return [];
     },
 
     _saveEventsToConfirm: function(events) {

@@ -10,14 +10,10 @@ angular.module('clubinho.services')
       });
     },
     updateCachedList = function(events) {
-      var eventsCached = localStorage.getItem(scheduleStorageKey) || '[]',
-        eventsCachedArray, newEventsToAdd = [];
+      var eventsCached = JSON.parse(localStorage.getItem(scheduleStorageKey) || '[]');
 
       // already exist a saved list?
-      if (eventsCached) {
-        // transform string to array/object
-        eventsCached = JSON.parse(eventsCached);
-
+      if (eventsCached.length) {
         // get events id to be easier to search for new event
         eventsCachedArray = eventsCached.map(function(event) {
           return event.id;
@@ -26,12 +22,11 @@ angular.module('clubinho.services')
         // seaching for new events to add
         events.forEach(function(event, i, object) {
           if (eventsCachedArray.indexOf(event.id) === -1) {
-            newEventsToAdd.push(event);
+            eventsCached.push(event);
+          } else {
+            eventsCached[eventsCachedArray.indexOf(event.id)] = event;
           }
         });
-
-        // merging new array with old one
-        eventsCached = eventsCached.concat(newEventsToAdd);
       } else {
         eventsCached = events;
       }
@@ -104,7 +99,14 @@ angular.module('clubinho.services')
               return a.date - b.date;
             }).filter(function(event) {
               // removing past events
-              return event.date > now
+              var beginToConfirm = new Date(now),
+                endToConfirm = new Date(event.date);
+
+              // just allow 1 hour before the event and after 1 hour.
+              beginToConfirm.setHours(beginToConfirm.getHours() - 1);
+              endToConfirm.setHours(endToConfirm.getHours() + 1);
+
+              return endToConfirm > now && now > beginToConfirm;
             });
 
           if (todaysEvents.length) {

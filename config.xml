@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.clubinho835391" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="br.com.nobot.clubinho" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>clubinho</name>
   <description>Projeto Clubinho Mágico</description>
   <author email="estevao.lucas@gmail.com" href="http://example.com.com/">Estevão Lucas</author>

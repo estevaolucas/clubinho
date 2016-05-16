@@ -80,7 +80,7 @@ angular.module('clubinho.controllers')
         if (!$scope.beacon.errors || !$scope.beacon.errors.length) {
           $scope.beacon.modal.remove();
 
-          ionicToast.show('Pronto! Todos os requerimentos estão Ok.', 'top', false, 2500);
+          ionicToast.show('Pronto! Agora está tudo OK.', 'top', false, 2500);
         }
       });
     }
@@ -128,7 +128,6 @@ angular.module('clubinho.controllers')
 
   // Evento acontece em background.
   document.addEventListener('notifyAction', function(action) {
-    console.log('notifyAction', 'beacon event');
     var values = normalizeCustomValues(action),
       actionType = values.type;
 
@@ -136,31 +135,34 @@ angular.module('clubinho.controllers')
       return;
     }
 
-    if (action.actionType == 'custom' && actionType == 'notification') {
-      var message = values.text,
-        title = ('title' in values) ? values.title : '', 
-        now = new Date().getTime(),
-        _1SecondsFromNow = new Date(now + 1 * 1000),
-        notify = function(message) {
-          console.log('NOTIFY', message);
+    Children.getList().then(function(children) {
+      if (action.actionType != 'custom') {
+        return;
+      }
 
-          $cordovaLocalNotification.schedule({
-            id: 1,
-            title: message,
-            data: {
-              type: 'action',
-              action_id: action.identifier
-            },
-            at: _1SecondsFromNow
-          });
-        };
+      if (actionType == 'notification') {
+        var message = values.text,
+          title = ('title' in values) ? values.title : '', 
+          now = new Date().getTime(),
+          _1SecondsFromNow = new Date(now + 1 * 1000),
+          
+          notify = function(message) {
+            $cordovaLocalNotification.schedule({
+              id: 1,
+              title: message,
+              data: {
+                type: 'action',
+                action_id: action.identifier
+              },
+              at: _1SecondsFromNow
+            });
+          };
 
-      // Wellcome message
-      if (values.id == 'onHello') {
-        notify('TESTES');
-
-        Children.getList(true).then(function(children) {
-          console.log('CHILDREN LIST', Profile.getData().name);
+        // Wellcome message
+        if (values.id == 'onHello') {
+          if (!children.length) {
+            return;
+          }
 
           notify(templateEngine(message, {
             name: Profile.getData().name,
@@ -168,26 +170,13 @@ angular.module('clubinho.controllers')
               return child.name;
             }).join(', ')
           }));
-        }, function() {
-          console.log('ERROR CHILDREN')
-        });
-      } else {
-        notify(message);
+        } else {
+          notify(message);
+        }
+      } else if (actionType == 'checkin' && children.length) {
+        $rootScope.$broadcast('clubinho-beacon-checkin-notification', values);
       }
-    } else if (action.actionType == 'custom' && actionType == 'checkin') {
-      var now = new Date().getTime(),
-        _1SecondsFromNow = new Date(now + 1 * 1000);
-
-      $cordovaLocalNotification.schedule({
-        id: 1,
-        title: 'Check-in',
-        data: {
-          type: 'action',
-          action_id: action.identifier
-        },
-        at: _1SecondsFromNow
-      });
-    }
+    });
   });
 
   // Evento acontece quando o aplicativo está aberto e rodando na tela do usuário
@@ -198,32 +187,24 @@ angular.module('clubinho.controllers')
       return;
     }
 
-    if (action.actionType == 'custom' && values.type == 'notification') {
-      var message = values.text,
-        title = ('title' in values) ? values.title : '';
- 
-      // Wellcome message
-      if (values.id == 'onHello') {
-        console.log('CHILDREN LIST', Profile.getData().name)
-
-        Children.getList(true).then(function(children) {
-          message = templateEngine(message, {
-            name: Profile.getData().name,
-            children: children.map(function(child) {
-              return child.name;
-            }).join(', ')
-          });
-
-          $cordovaDialogs.confirm(message, title, ['OK']);  
-        }, function() {
-          console.log('ERROR CHILDREN')
-        });
-      } else {
-        $cordovaDialogs.confirm(message, title, ['OK']);
+    Children.getList().then(function(children) {
+      if (action.actionType != 'custom') {
+        return;
       }
-    } else if (action.actionType == 'custom' && values.type == 'checkin') {
-      $rootScope.$broadcast('clubinho-beacon-checkin', values);
-    }
+
+      // alert box
+      if (values.type == 'notification') {
+        var message = values.text,
+          title = ('title' in values) ? values.title : '';
+   
+        if (values.id != 'onHello') {
+          $cordovaDialogs.confirm(message, title, ['OK']);
+        }
+      // check-in area
+      } else if (values.type == 'checkin' && children.length) {
+        $rootScope.$broadcast('clubinho-beacon-checkin', values);
+      }
+    });
   });
 
   document.addEventListener('error', function(error) {

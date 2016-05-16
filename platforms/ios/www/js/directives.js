@@ -10,7 +10,7 @@ angular.module('clubinho.directives', [])
   }
 })
 
-.directive('clubinhoChildrenList', function($ionicScrollDelegate, Children, Profile, $timeout) {
+.directive('clubinhoChildrenList', function($ionicScrollDelegate, Children, Profile, $timeout, $rootScope, $cordovaDialogs) {
   return {
     restrict: 'A',
     scope: {
@@ -23,20 +23,36 @@ angular.module('clubinho.directives', [])
     templateUrl: 'templates/directives/clubinho-children-list.html',
     link: function(scope, element, attr) {
       if (scope.eventsToConfirm) {
-        var updateScope = function() {
-            var eventsToConfirm = Profile.eventsToConfirm(true, true),
-              now = new Date();
+        var updateScope = function(notification) {
+            var eventToConfirm = Profile.eventAvailableToConfirm(),
+              event;
 
-            if (scope.hasOwnProperty('children') && scope.children.length) {
+            if (scope.hasOwnProperty('children') && scope.children.length && eventToConfirm.length) {
               scope.children.forEach(function(child) {
-                var filteredEventsToConfirm = eventsToConfirm.filter(function(event) {
-                    return event.children.indexOf(child.id) !== -1 && event.date < now;
+                var isToConfirm = eventToConfirm.children.indexOf(child.id) !== -1;
+
+                if (isToConfirm) {
+                  if (!event) {
+                    event = eventToConfirm;
+                    event.children = [];
+                  }
+
+                  event.children.push(child);
+                }
+
+                child.eventToConfirm = isToConfirm ? eventToConfirm : null;
+              });
+
+              if (event && notification) {
+                var message = templateEngine('Você já pode confirmar a presença de {{children}} no {{event}}.' , {
+                  event: event.title,
+                  children: event.children.map(function(child) {
+                    return child.name;
+                  }).join(', ')
                 });
 
-                child.eventToConfirm = filteredEventsToConfirm.length ? 
-                  filteredEventsToConfirm[0] : 
-                  null;
-              });
+                $cordovaDialogs.confirm(message, 'Check-in no espaço Clubinho', ['OK']);
+              }
             }
           },
           confirm = function(confirm, child) {
@@ -52,7 +68,17 @@ angular.module('clubinho.directives', [])
 
             updateScope();
             unwatch();
-          });
+          }), 
+          templateEngine = function(tpl, data) {
+            var re = /{{([^}}]+)?}}/g, 
+              match;
+
+            while(match = re.exec(tpl)) {
+              tpl = tpl.replace(match[0], data[match[1]])
+            }
+            
+            return tpl;
+          };
 
         scope.confirm = function(child) {
           confirm(true, child);
@@ -61,6 +87,10 @@ angular.module('clubinho.directives', [])
         scope.decline = function(child) {
           confirm(false, child);
         }
+
+        $rootScope.$on('clubinho-event-to-confirm', function() {
+          updateScope(true);
+        });
       }
 
       scope.toggleChild = function(child, e) {

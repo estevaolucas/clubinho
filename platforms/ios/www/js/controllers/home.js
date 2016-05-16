@@ -42,40 +42,62 @@ angular.module('clubinho.controllers')
   });
 
   $scope.$on('clubinho-beacon-checkin', function(e, values) {
-    var newEvent = Schedule.getNextEventFromNow();
+    var nextEvent = Schedule.getNextEventFromNow();
 
-    if (newEvent) {
-      console.log('clubinho-beacon-checkin-event', JSON.stringify(newEvent));
+    if (nextEvent) {
+      console.log('clubinho-beacon-checkin-event', JSON.stringify(nextEvent));
       
-      var notificationId = newEvent.id + 300,
-        notificationDate = new Date(newEvent.date),
+      var notificationId = nextEvent.id + 300,
+        notificationDate = new Date(nextEvent.date),
         minutesBeforeToRemember = 15;
       
-      notificationDate.setMinutes(newEvent.date.getMinutes() - minutesBeforeToRemember);
+      notificationDate.setMinutes(nextEvent.date.getMinutes() - minutesBeforeToRemember);
 
       $scope.loading = false;
 
       // TODO: remove this test dialog
-      $cordovaDialogs.confirm(newEvent.title, 'Check-in', ['OK']);
+      // $cordovaDialogs.confirm(nextEvent.title, 'Check-in', ['OK']);
       
       // Add evento to confirmation list
-      Profile.addEventToConfirm(newEvent);
+      if (Profile.addEventToConfirm(nextEvent)) {
+        // Notify directive
+        $rootScope.$broadcast('clubinho-event-to-confirm');
 
-      // Show a remember notification 
-      if (window.cordova) {
-        $cordovaLocalNotification.schedule({
-          id: notificationId,
-          title: newEvent.title + ' vai começar em ' + minutesBeforeToRemember + ' minutos.',
-          data: {
-            type: 'event',
-            id: newEvent.id
-          },
-          at: notificationDate
-        });
+        // Show a reminder notification 
+        if (window.cordova) {
+          $cordovaLocalNotification.schedule({
+            id: notificationId,
+            title: nextEvent.title + ' vai começar em ' + minutesBeforeToRemember + ' minutos.',
+            data: {
+              type: 'event',
+              id: nextEvent.id
+            },
+            at: notificationDate
+          });
+        }
       }
     } else {
-      console.log('clubinho-beacon-checkin-no-event', JSON.stringify(values), newEvent);
+      console.log('clubinho-beacon-checkin-no-event', JSON.stringify(values), nextEvent);
     }
+  });
+
+  $scope.$on('clubinho-beacon-checkin-notification', function(e, values) {
+    var nextEvent = Schedule.getNextEventFromNow(),
+      now = new Date().getTime();
+
+    if (!nextEvent) {
+      return;
+    }
+
+    $cordovaLocalNotification.schedule({
+      id: 4001,
+      title: 'Olá, você está na area de check-in do espaço Clubinho.',
+      data: {
+        type: 'action',
+        action_id: action.identifier
+      },
+      at: new Date(now + 1000)
+    });
   });
 
   $scope.next = function() {
