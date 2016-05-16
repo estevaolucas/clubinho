@@ -71,10 +71,10 @@ angular.module('clubinho.controllers')
 
   $scope.tryAgain = function() {
     if (window.cordova && window.cordova.plugins.beaconCtrl) {
-      $rootScope.app.loading = true;
+      $rootScope.app.showLoading();
 
       cordova.plugins.beaconCtrl.start(credentials, function() {
-        $rootScope.app.loading = false;
+        $rootScope.app.hideLoading();
 
         console.log('beacon', $scope.beacon);
         if (!$scope.beacon.errors || !$scope.beacon.errors.length) {
@@ -232,5 +232,14 @@ angular.module('clubinho.controllers')
         modal.hide();
       }
     });
+  }
+
+  $rootScope.app.loadingCount = 0;
+  $rootScope.app.showLoading = function() {
+    $rootScope.app.loadingCount++;
+  }
+
+  $rootScope.app.hideLoading = function() {
+    $rootScope.app.loadingCount--;
   }
 });

@@ -11,12 +11,12 @@ angular.module('clubinho.controllers')
     }
     
     if (window.cordova && $cordovaNetwork.isOffline()) {
-      ionicToast.show('Você sem internet!', 'top', false, 2500);
+      ionicToast.show('Você está sem internet!', 'top', false, 2500);
       return;
     }
 
     $scope.error = null;
-    $rootScope.app.loading = true;
+    $rootScope.app.showLoading();
 
     Authorization.forgotPassword($scope.user.email).then(function() {
       $scope.user = {};
@@ -24,7 +24,7 @@ angular.module('clubinho.controllers')
     }, function(error) {
       $scope.error = error.data.message;
     }).finally(function() {
-      $rootScope.app.loading = false;
+      $rootScope.app.hideLoading();
     });
   }
 

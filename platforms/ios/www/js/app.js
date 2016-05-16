@@ -104,9 +104,7 @@ angular.module('clubinho', [
 })
 
 .run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout) {
-  $rootScope.app = {
-    loading: false
-  };
+  $rootScope.app = {};
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 

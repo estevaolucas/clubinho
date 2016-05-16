@@ -57,14 +57,14 @@ angular.module('clubinho.controllers')
 
     $cordovaDialogs.confirm(title, message, buttons).then(function(buttonIndex) {
       if (buttonIndex == 1) {
-        $rootScope.app.loading = true;
+        $rootScope.app.showLoading();
 
         Children.removeChild(child).then(function() {
           ionicToast.show('Criança deletada com sucesso.', 'top', false, 2500);
         }, function() {
           ionicToast.show('Não foi possível deletar a criança.', 'top', false, 2500);
         }).finally(function() {
-          $rootScope.app.loading = false;
+          $rootScope.app.hideLoading();
         });
       }
     })
@@ -93,7 +93,7 @@ angular.module('clubinho.controllers')
       return;
     }
 
-    $rootScope.app.loading = true;
+    $rootScope.app.showLoading();
 
     Profile.updateData(angular.copy($scope.data)).then(function(data) {
       $scope.modal.remove();
@@ -110,7 +110,7 @@ angular.module('clubinho.controllers')
         ionicToast.show('Não foi possível alterar seus dados.', 'top', false, 2500);
       }
     }).finally(function() {
-      $rootScope.app.loading = false;
+      $rootScope.app.hideLoading();
     });
   }
 
@@ -125,7 +125,7 @@ angular.module('clubinho.controllers')
       return;
     }
 
-    $rootScope.app.loading = true;
+    $rootScope.app.showLoading();
 
     // creating a child
     if (!$scope.editing) {
@@ -137,7 +137,7 @@ angular.module('clubinho.controllers')
       }, function() {
         ionicToast.show('Não foi possivel adicionar a criança.', 'top', false, 2500);
       }).finally(function() {
-        $rootScope.app.loading = false;
+        $rootScope.app.hideLoading();
       });
     // editing a child
     } else {
@@ -149,7 +149,7 @@ angular.module('clubinho.controllers')
       }, function() {
         ionicToast.show('Não foi possivel editar criança', 'top', false, 2500);
       }).finally(function() {
-        $rootScope.app.loading = false;
+        $rootScope.app.hideLoading();
       });
     }
   }

@@ -47,7 +47,7 @@
     <script src="js/directives.js"></script>
   </head>
   <body ng-app="clubinho" ng-controller="MainController">
-    <div clubinho-loader="" show="app.loading"></div>
+    <div clubinho-loader show="app.loadingCount > 0"></div>
 
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>

@@ -1,10 +1,8 @@
 angular.module('clubinho.controllers')
 
 .controller('HomeController', function($scope, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile) {
-  var loading = 2, 
-    hideLoading = function() {
-      loading--;
-      !loading && ($rootScope.app.loading = false);
+  var hideLoading = function() {
+      $rootScope.app.hideLoading();
     },
     loadContent = function() {
       Children.getList().then(function(children) {
@@ -52,8 +50,6 @@ angular.module('clubinho.controllers')
         minutesBeforeToRemember = 15;
       
       notificationDate.setMinutes(nextEvent.date.getMinutes() - minutesBeforeToRemember);
-
-      $scope.loading = false;
 
       // TODO: remove this test dialog
       // $cordovaDialogs.confirm(nextEvent.title, 'Check-in', ['OK']);
@@ -127,7 +123,7 @@ angular.module('clubinho.controllers')
   });
 
   $scope.$on('$ionicView.enter', function() {
-    loading && ($rootScope.app.loading = true);
+    $rootScope.app.showLoading();
   });
 
   $scope.$on('$destroy', function() {

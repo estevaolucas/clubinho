@@ -4,7 +4,7 @@ angular.module('clubinho.controllers')
   
   // Add/remove event from favorite list
   $scope.toggleFavorite = function(event) {
-    $scope.loading = true;
+    $rootScope.app.showLoading();
 
     $timeout(function() {
       var isFavorite = Schedule.setFavorite(event),
@@ -12,7 +12,7 @@ angular.module('clubinho.controllers')
         now = new Date().getTime(),
         _10SecondsFromNow = new Date(now + 10 * 1000);
 
-      $scope.loading = false;
+      $scope.app.hideLoading();
 
       if (!window.cordova) {
         return event.favorite = isFavorite;
