@@ -1,0 +1,32 @@
+<ion-view class="signup" hide-nav-bar="true">
+  <ion-content>
+    <header>
+      <div class="logo"><img src="img/titulo.png"></div>      
+      <div class="clear"></div>
+    </header>
+    <form name="form" novalidate>
+      <h2>Complete seu cadastro</h2>
+      <div class="form-errors" ng-show="error">
+        <div class="form-error">{{error}}</div>
+      </div>
+      
+      <div class="form-errors" ng-show="form.cpf.$error && form.cpf.$dirty" ng-messages="form.cpf.$error">
+        <div class="form-error" ng-message="required">O CPF é obrigatório</div>
+      </div>
+      <input name="cpf" class="cpf" ng-model="user.cpf" type="text" placeholder="CPF" ui-mask="999.999.999-99" ui-mask-placeholder model-view-value="true" required />
+
+      <input name="phone" class="phone" ng-model="user.phone" type="text" placeholder="Telefone" ui-mask="(99) 9999-9999?9" model-view-value="true" ui-mask-placeholder />
+
+      <input name="zipcode" ng-model="user.zipcode" type="text" placeholder="CEP" autocorrect="off" autocapitalize="none" ui-mask="99999-999" model-view-value="true" ui-mask-placeholder />
+
+      <input name="address" class="address" ng-model="user.address" type="text" placeholder="Endereço" autocorrect="off" autocapitalize="none" />
+
+      <div class="actions">
+        <button class="btn btn-signup" ng-click="complete(form)" ng-disabled="form.$invalid">Enviar</button>
+      </div>
+      <div class="clear"></div>
+    </form>
+    <span class="border"><span></span></span>
+    <div class="clear"></div>
+  </ion-content>
+</ion-view>

@@ -41,7 +41,7 @@ angular.module('clubinho.controllers')
     }, function(error) {
       $scope.error = error;
     }).finally(function() {
-      $rootScope.app.loading = false;
+      $rootScope.app.hideLoading();
     });
   }
 });

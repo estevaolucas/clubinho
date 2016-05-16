@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('HomeController', function($scope, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile) {
+.controller('HomeController', function($scope, $state, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile) {
   var hideLoading = function() {
       $rootScope.app.hideLoading();
     },
@@ -27,8 +27,10 @@ angular.module('clubinho.controllers')
       });
     }).finally(hideLoading);
   }, function() {
+    debugger;
+    $state.go('signin');
     $rootScope.$on('user-did-login', loadContent);
-  });
+  }).finally(hideLoading);
 
   $scope.openEvent = function(event) {
     $state.go('tab.schedule', {id: event.id})

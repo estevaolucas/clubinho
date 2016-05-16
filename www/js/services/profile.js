@@ -18,20 +18,22 @@ angular.module('clubinho.services')
 
       authorized = true;
       deferred.resolve(data);
+
+      if (data.facebook_user && !data.cpf) {
+        $rootScope.$broadcast('user-did-facebook-signup');  
+        return;
+      }
+
       $rootScope.$broadcast('user-did-login');
     },
     authenticate = function(data, deferred) {
-      var deferred = deferred || $q.defer(), 
-        request = $http({
-          method: 'post',
-          url: apiConfig.baseUrl + '/token',
-          data: {
-            username: data.username,
-            password: data.password
-          }
-        });
+      var deferred = deferred || $q.defer();
 
-      request.then(function(response) {
+      $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/token',
+        data: data
+      }).then(function(response) {
         localStorage.setItem('username', data.username);
         localStorage.setItem('password', data.password);
 
@@ -67,12 +69,7 @@ angular.module('clubinho.services')
       } else if (!token) {
         deferred.reject(); 
       } else {
-        var request = $http({
-          method: 'post',
-          url: apiConfig.baseUrl + '/token/validate'
-        });
-
-        request.then(function(response) {
+        $http.post(apiConfig.baseUrl + '/token/validate').then(function(response) {
           $http.get(apiConfig.baseUrl + '/me').then(function(response) {
             proccessLogin(response, deferred);
           }, function(response) {
@@ -149,6 +146,30 @@ angular.module('clubinho.services')
           email: email
         }
       });
+    },
+
+    updateData: function(data) {
+      var deferred = $q.defer();
+      
+      delete data.children;
+
+      for (key in data) {
+        if (data[key] == null) {
+          delete data[key];
+        }
+      }
+
+      $http({
+        method: 'POST',
+        url: apiConfig.baseUrl + '/me',
+        data: data
+      }).then(function(response) {
+        proccessLogin(response, deferred);
+      }, function(reason) {
+        deferred.reject(reason);
+      });
+
+      return deferred.promise;
     }
   };
 })
