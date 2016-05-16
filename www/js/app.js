@@ -109,9 +109,9 @@ angular.module('clubinho', [
   facebookConnectPlugin && $cordovaFacebookProvider.browserInit('977939322243298', 'v2.5');
 })
 
-.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout, $cordovaDialogs, $cordovaNetwork, $window) {
   $rootScope.app = {};
-  
+
   $rootScope.$on('user-did-login', function() {
     $state.go('tab.home');
   });
@@ -136,6 +136,25 @@ angular.module('clubinho', [
   });
 
   $ionicPlatform.ready(function() {
+    if (window.cordova) {
+      if ($cordovaNetwork.isOffline()) {
+        $cordovaDialogs.confirm('Você está sem internet!', 'Problema!', ['OK']);
+
+        $rootScope.$on('$cordovaNetwork:online', function(event, networkState) {
+          $state.go('tab.home', {}, {reload: true});
+          $window.location.reload(true)
+
+          $timeout(function() {
+            navigator.splashscreen.hide();
+          }, 1000);
+          
+          $rootScope.$$listeners['$cordovaNetwork:online'] = [];
+        });
+      } else {
+        navigator.splashscreen.hide();
+      } 
+    }
+
     // Local notification handle
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.notification) {
       cordova.plugins.notification.local.on('click', function(notification) {

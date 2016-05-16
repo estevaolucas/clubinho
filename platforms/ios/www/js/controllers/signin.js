@@ -1,10 +1,14 @@
 angular.module('clubinho.controllers')
 
-.controller('SignInController', function($scope, $rootScope, $state, $cordovaNetwork, Authorization, ionicToast) {
+.controller('SignInController', function($scope, $rootScope, $state, $cordovaNetwork, $state, Authorization, ionicToast, Profile) {
   
   $scope.$on('$ionicView.enter', function( scopes, states ) {
     $scope.user = {};
     $scope.error = null;
+
+    if (Profile.token()) {
+      $state.go('tab.home', {}, {reload: true});
+    }
   });
 
   $scope.signIn = function(form) {
@@ -41,7 +45,7 @@ angular.module('clubinho.controllers')
     }, function(error) {
       $scope.error = error;
     }).finally(function() {
-      $rootScope.app.loading = false;
+      $rootScope.app.hideLoading();
     });
   }
 });

@@ -43,6 +43,12 @@ angular.module('clubinho', [
       controller: 'SignUpController'
     })
 
+    .state('signup-completation', {
+      url: '/sign-up-completation',
+      templateUrl: 'templates/sign-up-completation.html',
+      controller: 'SignUpCompletationController'
+    })
+
     .state('forgotpassword', {
       url: '/forgot-password',
       templateUrl: 'templates/forgot-password.html',
@@ -103,20 +109,15 @@ angular.module('clubinho', [
   facebookConnectPlugin && $cordovaFacebookProvider.browserInit('977939322243298', 'v2.5');
 })
 
-.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout, $cordovaDialogs, $cordovaNetwork, $window) {
   $rootScope.app = {};
-
-  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-
-    if (toState.data && toState.data.authorization) {
-      Authorization.authorized().then(angular.noop, function() {
-        $state.go('signin');
-      })
-    }
-  });
 
   $rootScope.$on('user-did-login', function() {
     $state.go('tab.home');
+  });
+
+  $rootScope.$on('user-did-facebook-signup', function() {
+    $state.go('signup-completation');
   });
 
   $rootScope.$on('user-did-logout', function() {
@@ -135,6 +136,25 @@ angular.module('clubinho', [
   });
 
   $ionicPlatform.ready(function() {
+    if (window.cordova) {
+      if ($cordovaNetwork.isOffline()) {
+        $cordovaDialogs.confirm('Você está sem internet!', 'Problema!', ['OK']);
+
+        $rootScope.$on('$cordovaNetwork:online', function(event, networkState) {
+          $state.go('tab.home', {}, {reload: true});
+          $window.location.reload(true)
+
+          $timeout(function() {
+            navigator.splashscreen.hide();
+          }, 1000);
+          
+          $rootScope.$$listeners['$cordovaNetwork:online'] = [];
+        });
+      } else {
+        navigator.splashscreen.hide();
+      } 
+    }
+
     // Local notification handle
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.notification) {
       cordova.plugins.notification.local.on('click', function(notification) {

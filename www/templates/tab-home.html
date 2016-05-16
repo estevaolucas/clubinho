@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div clubinho-children-list list="children" events-to-confirm="true" ng-class="{fixed: children.length < 3}"></div>
+      <div clubinho-children-list list="children" events-to-confirm="true" ng-class="{fixed: children.length < 3}" ng-if="children.length"></div>
       <h3 class="empty-list" ng-if="!children.length">Nenhuma criança cadastrada. <strong>Vá em configurações para adicionar uma criança.</strong></h3>
       <div class="clear"></div>
     </div>

@@ -237,9 +237,14 @@ angular.module('clubinho.controllers')
   $rootScope.app.loadingCount = 0;
   $rootScope.app.showLoading = function() {
     $rootScope.app.loadingCount++;
+
   }
 
   $rootScope.app.hideLoading = function() {
     $rootScope.app.loadingCount--;
+
+    if ($rootScope.app.loadingCount < 0) {
+      $rootScope.app.loadingCount = 0;
+    }
   }
 });

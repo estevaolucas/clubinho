@@ -1,13 +1,11 @@
 angular.module('clubinho.controllers')
 
-.controller('SignUpController', function($scope, $rootScope, $state, $cordovaNetwork, Authorization, ionicToast) {
+.controller('SignUpCompletationController', function($scope, $rootScope, $state, $cordovaNetwork, Authorization, ionicToast, Profile) {
   
-  $scope.$on('$ionicView.enter', function( scopes, states ) {
-    $scope.user = {};
-    $scope.error = null;
-  });
-
-  $scope.signUp = function(form) {
+  $scope.user = Profile.getData();
+  $scope.error = null;
+  
+  $scope.complete = function(form) {
     if (form.$invalid) {
       return;
     }
@@ -20,10 +18,8 @@ angular.module('clubinho.controllers')
     $scope.error = null;
     $rootScope.app.showLoading();
 
-    Authorization.signUp($scope.user).then(function() {
+    Authorization.updateData($scope.user).then(function() {
       ionicToast.show('Usário cadastrado com sucesso!', 'top', false, 2500);
-      $scope.user = {};
-      form.$setPristine(true);
     }, function(response) {
       if (response.data.data && response.data.data.params) {
         var errors = [];
@@ -41,9 +37,5 @@ angular.module('clubinho.controllers')
     }).finally(function() {
       $rootScope.app.hideLoading();
     });
-  }
-
-  $scope.cancel = function() {
-    $state.go('signin');
   }
 });

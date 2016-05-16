@@ -11,6 +11,7 @@ angular.module('clubinho.controllers')
     },
     $profileScope;
 
+  $rootScope.app.showLoading();
   Authorization.authorized().then(function() {
     loadContent();
 
@@ -27,7 +28,6 @@ angular.module('clubinho.controllers')
       });
     }).finally(hideLoading);
   }, function() {
-    debugger;
     $state.go('signin');
     $rootScope.$on('user-did-login', loadContent);
   }).finally(hideLoading);
@@ -122,10 +122,6 @@ angular.module('clubinho.controllers')
   // View's lifecicle
   $scope.$on('$ionicView.beforeLeave', function() {
     $ionicScrollDelegate.scrollTop();
-  });
-
-  $scope.$on('$ionicView.enter', function() {
-    $rootScope.app.showLoading();
   });
 
   $scope.$on('$destroy', function() {
