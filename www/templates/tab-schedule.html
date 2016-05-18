@@ -22,7 +22,7 @@
             <article class="content" ng-click="detail(event)">
               <h2>{{event.title}}</h2>
               <h3>com {{event.author}}</h3>
-              <div ng-bind-html="event.excerpt"></div>
+              <p ng-bind-html="event.excerpt"></p>
             </article>
             <article class="actions">
               <button ng-click="toggleFavorite(event)"><i ng-class="{'ion-star': event.favorite, 'ion-ios-star-outline': !event.favorite}"></i> Fav</button>

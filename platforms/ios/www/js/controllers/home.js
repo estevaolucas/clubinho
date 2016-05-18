@@ -8,7 +8,25 @@ angular.module('clubinho.controllers')
       Children.getList().then(function(children) {
         $scope.children = children;
       }).finally(hideLoading);
+
+      if (listLoaded) {
+        return
+      };
+      
+      Schedule.getList().then(function(schedule) {
+        var colors = ['blue', 'orange', 'red'],
+          max = colors.length,
+          min = 0;
+
+        listLoaded = true;
+
+        $scope.schedule = schedule.map(function(event, i) {
+          event.className = colors[i % 3];
+          return event;
+        });
+      }).finally(hideLoading);
     },
+    listLoaded = false,
     $profileScope;
 
   $rootScope.app.showLoading();
@@ -16,17 +34,6 @@ angular.module('clubinho.controllers')
     loadContent();
 
     $rootScope.$on('user-did-login', loadContent);
-
-    Schedule.getList().then(function(schedule) {
-      var colors = ['blue', 'orange', 'red'],
-        max = colors.length,
-        min = 0;
-
-      $scope.schedule = schedule.map(function(event, i) {
-        event.className = colors[i % 3];
-        return event;
-      });
-    }).finally(hideLoading);
   }, function() {
     $state.go('signin');
     $rootScope.$on('user-did-login', loadContent);

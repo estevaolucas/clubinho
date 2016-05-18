@@ -39,7 +39,8 @@ angular.module('clubinho.controllers')
       ionicToast.show('Você está sem internet!', 'top', false, 2500);
       return;
     }
-    
+
+    $rootScope.app.showLoading();    
     Authorization.facebook().then(function(user) {
       console.log(user);
     }, function(error) {

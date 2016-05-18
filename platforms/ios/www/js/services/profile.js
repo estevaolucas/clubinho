@@ -39,8 +39,13 @@ angular.module('clubinho.services')
 
         proccessLogin(response, deferred);
       }, function(response) {
-        console.log('Error login', response);
-        deferred.reject('Erro');
+        var error = response.data.message;
+
+        if (response.data.code == 'jwt_auth_failed') {
+          error = 'E-mail e/ou senha incorretos';
+        }
+
+        deferred.reject(error);
       });
 
       return deferred.promise;

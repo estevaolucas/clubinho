@@ -8,8 +8,8 @@ angular.module('clubinho', [
 ])
 
 .constant('apiConfig', {
-  baseUrl: 'http://192.168.25.15/clubinho-api/api/v1',
-  // baseUrl: 'http://peppersp.com.br/beacon/api/v1'
+  // baseUrl: 'http://192.168.25.15/clubinho-api/api/v1',
+  baseUrl: 'http://peppersp.com.br/beacon/api/v1'
 })
 
 .config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider, $httpProvider) {
@@ -113,7 +113,7 @@ angular.module('clubinho', [
   $rootScope.app = {};
 
   $rootScope.$on('user-did-login', function() {
-    $state.go('tab.home');
+    $state.go('tab.home', {}, {reload: true});
   });
 
   $rootScope.$on('user-did-facebook-signup', function() {
