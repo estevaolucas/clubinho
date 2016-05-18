@@ -27,13 +27,13 @@ angular.module('clubinho.directives', [])
             var eventToConfirm = Profile.eventAvailableToConfirm(),
               event;
 
-            if (scope.hasOwnProperty('children') && scope.children.length && eventToConfirm.length) {
+            if (scope.hasOwnProperty('children') && scope.children.length && eventToConfirm) {
               scope.children.forEach(function(child) {
                 var isToConfirm = eventToConfirm.children.indexOf(child.id) !== -1;
 
                 if (isToConfirm) {
                   if (!event) {
-                    event = eventToConfirm;
+                    event = angular.copy(eventToConfirm);
                     event.children = [];
                   }
 
@@ -91,6 +91,8 @@ angular.module('clubinho.directives', [])
         $rootScope.$on('clubinho-event-to-confirm', function() {
           updateScope(true);
         });
+
+        updateScope();
       }
 
       scope.toggleChild = function(child, e) {

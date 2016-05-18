@@ -325,7 +325,7 @@ angular.module('clubinho.services')
         return events[0]
       };
 
-      return [];
+      return false;
     },
 
     _saveEventsToConfirm: function(events) {

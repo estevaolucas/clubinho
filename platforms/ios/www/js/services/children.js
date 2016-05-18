@@ -61,10 +61,16 @@ angular.module('clubinho.services')
     },
 
     confirmPresence: function(confirm, event, child) {
-      return $http({
-        method: 'POSt',
-        url: apiConfig.baseUrl + '/me/child/' + child.id + '/confirm/' + event.id
+      var deferred = $q.defer();
+
+      $http.post(apiConfig.baseUrl + '/me/child/' + child.id + '/confirm/' + event.id).then(function(response) {
+        $rootScope.$broadcast('clubinho-children-update', response.data.data.children);
+        deferred.resolve(saveList(response.data.data.children), response.data.data.message);
+      }, function(reason) {
+        deferred.reject(reason);
       });
+
+      return deferred.promise;
     }
   };
 });
