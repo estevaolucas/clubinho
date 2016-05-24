@@ -90,6 +90,10 @@ div[clubinho-children-list] {
         float: left;
         margin-left: 2%;
 
+        body.ios6 & {
+          max-width: 186px;
+        }
+
         h2{
           margin-top: 15px;
           white-space: nowrap;
@@ -140,6 +144,10 @@ div[clubinho-children-list] {
         min-width: 55px;
         padding: 15px;
         height: 50px;
+
+        .home & {
+          line-height: 12px;
+        }
 
         h3 {
           font-size: 25px;

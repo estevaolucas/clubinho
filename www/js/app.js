@@ -178,6 +178,17 @@ angular.module('clubinho', [
       StatusBar.styleDefault();
     }
   });
+
+  if (ionic.Platform.platform() == 'ios') {
+    var ios6 = window.matchMedia('(min-device-width : 375px) and (max-device-width : 667px) and (orientation : portrait)'),
+      ios6plus = window.matchMedia('(min-device-width : 414px) and (max-device-width : 736px) and (orientation : portrait)');
+
+    if (ios6.matches) {
+      $('body').addClass('ios6');
+    } else if (ios6plus.matches) {
+      $('body').addClass('ios6plus');
+    }
+  }
 });
 
 window.onerror = function(msg, url, line, col, error) {

@@ -3749,6 +3749,9 @@ div[clubinho-children-list] .children li .user {
   float: left;
   margin-left: 2%;
 }
+body.ios6 div[clubinho-children-list] .children li .user {
+  max-width: 186px;
+}
 div[clubinho-children-list] .children li .user h2 {
   margin-top: 15px;
   white-space: nowrap;
@@ -3794,6 +3797,9 @@ div[clubinho-children-list] .children li .points {
   min-width: 55px;
   padding: 15px;
   height: 50px;
+}
+.home div[clubinho-children-list] .children li .points {
+  line-height: 12px;
 }
 div[clubinho-children-list] .children li .points h3 {
   font-size: 25px;
