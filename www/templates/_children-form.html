@@ -1,4 +1,4 @@
-<ion-modal-view class="add-child-modal" ng-controller="ChildrenController">
+<ion-modal-view class="add-child-modal" ng-controller="ChildrenController" ng-click="cancel($event)">
   <form name="form" novalidate class="content">
     <h2 ng-if="!editing">Adicionar criança</h2>
     <h2 ng-if="editing">Editar criança</h2>
@@ -20,14 +20,6 @@
       <option>8</option>
       <option>9</option>
       <option>10</option>
-      <option>11</option>
-      <option>12</option>
-      <option>13</option>
-      <option>14</option>
-      <option>15</option>
-      <option>16</option>
-      <option>17</option>
-      <option>18</option>
     </select>
     <div ng-show="form.$submitted || form.birthday.$touched">
       <div ng-show="form.birthday.$error.required">Por favor informe o dia de namcimento.</div>
@@ -62,7 +54,7 @@
     </div>
 
     <div class="actions">
-      <button type="button" class="btn btn-cancel" ng-click="cancel(form)">Cancelar</button>
+      <button type="button" class="btn btn-cancel" ng-click="cancel($event)">Cancelar</button>
       <button type="submit" class="btn btn-add" ng-click="save(child)" ng-disabled="form.$invalid">
         <span ng-if="!editing">Adicionar</span>
         <span ng-if="editing">Salvar</span>

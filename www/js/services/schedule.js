@@ -124,36 +124,36 @@ angular.module('clubinho.services')
     scheduleStorageKey = 'schedule-cached-list',
     deferred;
 
-  // Cache configuration
-  CacheFactory('scheduleCache', {
-    maxAge: 90000, // Items added to this cache expire after 15 minutes.
-    cacheFlushInterval: 3600000 * 24, // This cache will clear itself every hour.
-    deleteOnExpire: 'aggressive', // Items will be deleted from this cache right when they expire.
-    storageMode: 'localStorage',
-    onExpire: function (key, value) {
-      var eventsCached = localStorage.getItem(scheduleStorageKey),
-          eventsExpiredIds;
+  // // Cache configuration
+  // CacheFactory('scheduleCache', {
+  //   maxAge: 90000, // Items added to this cache expire after 15 minutes.
+  //   cacheFlushInterval: 3600000 * 24, // This cache will clear itself every hour.
+  //   deleteOnExpire: 'aggressive', // Items will be deleted from this cache right when they expire.
+  //   storageMode: 'localStorage',
+  //   onExpire: function (key, value) {
+  //     var eventsCached = localStorage.getItem(scheduleStorageKey),
+  //         eventsExpiredIds;
 
-      if (value && value['200'] && value['200'].posts.length) {
-        eventsExpiredIds = value['200'].posts.map(function(event) {
-          return event.id;
-        });
+  //     if (value && value['200'] && value['200'].posts.length) {
+  //       eventsExpiredIds = value['200'].posts.map(function(event) {
+  //         return event.id;
+  //       });
 
-        if (eventsCached) {
-          eventsCached = JSON.parse(eventsCached);
+  //       if (eventsCached) {
+  //         eventsCached = JSON.parse(eventsCached);
 
-          // Caso a lista de eventos cacheado tenha algum evento vindo da URL cacheada, remove ela
-          eventsCached.forEach(function(event, i, object) {
-            if (eventsExpiredIds.indexOf(event.id) !== -1) {
-              object.splice(i, 1);
-            }
-          });
+  //         // Caso a lista de eventos cacheado tenha algum evento vindo da URL cacheada, remove ela
+  //         eventsCached.forEach(function(event, i, object) {
+  //           if (eventsExpiredIds.indexOf(event.id) !== -1) {
+  //             object.splice(i, 1);
+  //           }
+  //         });
 
-          localStorage.setItem(scheduleStorageKey, JSON.stringify(eventsCached));
-        }
-      }
-    }
-  });
+  //         localStorage.setItem(scheduleStorageKey, JSON.stringify(eventsCached));
+  //       }
+  //     }
+  //   }
+  // });
 
   return methods;
 });

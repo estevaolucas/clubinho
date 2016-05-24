@@ -2865,9 +2865,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
   font-size: 18px;
 }
-.home .main .events ion-slide h2, .home .main .events ion-slide h3, .home .main .events ion-slide p {
-  font-family: helvetica neue, Verdana;
-}
 .home .main .events ion-slide h3, .home .main .events ion-slide p {
   color: #63453D;
 }
@@ -2902,6 +2899,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 15px 0px;
   background: #fff6ed;
   margin-bottom: 15px;
+  height: 120px;
 }
 .home .main .events .carousel .wrapper {
   max-width: 260px;
@@ -2940,7 +2938,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 16px;
 }
 .home .main .fixed .children {
-  height: 29vh;
   position: relative;
 }
 .home .main .fixed .children > ul {
@@ -2964,7 +2961,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 100vh;
 }
 .onboarding ion-slide header {
-  background: url('../img/titulo.png?1458128492') no-repeat;
+  background: url('../img/titulo.png?1458128492') no-repeat center;
   margin: 20px auto 0;
   width: 84vw;
   height: 220px;
@@ -3017,6 +3014,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border: none;
   background-size: cover;
   z-index: 2;
+}
+.onboarding ion-slide .btn-start {
+  background: #4a9322;
+  display: block;
+  margin: 20px auto 0;
+  font-size: 19px;
+  font-weight: bold;
 }
 
 .prizes {
@@ -3142,6 +3146,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-transform: capitalize;
   font-size: 23px;
   text-indent: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .profile .modal main .responsible h3 {
   text-indent: 20px;
@@ -3231,7 +3238,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   float: right;
 }
 .add-child-modal .content .choose-avatar {
-  margin-bottom: 14px;
+  margin-bottom: 64px;
 }
 .add-child-modal .content .choose-avatar ul li {
   float: left;
@@ -3601,9 +3608,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .signin form .actions a, .signup form .actions a, .forgot-password form .actions a {
   color: #563029;
-  font-size: 15px;
-  margin-bottom: 10px;
+  font-size: 20px;
   display: block;
+  margin: 15px 0;
 }
 
 .signin form .btn-login {
@@ -3727,6 +3734,7 @@ div[clubinho-children-list] .children li h2 {
 div[clubinho-children-list] .children li h3 {
   color: #784900;
   font-size: 15px;
+  margin-top: 0;
 }
 div[clubinho-children-list] .children li .avatar {
   float: left;
@@ -3743,6 +3751,9 @@ div[clubinho-children-list] .children li .user {
 }
 div[clubinho-children-list] .children li .user h2 {
   margin-top: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 div[clubinho-children-list] .children li .user .details {
   width: 130%;
@@ -3770,9 +3781,7 @@ div[clubinho-children-list] .children li .user .details h4 small {
   font-size: 12px;
 }
 div[clubinho-children-list] .children li .points {
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
+  border-radius: 61px;
   float: right;
   position: absolute;
   right: 9px;
@@ -3780,9 +3789,11 @@ div[clubinho-children-list] .children li .points {
   padding: 8px;
   color: white;
   text-align: center;
-  line-height: 18px;
+  line-height: 7px;
   background: #886bae;
   min-width: 55px;
+  padding: 15px;
+  height: 50px;
 }
 div[clubinho-children-list] .children li .points h3 {
   font-size: 25px;
@@ -3813,6 +3824,10 @@ div[clubinho-children-list] .children li .wrapper {
 }
 div[clubinho-children-list] .children li.open {
   overflow: visible;
+}
+div[clubinho-children-list] .children li.open .user h2 {
+  overflow: auto;
+  text-overflow: ellipsis;
 }
 div[clubinho-children-list] .children li.open .wrapper {
   max-height: 9999px;
@@ -3905,6 +3920,11 @@ div[clubinho-children-list] .children li.add-children .user .points {
   src: url("../font/LoveYaLikeASister.ttf");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+body {
+  font-family: 'Love Ya Like A Sister', cursive;
+  -webkit-tap-highlight-color: #ccc;
+}
+
 .hide, .preload {
   display: none;
 }
@@ -3965,10 +3985,6 @@ input[type=text] option, input[type=email] option, input[type=date] option, inpu
   padding: 0 0 5px 12px;
   color: #f96767;
   font-size: 14px;
-}
-
-body {
-  font-family: 'Love Ya Like A Sister', cursive;
 }
 
 header {

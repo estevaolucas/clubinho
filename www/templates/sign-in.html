@@ -12,25 +12,25 @@
         <div class="form-error">{{error}}</div>
       </div>
 
-      <input type="text" name="username" ng-model="user.username" placeholder="E-mail" autocorrect="off" autocapitalize="none" required>
-
       <div class="form-errors" ng-show="form.$submitted && form.username.$error && form.username.$dirty" ng-messages="form.username.$error">
         <div class="form-error" ng-message="required">O email é obrigatório</div>
       </div>
-
-      <input type="password" name="password" ng-model="user.password" ng-minlength="5" ng-maxlength="25" placeholder="Senha" required>
+      <input type="text" name="username" ng-model="user.username" placeholder="E-mail" autocorrect="off" autocapitalize="none" required>
 
       <div class="form-errors" ng-show="form.$submitted && form.password.$error && form.password.$dirty" ng-messages="form.password.$error">
         <div class="form-error" ng-message="required">Esse campo é obrigatório</div>
         <div class="form-error" ng-message="minlength">A senha deve ter no mínimo 5 caracteres.</div>
         <div class="form-error" ng-message="maxlength">A senha deve ter no máximo 25 caracteres.</div>
       </div>
-      <div class="actions">
+      
+      <input type="password" name="password" ng-model="user.password" ng-minlength="5" ng-maxlength="25" placeholder="Senha" required>
+
+     <div class="actions">
+        <button class="btn btn-login" ng-click="signIn(form)" ng-disabled="form.$invalid">Logar</button>
         <p class="text-center">
-          <a href="#/forgot-password">Esqueci a senha</a>
+          <a href="#/forgot-password" class="for">Esqueci a senha</a>
           <a href="#/sign-up">Ainda não possuo cadastro</a>
         </p>
-        <button class="btn btn-login" ng-click="signIn(form)" ng-disabled="form.$invalid">Logar</button>
       </div>
     </form>
   </ion-content>

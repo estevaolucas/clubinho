@@ -18,8 +18,12 @@ angular.module('clubinho.controllers')
   
   $scope.data = Profile.getData();
 
-  $scope.close = function() {
-    $scope.modal.hide();
+  $scope.close = function(e) {
+    var $elem = $(e.target);
+
+    if ($elem.is('header') || $elem.is('.close')) {
+      $scope.modal.hide(); 
+    }
   }
 
   $scope.logout = function() {
@@ -154,7 +158,11 @@ angular.module('clubinho.controllers')
     }
   }
 
-  $scope.cancel = function() {
-    $scope.modal.remove();
+  $scope.cancel = function(e) {
+    var $elem = $(e.target);
+
+    if ($elem.is('ion-modal-view') || $elem.is('.btn.btn-cancel')) {
+      $scope.modal.remove(); 
+    }
   }
 });

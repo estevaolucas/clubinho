@@ -6,7 +6,10 @@ angular.module('clubinho.controllers')
     },
     loadContent = function() {
       Children.getList().then(function(children) {
+        $scope.loadingChildren = false;
         $scope.children = children;
+
+        updateChildrenPosition();
       }).finally(hideLoading);
 
       if (listLoaded) {
@@ -24,12 +27,27 @@ angular.module('clubinho.controllers')
           event.className = colors[i % 3];
           return event;
         });
+
+        updateChildrenPosition();
       }).finally(hideLoading);
+    },
+    updateChildrenPosition = function() {
+      var $home = $('.home ion-content'), 
+        $events = $('.events', $home),
+        screenHeight = $home.height(),
+        eventsPosition;
+
+      if ($events.length) {
+        eventsPosition = $events.offset().top + $events.height();
+        $('.fixed .children', $home).height(screenHeight - eventsPosition - 15);
+      }
     },
     listLoaded = false,
     $profileScope;
 
   $rootScope.app.showLoading();
+  $scope.loadingChildren = true;
+
   Authorization.authorized().then(function() {
     loadContent();
 
@@ -46,6 +64,8 @@ angular.module('clubinho.controllers')
   // children list updated
   $scope.$on('clubinho-children-update', function(e, children) {
     $scope.children = children;
+
+    updateChildrenPosition();
   });
 
   $scope.$on('clubinho-beacon-checkin', function(e, values) {

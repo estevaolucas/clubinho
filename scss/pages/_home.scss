@@ -41,9 +41,6 @@
             font-size: 18px;
           }
         }
-        h2, h3, p {
-          font-family: helvetica neue, Verdana;
-        }
         h3, p {
           color: #63453D;
         }
@@ -85,6 +82,7 @@
         padding: 15px 0px;
         background: #fff6ed;
         margin-bottom: 15px;
+        height: 120px;
 
         .wrapper{
           max-width: 260px;
@@ -130,7 +128,6 @@
 
     .fixed {
       .children {
-        height: 29vh;
         position: relative;
 
         > ul {

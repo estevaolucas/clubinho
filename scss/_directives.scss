@@ -92,6 +92,9 @@ div[clubinho-children-list] {
 
         h2{
           margin-top: 15px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .details {
           width: 130%;
@@ -124,7 +127,7 @@ div[clubinho-children-list] {
         }
       }
       .points {
-        @include border-radius(50px);
+        border-radius: 61px;
         float: right;
         position: absolute;
         right: 9px;
@@ -132,9 +135,11 @@ div[clubinho-children-list] {
         padding: 8px;
         color: white;
         text-align: center;
-        line-height: 18px;
+        line-height: 7px;
         background: #886bae;
         min-width: 55px;
+        padding: 15px;
+        height: 50px;
 
         h3 {
           font-size: 25px;
@@ -164,6 +169,11 @@ div[clubinho-children-list] {
 
       &.open {
         overflow: visible;
+
+        .user h2 {
+          overflow: auto;
+          text-overflow: ellipsis;
+        }
 
         .wrapper {
           max-height: 9999px;

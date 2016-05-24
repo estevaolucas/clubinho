@@ -12,7 +12,7 @@
     height: 100vh;
 
     header {
-      background: image-url('titulo.png') no-repeat;
+      background: image-url('titulo.png') no-repeat center;
       margin: 20px auto 0;
       width: 84vw;
       height: 220px;
@@ -78,6 +78,13 @@
       border: none;
       background-size: cover;
       z-index: 2
+    }
+    .btn-start{
+      background: #4a9322;
+      display: block;
+      margin: 20px auto 0;
+      font-size: 19px;
+      font-weight: bold;
     }
   }
 }
