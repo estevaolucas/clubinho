@@ -1,6 +1,6 @@
 <div class="children" ng-if="children">
   <ul>
-    <li ng-repeat="child in children" class="{{child.avatar}}" ng-click="toggleChild(child, $event)">
+    <li ng-repeat="child in children" class="{{child.avatar}}" ng-click="toggleChild(child, $event)"  ng-class="{open: child.open}">
       <div class="wrapper">
         <div class="avatar">
           <img ng-src="img/avatar-{{child.avatar}}.png">

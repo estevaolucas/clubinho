@@ -4092,7 +4092,17 @@ header .profile-avatar i.alert {
 }
 
 body .ionic_toast {
-  color: black;
-  background: white;
-  box-shadow: 2px 2px 4px black;
+  color: #ff9c00;
+  background: rgba(86, 48, 41, 0.9);
+  box-shadow: 2px 2px 4px #563029;
+  width: 100%;
+  margin: 0;
+  top: 0;
+  padding: 24px;
+  font-size: 18px;
+}
+body .ionic_toast .ionic_toast_close {
+  color: #ff9c00;
+  top: 17px;
+  right: 10px;
 }

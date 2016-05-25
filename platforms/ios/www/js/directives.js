@@ -10,7 +10,7 @@ angular.module('clubinho.directives', [])
   }
 })
 
-.directive('clubinhoChildrenList', function($ionicScrollDelegate, Children, Profile, $timeout, $rootScope, $cordovaDialogs) {
+.directive('clubinhoChildrenList', function($ionicScrollDelegate, Children, Profile, $timeout, $rootScope, ionicToast) {
   return {
     restrict: 'A',
     scope: {
@@ -32,6 +32,9 @@ angular.module('clubinho.directives', [])
                 var isToConfirm = eventToConfirm.children.indexOf(child.id) !== -1;
 
                 if (isToConfirm) {
+                  // open just the first child
+                  child.open = !event;
+
                   if (!event) {
                     event = angular.copy(eventToConfirm);
                     event.children = [];
@@ -51,7 +54,7 @@ angular.module('clubinho.directives', [])
                   }).join(', ')
                 });
 
-                $cordovaDialogs.confirm(message, 'Check-in no espaço Clubinho', ['OK']);
+                ionicToast.show(message, 'top', true, 1);
               }
             }
           },

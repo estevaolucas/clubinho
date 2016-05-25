@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('HomeController', function($scope, $state, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile) {
+.controller('HomeController', function($scope, $state, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile, ionicToast) {
   var hideLoading = function() {
       $rootScope.app.hideLoading();
     },
@@ -71,6 +71,7 @@ angular.module('clubinho.controllers')
   $scope.$on('clubinho-beacon-checkin', function(e, values) {
     var nextEvent = Schedule.getNextEventFromNow();
 
+    debugger;
     if (nextEvent) {
       console.log('clubinho-beacon-checkin-event', JSON.stringify(nextEvent));
       
@@ -80,10 +81,7 @@ angular.module('clubinho.controllers')
       
       notificationDate.setMinutes(nextEvent.date.getMinutes() - minutesBeforeToRemember);
 
-      // TODO: remove this test dialog
-      // $cordovaDialogs.confirm(nextEvent.title, 'Check-in', ['OK']);
-      
-      // Add evento to confirmation list
+      // Add event to confirmation list
       if (Profile.addEventToConfirm(nextEvent)) {
         // Notify directive
         $rootScope.$broadcast('clubinho-event-to-confirm');
@@ -107,21 +105,25 @@ angular.module('clubinho.controllers')
   });
 
   $scope.$on('clubinho-beacon-checkin-notification', function(e, values) {
-    var nextEvent = Schedule.getNextEventFromNow(),
-      now = new Date().getTime();
+    Schedule.getList().then(function() {
+      var nextEvent = Schedule.getNextEventFromNow(),
+        now = new Date().getTime();
 
-    if (!nextEvent) {
-      return;
-    }
+      if (!nextEvent) {
+        return;
+      }
 
-    $cordovaLocalNotification.schedule({
-      id: 4001,
-      title: 'Olá, você está na area de check-in do espaço Clubinho.',
-      data: {
-        type: 'action',
-        action_id: action.identifier
-      },
-      at: new Date(now + 1000)
+      $cordovaLocalNotification.schedule({
+        id: 4001,
+        title: 'Olá, você está na area de check-in do espaço Clubinho. Você confirma?',
+        sound: 'res://platform_default',
+        badge: 1,
+        data: {
+          type: 'action',
+          action_id: action.identifier
+        },
+        at: new Date(now + 1000)
+      });
     });
   });
 

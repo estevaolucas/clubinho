@@ -183,9 +183,9 @@ angular.module('clubinho.controllers')
   document.addEventListener('didPerformAction', function(action) {
     var values = normalizeCustomValues(action);
     
-    if (!actionCanBePerfomed(action, true)) {
-      return;
-    }
+    // if (!actionCanBePerfomed(action, true)) {
+    //   return;
+    // }
 
     Children.getList().then(function(children) {
       if (action.actionType != 'custom') {
@@ -202,6 +202,7 @@ angular.module('clubinho.controllers')
         }
       // check-in area
       } else if (values.type == 'checkin' && children.length) {
+        debugger;
         $rootScope.$broadcast('clubinho-beacon-checkin', values);
       }
     });

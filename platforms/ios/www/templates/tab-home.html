@@ -12,7 +12,7 @@
     </header>
 
     <div class="main">
-      <div class="events" ng-if="schedule.length">
+      <div class="events">
         <h1>próximos eventos</h1>
         <div class="carousel">
           <div class="wrapper">
@@ -21,7 +21,7 @@
               <button class="bt-next" ng-click="next()"> > </button>
             </div>
             <ion-slide-box show-pager="false" auto-play="true" does-continue
-="true">
+="true" ng-if="schedule.length">
               <ion-slide class="slider-slide {{event.className}}" ng-repeat="event in schedule | limitTo: 3" ng-click="openEvent(event)">
                 <time>{{event.date | date:'dd/MM'}} <strong>{{event.date | date:'HH:mm'}}</strong></time>
                 <h2>{{event.title}}</h2>
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div clubinho-children-list list="children" events-to-confirm="true" ng-class="{fixed: children.length < 3}" ng-if="children.length"></div>
-      <h3 class="empty-list" ng-if="!children.length">Nenhuma criança cadastrada. <strong>Vá em configurações para adicionar uma criança.</strong></h3>
+      <h3 class="empty-list" ng-if="!children.length && !loadingChildren">Nenhuma criança cadastrada. <strong>Vá em configurações para adicionar uma criança.</strong></h3>
       <div class="clear"></div>
     </div>
   </ion-content>

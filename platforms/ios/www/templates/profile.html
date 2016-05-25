@@ -3,13 +3,8 @@
     <ion-content>
       <span class="logo"></span>
         
-      <header>
-        <button class="close close-profile" ng-click="close()"></button>
-        <!-- <div class="profile-avatar-mini">
-          <img ng-if="data.avatar"  ng-src="{{data.avatar}}" />
-          <img ng-if="!data.avatar" src="img/avatar-default.png" />
-        </div>
-         -->
+      <header ng-click="close($event)">
+        <button class="close close-profile" ng-click="close($event)"></button>
         <buttom class="edit-profile" ng-click="edit()"></buttom>
 
         <button ng-click="logout()" class="btn btn-logout">Sair da conta</button>
