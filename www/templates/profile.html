@@ -4,6 +4,7 @@
       <span class="logo"></span>
         
       <header ng-click="close($event)">
+        <span class="gear"><i class="ion-ios-gear"></i></span>
         <button class="close close-profile" ng-click="close($event)"></button>
         <buttom class="edit-profile" ng-click="edit()"></buttom>
 
@@ -13,7 +14,7 @@
       <main>
         <div class="responsible">
           <h1>{{data.name}}</h1>
-          <h3>{{data.cpf}}</h3>
+          <h3>cpf: {{data.cpf}} <small ng-if="!data.cpf">não informado</small></h3>
         </div>
         <table>
           <tr>

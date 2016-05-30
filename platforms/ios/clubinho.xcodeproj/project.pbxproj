@@ -772,7 +772,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.nobot.clubinho;
 				PRODUCT_NAME = clubinho;
-				PROVISIONING_PROFILE = "dc68ffc3-e549-498b-bbff-cce6429f2c45";
+				PROVISIONING_PROFILE = "f48deb9b-628d-4be1-b7c2-00fdf9ea9d04";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 			};

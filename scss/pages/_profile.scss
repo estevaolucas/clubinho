@@ -1,21 +1,28 @@
 .profile .modal {
-  .profile-avatar-mini{
+  span.gear{
     position: absolute;
     top: 110px;
     left: 20px;
-    width: 112px;
+    width: 75px;
+    display: block;
+    border: 4px solid #563029;
+    height: 75px;
+    border-radius: 75px;
+    background-color: #ff9c00;
 
-    img{
-      border: 5px solid #563029;
-      border-radius: 50px;
-      width: 88%;
+    i {
+      color: white;
+      text-align: center;
+      display: block;
+      line-height: 75px;
+      font-size: 52px;
     }
   }
 
   .edit-profile{
     position: absolute;
     top: 128px;
-    left: 107px;
+    left: 97px;
     border: 0;
     background: image-url("edit.png");
     width: 12vw;
@@ -26,6 +33,7 @@
   .btn-logout {
     position: absolute;
     right: 10px;
+    top: 230px;
     border: none;
     background: #A4383B;
     color: white;
@@ -36,20 +44,25 @@
   }
 
   main {
-    margin-top: -35px;
+    margin-top: -12px;
     position: relative;
     background-color:#ff9c00;
 
     .responsible{
+      color: #563029;
+
       h1{
+        color: #563029;
         text-transform: capitalize;
-        font-size: 23px;
+        font-weight: normal;
+        font-size: 25px;
         text-indent: 20px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
       h3{
+        color: #563029;
         text-indent: 20px;
         font-size: 20px;
         margin: 0;
