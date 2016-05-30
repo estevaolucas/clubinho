@@ -10,7 +10,7 @@ angular.module('clubinho.directives', [])
   }
 })
 
-.directive('clubinhoChildrenList', function($ionicScrollDelegate, Children, Profile, $timeout, $rootScope, ionicToast) {
+.directive('clubinhoChildrenList', function($ionicScrollDelegate, Children, Profile, $timeout, $rootScope, $cordovaNetwork, ionicToast) {
   return {
     restrict: 'A',
     scope: {
@@ -29,7 +29,9 @@ angular.module('clubinho.directives', [])
 
             if (scope.hasOwnProperty('children') && scope.children.length && eventToConfirm) {
               scope.children.forEach(function(child) {
-                var isToConfirm = eventToConfirm.children.indexOf(child.id) !== -1;
+                var isToConfirm = eventToConfirm.children.map(function(child) {
+                    return child.id;
+                  }).indexOf(child.id) !== -1;
 
                 if (isToConfirm) {
                   // open just the first child
@@ -59,10 +61,46 @@ angular.module('clubinho.directives', [])
             }
           },
           confirm = function(confirm, child) {
-            Children.confirmPresence(confirm, child.eventToConfirm, child).then(function() {
+            if (window.cordova && $cordovaNetwork.isOffline()) {
+              ionicToast.show('Você está sem internet!', 'top', false, 2500);
+              return;
+            }
+
+            if (confirm) {
+              $rootScope.app.showLoading();
+
+              Children
+                .confirmPresence(confirm, child.eventToConfirm, child)
+                .then(function(response) {
+                  ionicToast.show('Pronto. Evento confirmado!', 'top', false, 2500);
+                }, function(response) {
+                  var error; 
+                  
+                  if (response.data.data && response.data.data.params) {
+                    var errors = [];
+
+                    for(var error in response.data.data.params) {
+                      errors.push(response.data.data.params[error]);
+                    };
+
+                    error = errors.join(', ');
+                  } else if(response.data.message) {
+                    error = response.data.message;
+                  } else {
+                    error = 'Não foi possível confirmar a criança.';
+                  }
+
+                  ionicToast.show(error, 'top', false, 2500);
+                })
+                .finally(function() {
+                  $rootScope.app.hideLoading();
+                  Profile.removeEventToConfirm(child.eventToConfirm, child);
+                  updateScope();
+                });
+            } else {
               Profile.removeEventToConfirm(child.eventToConfirm, child);
               updateScope();
-            });
+            }
           },
           unwatch = scope.$watch('children', function(newValue, oldValue) {
             if (newValue === oldValue) {

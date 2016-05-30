@@ -71,7 +71,6 @@ angular.module('clubinho.controllers')
   $scope.$on('clubinho-beacon-checkin', function(e, values) {
     var nextEvent = Schedule.getNextEventFromNow();
 
-    debugger;
     if (nextEvent) {
       console.log('clubinho-beacon-checkin-event', JSON.stringify(nextEvent));
       

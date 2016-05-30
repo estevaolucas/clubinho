@@ -202,7 +202,6 @@ angular.module('clubinho.controllers')
         }
       // check-in area
       } else if (values.type == 'checkin' && children.length) {
-        debugger;
         $rootScope.$broadcast('clubinho-beacon-checkin', values);
       }
     });

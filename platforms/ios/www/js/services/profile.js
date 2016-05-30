@@ -241,7 +241,10 @@ angular.module('clubinho.services')
         events.push({
           id: eventToAdd.id,
           children: methods.getData().children.map(function(child) {
-            return child.id
+            return { 
+              id: child.id,
+              confirmed: false
+            }
           })
         });
 
@@ -261,22 +264,14 @@ angular.module('clubinho.services')
         }),
         index = eventsArray.indexOf(eventToRemove.id);
         
-      console.log('index', index);
-
       if (index !== -1) {
-        var event = events[index];
+        var event = events[index],
+          children = event.children.map(function(child) {
+            return child.id;
+          });
 
-        console.log('event', event);
-        if (event.children.length) {
-          if (event.children.indexOf(child.id) !== -1) {
-            event.children.splice(event.children.indexOf(child.id), 1)
-
-            if (!event.children.length) {
-              events.splice(index, 1);
-            }
-          }
-        } else {
-          events.splice(index, 1);  
+        if (children.indexOf(child.id) !== -1) {
+          event.children[children.indexOf(child.id)].confirmed = true;
         }
       }
 
@@ -293,6 +288,14 @@ angular.module('clubinho.services')
           eventsArray = events.map(function(event) {
             return event.id;
           });
+
+        events = events.filter(function(event) {
+          var children = event.children.filter(function(child) {
+              return !child.confirmed;
+            });
+
+          return children.length
+        });
 
         if (detailedList) {
           var eventsFromCache = Schedule.getScheduleFromCache();
