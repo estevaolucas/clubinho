@@ -118,8 +118,12 @@ angular.module('clubinho.controllers')
     });
   }
 
-  $scope.cancel = function() {
-    $scope.modal.remove()
+  $scope.cancel = function(e) {
+    var $elem = $(e.target);
+
+    if ($elem.is('ion-modal-view') || $elem.is('.btn.btn-cancel')) {
+      $scope.modal.remove(); 
+    }
   }
 })
 

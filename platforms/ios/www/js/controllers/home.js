@@ -17,16 +17,8 @@ angular.module('clubinho.controllers')
       };
       
       Schedule.getList().then(function(schedule) {
-        var colors = ['blue', 'orange', 'red'],
-          max = colors.length,
-          min = 0;
-
         listLoaded = true;
-
-        $scope.schedule = schedule.map(function(event, i) {
-          event.className = colors[i % 3];
-          return event;
-        });
+        $scope.schedule = schedule;
 
         updateChildrenPosition();
       }).finally(hideLoading);
