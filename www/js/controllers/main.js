@@ -2,8 +2,8 @@ angular.module('clubinho.controllers')
 
 .controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal, $cordovaDialogs, Children, Profile) {
   var credentials = {
-      clientId     : '9c04ef1ef670e73d1e12bf03751b19076664772945d7c15490bca24facd9bbd9',
-      clientSecret : 'ae8baaf4377f0cd8ef5c56a3ed6cd78db06cda4ed8279f7c5d4690b36d8539b2'
+      clientId     : '314cf024dc86d8bcf509bf1ad874fab1a6cfca724a2fa91bc8d33d35c274df0e',
+      clientSecret : '0125e3b07d9635a46142492b561a9a2fe1d83862b7f6996d883860fc9f270b68'
     },
     normalizeCustomValues = function(action) {
       var data = {};
