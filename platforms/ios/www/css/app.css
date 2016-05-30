@@ -3131,11 +3131,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: absolute;
   right: 10px;
   border: none;
-  background: transparent;
-  color: #563029;
-  font-size: 14px;
-  padding: 0;
+  background: #A4383B;
+  color: white;
+  font-size: 13px;
+  padding: 2px 6px;
   z-index: 1;
+  border-radius: 6px;
 }
 .profile .modal main {
   margin-top: -35px;
@@ -3494,7 +3495,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   max-height: 240px;
 }
 .schedule-detail .modal main .sidebar {
-  width: 20%;
+  width: 25%;
   float: right;
   text-align: center;
   color: #ff9c00;
@@ -3528,7 +3529,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 25px;
 }
 .schedule-detail .modal main .container {
-  width: 80%;
+  width: 75%;
   float: left;
 }
 .schedule-detail .modal main .container > div {
@@ -4025,17 +4026,18 @@ header .profile-avatar i.gear {
   line-height: 42px;
 }
 header .profile-avatar i.alert {
-  background: #8D1919;
+  background: #C32222;
   display: block;
   position: absolute;
   right: -10px;
-  width: 20px;
+  width: 24px;
   border-radius: 20px;
   font-size: 13px;
   color: white;
-  height: 20px;
+  height: 24px;
   line-height: 22px;
   bottom: -4px;
+  border: 2px solid white;
 }
 
 .schedule-detail .modal, .profile .modal {

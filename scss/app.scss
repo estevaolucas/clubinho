@@ -118,17 +118,18 @@ header{
     }
 
     i.alert{
-      background: #8D1919;
+      background: #C32222;
       display: block;
       position: absolute;
       right: -10px;
-      width: 20px;
+      width: 24px;
       border-radius: 20px;
       font-size: 13px;
       color: white;
-      height: 20px;
+      height: 24px;
       line-height: 22px;
       bottom: -4px;
+      border: 2px solid white;
     }
   }
 }
