@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		016F0C81544C48F0B86996A7 /* APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A03947A1AE44CAB9DF642C1 /* APPLocalNotification.m */; };
 		0A1DC68CCA2949A9AF5F1085 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05B7C6BB78F449EA21339FC /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -75,6 +74,8 @@
 		F570A4F8148545C9AE31654B /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFABD020F01411E811A0E5A /* CDVLocalFilesystem.m */; };
 		F57D596D57B14B23BF102CDE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7308B9F6C0F47EEA8141230 /* FacebookSDK.framework */; };
 		FB7FE3CF32D9448F9DB3A32F /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 269354009BE84560BFFBF25E /* CDVFileTransfer.m */; };
+		3E7D459B1136406C885D5748 /* APPBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D1E260FEDFC64CB48572116E /* APPBadge.m */; };
+		7461A00246D74F10ADB5A575 /* UIApplication+APPBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB1A3128C040969C66F4C9 /* UIApplication+APPBadge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,10 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = clubinho/config.xml; sourceTree = "<group>"; };
 		FAF7C92A159B4E329D8BF703 /* CDVSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
 		FDEF77BFB5094C6993D3DC80 /* NativeSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NativeSettings.m; path = com.phonegap.plugins.nativesettingsopener/NativeSettings.m; sourceTree = "<group>"; };
+		D1E260FEDFC64CB48572116E /* APPBadge.m */ = {isa = PBXFileReference; name = "APPBadge.m"; path = "cordova-plugin-badge/APPBadge.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		3CEB1A3128C040969C66F4C9 /* UIApplication+APPBadge.m */ = {isa = PBXFileReference; name = "UIApplication+APPBadge.m"; path = "cordova-plugin-badge/UIApplication+APPBadge.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		315A48B6671841BCA9468ED8 /* APPBadge.h */ = {isa = PBXFileReference; name = "APPBadge.h"; path = "cordova-plugin-badge/APPBadge.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		D49DC03A517040E1A06A0F1C /* UIApplication+APPBadge.h */ = {isa = PBXFileReference; name = "UIApplication+APPBadge.h"; path = "cordova-plugin-badge/UIApplication+APPBadge.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +374,10 @@
 				300E7C72841D4B35B0372918 /* FacebookConnectPlugin.h */,
 				FDEF77BFB5094C6993D3DC80 /* NativeSettings.m */,
 				E075B68FE3AE43CD9DC0A543 /* NativeSettings.h */,
+				D1E260FEDFC64CB48572116E /* APPBadge.m */,
+				3CEB1A3128C040969C66F4C9 /* UIApplication+APPBadge.m */,
+				315A48B6671841BCA9468ED8 /* APPBadge.h */,
+				D49DC03A517040E1A06A0F1C /* UIApplication+APPBadge.h */,
 			);
 			name = Plugins;
 			path = clubinho/Plugins;
@@ -462,7 +471,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 730;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 4T4228RKP2;
@@ -646,6 +655,8 @@
 				E01C1BF52B2749FEA13CBA9B /* UILocalNotification+APPLocalNotification.m in Sources */,
 				55D8D80BC14E46CF985CEE38 /* FacebookConnectPlugin.m in Sources */,
 				69CFE1F0F91B48CCAD807E44 /* NativeSettings.m in Sources */,
+				3E7D459B1136406C885D5748 /* APPBadge.m in Sources */,
+				7461A00246D74F10ADB5A575 /* UIApplication+APPBadge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

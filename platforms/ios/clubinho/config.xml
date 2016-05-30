@@ -53,6 +53,9 @@
     <feature name="NativeSettings">
         <param name="ios-package" value="NativeSettings" />
     </feature>
+    <feature name="Badge">
+        <param name="ios-package" value="APPBadge" />
+    </feature>
     <name>clubinho</name>
     <description>Projeto Clubinho Mágico</description>
     <author email="estevao.lucas@gmail.com" href="http://example.com.com/">Estevão Lucas</author>

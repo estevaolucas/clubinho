@@ -124,5 +124,14 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-badge": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/katzer/cordova-plugin-badge.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

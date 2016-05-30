@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal, $cordovaDialogs, Children, Profile) {
+.controller('MainController', function($scope, $ionicPlatform, $cordovaLocalNotification, ionicToast, $ionicModal, $rootScope, $ionicModal, $cordovaDialogs, $cordovaBadge, Children, Profile) {
   var credentials = {
       clientId     : '314cf024dc86d8bcf509bf1ad874fab1a6cfca724a2fa91bc8d33d35c274df0e',
       clientSecret : '0125e3b07d9635a46142492b561a9a2fe1d83862b7f6996d883860fc9f270b68'
@@ -63,7 +63,8 @@ angular.module('clubinho.controllers')
     },
     beaconStarted = false,
     ionicPlatformReady = false,
-    loggedIn = false;
+    loggedIn = false,
+    notificationIdToListErrors = 1200;
 
   $scope.beacon = {
     disabled: false
@@ -124,6 +125,9 @@ angular.module('clubinho.controllers')
   document.addEventListener('started', function(data) {
     $scope.beacon.disabled = false;
     $scope.beacon.errors = null;
+
+    $cordovaBadge.clear();
+    $cordovaLocalNotification.clear(notificationIdToListErrors);
   });
 
   // Evento acontece em background.
@@ -154,6 +158,7 @@ angular.module('clubinho.controllers')
                 type: 'action',
                 action_id: action.identifier
               },
+              sound: 'res://platform_default',
               at: _1SecondsFromNow
             });
           };
@@ -211,10 +216,34 @@ angular.module('clubinho.controllers')
     console.log('error', 'beacon event', JSON.stringify(error));
 
     if (error.data && angular.isArray(error.data)) {
+      var codes = error.data.map(function(error) {
+          return error.code;
+        }),
+        message = 'Favor habilitar os itens necessário para o funcionamento correto do aplicativo',
+        now = new Date().getTime();
+
       $scope.beacon.disabled = true;
-      $scope.beacon.errors = error.data.map(function(error) {
-        return error.code;
+      $scope.beacon.errors = codes;
+
+      if (codes.length == 1) {
+        var types = {
+            BCLBluetoothNotTurnedOnErrorKey: 'ligar o Bluetooth',
+            BCLDeniedLocationServicesErrorKey: 'habilitar a Localização para Sempre',
+            BCLDeniedBackgroundAppRefreshErrorKey: 'habilitar a Atualização em 2° Plano',
+            BCLDeniedNotificationsErrorKey: 'permitir Notificações'
+          };
+
+        message = 'Favor ' + types[codes[0]] + ' em Ajustes';
+      }
+
+      $cordovaLocalNotification.schedule({
+        id: notificationIdToListErrors,
+        title: message,
+        at: new Date(now + 1 * 1000),
+        sound: 'res://platform_default'
       });
+
+      $cordovaBadge.increase(1);
     }
   });  
 

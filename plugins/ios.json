@@ -95,6 +95,9 @@
         },
         "com.phonegap.plugins.nativesettingsopener": {
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        },
+        "cordova-plugin-badge": {
+            "PACKAGE_NAME": "br.com.nobot.clubinho"
         }
     },
     "dependent_plugins": {

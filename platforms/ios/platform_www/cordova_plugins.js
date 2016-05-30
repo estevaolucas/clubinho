@@ -313,6 +313,15 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.settings"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-badge/www/badge.js",
+        "id": "cordova-plugin-badge.Badge",
+        "pluginId": "cordova-plugin-badge",
+        "clobbers": [
+            "plugin.notification.badge",
+            "cordova.plugins.notification.badge"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -332,7 +341,8 @@ module.exports.metadata =
     "cordova-plugin-app-event": "1.2.0",
     "de.appplant.cordova.plugin.local-notification": "0.8.4",
     "phonegap-facebook-plugin": "0.12.0",
-    "com.phonegap.plugins.nativesettingsopener": "1.2"
+    "com.phonegap.plugins.nativesettingsopener": "1.2",
+    "cordova-plugin-badge": "0.7.2"
 }
 // BOTTOM OF METADATA
 });

@@ -91,6 +91,10 @@
                         {
                             "xml": "<feature name=\"NativeSettings\"><param name=\"ios-package\" value=\"NativeSettings\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Badge\"><param name=\"ios-package\" value=\"APPBadge\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -176,6 +180,9 @@
         },
         "com.phonegap.plugins.nativesettingsopener": {
             "PACKAGE_NAME": "com.ionicframework.clubinho835391"
+        },
+        "cordova-plugin-badge": {
+            "PACKAGE_NAME": "br.com.nobot.clubinho"
         }
     },
     "dependent_plugins": {},
@@ -493,6 +500,15 @@
             "clobbers": [
                 "cordova.plugins.settings"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-badge/www/badge.js",
+            "id": "cordova-plugin-badge.Badge",
+            "pluginId": "cordova-plugin-badge",
+            "clobbers": [
+                "plugin.notification.badge",
+                "cordova.plugins.notification.badge"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -510,6 +526,7 @@
         "cordova-plugin-app-event": "1.2.0",
         "de.appplant.cordova.plugin.local-notification": "0.8.4",
         "phonegap-facebook-plugin": "0.12.0",
-        "com.phonegap.plugins.nativesettingsopener": "1.2"
+        "com.phonegap.plugins.nativesettingsopener": "1.2",
+        "cordova-plugin-badge": "0.7.2"
     }
 }

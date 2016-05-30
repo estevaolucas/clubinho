@@ -82,6 +82,7 @@ angular.module('clubinho.controllers')
           $cordovaLocalNotification.schedule({
             id: notificationId,
             title: nextEvent.title + ' vai começar em ' + minutesBeforeToRemember + ' minutos.',
+            sound: 'res://platform_default',
             data: {
               type: 'event',
               id: nextEvent.id
