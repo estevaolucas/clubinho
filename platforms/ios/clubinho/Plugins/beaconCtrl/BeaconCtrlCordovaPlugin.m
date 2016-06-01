@@ -8,10 +8,12 @@
 #import "BeaconCtrlCordovaPlugin.h"
 #import <Cordova/CDV.h>
 #import <UNNetworking/UNCodingUtil.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface BeaconCtrlCordovaPlugin ()
+@interface BeaconCtrlCordovaPlugin () <CLLocationManagerDelegate>
 
 @property (strong) NSString *callbackId;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -39,6 +41,17 @@ static NSDictionary *launchOptions;
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        [self.locationManager requestAlwaysAuthorization];
+    };
+    
+    self.callbackId = command.callbackId;
+    [self startMonitoring];
+}
+
+- (void)startMonitoring {
     [[BeaconCtrlManager sharedManager] startWithDelegate:self withCompletion:^(BOOL success, NSError *error) {
         [self.commandDelegate runInBackground:^{
             CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:@{ @"type": @"started"}];
@@ -49,10 +62,14 @@ static NSDictionary *launchOptions;
                                            @"info": error.userInfo};
                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                              messageAsDictionary:errorDic];
+                
+                if (error.userInfo[BCLDeniedNotificationsErrorKey]) {
+                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remoteNotificationAllowed) name:CDVRemoteNotification object:nil];
+                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remoteNotificationNotAllowed) name:CDVRemoteNotificationError object:nil];
+                }
             }
             
             [pluginResult setKeepCallback:@YES];
-            self.callbackId = command.callbackId;
             [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         }];
     }];
@@ -91,7 +108,7 @@ static NSDictionary *launchOptions;
 - (void)willPerformAction:(BCLAction *)action {
     [self fireEvent:@"willPerformAction" values:[self normalizeAction:action]];
 }
-
+99
 - (void)didPerformAction:(BCLAction *)action {
     [self fireEvent:@"didPerformAction" values:[self normalizeAction:action]];
 }
@@ -138,6 +155,33 @@ static NSDictionary *launchOptions;
                                                   messageAsDictionary:result];
     [pluginResult setKeepCallback:@YES];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+}
+
+- (void)remoteNotificationAllowed {
+    [self startMonitoring];
+    [self fireEvent:@"notification_permission" values:@{@"allowed": @YES}];
+    [self removeObserversForNotifications];
+}
+
+- (void)remoteNotificationNotAllowed {
+    [self fireEvent:@"notification_permission" values:@{@"allowed": @NO}];
+    [self removeObserversForNotifications];
+}
+
+- (void)removeObserversForNotifications {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CDVRemoteNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CDVRemoteNotificationError object:nil];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {    
+    if (status == kCLAuthorizationStatusDenied) {
+        [self fireEvent:@"notification_permission" values:@{@"allowed": @NO}];
+        self.locationManager = nil;
+    } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [self fireEvent:@"notification_permission" values:@{@"allowed": @YES}];
+        [self startMonitoring];
+        self.locationManager = nil;
+    }
 }
 
 @end

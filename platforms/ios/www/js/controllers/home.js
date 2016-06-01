@@ -1,6 +1,6 @@
 angular.module('clubinho.controllers')
 
-.controller('HomeController', function($scope, $state, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile, ionicToast) {
+.controller('HomeController', function($scope, $state, $rootScope, $ionicModal, $ionicScrollDelegate, $ionicSlideBoxDelegate, $state, $cordovaLocalNotification, $cordovaDialogs, Children, Schedule, Authorization, Profile, ionicToast, $cordovaBadge) {
   var hideLoading = function() {
       $rootScope.app.hideLoading();
     },
@@ -60,12 +60,20 @@ angular.module('clubinho.controllers')
     updateChildrenPosition();
   });
 
-  $scope.$on('clubinho-beacon-checkin', function(e, values) {
+  var checkinNotificationId = 123445;
+
+  $rootScope.$on('$cordovaLocalNotification:click', function(event, notification, state) {
+    if (notification.id == checkinNotificationId) {
+      $rootScope.$broadcast('clubinho-beacon-checkin', notification);
+    }
+
+    $cordovaBadge.clear();
+  });
+
+  $scope.$on('clubinho-beacon-checkin', function(e, action) {
     var nextEvent = Schedule.getNextEventFromNow();
 
     if (nextEvent) {
-      console.log('clubinho-beacon-checkin-event', JSON.stringify(nextEvent));
-      
       var notificationId = nextEvent.id + 300,
         notificationDate = new Date(nextEvent.date),
         minutesBeforeToRemember = 15;
@@ -96,7 +104,7 @@ angular.module('clubinho.controllers')
     }
   });
 
-  $scope.$on('clubinho-beacon-checkin-notification', function(e, values) {
+  $scope.$on('clubinho-beacon-checkin-notification', function(e, action) {
     Schedule.getList().then(function() {
       var nextEvent = Schedule.getNextEventFromNow(),
         now = new Date().getTime();
@@ -106,7 +114,7 @@ angular.module('clubinho.controllers')
       }
 
       $cordovaLocalNotification.schedule({
-        id: 4001,
+        id: checkinNotificationId,
         title: 'Olá, você está na area de check-in do espaço Clubinho. Você confirma?',
         sound: 'res://platform_default',
         badge: 1,

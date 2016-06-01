@@ -135,15 +135,11 @@ angular.module('clubinho.controllers')
     var values = normalizeCustomValues(action),
       actionType = values.type;
 
-    if (!actionCanBePerfomed(action, false)) {
+    if (!actionCanBePerfomed(action, false) || action.actionType != 'custom') {
       return;
     }
 
     Children.getList().then(function(children) {
-      if (action.actionType != 'custom') {
-        return;
-      }
-
       if (actionType == 'notification') {
         var message = values.text,
           title = ('title' in values) ? values.title : '', 
@@ -179,7 +175,7 @@ angular.module('clubinho.controllers')
           notify(message);
         }
       } else if (actionType == 'checkin' && children.length) {
-        $rootScope.$broadcast('clubinho-beacon-checkin-notification', values);
+        $rootScope.$broadcast('clubinho-beacon-checkin-notification', action);
       }
     });
   });
@@ -187,34 +183,32 @@ angular.module('clubinho.controllers')
   // Evento acontece quando o aplicativo está aberto e rodando na tela do usuário
   document.addEventListener('didPerformAction', function(action) {
     var values = normalizeCustomValues(action);
-    
-    // if (!actionCanBePerfomed(action, true)) {
-    //   return;
-    // }
 
-    Children.getList().then(function(children) {
-      if (action.actionType != 'custom') {
-        return;
+    if (!actionCanBePerfomed(action, true) || action.actionType != 'custom') {
+      return;
+    }
+
+    // alert box
+    if (values.type == 'notification') {
+      var message = values.text,
+        title = ('title' in values) ? values.title : '';
+ 
+      if (values.id != 'onHello') {
+        $cordovaDialogs.confirm(message, title, ['OK']);
       }
-
-      // alert box
-      if (values.type == 'notification') {
-        var message = values.text,
-          title = ('title' in values) ? values.title : '';
-   
-        if (values.id != 'onHello') {
-          $cordovaDialogs.confirm(message, title, ['OK']);
+    // check-in area
+    } else if (values.type == 'checkin') {
+      Children.getList().then(function(children) {
+        if (!children.length) {
+          return;
         }
-      // check-in area
-      } else if (values.type == 'checkin' && children.length) {
-        $rootScope.$broadcast('clubinho-beacon-checkin', values);
-      }
-    });
+
+        $rootScope.$broadcast('clubinho-beacon-checkin', action);
+      });
+    }
   });
 
   document.addEventListener('error', function(error) {
-    console.log('error', 'beacon event', JSON.stringify(error));
-
     if (error.data && angular.isArray(error.data)) {
       var codes = error.data.map(function(error) {
           return error.code;
@@ -266,7 +260,6 @@ angular.module('clubinho.controllers')
   $rootScope.app.loadingCount = 0;
   $rootScope.app.showLoading = function() {
     $rootScope.app.loadingCount++;
-
   }
 
   $rootScope.app.hideLoading = function() {

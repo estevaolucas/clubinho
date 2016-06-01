@@ -289,13 +289,13 @@ angular.module('clubinho.services')
             return event.id;
           });
 
-        events = events.filter(function(event) {
-          var children = event.children.filter(function(child) {
-              return !child.confirmed;
-            });
+        // events = events.filter(function(event) {
+        //   var children = event.children.filter(function(child) {
+        //       return !child.confirmed;
+        //     });
 
-          return children.length
-        });
+        //   return children.length
+        // });
 
         if (detailedList) {
           var eventsFromCache = Schedule.getScheduleFromCache();

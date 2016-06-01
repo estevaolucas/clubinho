@@ -8,8 +8,8 @@ angular.module('clubinho', [
 ])
 
 .constant('apiConfig', {
-  // baseUrl: 'http://192.168.25.15/clubinho-api/api/v1',
-  baseUrl: 'http://peppersp.com.br/beacon/api/v1'
+  baseUrl: 'http://192.168.25.15/clubinho-api/api/v1',
+  //baseUrl: 'http://peppersp.com.br/beacon/api/v1'
 })
 
 .config(function($stateProvider, $urlRouterProvider, $cordovaFacebookProvider, $httpProvider) {
@@ -109,7 +109,7 @@ angular.module('clubinho', [
   facebookConnectPlugin && $cordovaFacebookProvider.browserInit('977939322243298', 'v2.5');
 })
 
-.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout, $cordovaDialogs, $cordovaNetwork, $window) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicModal, Authorization, Schedule, $ionicHistory, $timeout, $cordovaDialogs, $cordovaNetwork, $window, $cordovaBadge) {
   $rootScope.app = {};
 
   $rootScope.$on('user-did-login', function() {
@@ -129,10 +129,6 @@ angular.module('clubinho', [
     if (window.cordova && window.cordova.plugins.beaconCtrl) {
       cordova.plugins.beaconCtrl.stop();
     }
-  });
-
-  $rootScope.$on('$cordovaLocalNotification:click', function(event, notification, state) {
-    console.log(notification);
   });
 
   $ionicPlatform.ready(function() {

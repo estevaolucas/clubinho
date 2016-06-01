@@ -28,10 +28,18 @@ angular.module('clubinho.directives', [])
               event;
 
             if (scope.hasOwnProperty('children') && scope.children.length && eventToConfirm) {
+              if (!('children' in eventToConfirm) && !children.length) {
+                return;
+              }
+              
               scope.children.forEach(function(child) {
-                var isToConfirm = eventToConfirm.children.map(function(child) {
-                    return child.id;
-                  }).indexOf(child.id) !== -1;
+                var isToConfirm = false;
+
+                eventToConfirm.children.forEach(function(c) {
+                  if (c.id == child.id && !c.confirmed) {
+                    isToConfirm = true;
+                  }
+                });
 
                 if (isToConfirm) {
                   // open just the first child
