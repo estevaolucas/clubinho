@@ -3489,26 +3489,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #ff9c00;
 }
 
-.schedule-detail .modal header {
-  padding-top: 210px;
+html .schedule-detail .modal header {
+  background: url('../img/crop.png?1465499077') no-repeat center bottom;
+  background-size: 100%;
+  padding-top: 170px;
   position: relative;
+  z-index: 2;
 }
-.schedule-detail .modal main {
+html .schedule-detail .modal main {
   background: #552f2b;
   float: left;
 }
-.schedule-detail .modal main .cover {
+html .schedule-detail .modal main .cover {
   line-height: 0px;
   border-bottom: 3px white dotted;
   position: relative;
   z-index: 1;
 }
-.schedule-detail .modal main .cover img {
+html .schedule-detail .modal main .cover img {
   width: 100%;
-  margin-top: -59px;
+  margin-top: -40px;
   max-height: 240px;
 }
-.schedule-detail .modal main .sidebar {
+html .schedule-detail .modal main .sidebar {
   width: 25%;
   float: right;
   text-align: center;
@@ -3517,7 +3520,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-top: 40px;
   font-size: 15px;
 }
-.schedule-detail .modal main .sidebar time {
+html .schedule-detail .modal main .sidebar time {
   background: url('../img/tracinho.png?1458128492') no-repeat center bottom;
   background-size: contain;
   color: #ff9c00;
@@ -3528,40 +3531,40 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 20px;
   line-height: 28px;
 }
-.schedule-detail .modal main .sidebar time.hour {
+html .schedule-detail .modal main .sidebar time.hour {
   font-size: 16px;
 }
-.schedule-detail .modal main .sidebar button {
+html .schedule-detail .modal main .sidebar button {
   color: #ff9c00;
   border: none;
   background: none;
   font-family: 'Love Ya Like A Sister', cursive;
   font-size: 20px;
 }
-.schedule-detail .modal main .sidebar button i {
+html .schedule-detail .modal main .sidebar button i {
   display: block;
   font-size: 25px;
 }
-.schedule-detail .modal main .container {
+html .schedule-detail .modal main .container {
   width: 75%;
   float: left;
 }
-.schedule-detail .modal main .container > div {
+html .schedule-detail .modal main .container > div {
   padding: 15px 20px;
   background: #ff9c00;
 }
-.schedule-detail .modal main .container > div h1, .schedule-detail .modal main .container > div h2 {
+html .schedule-detail .modal main .container > div h1, html .schedule-detail .modal main .container > div h2 {
   color: white;
 }
-.schedule-detail .modal main .container > div h1 {
+html .schedule-detail .modal main .container > div h1 {
   margin-bottom: 2px;
   font-size: 16px;
 }
-.schedule-detail .modal main .container > div h2 {
+html .schedule-detail .modal main .container > div h2 {
   margin-bottom: 15px;
   font-size: 16px;
 }
-.schedule-detail .modal main .container > div p {
+html .schedule-detail .modal main .container > div p {
   color: #552f2b;
   font-size: 16px;
   margin-bottom: 14px;
@@ -3871,6 +3874,12 @@ div[clubinho-children-list] .children li.maria .wrapper {
 }
 div[clubinho-children-list] .children li.maria .wrapper .points {
   background: #eabb1f;
+}
+div[clubinho-children-list] .children li.rico .wrapper {
+  background: #FFE2CE;
+}
+div[clubinho-children-list] .children li.rico .wrapper .points {
+  background: #7D3D19;
 }
 div[clubinho-children-list] .children li.luiz .wrapper {
   background: #b1fff6;

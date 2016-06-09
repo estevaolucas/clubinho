@@ -77,7 +77,6 @@ angular.module('clubinho.controllers')
       cordova.plugins.beaconCtrl.start(credentials, function() {
         $rootScope.app.hideLoading();
 
-        console.log('beacon', $scope.beacon);
         if (!$scope.beacon.errors || !$scope.beacon.errors.length) {
           $scope.beacon.modal.remove();
 
@@ -88,8 +87,6 @@ angular.module('clubinho.controllers')
   }
 
   $scope.openSettings = function() {
-    console.log('open settings clicked', cordova);
-
     if (window.cordova && cordova.plugins.settings.openSetting) {
       cordova.plugins.settings.open();
     }

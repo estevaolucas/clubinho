@@ -73,34 +73,34 @@ angular.module('clubinho.controllers')
   $scope.$on('clubinho-beacon-checkin', function(e, action) {
     var nextEvent = Schedule.getNextEventFromNow();
 
-    if (nextEvent) {
-      var notificationId = nextEvent.id + 300,
-        notificationDate = new Date(nextEvent.date),
-        minutesBeforeToRemember = 15;
+    if (!nextEvent) {
+      return;
+    }
       
-      notificationDate.setMinutes(nextEvent.date.getMinutes() - minutesBeforeToRemember);
+    var notificationId = nextEvent.id + 300,
+      notificationDate = new Date(nextEvent.date),
+      minutesBeforeToRemember = 15;
+    
+    notificationDate.setMinutes(nextEvent.date.getMinutes() - minutesBeforeToRemember);
 
-      // Add event to confirmation list
-      if (Profile.addEventToConfirm(nextEvent)) {
-        // Notify directive
-        $rootScope.$broadcast('clubinho-event-to-confirm');
+    // Add event to confirmation list
+    if (Profile.addEventToConfirm(nextEvent)) {
+      // Notify directive
+      $rootScope.$broadcast('clubinho-event-to-confirm');
 
-        // Show a reminder notification 
-        if (window.cordova) {
-          $cordovaLocalNotification.schedule({
-            id: notificationId,
-            title: nextEvent.title + ' vai começar em ' + minutesBeforeToRemember + ' minutos.',
-            sound: 'res://platform_default',
-            data: {
-              type: 'event',
-              id: nextEvent.id
-            },
-            at: notificationDate
-          });
-        }
+      // Show a reminder notification 
+      if (window.cordova) {
+        $cordovaLocalNotification.schedule({
+          id: notificationId,
+          title: nextEvent.title + ' vai começar em ' + minutesBeforeToRemember + ' minutos.',
+          sound: 'res://platform_default',
+          data: {
+            type: 'event',
+            id: nextEvent.id
+          },
+          at: notificationDate
+        });
       }
-    } else {
-      console.log('clubinho-beacon-checkin-no-event', JSON.stringify(values), nextEvent);
     }
   });
 

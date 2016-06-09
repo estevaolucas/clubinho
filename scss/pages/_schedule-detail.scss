@@ -1,7 +1,10 @@
-.schedule-detail .modal {
+html .schedule-detail .modal {
   header {
-    padding-top: 210px;
+    background: image-url('crop.png') no-repeat center bottom;
+    background-size: 100%;
+    padding-top: 170px;
     position: relative;
+    z-index: 2;
   }
   
   main{
@@ -16,7 +19,7 @@
 
       img{
         width: 100%;
-        margin-top: -59px;
+        margin-top: -40px;
         max-height: 240px;
       }
     }

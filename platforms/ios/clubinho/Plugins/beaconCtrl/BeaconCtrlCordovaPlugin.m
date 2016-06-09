@@ -108,7 +108,7 @@ static NSDictionary *launchOptions;
 - (void)willPerformAction:(BCLAction *)action {
     [self fireEvent:@"willPerformAction" values:[self normalizeAction:action]];
 }
-99
+
 - (void)didPerformAction:(BCLAction *)action {
     [self fireEvent:@"didPerformAction" values:[self normalizeAction:action]];
 }
